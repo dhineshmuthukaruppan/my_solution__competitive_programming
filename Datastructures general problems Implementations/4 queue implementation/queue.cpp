@@ -7,7 +7,6 @@ class Queue_node{
     public:
         T data; 
         Queue_node *link; 
-
 }; 
 
 
@@ -23,7 +22,6 @@ class Queue{
             this->rear = nullptr;  
             this->count = 0;    
         }
-        
 };
 
 template <typename Q>
