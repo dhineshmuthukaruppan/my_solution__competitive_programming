@@ -13,12 +13,13 @@ void towers(int num_of_disk, char src, char dest, char aux){
     cout << "Towers " << num_of_disk << src << dest << aux << "\n"; 
 
     if(num_of_disk==1){
-        cout << step << "Move from " << src << " -> " << dest << "\n"; 
-        ++step;  
+        ++step;
+        cout << step << "-> Move from " << src << " -> " << dest << "\n"; 
+        
     }else{
         towers(num_of_disk-1, src, aux, dest);
-        cout << step << "Move from " << src << " -> " << dest << "\n"; 
         ++step;
+        cout << step << "-> Move from " << src << " -> " << dest << "\n"; 
         towers(num_of_disk-1, aux, dest, src);    
     }
 
