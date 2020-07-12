@@ -22,6 +22,16 @@ class Stack{
             this->top = nullptr; 
         }
 
+        ~Stack(){
+            cout << "destructor called" << "\n";    
+            Stack_node<S> *temp = this->top;   
+            while(temp){
+                cout << "destroying " << this->top->data << "\n";     
+                this->top = this->top->link;  
+                delete temp; 
+                temp = this->top; 
+            }
+        }
         void push(S data);       
         void pop(S *popped_data);         
         void print();   
@@ -75,6 +85,9 @@ int main(){
     int popped_data; 
 
     Stack<int> *s = new Stack<int>();    
+    Stack<char> st;    
+    st.push('a');       
+    st.print();     
 
     // cout << EXIT_FAILURE; 
     // cout << returnFunction();     
