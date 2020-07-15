@@ -12,6 +12,7 @@ class CircularQueue{
         int *Q; 
 
         CircularQueue(int size); 
+        ~CircularQueue();    
         void enqueue(int data); 
         int dequeue();   
         void display();    
@@ -23,6 +24,12 @@ CircularQueue::CircularQueue(int size){
     this->size = size;   
     this->front = this->rear = 0;   
     this->Q = new int[this->size];    
+}
+
+CircularQueue::~CircularQueue(){
+    cout << "destructor getting called \n";     
+    delete [] this->Q;    
+
 }
 
 
