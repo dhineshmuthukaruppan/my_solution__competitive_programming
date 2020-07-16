@@ -48,9 +48,6 @@ output
 41
 43
 61 
-79 - 71
-83 - 79 
-71 - 83
 
 */    
 
@@ -84,7 +81,7 @@ vector<int> waiter(vector<int> number, int q) {
 
         bool condition = true;   
         
-        for(int j=2; j<sqrt(i); j++){
+        for(int j=2; j<=sqrt(i); j++){
             if(i % j == 0){
                 condition = false; 
                 break; 
@@ -97,6 +94,7 @@ vector<int> waiter(vector<int> number, int q) {
             primes.push_back(i);    
         }
     }
+
 
     stack<int> stack1, stack2, stack3; 
 
@@ -143,6 +141,7 @@ vector<int> waiter(vector<int> number, int q) {
         // cout << stack1.top() << '\n';    
         stack1.pop();      
     }
+
 
     return returnvec;   
 
