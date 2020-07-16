@@ -70,11 +70,12 @@ int main(){
     //     it++;    
     // }
 
-    for(int i=2; i<100; i++){
+    for(int i=2; i<10000; i++){
         if(isPrimeEfficient(i)){
             vec.push_back(i);    
         }    
     }
+
 
     vector<int>::iterator it; 
     it = vec.begin();   
@@ -83,5 +84,7 @@ int main(){
         it++;    
     }
 
-    return 0;    
+    cout << vec.size() << '\n'; 
+
+    return 0;       
 }
