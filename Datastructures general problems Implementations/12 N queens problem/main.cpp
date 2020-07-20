@@ -133,9 +133,9 @@ void printBoard(stack<Position> &stk, int boardSize){
                 cout << "Q | ";  
             }else{
                 cout << "  | ";
-            }
+            }     
         }
-        cout << '\n';   
+        cout << '\n';     
     }
 
 
