@@ -126,6 +126,27 @@ void Tree::inorder(Treenode *p){
 }  /* end of Tree::inorder() */
 
 
+void Tree::iterativeInorder(Treenode *p){    
+
+    stack<Treenode*> stk; 
+
+    while(p!=NULL || !stk.empty()){
+        if(p != NULL){
+            stk.push(p);   
+            p = p->lchild;     
+        }else{
+            p = stk.top();   
+            stk.pop();   
+            cout << p->data << " ";  
+            p = p->rchild;   
+        }
+
+    }
+
+}  /* end of Tree::iterativeInorder() */
+
+
+
 void Tree::postorder(Treenode *p){
     if(p){
         postorder(p->lchild);   
@@ -196,7 +217,10 @@ int main(){
     cout << "\nlevel order traversal \n";   
     t.levelorder(t.root);      
 
-    cout << "\nHeight of tree " << t.heightOfTree(t.root);         
+    cout << "\nIterative preorder \n";
+    t.iterativePreorder(t.root);     
+    
+    cout << "\nHeight of tree \n" << t.heightOfTree(t.root);         
 
     return 0;
 
