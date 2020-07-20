@@ -1,5 +1,6 @@
 #include <iostream>
 #include <queue>
+#include <stack>
 
 using namespace std;   
 
@@ -25,8 +26,10 @@ class Tree{
         }
 
         void createTree(); 
-        void preorder(Treenode *p);    
+        void preorder(Treenode *p);   
+        void iterativePreorder(Treenode *p);       
         void inorder(Treenode *p); 
+        void iterativeInorder(Treenode *p);    
         void postorder(Treenode *p); 
         void levelorder(Treenode *p);       
         int heightOfTree(Treenode *p);     
@@ -89,6 +92,28 @@ void Tree::preorder(Treenode *p){
     }
 
 }  /* Tree::preorder(Treenode *p) */
+
+
+void Tree::iterativePreorder(Treenode *p){
+
+    stack<Treenode*> stk;     
+
+    while(p != NULL || !stk.empty()){
+        
+        if(p != NULL){
+            cout << p->data << " ";   
+            stk.push(p);   
+            p = p->lchild;    
+        }else{
+            p = stk.top(); 
+            stk.pop(); 
+            p = p->rchild; 
+        }
+
+    }
+
+}  /* END OF Tree::iterativePreorder() */
+
 
 
 void Tree::inorder(Treenode *p){
@@ -171,9 +196,7 @@ int main(){
     cout << "\nlevel order traversal \n";   
     t.levelorder(t.root);      
 
-
     cout << "\nHeight of tree " << t.heightOfTree(t.root);         
-
 
     return 0;
 
