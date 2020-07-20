@@ -21,7 +21,7 @@ class Tree{
         }
         ~Tree(){
             cout << "\ndestructor called \n";
-            
+
         }
 
         void createTree(); 
@@ -29,7 +29,7 @@ class Tree{
         void inorder(Treenode *p); 
         void postorder(Treenode *p); 
         void levelorder(Treenode *p);       
-        void heightOfTree();     
+        int heightOfTree(Treenode *p);     
 
 };  /* end of class Tree */
 
@@ -138,6 +138,25 @@ void Tree::levelorder(Treenode *p){
 }  /* end of Tree::levelorder() */
 
 
+int Tree::heightOfTree(Treenode *p){    
+
+    int x; 
+    int y; 
+
+    if(!p){
+        return 0;    
+    }
+
+    x = heightOfTree(p->lchild);  
+    y = heightOfTree(p->rchild);    
+
+    if(x > y){  
+        return x+1;    
+    }else{
+        return y+1; 
+    }
+
+}  /* end of Tree::heightOfTree() */
 
 int main(){
 
@@ -151,6 +170,9 @@ int main(){
     t.inorder(t.root);    
     cout << "\nlevel order traversal \n";   
     t.levelorder(t.root);      
+
+
+    cout << "\nHeight of tree " << t.heightOfTree(t.root);         
 
 
     return 0;
