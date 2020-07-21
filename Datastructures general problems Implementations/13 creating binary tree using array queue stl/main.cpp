@@ -33,7 +33,9 @@ class Tree{
         void postorder(Treenode *p); 
         void iterativePostorder(Treenode *p);    
         void levelorder(Treenode *p);       
-        int heightOfTree(Treenode *p);     
+        int heightOfTree(Treenode *p);   
+        int countNodes(Treenode *p);   
+        int countNodesWithDegree2(Treenode *p);     
 
 };  /* end of class Tree */
 
@@ -235,6 +237,45 @@ int Tree::heightOfTree(Treenode *p){
     }
 
 }  /* end of Tree::heightOfTree() */
+
+
+int Tree::countNodes(Treenode *p){     
+    
+    int x, y; 
+    
+    if(p != NULL){
+        x = countNodes(p->lchild);    
+        y = countNodes(p->rchild);      
+
+        return x + y + 1; 
+
+    }
+
+    return 0;  
+
+}  /* end of Tree::countNodes() */
+
+
+int Tree::countNodesWithDegree2(Treenode *p){     
+
+    int x, y; 
+
+    if(p != NULL){
+        x = countNodesWithDegree2(p->lchild);   
+        y = countNodesWithDegree2(p->rchild);        
+
+        if(p->lchild && p->rchild){
+            return x + y + 1; 
+        }else{
+            return x + y; 
+        }
+
+    }
+
+    return 0;   
+
+}  /* end of Tree::countNodesWithDegree2() */
+
 
 int main(){
 
