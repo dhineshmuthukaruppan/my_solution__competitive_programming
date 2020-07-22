@@ -36,6 +36,7 @@ class Tree{
         int heightOfTree(Treenode *p);   
         int countNodes(Treenode *p);   
         int countNodesWithDegree2(Treenode *p);     
+        int countLeafNodes(Treenode *p);     
 
 };  /* end of class Tree */
 
@@ -277,6 +278,27 @@ int Tree::countNodesWithDegree2(Treenode *p){
 }  /* end of Tree::countNodesWithDegree2() */
 
 
+int Tree::countLeafNodes(Treenode *p){ 
+    int x, y; 
+
+    if(p != NULL){
+        x = countLeafNodes(p->lchild);
+        y = countLeafNodes(p->rchild);    
+
+        if(p->lchild == NULL && p->rchild == NULL){
+            return x + y + 1; 
+        }else{
+            return x + y; 
+        }
+    }
+
+    return 0;  
+
+}  /* end of Tree::countLeafNodes */
+
+
+
+
 int main(){
 
     Tree t;   
@@ -299,7 +321,13 @@ int main(){
     cout << "\nIterative Post order traversal\n";   
     t.iterativePostorder(t.root);     
     
-    cout << "\nHeight of tree \n" << t.heightOfTree(t.root);         
+    cout << "\nHeight of tree \n" << t.heightOfTree(t.root);    
+
+    cout << "\ncount nodes\n" << t.countNodes(t.root);    
+    
+    cout << "\ncount nodes with degree 2\n" << t.countNodesWithDegree2(t.root);   
+
+    cout << "\ncount leaf nodes\n" << t.countLeafNodes(t.root);    
 
     return 0;
 
