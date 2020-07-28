@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-
+#include <algorithm>
 
 using namespace std;    
 
@@ -42,7 +42,15 @@ int main(){
 
     bubbleSort(a); 
 
-
+    
+    sort(a.begin(), a.end());    
+    vector<int>::iterator it = a.begin();
+    cout << "algorithmic sort\n";
+    while(it != a.end()){
+        cout << *it << " ";
+        it++;  
+    }
+    cout << '\n';    
 
     return 0;   
 
