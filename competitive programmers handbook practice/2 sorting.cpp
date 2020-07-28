@@ -32,7 +32,64 @@ void bubbleSort(vector<int> a){
 }  /* end of bubbleSort() */
 
 
+void merge(vector<int> &arr, int l, int m, int r){
 
+    int arraysize1 = m - l + 1;
+    int arraysize2 = r - m;   
+
+    vector<int> v1, v2; 
+
+    for(int i=0; i<arraysize1; i++){
+        v1.push_back(arr[l + i]);     
+    }
+
+    for(int i=0; i<arraysize2; i++){
+        v2.push_back(arr[m + 1 + i]); 
+    }
+
+    int i = 0; 
+    int j = 0; 
+    int k = l;   
+
+    while(i < arraysize1 && j < arraysize2){
+        if(v1[i] < v2[j]){
+            arr[k] = v1[i];
+            i++; 
+            k++;   
+        }else{
+            arr[k] = v2[j];  
+            j++; 
+            k++;   
+        }
+    }
+
+    while(i < arraysize1){
+        arr[k] = v1[i]; 
+        i++; 
+        k++; 
+    }
+
+    while(j < arraysize2){
+        arr[k] = v2[j]; 
+        j++; 
+        k++;     
+    }
+
+}  /* end of merge() */
+
+
+
+void mergeSort(vector<int> &arr, int l, int r){
+
+    if(l < r){
+        int m = (l+r)/2;   
+        // int m = l + (r - l) / 2;        
+        mergeSort(arr, l, m);   
+        mergeSort(arr, m+1, r);     
+        merge(arr, l, m, r);          
+    }
+
+}  /* end of mergeSort() */
 
 
 
@@ -42,16 +99,29 @@ int main(){
 
     bubbleSort(a); 
 
-    
     sort(a.begin(), a.end());    
-    vector<int>::iterator it = a.begin();
+    vector<int>::iterator it1 = a.begin();
     cout << "algorithmic sort\n";
-    while(it != a.end()){
-        cout << *it << " ";
-        it++;  
+    while(it1 != a.end()){
+        cout << *it1 << " ";
+        it1++;  
     }
     cout << '\n';    
 
+
+    vector<int>b {1, 3, 8, 2, 9, 2, 5, 6};   
+    mergeSort(b, 0, b.size() - 1);           
+
+
+    vector<int>::iterator it = b.begin();
+    cout << "merge sort: \n";
+    cout << "size of array: " << b.size() << '\n';    
+
+    while(it != b.end()){
+        cout << *it << " ";
+        it++;  
+    }
+    cout << '\n';   
     return 0;   
 
 } /* end of main() */
