@@ -5,7 +5,7 @@
 using namespace std;    
 
 
-void heapInsert(vector<int> &a, int p){    
+void maxHeapInsert(vector<int> &a, int p){    
 
     int temp, i = p;    
 
@@ -21,7 +21,43 @@ void heapInsert(vector<int> &a, int p){
 }  /* end of heapInsert() */
 
 
-int heapDelete(vector<int> &a, int p){
+
+void maxHeapify(vector<int> &a){
+
+    int temp, n = a.size() - 1; 
+
+    for(int i=n/2; i>0; i--){
+
+        int k = i;    
+        int j = 2 * k;        
+
+        while(j <= n){
+            if(j < n && a[j+1] > a[j]){
+                j = j + 1; 
+            }
+
+            if(a[k] < a[j]){
+                temp = a[j];  
+                a[j] = a[k];  
+                a[k] = temp;    
+
+                k = j;    
+                j = 2 * k;    
+            }else{
+                break;    
+            }
+
+        }  /* end of while loop */
+
+
+    }  /* end of for i loop */
+
+
+}  /* end of maxHeapify() */
+
+
+
+int maxHeapDelete(vector<int> &a, int p){
 
     int temp, returnvalue = a[1];    
 
@@ -60,16 +96,19 @@ int main(){
 
     vector<int> a {0, 14, 15, 5, 20, 30, 8, 40};      
 
-    for(int i=2; i<a.size(); i++){
-        heapInsert(a, i);       
-    }      
-
+    // O(n*logn)
+    // for(int i=2; i<a.size(); i++){
+    //     maxHeapInsert(a, i);       
+    // }  
+        
+    // O(n)
+    maxHeapify(a);     
 
     for(int i=a.size()-1; i>0; i--){
-        heapDelete(a, i);   
+        maxHeapDelete(a, i);   
     }
 
-    cout << "heapsorted array after insertion and heap deletion : \n";
+    cout << "heap sorted array after insertion and heap deletion : \n";
     for(int i=0; i<a.size(); i++){
         cout << a[i] << ' ';    
     }
