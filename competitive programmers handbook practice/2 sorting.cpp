@@ -56,9 +56,41 @@ void insertionSort(vector<int> a){
     }
     cout << '\n';
 
-
-
 }  /* end of insertionSort() */
+
+
+
+void selectionSort(vector<int> a){
+
+    for(int i=0; i<a.size(); i++){
+        int smallest_index = i;                  
+        int smallest_number = a[i];
+        for(int j=i+1; j<a.size(); j++){
+
+            if(a[j] < a[smallest_index]){
+                smallest_index = j; 
+                smallest_number = a[j];     
+            }
+
+        }         
+
+        int temp = a[i];   
+        a[i] = a[smallest_index];   
+        a[smallest_index] = temp; 
+
+    }
+
+    cout << "Selection sort\n";     
+    for(int i=0; i<a.size(); i++){
+        cout << a[i] << " ";   
+    }
+    cout << '\n';
+
+}  /* end of selectionSort() */
+
+
+
+
 
 
 void merge(vector<int> &arr, int l, int m, int r){
@@ -129,6 +161,8 @@ int main(){
     bubbleSort(a); 
 
     insertionSort(a);      
+
+    selectionSort(a);    
 
     sort(a.begin(), a.end());    
     vector<int>::iterator it1 = a.begin();
