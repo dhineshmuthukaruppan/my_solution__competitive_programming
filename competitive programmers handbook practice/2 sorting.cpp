@@ -32,6 +32,35 @@ void bubbleSort(vector<int> a){
 }  /* end of bubbleSort() */
 
 
+/* O(n^2) */
+void insertionSort(vector<int> a){
+
+    for(int i=1; i<a.size(); i++){   
+        int temp = a[i];
+        int j; 
+        for(j=i-1; j>=0; j--){
+            if(temp < a[j]){
+                a[j+1] = a[j];   
+            }else{
+                break;    
+            }
+        }
+
+        a[j+1] = temp;   
+    }
+
+
+    cout << "Insertion sort\n";     
+    for(int i=0; i<a.size(); i++){
+        cout << a[i] << " ";   
+    }
+    cout << '\n';
+
+
+
+}  /* end of insertionSort() */
+
+
 void merge(vector<int> &arr, int l, int m, int r){
 
     int arraysize1 = m - l + 1;
@@ -98,6 +127,8 @@ int main(){
     vector<int>a {1, 3, 8, 2, 9, 2, 5, 6};   
 
     bubbleSort(a); 
+
+    insertionSort(a);      
 
     sort(a.begin(), a.end());    
     vector<int>::iterator it1 = a.begin();
