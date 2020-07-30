@@ -137,6 +137,7 @@ void merge(vector<int> &arr, int l, int m, int r){
 
 }  /* end of merge() */
 
+/* O(nlogn) */
 void IMergeSort(vector<int> &arr)
 {
     int p,l,h,mid,i;
@@ -156,6 +157,7 @@ void IMergeSort(vector<int> &arr)
 
 }
 
+/* O(nlogn) */
 void mergeSort(vector<int> &arr, int l, int r){
 
     if(l < r){
@@ -200,7 +202,7 @@ int quicksortPartition(vector<int> &a, int l, int h){
 }  /* end of quicksortPartition() */
 
 
-
+/* O(nlogn) */
 void quicksort(vector<int> &a, int l, int h){
 
     if(l < h){
