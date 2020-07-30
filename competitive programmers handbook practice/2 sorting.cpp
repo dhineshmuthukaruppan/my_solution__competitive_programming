@@ -59,7 +59,7 @@ void insertionSort(vector<int> a){
 }  /* end of insertionSort() */
 
 
-
+/* O(n^2) */
 void selectionSort(vector<int> a){
 
     for(int i=0; i<a.size(); i++){
@@ -87,7 +87,6 @@ void selectionSort(vector<int> a){
     cout << '\n';
 
 }  /* end of selectionSort() */
-
 
 
 
@@ -154,6 +153,52 @@ void mergeSort(vector<int> &arr, int l, int r){
 
 
 
+int quicksortPartition(vector<int> &a, int l, int h){
+
+    int pivot = a[l];  
+
+    int i = l , j = h;  
+
+    do{
+        do{
+            i++;
+        }while(a[i] <= pivot);
+
+        do{
+            j--;
+        }while(a[j] > pivot);    
+
+        if(i < j){
+            // swap a[i] and a[j]
+            swap(a[i], a[j]); 
+        } 
+
+    }while(i<j);
+
+    // swap a[l] and a[j]
+    swap(a[l], a[j]);     
+
+    return j;    
+
+}  /* end of quicksortPartition() */
+
+
+
+void quicksort(vector<int> &a, int l, int h){
+
+    if(l < h){
+        int j = quicksortPartition(a, l, h);
+        quicksort(a, l, j);
+        quicksort(a, j+1, h);      
+    }
+
+}  /* end of quicksort */
+
+
+
+
+
+
 int main(){
 
     vector<int>a {1, 3, 8, 2, 9, 2, 5, 6};   
@@ -186,7 +231,18 @@ int main(){
         cout << *it << " ";
         it++;  
     }
-    cout << '\n';   
+    cout << '\n';
+
+
+    
+    vector<int> c {34, 1, 5, 78, 89, 22, INT32_MAX};       
+    quicksort(c, 0, c.size() - 1);   
+    cout << "quicksort \n";    
+    for(int i=0; i<c.size(); i++){
+        cout << c[i] << " "; 
+    }
+    cout << '\n'; 
+
     return 0;   
 
 } /* end of main() */
