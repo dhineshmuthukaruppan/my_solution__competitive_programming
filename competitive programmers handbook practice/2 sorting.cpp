@@ -137,7 +137,24 @@ void merge(vector<int> &arr, int l, int m, int r){
 
 }  /* end of merge() */
 
+void IMergeSort(vector<int> &arr)
+{
+    int p,l,h,mid,i;
+    for(p=2;p<=arr.size();p=p*2)
+    {
+        for(i=0;i+p-1<=arr.size();i=i+p)
+        {
+            l=i;
+            h=i+p-1;
+            mid=(l+h)/2;
+            merge(arr,l,mid,h);
+        }
+    }
+    if(p/2<arr.size()){    
+        merge(arr,0,p/2-1,arr.size() - 1);         
+    }
 
+}
 
 void mergeSort(vector<int> &arr, int l, int r){
 
@@ -196,6 +213,47 @@ void quicksort(vector<int> &a, int l, int h){
 
 
 
+int Max(int A[], int n){
+    int max = -32768;
+    for (int i=0; i<n; i++){
+        if (A[i] > max){
+            max = A[i];
+        }
+    }
+    return max;
+}
+
+void CountSort(int A[], int n){
+    int max = Max(A, n);
+
+    // Create count array
+    int* count = new int [max + 1];
+
+    // Initialize count array with 0
+    for (int i=0; i<max+1; i++){
+        count[i] = 0;
+    }
+
+    // Update count array values based on A values
+    for (int i=0; i<n; i++){
+        count[A[i]]++;
+    }
+
+    // Update A with sorted elements
+    int i = 0;
+    int j = 0;
+    while (j < max+1){
+        if (count[j] > 0){
+            A[i++] = j;
+            count[j]--;
+        } else {
+            j++;
+        }
+    }
+
+    // Delete heap memory
+    delete [] count;
+}
 
 
 
@@ -221,7 +279,6 @@ int main(){
 
     vector<int>b {1, 3, 8, 2, 9, 2, 5, 6};   
     mergeSort(b, 0, b.size() - 1);           
-
 
     vector<int>::iterator it = b.begin();
     cout << "merge sort: \n";
