@@ -6,6 +6,12 @@ using namespace std;
 
 int main(){
 
+    /* 
+        checking equality 
+        a < b == false and b < a == false
+        then a and b are equal
+     */
+
     vector<int> a {5, 9, 13, 17, 19, 23};
 
     int l = 0, h = a.size() - 1;    
