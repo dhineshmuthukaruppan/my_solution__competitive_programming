@@ -14,7 +14,9 @@ class LowerTri{
         LowerTri(int n);       
         ~LowerTri();   
         void setRowMajorMapping(int i, int j, int x);   
+        void setColumnMajorMapping(int i, int j, int x);      
         int getRowMajorMapping(int i, int j); 
+        int getColumnMajorMapping(int i, int j);      
         void display(bool row);   
         
 
@@ -45,6 +47,16 @@ void LowerTri::setRowMajorMapping(int i, int j, int x){
 }  /* end of setRowMajorMapping() */
 
 
+void LowerTri::setColumnMajorMapping(int i, int j, int x){    
+
+    if(i >= j){
+        A[(n * (j-1) - (((j-2) * (j-1))/2)) + (i-j)] = x;    
+    }
+
+
+}  /* end of setColumnMajorMapping() */
+
+
 int LowerTri::getRowMajorMapping(int i, int j){
 
     if(i>=j){   
@@ -56,6 +68,17 @@ int LowerTri::getRowMajorMapping(int i, int j){
 }  /* end of getRowMajorMapping */
 
 
+int LowerTri::getColumnMajorMapping(int i, int j){
+
+    if(i >= j){
+        return A[(n * (j-1) - (((j-2) * (j-1))/2)) + (i-j)];
+    }else{
+        return 0;  
+    }
+
+}  /* end of getColumnMajorMapping() */
+
+
 
 void LowerTri::display(bool row){
 
@@ -64,6 +87,8 @@ void LowerTri::display(bool row){
 
             if(row){
                 cout << getRowMajorMapping(i, j) << " ";    
+            }else{
+                cout << getColumnMajorMapping(i, j) << " "; 
             }
 
         }
@@ -94,10 +119,6 @@ int main(){
 
     cout << '\n';    
     lt.display(true);      
-
-
-
-
 
     return 0;  
 
