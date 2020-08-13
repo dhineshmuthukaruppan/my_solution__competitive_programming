@@ -5,6 +5,14 @@
 
 using namespace std;    
 
+
+void PrintMST(){
+
+
+}  /*  */
+
+
+
 void PrimsMST(int G[][V], int n){
 
     // I need datastructure for storing 
@@ -75,8 +83,17 @@ void PrimsMST(int G[][V], int n){
         Track[i] = 0;    
 
         // update track array to track min cost edge
+        for(int k=1; k<=n; k++){
+            if(Track[k] != 0){
+                if(G[k][u] < G[k][Track[k]]){
+                    Track[k] = u;      
+                }
+            }
+        }
 
     }
+
+    PrintMST(R, n);     
 
 }  /* end of PrimsMST() */
 
