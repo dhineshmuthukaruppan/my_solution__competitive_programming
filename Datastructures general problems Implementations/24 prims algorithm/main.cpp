@@ -6,33 +6,54 @@
 using namespace std;    
 
 
-void PrintMST(){
+void PrintMST(int R[2][V-2], int G[][V]){
+
+    cout << "\nMinimum Spanning Tree Edges (w/ cost)\n" << endl;
+    int sum {0};
+    for (int i {0}; i<V-2; i++){
+        int c = G[R[0][i]][R[1][i]];
+        cout << "[" << R[0][i] << "]---[" << R[1][i] << "] cost: " << c << endl;
+        sum += c;
+    }
+    cout << endl;
+    cout << "Total cost of MST: " << sum << endl;
 
 
-}  /*  */
+}  /* end of PrintMST */       
+
+
+void printTrackArray(int A[], int n){
+    for(int i=1; i<=n; i++){
+        cout << A[i] << ' ';    
+    }
+    cout << '\n';     
+}
 
 
 
 void PrimsMST(int G[][V], int n){
 
-    // I need datastructure for storing 
-    int R[2][n-1] {0};    
+    // I need datastructure for storing result edges
+    int R[2][V-2] {0};    
 
     // Datastructure for tracking whether the vertes is added or not, and to calculate the next edge
-    int Track[V];    
+    int Track[V];        
 
 
     // step 1 - find the first minimum edge by checking the upper triangular matrix and update the Track[] accordingly
     // after the minimum element is found, then update the R[][] and T[] accordingly
     int min {I}, u, v;
 
-    for(int i=0; i<=n; i++){
-        for(int j=i; i<=n; j++){   
+
+    for(int i=1; i<=n; i++){
+        Track[i] = I;    
+
+        for(int j=i; j<=n; j++){   
 
             if(G[i][j] < min){
                 min = G[i][j];   
                 u = i; 
-                v = j;    
+                v = j;         
             }
 
         }
@@ -56,6 +77,7 @@ void PrimsMST(int G[][V], int n){
         }
     }
 
+    printTrackArray(Track, n);   
 
     // repeating procedure to fill all the R[][] array
     for(int i=1; i<n-1; i++){
@@ -68,7 +90,7 @@ void PrimsMST(int G[][V], int n){
 
         for(int j=1; j<=n; j++){
             if(Track[j] != 0){
-                if(G[i][Track[j]] < min){
+                if(G[j][Track[j]] < min){
                     min = G[j][Track[j]];    
                     u = j; 
                     v = Track[j];   
@@ -91,9 +113,9 @@ void PrimsMST(int G[][V], int n){
             }
         }
 
-    }
+    }  /* end of repeating procedure */
 
-    PrintMST(R, n);     
+    PrintMST(R, G);             
 
 }  /* end of PrimsMST() */
 
@@ -117,8 +139,6 @@ int main(){
 
 
     int n = sizeof(cost[0])/sizeof(cost[0][0]) - 1;
-
-    cout << n;    
 
     PrimsMST(cost, n);
 
