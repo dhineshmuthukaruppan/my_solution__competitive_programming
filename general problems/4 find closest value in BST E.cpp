@@ -25,7 +25,7 @@ class BST{
         void inorderDisplay(Treenode *p);      
         void preorderDisplay(Treenode *p);     
         Treenode* search(int key);   
-        // Treenode* rSearch(Treenode *p, int key); 
+        Treenode* rSearch(Treenode *p, int key); 
         int height(Treenode *p); 
         Treenode* inorderPredecessor(Treenode *p);   
         Treenode* inorderSuccessor(Treenode *p);      
@@ -158,21 +158,21 @@ Treenode* BST::search(int key){
 }  /* end of Treenode* search() */
 
 
-// Treenode* BST::rSearch(Treenode *p, int key){
+Treenode* BST::rSearch(Treenode *p, int key){
 
-//     if(p ==  nullptr){
-//         return nullptr;    
-//     }
+    if(p ==  nullptr){
+        return nullptr;    
+    }
 
-//     if(key == p->data){
-//         return p;   
-//     }else if(key < p->data){
-//         return rSearch(p->lchild, key);    
-//     }else if(key > p->data){
-//         return rSearch(p->rchild, key);     
-//     }
+    if(key == p->data){
+        return p;   
+    }else if(key < p->data){
+        return rSearch(p->lchild, key);    
+    }else{
+        return rSearch(p->rchild, key);     
+    }
 
-// }  /* end of Treenode* BST::rSearch() */
+}  /* end of Treenode* BST::rSearch() */
 
 
 
