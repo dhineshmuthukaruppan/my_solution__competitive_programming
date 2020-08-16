@@ -20,16 +20,19 @@ class BST{
         Treenode *root; 
         BST(); 
         ~BST();     
-        void insert(int key); 
-        Treenode* rInsert(Treenode *p, int key);         
+        // void insert(int key); 
+        // Treenode* rInsert(Treenode *p, int key);         
         void inorderDisplay(Treenode *p);      
-        Treenode* search(int key);   
-        Treenode* rSearch(Treenode *p, int key); 
-        int height(Treenode *p); 
-        Treenode* inorderPredecessor(Treenode *p);   
-        Treenode* inorderSuccessor(Treenode *p);      
-        Treenode* Delete(Treenode *p, int key);    
+        void preorderDisplay(Treenode *p);     
+        // Treenode* search(int key);   
+        // Treenode* rSearch(Treenode *p, int key); 
+        // int height(Treenode *p); 
+        // Treenode* inorderPredecessor(Treenode *p);   
+        // Treenode* inorderSuccessor(Treenode *p);      
+        // Treenode* Delete(Treenode *p, int key);    
         void createFromPreorderTraversal(vector<int> pre);    
+
+        int closestValueIterativeMethod(Treenode *p, int key);
 
 };              
 
@@ -43,67 +46,67 @@ BST::~BST(){
 
 }
 
-void BST::insert(int key){
+// void BST::insert(int key){
 
-    Treenode *p, *t;    
+//     Treenode *p, *t;    
 
-    if(root == NULL){
-        t = new Treenode(); 
-        t->lchild = t->rchild = NULL; 
-        t->data = key;   
-        root = t;   
-        return; 
-    }
+//     if(root == NULL){
+//         t = new Treenode(); 
+//         t->lchild = t->rchild = NULL; 
+//         t->data = key;   
+//         root = t;   
+//         return; 
+//     }
 
-    t = root;    
+//     t = root;    
 
-    while(t != NULL){
-        p = t;   
+//     while(t != NULL){
+//         p = t;   
 
-        if(key < t->data){
-            t = t->lchild;    
-        }else if(key >t->data){
-            t = t->rchild;    
-        }else{
-            return;   
-        }
+//         if(key < t->data){
+//             t = t->lchild;    
+//         }else if(key >t->data){
+//             t = t->rchild;    
+//         }else{
+//             return;   
+//         }
 
-    }  /* end of while(t != NULL) */
+//     }  /* end of while(t != NULL) */
 
-    t = new Treenode();   
-    t->lchild = t->rchild = NULL; 
-    t->data = key;   
-    if(key < p->data){
-        p->lchild = t;   
-    }else{
-        p->rchild = t; 
-    }
+//     t = new Treenode();   
+//     t->lchild = t->rchild = NULL; 
+//     t->data = key;   
+//     if(key < p->data){
+//         p->lchild = t;   
+//     }else{
+//         p->rchild = t; 
+//     }
 
-}  /* end of BST::insert(int key) */
+// }  /* end of BST::insert(int key) */
 
 
-Treenode* BST::rInsert(Treenode *p, int key){
+// Treenode* BST::rInsert(Treenode *p, int key){
 
-    Treenode *t; 
+//     Treenode *t; 
 
-    if(p == NULL){
-        t = new Treenode();   
-        t->lchild = t->rchild = NULL; 
-        t->data = key;
-        return t; 
-    }
+//     if(p == NULL){
+//         t = new Treenode();   
+//         t->lchild = t->rchild = NULL; 
+//         t->data = key;
+//         return t; 
+//     }
 
-    if(key < p->data){
-        p->lchild = rInsert(p->lchild, key);     
+//     if(key < p->data){
+//         p->lchild = rInsert(p->lchild, key);     
 
-    }else if(key > p->data){
-        p->rchild = rInsert(p->rchild, key); 
+//     }else if(key > p->data){
+//         p->rchild = rInsert(p->rchild, key); 
     
-    }
+//     }
 
-    return p;    
+//     return p;    
 
-}  /* end of BST::rInsert() */
+// }  /* end of BST::rInsert() */
 
 
 
@@ -119,124 +122,135 @@ void BST::inorderDisplay(Treenode *p){
 }  /* end of BST::inorderDisplay() */
 
 
+void BST::preorderDisplay(Treenode *p){
 
-Treenode* BST::search(int key){    
-
-    Treenode *s; 
-
-    s = root;      
-
-    while(s != NULL){
-
-        if(key == s->data){
-            return s; 
-        }else if(key < s->data){
-            s = s->lchild;    
-        }else if(key > s->data){
-            s = s->rchild;    
-        }
+    if(p){
+        cout << p->data << ' ';   
+        preorderDisplay(p->lchild);   
+        preorderDisplay(p->rchild);           
     }
 
-    return nullptr;    
-
-}  /* end of Treenode* search() */
-
-
-Treenode* BST::rSearch(Treenode *p, int key){
-
-    if(p ==  nullptr){
-        return nullptr;    
-    }
-
-    if(key == p->data){
-        return p;   
-    }else if(key < p->data){
-        return rSearch(p->lchild, key);    
-    }else if(key > p->data){
-        return rSearch(p->rchild, key);     
-    }
-
-}  /* end of Treenode* BST::rSearch() */
+}  /* end of BST::preorderDisplay */
 
 
 
+// Treenode* BST::search(int key){    
 
-int BST::height(Treenode *p){
+//     Treenode *s; 
 
-    int x, y;    
+//     s = root;      
 
-    if(p == nullptr){
-        return 0;   
-    }
+//     while(s != NULL){
 
-    x = height(p->lchild);   
-    y = height(p->rchild);   
+//         if(key == s->data){
+//             return s; 
+//         }else if(key < s->data){
+//             s = s->lchild;    
+//         }else if(key > s->data){
+//             s = s->rchild;    
+//         }
+//     }
 
-    return x > y ? x + 1 : y + 1;    
+//     return nullptr;    
 
-}  /* end of BST::height */
-
-
-
-Treenode* BST::inorderPredecessor(Treenode *p){  
-
-    while(p && p->rchild != NULL){
-        p = p->rchild; 
-    }
-
-    return p;  
-
-}  /* end of BST::inorderPredessor */
+// }  /* end of Treenode* search() */
 
 
-Treenode* BST::inorderSuccessor(Treenode *p){
+// Treenode* BST::rSearch(Treenode *p, int key){
+
+//     if(p ==  nullptr){
+//         return nullptr;    
+//     }
+
+//     if(key == p->data){
+//         return p;   
+//     }else if(key < p->data){
+//         return rSearch(p->lchild, key);    
+//     }else if(key > p->data){
+//         return rSearch(p->rchild, key);     
+//     }
+
+// }  /* end of Treenode* BST::rSearch() */
+
+
+
+
+// int BST::height(Treenode *p){
+
+//     int x, y;    
+
+//     if(p == nullptr){
+//         return 0;   
+//     }
+
+//     x = height(p->lchild);   
+//     y = height(p->rchild);   
+
+//     return x > y ? x + 1 : y + 1;    
+
+// }  /* end of BST::height */
+
+
+
+// Treenode* BST::inorderPredecessor(Treenode *p){  
+
+//     while(p && p->rchild != NULL){
+//         p = p->rchild; 
+//     }
+
+//     return p;  
+
+// }  /* end of BST::inorderPredessor */
+
+
+// Treenode* BST::inorderSuccessor(Treenode *p){
     
-    while(p && p->lchild != NULL){
-        p = p->lchild;   
-    }
+//     while(p && p->lchild != NULL){
+//         p = p->lchild;   
+//     }
 
-    return p;    
+//     return p;    
 
-}  /* end of BST::inorderSuccessor() */
+// }  /* end of BST::inorderSuccessor() */
 
 
-Treenode* BST::Delete(Treenode *p, int key){
-    Treenode *q;    
+// Treenode* BST::Delete(Treenode *p, int key){
+//     Treenode *q;    
 
-    if(p == nullptr){
-        return nullptr;     
-    }
+//     if(p == nullptr){
+//         return nullptr;     
+//     }
 
-    if(p->lchild == nullptr && p->rchild == NULL && p->data == key){
-        if(p == root){
-            root = nullptr;    
-        }
+//     if(p->lchild == nullptr && p->rchild == NULL && p->data == key){
+//         if(p == root){
+//             root = nullptr;    
+//         }
 
-        delete p;   
-        return nullptr;    
-    }
+//         delete p;   
+//         return nullptr;    
+//     }
 
-    if(key < p->data){
-        p->lchild = Delete(p->lchild, key);    
-    }else if(key > p->data){
-        p->rchild = Delete(p->rchild, key);   
-    }else{
-        if(height(p->lchild) > height(p->rchild)){
-            q = inorderPredecessor(p->lchild);   
-            p->data = q->data;   
-            p->lchild = Delete(p->lchild, q->data); 
-        }else{
-            q = inorderSuccessor(p->rchild);    
-            p->data = q->data;    
-            p->rchild = Delete(p->rchild, q->data);    
+//     if(key < p->data){
+//         p->lchild = Delete(p->lchild, key);    
+//     }else if(key > p->data){
+//         p->rchild = Delete(p->rchild, key);   
+//     }else{
+//         if(height(p->lchild) > height(p->rchild)){
+//             q = inorderPredecessor(p->lchild);   
+//             p->data = q->data;   
+//             p->lchild = Delete(p->lchild, q->data); 
+//         }else{
+//             q = inorderSuccessor(p->rchild);    
+//             p->data = q->data;    
+//             p->rchild = Delete(p->rchild, q->data);    
 
-        }
+//         }
 
-    }
+//     }
 
-    return p;    
+//     return p;    
 
-}  /* end of Treenode* BST::Delete() */
+// }  /* end of Treenode* BST::Delete() */
 
 
 
@@ -264,16 +278,19 @@ void BST::createFromPreorderTraversal(vector<int> vec){
             p->lchild = t;    
             stk.push(p);
             p = t;    
-        }else if(vec[i] > p->data && vec[i] < stk.empty() ? 32767 : (stk.top())->data){
-            t = new Treenode();   
+            // cout << "left" << '\n';
+        }else if(vec[i] > p->data && vec[i] < (stk.empty() ? 32767 : (stk.top())->data)){
+            t = new Treenode();       
             t->lchild = t->rchild = nullptr;   
             t->data = vec[i];
             i++;      
             p->rchild = t; 
             p = t; 
+            // cout << "right" << '\n';
         }else{
             p = stk.top();    
             stk.pop(); 
+            // cout << "pop" << '\n';   
         }
 
 
@@ -283,12 +300,45 @@ void BST::createFromPreorderTraversal(vector<int> vec){
 
 
 
+int BST::closestValueIterativeMethod(Treenode *p, int key){
+
+    int closest_value = INT32_MAX;   
+    int closest_number = -1;
+
+    while(p != NULL){
+
+        int diff = key - p->data;    
+        diff = abs(diff);   
+
+        if(closest_value > diff){
+            closest_value = diff;
+            closest_number = p->data;         
+        } 
+
+        if(closest_value == 0){
+            return p->data;      
+        }
+
+        if(key > p->data){
+            p = p->rchild;   
+        }else if(key < p->data){
+            p = p->lchild;    
+        }
+
+    }  /* end of while() */
+
+    return closest_number;        
+
+}  /* end of closestValueIterativeMethod */
+
+
+
 
 int main(){
 
     BST t; 
 
-    vector<int> vec{10, 5, 2, 1, 5, 15, 13, 14, 22};          
+    vector<int> vec{10, 5, 2, 1, 6, 15, 13, 14, 22};          
 
     t.createFromPreorderTraversal(vec);    
 
@@ -300,20 +350,24 @@ int main(){
     // t.insert(100);   
 
     cout << "\nInorder display\n";  /* expected output 10, 20, 30, 50, 60 */ 
-    t.inorderDisplay(t.root);         
+    t.inorderDisplay(t.root);       
 
-    Treenode *temp = t.search(30);   
-    if(temp){
-        cout << "\nData found " << temp->data << '\n';
-    }else{
-        cout << "\nSearch data not found\n";
-    } 
+    cout << "\nPreorder display\n";     
+    t.preorderDisplay(t.root);           
+
+    // Treenode *temp = t.search(30);   
+    // if(temp){
+    //     cout << "\nData found " << temp->data << '\n';
+    // }else{
+    //     cout << "\nSearch data not found\n";
+    // } 
+
+    cout << "\nClosest value Iterative method " << t.closestValueIterativeMethod(t.root, 12) << '\n';              
 
 
 
 
-
-    return 0;   
+    return 0;      
 
 }  /* end of main()  */
 

@@ -264,7 +264,7 @@ void BST::createFromPreorderTraversal(vector<int> vec){
             p->lchild = t;    
             stk.push(p);
             p = t;    
-        }else if(vec[i] > p->data && vec[i] < stk.empty() ? 32767 : (stk.top())->data){
+        }else if(vec[i] > p->data && vec[i] < (stk.empty() ? 32767 : (stk.top())->data)){   
             t = new Treenode();   
             t->lchild = t->rchild = nullptr;   
             t->data = vec[i];
