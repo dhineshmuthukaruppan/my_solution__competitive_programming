@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include <algorithm>
 
 using namespace std;   
 
@@ -53,6 +54,35 @@ bool hashtableTwonumberSum(vector<int> &a, int sum, int &result1, int &result2){
 
 
 
+bool anothermethodTwonumberSum(vector<int> &a, int sum, int &result1, int &result2){    
+
+    sort(a.begin(), a.end());   
+    
+    vector<int>::iterator it1, it2;    
+
+    it1 = a.begin(); it2 = a.end(); it2--;    
+
+    while(it1 < it2){   
+        if(*it1 + *it2 > sum){
+            it2--;    
+
+        }else if(*it1 + *it2 < sum){
+            it1++;    
+
+        }else{
+            result1 = *it1;   
+            result2 = *it2;    
+            return true;    
+        }
+
+    }
+
+    return false;       
+
+}  /* end of anothermethodTwonumberSum */
+
+
+
 int main(){
 
     vector<int> a {3, 5, -4, 8, 11, 1, -1, 6};    
@@ -61,8 +91,15 @@ int main(){
     // Time - O(n^2)
     cout << bruteforceTwonumberSum(a, 10, result1, result2) << ' ' <<result1 << ' ' << result2 << '\n';           
 
+    // Time - O(n) space O(n)
     result1 = -1; result2 = -1;     
     cout << hashtableTwonumberSum(a, 13, result1, result2) << ' ' <<result1 << ' ' << result2 << '\n';    
+
+
+
+    result1 = -1; result2 = -1;     
+    cout << anothermethodTwonumberSum(a, 13, result1, result2) << ' ' <<result1 << ' ' << result2 << '\n';      
+
 
 
     return 0;   
