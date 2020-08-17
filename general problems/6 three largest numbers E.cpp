@@ -35,7 +35,13 @@ vector<int> threeLargestNumberPriorityQueue(vector<int> array){
 
 void shiftAndUpdate(vector<int> &result, int number, int idx){
 
-    
+    for(int i=0; i<=idx; i++){
+        if(i == idx){
+            result[i] = number;    
+        }else{
+            result[i] = result[i+1];   
+        }
+    }
 
 
 }  /* end of shiftAndUpdate() */
@@ -61,9 +67,7 @@ vector<int> threeLargestNumber(vector<int> array){
             shiftAndUpdate(result, array[i], 0);    
 
         }
-
-
-
+        
     }  /* end of for i loop  */
     
 
