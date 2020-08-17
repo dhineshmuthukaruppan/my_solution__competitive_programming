@@ -366,9 +366,18 @@ int BST::closestValueRecursiveMethod(Treenode *p, int key){
 
 
 void BST::branchSums(Treenode *p, int runningSum, vector<int> &result){
-    
 
+    if(p == NULL){return; }   
 
+    runningSum += p->data;     
+
+    // if the node is a leaf node then push it onto the result vector
+    if(p->lchild ==  NULL && p->rchild == NULL){
+        result.push_back(runningSum);     
+    }
+
+    branchSums(p->lchild, runningSum, result);    
+    branchSums(p->rchild, runningSum, result);     
 
 }  /* end of branchSums() */
 
@@ -405,6 +414,14 @@ int main(){
     cout << "\nClosest value Iterative method " << t.closestValueIterativeMethod(t.root, 12) << '\n';              
 
     cout << "\nClosest value recursive method " << t.closestValueRecursiveMethod(t.root, 12) << '\n';   
+
+    vector<int> resultvector;     
+    t.branchSums(t.root, 0, resultvector);      
+
+    cout << "\nBranch sums\n";
+    for(int i=0; i<resultvector.size(); i++){
+        cout << resultvector[i] << ' ';
+    }
 
     return 0;      
 
