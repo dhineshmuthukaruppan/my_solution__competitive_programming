@@ -92,6 +92,15 @@ ostream& operator <<(ostream &out, const vector<A> &v){
 }
 
 
+void swap(int &a, int &b){    
+    int temp;    
+    temp = a;   
+    a = b;   
+    b = temp;   
+}  /* end of swap() */
+
+
+
 
 
 
