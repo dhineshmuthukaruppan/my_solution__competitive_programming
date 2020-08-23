@@ -5,7 +5,7 @@
 using namespace std;    
 
 
-void print(const vector<vector<int>> &A){
+void printVectorArray(const vector<vector<int>> &A){
     
     for(int i=0; i<A.size(); i++){
         for(int j=0; j < A[i].size(); j++){
@@ -13,7 +13,6 @@ void print(const vector<vector<int>> &A){
         }
         cout << '\n';    
     }
-
 }
 
 
