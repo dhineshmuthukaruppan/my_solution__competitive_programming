@@ -103,7 +103,7 @@ void swap(int &a, int &b){
 // findDuplicatesInArray for non readOnly array
 int findDuplicatesInArray(vi &A){
 
-    int result;   
+    int result = -INT32_MAX;   
 
     forn(i, sz(A)){      
 
@@ -115,8 +115,11 @@ int findDuplicatesInArray(vi &A){
 
             swap(A[i], A[A[i] - 1]);   
             
-
         }  /* end of while loop */
+
+        if(result != -INT32_MAX){
+            break;    
+        }
 
     }  /* end of for i loop */
 
@@ -127,15 +130,28 @@ int findDuplicatesInArray(vi &A){
 
 
 
+int findDuplicatesInArrayReadOnly(const vi &A){   
+
+
+
+}  /* end of findDuplicatesInArrayReadOnly() */
+
+
+
+
 
 int main(){
 
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);  
 
-    vi arr {3, 1, 2, 4, 1};     
+    // vi arr {3, 1, 2, 4, 1};   
+    vi arr {3, 4, 1, 4, 1};    
 
     cout << findDuplicatesInArray(arr);       
+
+    vi arr1 {3, 4, 1, 4, 1};      
+    cout << findDuplicatesInArrayReadOnly(arr1);           
 
 
 

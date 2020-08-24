@@ -51,6 +51,33 @@ bool isPrimeEfficient(int number){
 }
 
 
+
+/* interviewbit variation 
+
+// Return 1 if A is prime, else 0
+int Solution::isPrime(int A) {
+    
+    if(A <= 1){
+        return 0;   
+    }else if(A==2){
+        return 1;    
+    }else {
+        int upperLimit = (int)(sqrt(A));
+        for (int i = 2; i <= upperLimit; i++) {
+            if (A % i == 0) return 0;
+        }
+        return 1;
+        
+    }
+    
+
+}
+
+*/
+
+
+
+
 int main(){
 
     cout << boolalpha;    
