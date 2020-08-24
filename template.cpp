@@ -39,12 +39,10 @@ Description (optional)
 #include <ctime>
 #include <chrono>
 
-
 using namespace std;    
 
 #define forn(i, n) for(int i = 0; i < int(n); i++) 
 #define fore(i, l, r) for(int i = int(l); i < int(r); i++)
-
 
 #define si(x)	scanf("%d",&x)
 #define sl(x)	scanf("%lld",&x)
@@ -62,10 +60,8 @@ using namespace std;
 #define itr(it, a) for(auto it = a.begin(); it != a.end(); it++)
 #define PI 3.1415926535897932384626
 
-
 typedef long long ll; 
 typedef long double ld;    
-
 
 typedef pair<int, int> pi; 
 typedef pair<ll, ll> pl;   
@@ -91,7 +87,6 @@ ostream& operator <<(ostream &out, const vector<A> &v){
     return out << "]";   
 }
 
-
 void swap(int &a, int &b){    
     int temp;    
     temp = a;   
@@ -99,9 +94,46 @@ void swap(int &a, int &b){
     b = temp;   
 }  /* end of swap() */
 
+/* O(nloglogn) */
+vi sieveOfEratosthenes(int n){
+    vi primes(n+1, 1);   
+    vi resultVector;     
+    primes[0] = 0;  
+    primes[1] = 0;   
+    for(int i=2; i <= sqrt(n); i++){   
+        if(primes[i] == 1){  
+            for(int j = i * i; j <= n; j+=i){   
+                primes[j] = 0;     
+            }   
+        }
+    }
+    for(int i=2; i<=n; i++){
+        if(primes[i] == 1){
+            resultVector.push_back(i);    
+        }
+    }
+    return resultVector;   
+}  /* end of sieveOfEratosthenes() */
 
-
-
+// O(sqrt(n));  
+bool isPrime(int number){
+    bool condition = true;   
+    if(number <= 1){
+        condition = false; 
+    }else if(number == 2 || number == 3){
+        condition = true; 
+    }else{
+        for(int i=2; i<= sqrt(number); i++){
+            if(number % i == 0){
+                condition = false; 
+                break; 
+            }else{
+                continue; 
+            }
+        }
+    }
+    return condition;    
+}
 
 
 

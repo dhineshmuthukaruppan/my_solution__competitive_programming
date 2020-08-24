@@ -77,7 +77,7 @@ int Solution::isPrime(int A) {
 
 
 
-
+/* O(nloglogn) */
 vector<int> sieveOfEratosthenes(int n){
     vector<int> primes(n+1, 1);   
     vector<int> resultVector;     
@@ -136,7 +136,7 @@ int main(){
     // cout << vec.size() << '\n'; 
 
 
-    vector<int> res = sieveOfEratosthenes(100);      
+    vector<int> res = sieveOfEratosthenes(13);      
     for(int i=0; i<res.size(); i++){
         cout << res[i] << ' ';      
     }
