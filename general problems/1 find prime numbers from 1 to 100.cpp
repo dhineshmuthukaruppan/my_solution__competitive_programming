@@ -78,11 +78,33 @@ int Solution::isPrime(int A) {
 
 
 
+vector<int> sieveOfEratosthenes(int n){
+    vector<int> primes(n+1, 1);   
+    vector<int> resultVector;     
+    primes[0] = 0;  
+    primes[1] = 0;   
+    for(int i=2; i <= sqrt(n); i++){   
+        if(primes[i] == 1){  
+            for(int j = i * i; j <= n; j+=i){   
+                primes[j] = 0;     
+            }   
+        }
+    }
+    for(int i=2; i<=n; i++){
+        if(primes[i] == 1){
+            resultVector.push_back(i);    
+        }
+    }
+    return resultVector;   
+
+}  /* end of sieveOfEratosthenes() */
+
+
 int main(){
 
-    cout << boolalpha;    
+    // cout << boolalpha;    
 
-    vector<int> vec;    
+    // vector<int> vec;    
 
     // for(int i=2; i<10; i++){
     //     if(isPrime(i)){
@@ -97,21 +119,28 @@ int main(){
     //     it++;    
     // }
 
-    for(int i=2; i<10000; i++){
-        if(isPrimeEfficient(i)){
-            vec.push_back(i);    
-        }    
+    // for(int i=2; i<10000; i++){
+    //     if(isPrimeEfficient(i)){
+    //         vec.push_back(i);    
+    //     }    
+    // }
+
+
+    // vector<int>::iterator it; 
+    // it = vec.begin();   
+    // while(it!=vec.end()){
+    //     cout << *it << '\n'; 
+    //     it++;    
+    // }
+
+    // cout << vec.size() << '\n'; 
+
+
+    vector<int> res = sieveOfEratosthenes(100);      
+    for(int i=0; i<res.size(); i++){
+        cout << res[i] << ' ';      
     }
-
-
-    vector<int>::iterator it; 
-    it = vec.begin();   
-    while(it!=vec.end()){
-        cout << *it << '\n'; 
-        it++;    
-    }
-
-    cout << vec.size() << '\n'; 
+    cout << '\n';    
 
     return 0;       
 }
