@@ -135,6 +135,20 @@ bool isPrime(int number){
     return condition;    
 }
 
+vi returnAllFactors(int n){
+    vi result;      
+    for(int i=1; i<=sqrt(n); i++){ // this will be efficient than n or n/2
+        if(n%i == 0){
+            result.pb(i);  
+            if(i != sqrt(n)){
+                result.pb(n/i);     
+            }
+        }
+    }
+    sortall(result);    
+    return result;   
+}  /* end of returnAllFactors() */
+
 
 
 
@@ -144,8 +158,6 @@ int main(){
     cin.tie(NULL);  
 
     
-
-
 
 
     return 0;   
