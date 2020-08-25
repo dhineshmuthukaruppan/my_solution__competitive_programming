@@ -39,12 +39,10 @@ Description (optional)
 #include <ctime>
 #include <chrono>
 
-
 using namespace std;    
 
 #define forn(i, n) for(int i = 0; i < int(n); i++) 
 #define fore(i, l, r) for(int i = int(l); i < int(r); i++)
-
 
 #define si(x)	scanf("%d",&x)
 #define sl(x)	scanf("%lld",&x)
@@ -62,10 +60,8 @@ using namespace std;
 #define itr(it, a) for(auto it = a.begin(); it != a.end(); it++)
 #define PI 3.1415926535897932384626
 
-
 typedef long long ll; 
 typedef long double ld;    
-
 
 typedef pair<int, int> pi; 
 typedef pair<ll, ll> pl;   
@@ -91,46 +87,102 @@ ostream& operator <<(ostream &out, const vector<A> &v){
     return out << "]";   
 }
 
+void swap(int &a, int &b){    
+    int temp;    
+    temp = a;   
+    a = b;   
+    b = temp;   
+}  /* end of swap() */
 
+/* O(nloglogn) */
+vi sieveOfEratosthenes(int n){
+    vi primes(n+1, 1);   
+    vi resultVector;     
+    primes[0] = 0;  
+    primes[1] = 0;   
+    for(int i=2; i <= sqrt(n); i++){   
+        if(primes[i] == 1){  
+            for(int j = i * i; j <= n; j+=i){   
+                primes[j] = 0;     
+            }   
+        }
+    }
+    for(int i=2; i<=n; i++){
+        if(primes[i] == 1){
+            resultVector.push_back(i);    
+        }
+    }
+    return resultVector;   
+}  /* end of sieveOfEratosthenes() */
 
-
-vi findPerm(const string A, int B){
-
-    int n = B;    
-    vi result;    
-
-    vi mem(n, 0);    
-
-    int small = 1;   
-    int large = B;   
-
-    forn(i, n-1){  
-        if(i == 0 && A[i] == 'D'){
-            result.pb(large--);      
-        }else if(i == 0 && A[i] == 'I'){
-            result.pb(small++);    
-        }else{
-            if(A[i] == 'D'){
-                result.pb(large--);  
+// O(sqrt(n));  
+bool isPrime(int number){
+    bool condition = true;   
+    if(number <= 1){
+        condition = false; 
+    }else if(number == 2 || number == 3){
+        condition = true; 
+    }else{
+        for(int i=2; i<= sqrt(number); i++){
+            if(number % i == 0){
+                condition = false; 
+                break; 
             }else{
-                result.pb(small++);    
+                continue; 
             }
         }
     }
+    return condition;    
+}
 
-    if(A[B-1] == 'I'){
-        result.pb(small++);  
-    }else{
-        result.pb(large--);    
+vi returnAllFactors(int n){
+    vi result;      
+    for(int i=1; i<=sqrt(n); i++){ // this will be efficient than n or n/2
+        if(n%i == 0){
+            result.pb(i);  
+            if(i != sqrt(n)){
+                result.pb(n/i);     
+            }
+        }
     }
-
-
+    sortall(result);    
     return result;   
-
-}  /* end of findPerm() */
-
+}  /* end of returnAllFactors() */
 
 
+int totalNumberOfDigits(int A){
+    int result = 0;   
+    while(A > 0){
+        A = A / 10;   
+        result++;   
+    }    
+    return result;    
+}  /* end of totalNumberOfDigits() */
+
+/* Extract ith digit - (A / 10 ^ i) % 10 */
+int extractIthDigit(int A, int i){
+    int result = (int(A / pow(10, i)) % 10);  
+    return result;            
+} /* end of extractIthDigit() */
+
+
+bool isPalindrome(int A){   
+
+    if(A < 0){
+        return false;   
+    }else{
+        int n = totalNumberOfDigits(A);    
+        // cout << n <<'\n';        
+        for(int i = 0; i<n/2; i++){  // getting from reverse
+            // cout << i << ' ';       
+            if(extractIthDigit(A, i) != extractIthDigit(A, n-i-1)){      
+                return false;       
+            }   
+        }
+        return true;    
+    }        
+
+}  /* end of isPalindrome */
 
 
 
@@ -140,12 +192,10 @@ int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);  
 
-    vi res = findPerm("DD", 3);    
-
-    cout << res;       
+    cout << boolalpha << isPalindrome(12321);           
 
 
-    return 0;   
+    return 0;       
 
 }  /* end of main() */
 
