@@ -150,50 +150,28 @@ vi returnAllFactors(int n){
 }  /* end of returnAllFactors() */
 
 
-int totalNumberOfDigits(int A){
-    int result = 0;   
-    while(A > 0){
-        A = A / 10;   
-        result++;   
-    }    
-    return result;    
-}  /* end of totalNumberOfDigits() */
+int reverseDigits(int A){
 
-/* Extract ith digit - (A / 10 ^ i) % 10 */
-int extractIthDigit(int A, int i){
-    int result = (int(A / pow(10, i)) % 10);  
-    return result;            
-} /* end of extractIthDigit() */
-
-/*  We multiply reverse by 10 so that the ones column becomes the tens column, the tens column becomes the hundreds column, 
-and so on. This also leaves us with a new ones column where we can add our lastDigit  */
-int reverse(int A){
-    int reverse = 0;   
-    while(A > 0){
-        reverse = reverse * 10 + A % 10;    
-        A = A / 10;   
-    }
-    return reverse;   
-}  /* end of reverse() */
-
-
-
-bool isPalindrome(int A){   
+    bool negative_number = false;    
     if(A < 0){
-        return false;   
-    }else{
-        int n = totalNumberOfDigits(A);    
-        // cout << n <<'\n';        
-        for(int i = 0; i<n/2; i++){  // getting from reverse
-            // cout << i << ' ';       
-            if(extractIthDigit(A, i) != extractIthDigit(A, n-i-1)){      
-                return false;       
-            }   
+        negative_number = true;    
+        A = A * -1;    
+    }    
+    int reverse = 0;  
+    int prev_reverse = 0;     
+    while(A > 0){
+        int current_digit = A % 10;   
+        reverse = reverse * 10 + current_digit;      
+        if((reverse - current_digit)/10 != prev_reverse){
+            // overflowed
+            return 0;   
         }
-        return true;    
-    }        
-}  /* end of isPalindrome */
+        prev_reverse = reverse;    
+        A = A / 10;   
 
+    }   
+    return negative_number ? -reverse :reverse;        
+}  /* end of reverse() */    
 
 
 
@@ -202,10 +180,11 @@ int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);  
 
-    cout << boolalpha << isPalindrome(12321);           
+    cout << reverseDigits(-1146467285) <<'\n';      
+    cout << reverseDigits(-1123233);   
+    
 
-
-    return 0;       
+    return 0;   
 
 }  /* end of main() */
 
