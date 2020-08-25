@@ -157,7 +157,7 @@ int reverseDigits(int A){
         negative_number = true;    
         A = A * -1;    
     }    
-    int reverse = 0;  
+    long long reverse = 0;       
     int prev_reverse = 0;     
     while(A > 0){
         int current_digit = A % 10;   
@@ -170,7 +170,9 @@ int reverseDigits(int A){
         A = A / 10;   
 
     }   
-    return negative_number ? -reverse :reverse;        
+    if(negative_number && -reverse < INT32_MIN) return 0;   
+    else if(reverse > INT32_MAX) return 0;   
+    else return negative_number ? -reverse :reverse;        
 }  /* end of reverse() */    
 
 
