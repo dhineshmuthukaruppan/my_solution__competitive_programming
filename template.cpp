@@ -85,15 +85,16 @@ vi returnAllFactors(int n);
 int totalNumberOfDigits(int A);
 int extractIthDigit(int A, int i);  /* Extract ith digit - (A / 10 ^ i) % 10 */
 int reverseDigits(int A);
-
+vi allPrimeFactors(int A);   // TODO   
+int gcdByPrimeFactors(int A, int B); // TODO
+int gcdByLoop(int A, int B);   
+int gcdEuclidean(int A, int B);  
 
 
 int main(){
 
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);  
-
-
 
 
     return 0;   
@@ -221,7 +222,35 @@ int reverseDigits(int A){
     else return negative_number ? -reverse :reverse;        
 }  /* end of reverse() */    
 
+vi allPrimeFactors(int A){
+    vi result;   
 
+    return result;  
+}  /* end of allPrimeFactors() */  
+
+int gcdByPrimeFactors(int A, int B){
+    int result;  
+
+    return result;   
+}  /* end of gcdByPrimeFactors() */
+
+int gcdByLoop(int A, int B){
+    A = (A > 0) ? A : -A;   
+    B = (B > 0) ? B : -B;   
+    while(A != B){
+        if(A == 0) return B;   
+        if(B == 0) return A;   
+        if(A > B) A -= B;   
+        else if(B > A) B-= A;   
+    }
+    return A;   
+}  /* end of gcdByLoop() */
+
+int gcdEuclidean(int A, int B){
+    if(B == 0)
+        return A;   
+    return gcdEuclidean(B, A % B);       
+}  /* end of gcdEuclidean() */  
 
 
 
