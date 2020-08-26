@@ -118,11 +118,9 @@ int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);  
 
-    vi arr {};  
-
-
-
-
+    vi arr {6, 17, 4, 3, 5, 2};    
+    vi result = solve(arr);    
+    cout << result;      
 
     return 0;   
 
