@@ -95,29 +95,63 @@ void rotateMatrix(vvi &A){
 
     int n = sz(A);   
 
-    vi temp(n);   
-    for(int i=0; i<n; i++){
-        temp[n - i - 1] = A[i][0]; 
-    } 
+    // denotes how many times we have to do clockwise rotation
+    for(int i=0; i<n/2; i++){   
+        cout << "round " << i+1 << '\n';    
+        int current_bottom = n - 1 - i;    
+        for(int j=current_bottom; j>i; j--){
+            int currentBottomMinusJ = current_bottom - j;     
 
-    int currentLast = 0;   
-    int currentColumn = 0;   
+            int temp, temp1;         
+            cout << A[current_bottom][j] << " " << A[j][i] << " " << A[i][i + currentBottomMinusJ] << " " << A[i + currentBottomMinusJ][current_bottom] << " " << A[current_bottom][j] << '\n';
+            
+            temp = A[j][i];   
+            A[j][i] = A[current_bottom][j];   
 
-    for(int i=n-1; i>=0; i--){    
-        for(int j=n-1; j>=0; j--){   
-            if(j == 0){
-                // take element from temp[currentLast]
-                A[j][currentColumn] = temp[currentLast];   
-                currentLast++;   
-            }else{
-                A[j][currentColumn] = A[i][j];   
-            }
+            temp1 = A[i][currentBottomMinusJ];   
+            A[i][currentBottomMinusJ] = temp;   
+
+            temp = A[currentBottomMinusJ][current_bottom];   
+            A[currentBottomMinusJ][current_bottom] = temp1;    
+
+            temp1 = A[current_bottom][j];  
+            A[current_bottom][j] = temp;    
+
+
         }  /* end of for j loop */
-        currentColumn++;   
+
     }  /* end of for i loop */
 
 
+    // This method wont work
+    // [[13, 9, 5, 1], [14, 11, 11, 9], [15, 11, 7, 5], [16, 12, 8, 4]]
+    // instead of [[13, 9, 5, 1], [14, 10, 6, 2], [15, 11, 7, 3], [16, 12, 8, 4]]
+    // vi temp(n);   
+    // for(int i=0; i<n; i++){
+    //     temp[n - i - 1] = A[i][0]; 
+    // } 
+    // int currentLast = 0;   
+    // int currentColumn = 0;   
+
+    // for(int i=n-1; i>=0; i--){    
+    //     for(int j=n-1; j>=0; j--){   
+    //         if(j == 0){
+    //             // take element from temp[currentLast]
+    //             A[j][currentColumn] = temp[currentLast];   
+    //             currentLast++;   
+    //         }else{
+    //             A[j][currentColumn] = A[i][j];   
+    //         }
+    //     }  /* end of for j loop */
+    //     currentColumn++;   
+    // }  /* end of for i loop */
+
+
 }  /* end of rotateMastrix() */
+
+
+
+
 
 
 
@@ -132,7 +166,13 @@ int main(){
         {5, 6, 7, 8},
         {9, 10, 11, 12},
         {13, 14, 15, 16}
-    };    
+    };   
+
+    // vvi arr{
+    //     {1, 2},
+    //     {3, 4} 
+    // };
+    
     rotateMatrix(arr);      
     cout << arr;       
 
