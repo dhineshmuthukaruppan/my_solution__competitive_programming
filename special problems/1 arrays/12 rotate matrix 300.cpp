@@ -101,29 +101,12 @@ void rotateMatrix(vvi &A){
         int current_bottom = n - 1 - i;    
         for(int j=current_bottom; j>i; j--){
             int currentBottomMinusJ = current_bottom - j;     
-            
-            int temp;  
             // cout << A[current_bottom][j] << " " << A[j][i] << " " << A[i][i + currentBottomMinusJ] << " " << A[i + currentBottomMinusJ][current_bottom] << " " << A[current_bottom][j] << '\n';
-
-            temp = A[current_bottom][j];   
+            int temp = A[current_bottom][j];   
             A[current_bottom][j] = A[i + currentBottomMinusJ][current_bottom];  
             A[i + currentBottomMinusJ][current_bottom] = A[i][i + currentBottomMinusJ];  
             A[i][i + currentBottomMinusJ] = A[j][i];  
             A[j][i] = temp;    
-
-
-
-            // temp = A[j][i];   
-            // A[j][i] = A[current_bottom][j];   
-
-            // temp1 = A[i][i + currentBottomMinusJ];   
-            // A[i][i + currentBottomMinusJ] = temp;   
-
-            // temp = A[i + currentBottomMinusJ][current_bottom];   
-            // A[i + currentBottomMinusJ][current_bottom] = temp1;    
-
-            // temp1 = A[current_bottom][j];  
-            // A[current_bottom][j] = temp;    
 
         }  /* end of for j loop */
 
