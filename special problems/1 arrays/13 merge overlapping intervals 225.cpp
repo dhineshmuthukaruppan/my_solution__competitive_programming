@@ -126,7 +126,7 @@ void mergeInterval(vector<Interval> &arr, Interval newInterval, int i, int j){
 }  /* end of mergeInterval() */
 
 
-void solve(vector<Interval> &arr, Interval newInterval){
+void merge(vector<Interval> &arr, Interval newInterval){
 
     bool mergeStarted = false;  
     bool mergeEnded = false;      
@@ -180,6 +180,20 @@ void solve(vector<Interval> &arr, Interval newInterval){
 
 
 
+vector<Interval> solve(vector<Interval> &arr){    
+    
+    vector<Interval> result;
+    result.pb(arr[0]);   
+
+    for(int i=1; i<sz(arr); i++){
+        merge(result, arr[i]);      
+    }    
+
+    return result;    
+
+}  /* end of solve() */
+
+
 
 
 int main(){
@@ -187,10 +201,24 @@ int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);  
 
+    vector<Interval> arr;   
+    Interval one {1, 3};
+    Interval two {2, 6};
+    Interval three {8, 10};
+    Interval four {15, 18};     
+
+    arr.pb(one);
+    arr.pb(two);  
+    arr.pb(three);  
+    arr.pb(four);  
+
+    vector<Interval> result = solve(arr);        
 
 
-
-
+    for(int i=0; i<sz(result); i++){
+        cout << "[";   
+        cout << result[i].start << ", " << result[i].end << "], ";      
+    }
 
     return 0;   
 
