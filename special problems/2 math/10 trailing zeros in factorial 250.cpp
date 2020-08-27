@@ -91,11 +91,34 @@ int gcdByLoop(int A, int B);
 int gcdEuclidean(int A, int B);  
 
 
-int solve(){
+int trailingZeroesCount(int factorial){
+
+    int result = 0;  
+
+    while(factorial > 0){
+        if(factorial % 10 == 0){
+            result++;   
+            factorial/=10;    
+        }else{
+            break; 
+        }
+    }  
 
 
+    return result;    
+
+}  /* end of trailingZeroesCount() */
+
+int solve(int A){
+
+    int factorial = 1;   
+    for(int i=1; i<=A; i++){
+        factorial *= i; 
+    }
+
+    int result = trailingZeroesCount(factorial);       
+    return result;    
 }  /* end of solve() */
-
 
 
 int main(){
@@ -103,6 +126,8 @@ int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);  
 
+    cout << solve(4);
+    cout << solve(5);      
 
     return 0;   
 
