@@ -91,13 +91,104 @@ int gcdByLoop(int A, int B);
 int gcdEuclidean(int A, int B);  
 
 
+class Interval{
+
+    public:
+        int start; 
+        int end;  
+        Interval()
+            :start(0), end(0){
+
+        }
+        Interval(int s, int e)
+            :start(s), end(e){
+
+        }
+};  
+
+bool checkMerge(Interval one, Interval two){    
+
+    if(max(one.start, two.start) > min(one.end, two.end)){
+        return false;       
+    }else{
+        return true;
+    }
+    
+}  /* end of checkMerge() */
+
+
+void mergeInterval(vector<Interval> &arr, Interval newInterval, int i, int j){   
+
+    Interval intervalToBeInserted {min(arr[i].start, newInterval.start), max(arr[j].end, newInterval.end)};    
+    // cout << intervalToBeInserted.start << intervalToBeInserted.end << '\n';  
+    arr.erase(arr.begin() + i, arr.begin() + j + 1);    
+    arr.insert(arr.begin() + i, intervalToBeInserted);              
+}  /* end of mergeInterval() */
+
+
+void solve(vector<Interval> &arr, Interval newInterval){
+
+    bool mergeStarted = false;  
+    bool mergeEnded = false;      
+    int iMarker;    
+    for(int i=0; i<sz(arr); i++){
+
+        bool merged = checkMerge(arr[i], newInterval);       
+        
+        if(!mergeStarted && !merged){
+            continue;    
+        }else if(!mergeStarted && merged){   
+            iMarker = i;   
+            mergeStarted = true;    
+            continue;   
+        }else if(mergeStarted && merged){
+            if(i == sz(arr) - 1){
+                // merge newInterval with i and currentMarker 
+                mergeEnded = true;     
+                mergeInterval(arr, newInterval, iMarker, i);    
+            }
+            continue;   
+        }else if(mergeStarted && !merged){
+            // merge newInterval with i and currentMarker-1
+            mergeEnded = true;    
+            mergeInterval(arr, newInterval, iMarker, i-1);     
+            break;   
+        }     
+
+    }  /* end of for i loop */
+
+    if(mergeStarted && mergeEnded == false){
+        mergeEnded = true;    
+        mergeInterval(arr, newInterval, sz(arr) - 1, sz(arr) -1);     
+    }
+
+    if(!mergeStarted){
+        int insertPosition = 0;   
+        forn(i, sz(arr)){
+            if(arr[i].start > newInterval.start){
+                insertPosition = i;   
+                break;    
+            }else{
+                insertPosition++;   
+            }
+        }
+        arr.insert(arr.begin() + insertPosition, newInterval);        
+    }
+
+}  /* END OF solve */
+
+
+
+
+
+
 int main(){
 
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);  
 
 
-    
+
 
 
 

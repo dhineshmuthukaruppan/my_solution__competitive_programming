@@ -128,7 +128,8 @@ void mergeInterval(vector<Interval> &arr, Interval newInterval, int i, int j){
 
 void solve(vector<Interval> &arr, Interval newInterval){
 
-    bool mergeStarted = false;     
+    bool mergeStarted = false;  
+    bool mergeEnded = false;      
     int iMarker;    
     for(int i=0; i<sz(arr); i++){
 
@@ -136,23 +137,30 @@ void solve(vector<Interval> &arr, Interval newInterval){
         
         if(!mergeStarted && !merged){
             continue;    
-        }else if(!mergeStarted && merged){
+        }else if(!mergeStarted && merged){   
             iMarker = i;   
             mergeStarted = true;    
             continue;   
         }else if(mergeStarted && merged){
             if(i == sz(arr) - 1){
                 // merge newInterval with i and currentMarker 
+                mergeEnded = true;     
                 mergeInterval(arr, newInterval, iMarker, i);    
             }
             continue;   
         }else if(mergeStarted && !merged){
             // merge newInterval with i and currentMarker-1
+            mergeEnded = true;    
             mergeInterval(arr, newInterval, iMarker, i-1);     
             break;   
         }     
 
     }  /* end of for i loop */
+
+    if(mergeStarted && mergeEnded == false){
+        mergeEnded = true;    
+        mergeInterval(arr, newInterval, sz(arr) - 1, sz(arr) -1);     
+    }
 
     if(!mergeStarted){
         int insertPosition = 0;   
@@ -187,13 +195,33 @@ int main(){
     arr.pb(two);  
     arr.pb(three);  
     arr.pb(four);  
-    arr.pb(five);          
+    arr.pb(five);   
 
-    Interval newInterval{4, 9};        
-    solve(arr, newInterval);       
+
+    vector<Interval> arr1;   
+    Interval aa {2141136, 6363582};
+    Interval bb {49844342, 69670172};  
+    Interval cc {75717793, 86352601};       
+
+    arr1.pb(aa);
+    arr1.pb(bb);   
+    arr1.pb(cc);      
+
+
+
+    Interval newInterval{4, 9};     
+    Interval newInterval1 {72706854, 87016111};     
+    solve(arr, newInterval);     
+    solve(arr1, newInterval1);     
+
     for(int i=0; i<sz(arr); i++){
         cout << "[";   
         cout << arr[i].start << ", " << arr[i].end << "], ";      
+    }
+    cout << '\n';   
+    for(int i=0; i<sz(arr1); i++){
+        cout << "[";   
+        cout << arr1[i].start << ", " << arr1[i].end << "], ";          
     }
 
     return 0;   
