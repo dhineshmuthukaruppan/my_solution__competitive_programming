@@ -106,26 +106,33 @@ class Interval{
 };  
 
 
-bool checkMerge(){
+bool checkMerge(Interval one, Interval two){    
 
-
+    if(max(one.start, two.start) > min(one.end, two.end)){
+        return false;       
+    }else{
+        return true;
+    }
+    
 }  /* end of checkMerge() */
 
 
-void mergeInterval(vvi &arr, Interval newInterval, int i, int j){   
+void mergeInterval(vector<Interval> &arr, Interval newInterval, int i, int j){   
 
-
-
+    Interval intervalToBeInserted {min(arr[i].start, newInterval.start), max(arr[j].end, newInterval.end)};    
+    // cout << intervalToBeInserted.start << intervalToBeInserted.end << '\n';  
+    arr.erase(arr.begin() + i, arr.begin() + j + 1);    
+    arr.insert(arr.begin() + i, intervalToBeInserted);              
 }  /* end of mergeInterval() */
 
 
-void solve(vvi &arr, Interval newInterval){
+void solve(vector<Interval> &arr, Interval newInterval){
 
     bool mergeStarted = false;     
     int iMarker;    
     for(int i=0; i<sz(arr); i++){
 
-        bool merged = checkMerge();   
+        bool merged = checkMerge(arr[i], newInterval);       
         
         if(!mergeStarted && !merged){
             continue;    
@@ -147,6 +154,19 @@ void solve(vvi &arr, Interval newInterval){
 
     }  /* end of for i loop */
 
+    if(!mergeStarted){
+        int insertPosition = 0;   
+        forn(i, sz(arr)){
+            if(arr[i].start > newInterval.start){
+                insertPosition = i;   
+                break;    
+            }else{
+                insertPosition++;   
+            }
+        }
+        arr.insert(arr.begin() + insertPosition, newInterval);        
+    }
+
 }  /* END OF solve */
 
 
@@ -157,22 +177,24 @@ int main(){
     cin.tie(NULL);  
 
     vector<Interval> arr;   
-    Interval *temp = new Interval{1, 2};    
-    cout << temp->start;   
+    Interval one {1, 2};
+    Interval two {3, 5};
+    Interval three {6, 7};
+    Interval four {8, 10};
+    Interval five {12, 16};     
 
-    
-    // {
-    //     {1, 2}, 
-    //     {3, 5}, 
-    //     {6, 7}, 
-    //     {8, 10}, 
-    //     {12, 16}
-    // };    
+    arr.pb(one);
+    arr.pb(two);  
+    arr.pb(three);  
+    arr.pb(four);  
+    arr.pb(five);          
 
-    // Interval newInterval{4, 9};        
-    // solve(arr, newInterval);       
-    // cout << arr;      
-
+    Interval newInterval{4, 9};        
+    solve(arr, newInterval);       
+    for(int i=0; i<sz(arr); i++){
+        cout << "[";   
+        cout << arr[i].start << ", " << arr[i].end << "], ";      
+    }
 
     return 0;   
 
