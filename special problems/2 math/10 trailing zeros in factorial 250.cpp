@@ -131,15 +131,45 @@ void numberToArray(vi &res, int A){
 
 }  /* end of numberToArray */
 
+void multiplyWithNumberArray(int num, vi &res){
+
+    int carry = 0;   
+    for(int i=0; i<sz(res); i++){
+        int current = num * res[i] + carry;      
+        if(current > 0){
+            res[i] = current % 10;   
+            current /= 10;   
+            carry = current;    
+        }
+    }  /* end of for i loop */
+
+    while(carry){
+        res.pb(carry % 10);  
+        carry /= 10;      
+    }
+
+}  /* end of multiplyWithNumberArray() */
+
 
 int solve(int A){   
 
-    vi res;
-    numberToArray(res, A);
+    int ans = 0;    
 
-    cout << res;     
+    vi res {1};   
 
+    for(int i=2; i<=A; i++){
+        multiplyWithNumberArray(i, res);    
+    }
 
+    for(int i=0; i<sz(res); i++){
+        if(res[i] == 0){
+            ans++;   
+        }else{
+            break;    
+        }
+    }
+
+    return ans;     
 
 }  /* end of solve() */
 
@@ -155,7 +185,7 @@ int main(){
 
     // cout << solve(4) << '\n';
     // cout << solve(5) << '\n';   
-    cout << solve(9247) << '\n';          
+    cout << solve(7857) << '\n';          
 
     return 0;   
 
