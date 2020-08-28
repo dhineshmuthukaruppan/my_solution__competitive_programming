@@ -121,8 +121,8 @@ int solve(vvi &a){
             matchedSmallerElements += upper_bound(a[i].begin(), a[i].end(), mid) - a[i].begin();       
         }
         matchedSmallerElements -= 1;             
-        // cout << "mid " << mid << " min " << min  << " max " << max <<  '\n';   
-        // cout << "matched smaller elements " << matchedSmallerElements << '\n';   
+        cout << "mid " << mid << " min " << min  << " max " << max <<  '\n';   
+        cout << "matched smaller elements " << matchedSmallerElements << '\n';   
 
 
         if(matchedSmallerElements < smallerElementsCount){     
@@ -145,11 +145,18 @@ int main(){
     cin.tie(NULL);  
 
 
+    // vvi a {
+    //     {1, 3, 5}, 
+    //     {2, 6, 9},
+    //     {5, 6, 9}
+    // };   
+
     vvi a {
-        {1, 3, 5}, 
-        {2, 6, 9},
-        {5, 6, 9}
-    };     
+        {1, 2, 3}, 
+        {4, 5, 6},    
+        {7, 8, 9}    
+    };   
+
 
     int res = solve(a);   
     cout << res;   
