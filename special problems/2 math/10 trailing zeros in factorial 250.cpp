@@ -91,34 +91,61 @@ int gcdByLoop(int A, int B);
 int gcdEuclidean(int A, int B);  
 
 
-int trailingZeroesCount(int factorial){
+// int trailingZeroesCount(long long factorial){
 
-    int result = 0;  
+//     int result = 0;      
 
-    while(factorial > 0){
-        if(factorial % 10 == 0){
-            result++;   
-            factorial/=10;    
-        }else{
-            break; 
-        }
-    }  
+//     while(factorial > 0){
+//         if(factorial % 10 == 0){
+//             result++;   
+//             factorial/=10;    
+//         }else{
+//             break; 
+//         }
+//     }  
+
+//     return result;    
+
+// }  /* end of trailingZeroesCount() */
+
+// int solve(int A){ 
+
+//     ll factorial = 1;      
+//     for(ll i=1; i<=A; i++){ 
+//         factorial = factorial * i;               
+//     }
+//     cout << factorial << '\n';
+
+//     int result = trailingZeroesCount(factorial);       
+//     return result; 
+
+// }  /* end of solve() */
 
 
-    return result;    
+void numberToArray(vi &res, int A){
 
-}  /* end of trailingZeroesCount() */
-
-int solve(int A){
-
-    int factorial = 1;   
-    for(int i=1; i<=A; i++){
-        factorial *= i; 
+    while(A > 0){
+        res.pb(A % 10);  
+        A /= 10;      
     }
 
-    int result = trailingZeroesCount(factorial);       
-    return result;    
+}  /* end of numberToArray */
+
+
+int solve(int A){   
+
+    vi res;
+    numberToArray(res, A);
+
+    cout << res;     
+
+
+
 }  /* end of solve() */
+
+
+
+
 
 
 int main(){
@@ -126,8 +153,9 @@ int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);  
 
-    cout << solve(4);
-    cout << solve(5);      
+    // cout << solve(4) << '\n';
+    // cout << solve(5) << '\n';   
+    cout << solve(9247) << '\n';          
 
     return 0;   
 
