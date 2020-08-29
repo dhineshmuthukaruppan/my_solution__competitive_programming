@@ -118,9 +118,21 @@ int pivotLocation(vi &a){
 
 }  /* end of pivotLocation() */
 
-int binarySearch(vi &a, int l, int h){    
+int binarySearch(vi &a, int l, int h, int elem){    
 
+    while(l <= h){
+        int mid = (l + h)/ 2;   
+        if(a[mid] == elem){
+            return mid;    
+        }else if(a[mid] > elem){
+            h = mid -1;    
+        }else{
+            l = mid+1;    
+        }   
 
+    }  /* end of while */
+
+    return -1;    
 
 }  /* end of binarySearch() */
 
@@ -131,20 +143,20 @@ int solve(vi &a, int elem){
     int pivot = pivotLocation(a);   
     
     if(pivot > 0){
-        int left = binarySearch(a, 0, pivot - 1);
-        int right = binarySearch(a, pivot, a.size() -1);     
+        int left = binarySearch(a, 0, pivot - 1, elem);
+        int right = binarySearch(a, pivot, a.size() -1, elem);     
         if(left == -1 && right == -1){
             return -1;    
-        }else if(left > 0){
+        }else if(left > -1){   
             return left;  
         }else{
             return right;    
         }
     }else{
-        int result = binarySearch(a, 0, a.size() - 1);  
+        int result = binarySearch(a, 0, a.size() - 1, elem);  
         return result;    
     }
-    
+
     return -1;  
 
 }  /* end of solve() */
@@ -158,8 +170,8 @@ int main(){
 
     vi a {4, 5, 6, 7, 0, 1, 2, 3};
     int elem = 4;   
-    solve(a, elem);   
-
+    int result = solve(a, elem);   
+    cout << result;   
 
     return 0;   
 
