@@ -136,10 +136,10 @@ int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL); 
 
-    int result = power(2, 3, 3);   
+    int result = pow(2, 3, 3);   
 
 
-    return 0;   
+    return 0;      
 
 }  /* end of main() */
 
