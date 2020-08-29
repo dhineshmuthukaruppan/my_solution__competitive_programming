@@ -108,7 +108,9 @@ int resultOfCuttingWithCertainHeight(vi &a, int x){
 /* O(nlogn) */
 int solve(vi &a, int b){
 
-    int max = *max_element(a.begin(), a.end());    
+    int max = *max_element(a.begin(), a.end());   
+
+    vi intermediateArray;    
 
     int l = 0;  int h = max;    
     while(l <= h){
@@ -122,14 +124,27 @@ int solve(vi &a, int b){
         if(resultOfCutting == b){
             return mid;        
         }else if(resultOfCutting > b){
+            intermediateArray.pb(mid);       
             l = mid +1;   
         }else{
+            intermediateArray.pb(mid);   
             h = mid -1;    
         }
 
     }  /* end of while loop */
 
-    return -1;    
+    cout << intermediateArray << "\n";   
+    
+    int returnIndex;    
+    int smaller = INT32_MAX;          
+    forn(i, sz(intermediateArray) ){
+        if(abs(intermediateArray[i] - b) < smaller){
+            smaller = abs(intermediateArray[i] - b);    
+            returnIndex = i;     
+        }
+    }
+
+    return intermediateArray[returnIndex];        
 
 }  /* end of solve() */
 
@@ -140,8 +155,9 @@ int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);  
 
-    vi a{20, 15, 10, 17};  
-    int b = 7;      
+    // vi a{20, 15, 10, 17};  
+    vi a{114, 55, 95, 131, 77, 111, 141};
+    int b = 95;          
     int result = solve(a, b);     
     cout << result;    
 
