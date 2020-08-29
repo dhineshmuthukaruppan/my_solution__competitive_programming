@@ -91,8 +91,45 @@ int gcdByLoop(int A, int B);
 int gcdEuclidean(int A, int B);  
 
 
-int solve(){
+int resultOfCuttingWithCertainHeight(vi &a, int x){
 
+    int result = 0;   
+    forn(i, sz(a)){
+        if(a[i] > x){
+            result += a[i] - x;   
+        }
+
+    }  /* end of for loop */
+
+    return result;   
+
+}  /* end of resultOfCuttingWithCertainHeight() */
+
+/* O(nlogn) */
+int solve(vi &a, int b){
+
+    int max = *max_element(a.begin(), a.end());    
+
+    int l = 0;  int h = max;    
+    while(l <= h){
+
+        int mid = (l+h)/2;      
+
+        int resultOfCutting = resultOfCuttingWithCertainHeight(a, mid);    
+
+        cout << mid << " " << resultOfCutting << "\n";        
+
+        if(resultOfCutting == b){
+            return mid;        
+        }else if(resultOfCutting > b){
+            l = mid +1;   
+        }else{
+            h = mid -1;    
+        }
+
+    }  /* end of while loop */
+
+    return -1;    
 
 }  /* end of solve() */
 
@@ -103,6 +140,10 @@ int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);  
 
+    vi a{20, 15, 10, 17};  
+    int b = 7;      
+    int result = solve(a, b);     
+    cout << result;    
 
     return 0;   
 
