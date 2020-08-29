@@ -110,7 +110,7 @@ int solve(vi &a, int b){
 
     int max = *max_element(a.begin(), a.end());   
 
-    vi intermediateArray;    
+    vpi intermediateArray;    
 
     int l = 0;  int h = max;    
     while(l <= h){
@@ -124,10 +124,9 @@ int solve(vi &a, int b){
         if(resultOfCutting == b){
             return mid;        
         }else if(resultOfCutting > b){
-            intermediateArray.pb(mid);       
+            intermediateArray.pb(mp(mid, resultOfCutting));           
             l = mid +1;   
-        }else{
-            intermediateArray.pb(mid);   
+        }else{   
             h = mid -1;    
         }
 
@@ -138,13 +137,13 @@ int solve(vi &a, int b){
     int returnIndex;    
     int smaller = INT32_MAX;          
     forn(i, sz(intermediateArray) ){
-        if(abs(intermediateArray[i] - b) < smaller){
-            smaller = abs(intermediateArray[i] - b);    
+        if(abs(intermediateArray[i].second - b) < smaller){
+            smaller = abs(intermediateArray[i].second - b);    
             returnIndex = i;     
         }
     }
 
-    return intermediateArray[returnIndex];        
+    return intermediateArray[returnIndex].first;            
 
 }  /* end of solve() */
 
@@ -172,7 +171,7 @@ int main(){
 
 template <class A, class B>
 ostream& operator << (ostream &out, const pair<A, B> &a){
-    return out << "(" << a.x << ", " << a.y << ")";   
+    return out << "(" << a.first << ", " << a.second << ")";   
 }
 
 template <class A>
