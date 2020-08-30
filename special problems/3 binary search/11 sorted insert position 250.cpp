@@ -91,7 +91,8 @@ int gcdByLoop(int A, int B);
 int gcdEuclidean(int A, int B);  
 
 
-int solve(vi &a, int elem){
+/* return the first element >= elem */
+int solve(vi &a, int elem){    
 
     auto l = lower_bound(a.begin(), a.end(), elem);   
     return l - a.begin();   
@@ -104,6 +105,11 @@ int main(){
 
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);  
+
+    vi a {1, 3, 5, 6};   
+    int elem = 2;      
+    int result =  solve(a, elem);   
+    cout << result;     
 
 
     return 0;   
