@@ -94,8 +94,10 @@ int gcdEuclidean(int A, int B);
 /* return the first element >= elem */
 int solve(vi &a, int elem){    
 
-    auto l = lower_bound(a.begin(), a.end(), elem);   
-    return l - a.begin();   
+    // auto l = lower_bound(a.begin(), a.end(), elem);   
+    // return l - a.begin();   
+
+    
     
 }  /* end of solve() */
 
