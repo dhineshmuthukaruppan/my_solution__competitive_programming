@@ -93,13 +93,17 @@ int gcdEuclidean(int A, int B);
 
 int solve(int a){
 
+    if(a == 0 || a == 1){
+        return a;    
+    }
+
     int l = 0; int h = a;   
     int ans;      
     while(l <= h){
 
-        int mid = (l + h) / 2;    
-        int midSq = mid * mid;   
-
+        ll mid = (l + h) / 2;    
+        ll midSq = mid * mid;   
+        // cout  << mid << " " << midSq << " ";     
         if(midSq == a){
             return mid;    
         }else if(midSq < a){
@@ -108,6 +112,13 @@ int solve(int a){
         }else{
             h = mid - 1;    
         }
+
+        // if (mid <= a / mid) {
+        //     l = mid + 1;
+        //     ans = mid;
+        // } else {
+        //     h = mid - 1;
+        // }
 
     }  /* end of while */
     
@@ -122,7 +133,7 @@ int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);  
 
-    int result = solve(11);       
+    int result = solve(2147483647);         
     cout << result;   
 
 
