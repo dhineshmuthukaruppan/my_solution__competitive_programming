@@ -1,0 +1,37 @@
+===========================================
+Ladder Name: 11 - Codeforces Rating < 1300=
+===========================================
+
+
+
+August 31 - 20 problems read  
+============================
+
+
+
+
+
+
+3) Queue at the school - DIV2B - 800
+https://codeforces.com/problemset/problem/266/B
+Editorial
+=========
+In this you should realize the given process. You should t times swap elements i and i + 1 if on the place i was a girl and on 
+the place i + 1 was a boy. You should not push some girl to the left multiple times at once. The solution can be written using O(N·T) time.
+
+
+100) Adding digits - DIV2A- 1400
+https://codeforces.com/problemset/problem/260/A
+Editorial
+=========
+At first try to add to the right one digit from 0 to 9. If it is impossible write -1. 
+In other case, the remaining n–1 digits can be 0 because divisibility doesn’t change.
+
+
+
+
+
+
+
+
+
