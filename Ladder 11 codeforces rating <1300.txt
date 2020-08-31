@@ -4,12 +4,23 @@ Ladder Name: 11 - Codeforces Rating < 1300=
 
 
 
-August 31 - 20 problems read  
+August 31 -  problems read  
 ============================
 
 
 
+1) Young physist - DIV2A - 1000
+https://codeforces.com/problemset/problem/69/A
+Editorial
+=========
+In this task all you had to do was to make sure that the sum of all Σxi is 0, the sum of all Σy i is 0 and that the sum of all Σzi - 0 .
+We have not written that condition evidently in order that participants will have a chance to break a solution.
 
+
+2) Beautiful matrix - DIV 2A - 800 - 
+4.05 - 4.05 
+https://codeforces.com/problemset/problem/263/A
+If the single 1 is located on the intersection of the r-th row and the c-th column (1-based numeration), then the answer is |3 - r| + |3 - c|.
 
 
 3) Queue at the school - DIV2B - 800
@@ -18,6 +29,29 @@ Editorial
 =========
 In this you should realize the given process. You should t times swap elements i and i + 1 if on the place i was a girl and on 
 the place i + 1 was a boy. You should not push some girl to the left multiple times at once. The solution can be written using O(N·T) time.
+
+
+4) Borze  - DIV2B - 800
+4.07 - 4.10
+https://codeforces.com/problemset/problem/32/B
+Replace all occurrences of '--' with '2', '-.' with '1' and '.' with '0'.
+Initially, there was some problem with the test cases but was rectified soon.
+
+
+5) beautiful year - DIV2A - 800
+4.10 - 4.13
+https://codeforces.com/problemset/problem/271/A
+This is a very straight forward problem. Just add 1 to a year number while it still has equal digits.
+
+
+6) lights out - DIV 2A - Implementation 800
+4.20 - 4.30
+https://codeforces.com/problemset/problem/275/A
+For each light you should count the number of times it’s been toggled. Consider a light is toggled k times. 
+If k is even then the final state of the light is ‘on’ otherwise it’s ‘off’. The implementation would be easy. You may look at the accepted solutions as reference.
+
+
+
 
 
 100) Adding digits - DIV2A- 1400
