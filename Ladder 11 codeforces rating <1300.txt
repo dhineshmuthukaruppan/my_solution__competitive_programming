@@ -51,7 +51,20 @@ For each light you should count the number of times it’s been toggled. Conside
 If k is even then the final state of the light is ‘on’ otherwise it’s ‘off’. The implementation would be easy. You may look at the accepted solutions as reference.
 
 
+23) boy or a girl - DIV2A - bruteforce, implementation, string - 800
+4.40 - 4.44 
+https://codeforces.com/problemset/problem/236/A
+It is a very simple problem, just count how many distinct chars in the input and write the correct answer.
 
+
+
+30) effective approach - DIV2B - Implementation -1100 
+4.45 - 4.55
+https://codeforces.com/problemset/problem/227/B
+Let's assume that number t is on the ind t th position in the original permutation. Then, obviously, during iterating from left to 
+right this number will be found in ind t comparisons, and during iterating from right to left — in n - ind t + 1 comparisons. Let's declare additional array, 
+in i th element of each there will be such number j, that a j = i. This array allows to process each query in O(1) using formulas referred above. Additional 
+array is built in O(n) during iterating array a. So, the final complexity is O(n + m).
 
 
 100) Adding digits - DIV2A- 1400
