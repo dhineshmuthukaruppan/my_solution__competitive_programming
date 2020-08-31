@@ -102,7 +102,31 @@ int hammingDistance(int n1, int n2){
 }  /* end of hammingDistance() */
 
 
-int solve(const vector<int> &A){
+
+
+/* Suppose the given array contains only binary numbers, i.e A[i] belongs to [0, 1].
+
+Let X be the number of elements equal to 0, and Y be the number of elements equals to 1.
+
+Then, sum of hamming distance of all pair of elements equals 2XY, as every pair containing one element from X and one element from Y contribute 1 to the sum.
+
+As A[i] belongs to [0, 231 - 1] and we are counting number of different bits in each pair, we can consider all the 31 bit positions independent.
+
+For example:
+A = [2, 4, 6] = [0102, 1002, 1102]</p>
+
+At bit position 0 (LSB): x = 3, y = 0
+At bit position 1: x = 1, y = 2
+At bit position 2(MSB): x = 1, y = 2
+
+Total sum = number of pairs having different bit at each bit-position = (2 * 3 * 0) + (2 * 1 * 2) + (2 * 1 * 2) = 8
+
+Time complexity: O(N)
+Space complexity: O(1) */
+
+
+// My method
+int solve1(const vector<int> &A){
 
     int n = A.size();   
 
@@ -120,6 +144,34 @@ int solve(const vector<int> &A){
     return sum;    
 
 }  /* end of solve() */
+
+
+int solve(const vector<int> &A){
+
+    int ans = 0;   
+    int n = A.size();    
+    int mod = 1000000007;  
+
+    for(int i=0; i<32; i++){
+
+        int countBitOne = 0;   
+        int countBitTwo = 0;   
+        for(int j=0; j<n; j++){
+            if(A[j] & (1 << i)){
+                countBitOne++;   
+            }else{
+                countBitTwo++;   
+            }
+        }  /* end of for j loop */
+        ans += (2LL * countBitOne * countBitTwo) % mod;        
+        ans %= mod;    
+    }  /* end of for i loop */
+
+    return ans;   
+
+}  /* end of solve() */
+
+
 
 
 
