@@ -93,27 +93,44 @@ int gcdEuclidean(int A, int B);
 
 vi solve(int a){
 
-    vi allPrimes = sieveOfEratosthenes(a);   
-    vi result;  
+    // vi allPrimes = sieveOfEratosthenes(a);   
+    // vi result;  
 
-    int i = 0; 
-    int j = allPrimes.size() - 1;    
+    // int i = 0; 
+    // int j = allPrimes.size() - 1;    
     
-    while(i <= j){
-        int sum = allPrimes[i] + allPrimes[j];   
-        if(sum > a ){
-            j--;   
-        }else if(sum < a){
-            i++;   
-        }else{
-            result.push_back(allPrimes[i]);  
-            result.push_back(allPrimes[j]);      
-            break;   
+    // while(i <= j){
+    //     int sum = allPrimes[i] + allPrimes[j];   
+    //     if(sum > a ){
+    //         j--;   
+    //     }else if(sum < a){
+    //         i++;   
+    //     }else{
+    //         result.push_back(allPrimes[i]);  
+    //         result.push_back(allPrimes[j]);      
+    //         break;   
+    //     }
+
+    // } /* end of while */
+
+    // return result;    
+
+
+    // Alternate solution for prime sum
+    vi result;    
+    for(int i=2; i<a/2+1; i++){
+        if(isPrime(i)){
+            if(isPrime(a-i)){
+                result.push_back(i);   
+                result.push_back(a-i);    
+                break;     
+            }
         }
+    }
 
-    } /* end of while */
+    return result;    
 
-    return result;       
+
 }  /* end of solve() */
 
 
@@ -123,9 +140,11 @@ int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);  
 
-    vi result = solve(12);   
+    vi result = solve(16777214);   
     cout << result;    
     
+
+
 
 
     return 0;   
