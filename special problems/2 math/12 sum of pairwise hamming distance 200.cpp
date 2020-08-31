@@ -104,9 +104,20 @@ int hammingDistance(int n1, int n2){
 
 int solve(const vector<int> &A){
 
-    
+    int n = A.size();   
 
+    int mod = 1000000007;    
 
+    int sum = 0; 
+
+    for(int i=0; i<n; i++){
+        for(int j=i; j<n; j++){
+            sum += ((hammingDistance(A[i], A[j])) * 2) % mod;             
+        }   
+    }
+    sum %= mod;   
+
+    return sum;    
 
 }  /* end of solve() */
 
