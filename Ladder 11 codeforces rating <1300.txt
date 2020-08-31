@@ -4,9 +4,8 @@ Ladder Name: 11 - Codeforces Rating < 1300=
 
 
 
-August 31 -  problems read  
+August 31 - 13 problems read  
 ============================
-
 
 
 1) Young physist - DIV2A - 1000
@@ -65,6 +64,38 @@ Let's assume that number t is on the ind t th position in the original permutati
 right this number will be found in ind t comparisons, and during iterating from right to left — in n - ind t + 1 comparisons. Let's declare additional array, 
 in i th element of each there will be such number j, that a j = i. This array allows to process each query in O(1) using formulas referred above. Additional 
 array is built in O(n) during iterating array a. So, the final complexity is O(n + m).
+
+
+31) Dima and friends - DIV2A - Implementation, math - 1000
+https://codeforces.com/problemset/problem/272/A
+We will bruteforce number of fingers that will be show Dima, then if total sum of fingers = 1 modulo (n+1), 
+Dima will clean the room. So we should increase answer if the remaining part after division by (n+1) is not 1.
+
+
+42) magic numbers- DIV2A - Implementation, greedy - 900
+https://codeforces.com/problemset/problem/320/A
+The number should only consist of digits 1 and 4.
+The number should begin with digit 1.
+The number should not contain three consecutive fours (i.e. 444).
+
+
+
+48) Business trip - DIV2A - greedy, implementation, sorting - 900
+https://codeforces.com/problemset/problem/149/A
+1. Sort month by how many centimeters they can make a flower grow in ascending order.
+2. Pick the month with the largest growth value, and add it to variable named "sum".
+3. Repeat procedure 2 until value of "sum" >= k
+
+
+
+50) kstring - DIV2A - string, implementation - 1000
+https://codeforces.com/problemset/problem/219/A
+Count the occurrences of each character. If any character appears a number of times not divisible by K, 
+obviously, there is no solution. Otherwise, form the solution by first making the string B. The string B can be 
+any string with the following property: if some character ch appears q times in the string B, the same character appears q***K** times in 
+the given string. Now, just print that string K times.
+
+
 
 
 100) Adding digits - DIV2A- 1400
