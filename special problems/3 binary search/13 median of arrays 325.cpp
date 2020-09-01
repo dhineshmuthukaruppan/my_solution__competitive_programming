@@ -123,30 +123,41 @@ double solve(vi &a, vi &b){
     min_e = min(a[0], b[0]);  
     max_e = max(a[n-1], b[m-1]);   
     
-
+    int answer = min_e;       
     int smallerElementsCount = (n + m) / 2;    
-    while(min_e < max_e){       
+    
+    while(min_e <= max_e){           
         int mid = (min_e + max_e) / 2;   
 
         int matchedSmallerElements = 0;  
         
-        matchedSmallerElements += upper_bound(a.begin(), a.end(), mid) - a.begin();       
-        matchedSmallerElements += upper_bound(b.begin(), b.end(), mid) - a.begin();     
+        matchedSmallerElements += upper_bound(a.begin(), a.end(), mid-1) - a.begin();       
+        matchedSmallerElements += upper_bound(b.begin(), b.end(), mid-1) - b.begin();     
 
-        matchedSmallerElements -= 1;             
-        cout << "mid " << mid << " min " << min_e  << " max " << max_e <<  '\n';   
+        int countOfMid = 0;   
+        countOfMid += count(a.begin(), a.end(), mid);    
+        countOfMid += count(b.begin(), b.end(), mid);   
+
+        cout << "mid " << mid << " min " << min_e  << " max " << max_e << " count of mid " << countOfMid <<  '\n';   
         cout << "matched smaller elements " << matchedSmallerElements << '\n';   
 
-
-        if(matchedSmallerElements < smallerElementsCount){     
+        
+        if(matchedSmallerElements < smallerElementsCount && matchedSmallerElements + countOfMid > smallerElementsCount){ 
+            answer = min_e;       
+            min_e = mid +1; 
+        }else if(matchedSmallerElements < smallerElementsCount && matchedSmallerElements + countOfMid == smallerElementsCount){
+            answer = min_e;        
+            min_e = mid+1;    
+        }else if(matchedSmallerElements <= smallerElementsCount){  
+            answer = min_e;         
             min_e = mid + 1;              
-        }else{    
-            max_e = mid;           
+        }else if(matchedSmallerElements > smallerElementsCount){    
+            max_e = mid-1;              
         }
 
     }  /* end of min < max */
 
-    return min_e;       
+    return answer;          
 
 }  /* end of solve() */
 
@@ -160,8 +171,8 @@ int main(){
     // vi a {1, 4, 5};  
     // vi b {2, 3};  
 
-    vi a { -50, -41, -40, -19, 5, 21, 28}; 
-    vi b {-50, -21, -10 };     
+    vi a { -40, -25, 5, 10, 14, 28, 29, 48}; 
+    vi b {-48, -31, -15, -6, 1, 8 };     
     double result = solve(a, b); 
     cout << result;       
 
