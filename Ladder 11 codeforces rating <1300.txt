@@ -116,9 +116,13 @@ In other case, the remaining n–1 digits can be 0 because divisibility doesn’
 September 2  - x problems read
 =============
 
-99) sereja and bottles - DIV2A - bruteforce - 1400
+99) sereja and bottles - DIV2A - bruteforce - 1400 ****IMPLEMENTED*****
 https://codeforces.com/problemset/problem/315/A
 Just check for each bottle, can I open it with another. In this task can pass absolutely any solutions.
+
+
+
+
 
 
 
