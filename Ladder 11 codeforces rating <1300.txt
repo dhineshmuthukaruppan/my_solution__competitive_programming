@@ -123,7 +123,7 @@ https://codeforces.com/problemset/problem/315/A
 Just check for each bottle, can I open it with another. In this task can pass absolutely any solutions.
 
 
-
+*****IMPLEMENTED*****
 95) polo the penguin matrix    DIV 2B brute force    dp    implementation    sortings    ternary search    *1400
 https://codeforces.com/problemset/problem/289/B
 Solution. First of all, we need to know when the answer is -1. For that you should notice that after any operation on number z, 
@@ -135,6 +135,8 @@ Why to median? Suppose that we make all numbers equal to non-median element with
 Then if |x - (k - x)| > 1 (i. e. from one side there are more elements than from another + 1). So, by moving out element more to median, we can make result better.
 After we know, to which number we should bring all, the answer is just , divided by d.
 Note. There is also full solution with complexity O(n 2 m 2).
+
+
 
 
 
