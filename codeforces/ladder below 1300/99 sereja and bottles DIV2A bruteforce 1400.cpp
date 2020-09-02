@@ -138,31 +138,34 @@ int main(){
     cout << answer << '\n';   
 
 
-/*     int h[1001],a[1001],b[1001];
-        int main(){int i,n,c=0;scanf("%d",&n);
+/*  solution 1 O(n)
+    ===========
+    int h[1001],a[1001],b[1001];
+    int main(){int i,n,c=0;scanf("%d",&n);
+    for(i=0;i<n;i++){
+        scanf("%d%d",&a[i],&b[i]);
+        h[b[i]]++;}
         for(i=0;i<n;i++){
-            scanf("%d%d",&a[i],&b[i]);
-            h[b[i]]++;}
-            for(i=0;i<n;i++){
-                if(h[a[i]]==0||(h[a[i]]==1&&a[i]==b[i]))c++;}
-                printf("%d\n",c);return 0;}
+            if(h[a[i]]==0||(h[a[i]]==1&&a[i]==b[i]))c++;}
+            printf("%d\n",c);return 0;}
 
-
-        #include<iostream>
-        using namespace std;
-        int i,n,j,ans,a[105],b[105];
-        int main(){
-        cin>>n;
-        while(i<n){
-            cin>>a[i]>>b[i]; i++;
+    solution 2 O(n^2)    
+    ===========   
+    #include<iostream>
+    using namespace std;
+    int i,n,j,ans,a[105],b[105];
+    int main(){
+    cin>>n;
+    while(i<n){
+        cin>>a[i]>>b[i]; i++;
+    }
+    for(i=0;i<n;i++){
+        for(j=0;j<n;j++){
+        if(a[i]==b[j]&&i!=j){ans++;break;}
+    
         }
-        for(i=0;i<n;i++){
-            for(j=0;j<n;j++){
-            if(a[i]==b[j]&&i!=j){ans++;break;}
-        
-            }
-        }cout<<n-ans;
-        }
+    }cout<<n-ans;
+    }
 
 
  */
