@@ -116,6 +116,12 @@ In other case, the remaining n–1 digits can be 0 because divisibility doesn’
 September 2  - x problems read
 =============
 
+*****IMPLEMENTED*****
+7) word DIV2A - implementation 800
+9.10 - 9.25
+https://codeforces.com/problemset/problem/59/A
+
+
 
 ****IMPLEMENTED*****
 99) sereja and bottles - DIV2A - bruteforce - 1400 
