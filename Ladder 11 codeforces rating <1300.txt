@@ -116,13 +116,25 @@ In other case, the remaining n–1 digits can be 0 because divisibility doesn’
 September 2  - x problems read
 =============
 
-99) sereja and bottles - DIV2A - bruteforce - 1400 ****IMPLEMENTED*****
+
+****IMPLEMENTED*****
+99) sereja and bottles - DIV2A - bruteforce - 1400 
 https://codeforces.com/problemset/problem/315/A
 Just check for each bottle, can I open it with another. In this task can pass absolutely any solutions.
 
 
 
-
+95) polo the penguin matrix    DIV 2B brute force    dp    implementation    sortings    ternary search    *1400
+https://codeforces.com/problemset/problem/289/B
+Solution. First of all, we need to know when the answer is -1. For that you should notice that after any operation on number z, 
+value  doesn't change. Indeed, . This means that there is not answer if there are two different points for which  is diffrent.
+Now we can transform our problem a bit. We can just write down all integers from matrix n × m to one array b of size k = n × m and sort them 
+all in non-decreasing order. It is not hard to notice that in some of the optimal solutions, all number are at the end equal to one 
+of the number for starting array. But also, it is optimal to make all number equal to b[k+1 /2] (median element). 
+Why to median? Suppose that we make all numbers equal to non-median element with index x.   
+Then if |x - (k - x)| > 1 (i. e. from one side there are more elements than from another + 1). So, by moving out element more to median, we can make result better.
+After we know, to which number we should bring all, the answer is just , divided by d.
+Note. There is also full solution with complexity O(n 2 m 2).
 
 
 
