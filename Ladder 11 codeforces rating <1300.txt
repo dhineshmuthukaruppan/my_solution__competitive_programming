@@ -113,13 +113,21 @@ In other case, the remaining n–1 digits can be 0 because divisibility doesn’
 
 
 
-September 2  - x problems read
+September 2  - 4 problems read
 =============
 
 *****IMPLEMENTED*****
 7) word DIV2A - implementation 800
 9.10 - 9.25
 https://codeforces.com/problemset/problem/59/A
+
+
+*****IMPLEMENTED*****
+77) Increase and decrease DIV2B greedy, math - 1300
+https://codeforces.com/problemset/problem/246/B    
+Note, that you can always get the answer n–1. To get this result you should make first n–1 equal using the last element 
+as the second element in pair of given operation. But after it, the whole array could become equal. It could happen if the sum 
+of array’s elements is divisible by n. So the answer is n–1 or n.
 
 
 
