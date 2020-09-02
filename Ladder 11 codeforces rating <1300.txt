@@ -4,7 +4,7 @@ Ladder Name: 11 - Codeforces Rating < 1300=
 
 
 
-August 31 - 13 problems read  
+August 31 - 14 problems read  
 ============================
 
 
@@ -97,8 +97,9 @@ the given string. Now, just print that string K times.
 
 
 
-98) sort the array - DIV2A - Implementaion, sorting - 1000
+98) sort the array - DIV2A - Implementaion, sorting - 1000 *****IMPLEMENTED*****
 https://codeforces.com/problemset/problem/451/B
+
 
 
 
@@ -112,8 +113,14 @@ In other case, the remaining n–1 digits can be 0 because divisibility doesn’
 
 
 
-September 1  - 1 problems read
+September 2  - x problems read
 =============
+
+99) sereja and bottles - DIV2A - bruteforce - 1400
+https://codeforces.com/problemset/problem/315/A
+Just check for each bottle, can I open it with another. In this task can pass absolutely any solutions.
+
+
 
 
 
