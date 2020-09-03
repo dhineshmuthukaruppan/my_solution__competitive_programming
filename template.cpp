@@ -94,6 +94,8 @@ int gcdEuclidean(int A, int B);
 int solve(){
 
 
+    return 0;   
+
 }  /* end of solve() */
 
 
