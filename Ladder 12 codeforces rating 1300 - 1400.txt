@@ -28,10 +28,12 @@ https://codeforces.com/problemset/problem/61/A
 
 
 ***** IMPLEMENTED *****
-4) blackjack - implemetation 800
+4) blackjack - DIV 2A - implemetation 800
 1.45 - 1.55
 https://codeforces.com/problemset/problem/104/A
 
 
 
-
+5) HQ9+ - DIV2A - implelentation - 800
+https://codeforces.com/problemset/problem/133/A
+2.00 - 2.05
