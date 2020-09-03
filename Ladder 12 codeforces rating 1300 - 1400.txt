@@ -33,7 +33,8 @@ https://codeforces.com/problemset/problem/61/A
 https://codeforces.com/problemset/problem/104/A
 
 
-
+***** IMPLEMENTED *****
 5) HQ9+ - DIV2A - implelentation - 800
 https://codeforces.com/problemset/problem/133/A
 2.00 - 2.05
+
