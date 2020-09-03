@@ -91,14 +91,50 @@ int gcdByLoop(int A, int B);
 int gcdEuclidean(int A, int B);  
 
 
+
+bool isOutOfOrder(vi &a, int i, int num){    
+
+    if(i == 0){
+        return a[i] > a[i+1];   
+    }else if(i == a.size() -1){
+        return a[i] < a[i - 1];
+    }else{
+        return a[i] > a[i + 1] || a[i] < a[i-1];   
+    }    
+
+}  /* end of isOutOfOrder() */
+
+
 vi solve(vi &a){   
 
     vi result;   
 
-    
+    int minOutOfOrder = INT32_MAX; int maxOutOfOrder = INT32_MIN;    
 
+    forn(i, a.size()){
+        if(isOutOfOrder(a, i, a[i])){
+            minOutOfOrder = min(minOutOfOrder, a[i]);    
+            maxOutOfOrder = max(maxOutOfOrder, a[i]); 
+        }
+    }  /* end of for i loop */
 
+    if(minOutOfOrder == INT64_MAX){
+        return {-1, -1};
+    }
 
+    int leftIdx = 0;   
+    int rightIdx = a.size() -1;   
+
+    while(minOutOfOrder >= a[leftIdx]){
+        leftIdx++;    
+    }
+
+    while(maxOutOfOrder <= a[rightIdx]){
+        rightIdx--;    
+    }
+
+    result.pb(leftIdx);   
+    result.pb(rightIdx);  
 
     return result;      
 
