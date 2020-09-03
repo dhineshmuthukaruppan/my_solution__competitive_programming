@@ -21,9 +21,17 @@ with the maximum height is more right then the rightmost soldier with the
 minimum height we should subtract one from the answer.
 
 
-
+***** IMPLEMENTED *****
 3) ultra fast mathematician - implementation 800
 1.10 - 1.35
 https://codeforces.com/problemset/problem/61/A
+
+
+***** IMPLEMENTED *****
+4) blackjack - implemetation 800
+1.45 - 1.55
+https://codeforces.com/problemset/problem/104/A
+
+
 
 
