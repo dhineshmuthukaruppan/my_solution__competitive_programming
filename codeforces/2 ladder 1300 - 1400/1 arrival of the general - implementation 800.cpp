@@ -106,6 +106,33 @@ int main(){
     cin.tie(NULL);  
 
 
+    int n, temp;    
+    cin >> n;
+    pi maxi{INT32_MIN, -1}, mini{INT32_MAX, -1};           
+    forn(i, n){
+        cin >> temp;    
+        if(temp > maxi.first){    
+            maxi.first = temp;   
+            maxi.second = i;    
+        }
+
+        if(temp <= mini.first){
+            mini.first = temp;   
+            mini.second = i;     
+        }    
+    }
+
+    int answer = maxi.second - 0;   
+    answer += n - mini.second - 1;    
+    if(maxi.second > mini.second){
+        answer -=1;    
+    }
+
+    // cout << maxi << mini;  
+    cout << answer;       
+
+
+
     return 0;   
 
 }  /* end of main() */
