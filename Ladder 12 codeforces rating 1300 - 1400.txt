@@ -8,8 +8,9 @@ Total read -
 sept 3 - x problems read
 ======================
 
+***** IMPLEMENTED *****
 1) arrival of the general - implelentation 800
-11.57 - 
+11.57 - 12.30
 https://codeforces.com/problemset/problem/144/A
 It's clear that the leftmost soldier with the maximum height should 
 be the first and the rightmost soldier with the minimum height should 
@@ -21,5 +22,8 @@ minimum height we should subtract one from the answer.
 
 
 
+3) ultra fast mathematician - implementation 800
+1.10 - 1.35
+https://codeforces.com/problemset/problem/61/A
 
 
