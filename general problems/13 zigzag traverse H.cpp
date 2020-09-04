@@ -91,11 +91,54 @@ int gcdByLoop(int A, int B);
 int gcdEuclidean(int A, int B);  
 
 
-void solve(vvi &a){
+vi solve(vvi &a){
 
+    vi result;    
+
+    int i=0; int j=0;    
+    int width = a.size()-1; int height = a[0].size()-1;   
+
+    bool downDirection = true;    
+    bool condition = true;    
     
+    while(condition){
+        result.pb(a[i][j]); 
+        if(i == width && j == height){
+            condition = false;    
+            break;     
+        }
 
+        if(downDirection){    
+            if(j == 0 || i == height){
+                downDirection = false;     
+                if(i == height){
+                    j += 1;   
+                }else{
+                    i += 1;    
+                }
+            }else{
+                i+=1; 
+                j-=1; 
+            }    
+        }else{
 
+            if(i == 0 || j == width){
+                downDirection = true;    
+                if(j == width){
+                    i+=1;    
+                }else{
+                    j+=1; 
+                }
+            }else{
+                i-=1; 
+                j+=1;     
+            }
+
+        }
+
+    }  /* end of while */
+
+    return result;    
 
 }  /* end of solve() */
 
@@ -113,8 +156,8 @@ int main(){
         {7, 13, 14, 16}
     };    
 
-    solve(a);    
-
+    vi result = solve(a);    
+    cout << result;   
 
 
     return 0;   
