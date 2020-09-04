@@ -5,7 +5,7 @@ Total IMPLEMENTED -
 Total read - 
 
 
-sept 3 - x problems read
+sept 3 - 4 problems read
 ======================
 
 ***** IMPLEMENTED *****
@@ -37,4 +37,15 @@ https://codeforces.com/problemset/problem/104/A
 5) HQ9+ - DIV2A - implelentation - 800
 https://codeforces.com/problemset/problem/133/A
 2.00 - 2.05
+
+
+
+
+sept 4 - x problems read
+======
+77) little dima and equation - div2B- 1500
+https://codeforces.com/problemset/problem/460/B
+11.10 - 11.20
+
+
 

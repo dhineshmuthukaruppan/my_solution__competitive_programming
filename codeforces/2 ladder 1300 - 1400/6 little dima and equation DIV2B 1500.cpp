@@ -99,13 +99,40 @@ int solve(){
 }  /* end of solve() */
 
 
+int sumOfDigits(int x){
+
+    int s=0;    
+    while(x > 0){
+        s+=(x%10);   
+        x/=10;      
+    }
+
+    return s;    
+}  /* end of sumOfDigits() */
 
 int main(){
 
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);  
 
+    int a, b, c, x, s;        
+    cin >> a >> b >> c;    
+    vi result;   
+    for(int i=0; i<=81; i++){
 
+        x = b * pow(i, a) + c; 
+        s = sumOfDigits(x);       
+        if(x >0 && x < 1e9 && s==i){
+            result.pb(x); 
+        }        
+
+    }
+
+    cout << result.size() << '\n'; 
+    for(int i=0; i<result.size(); i++){
+        cout << result[i] << " ";  
+    }
+    
     return 0;   
 
 }  /* end of main() */
