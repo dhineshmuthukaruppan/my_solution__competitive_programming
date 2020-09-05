@@ -101,33 +101,37 @@ int main(){
     int t, n;   
     cin >> t;  
     while(t--){
-        unordered_map<int, int> hmap;       
-        int bestcase=1; int worstcase = 0;    
+        unordered_map<int, pi> hmap;       
+        int bestcase=1; int worstcase = 1;    
         cin >> n;   
         vi a(n); 
 
         forn(i, n){
             cin >> a[i];    
-            hmap[a[i]]++;    
+            hmap[a[i]].first++;
+            hmap[a[i]].second = 0;   // isAffected  
         } 
 
         // calculating the best case  
         int firstrunnerVelocity=a[0], counter=0;    
         for(int i=0; i<firstrunnerVelocity; i++){ 
-            bestcase+=hmap[i];     
+            bestcase+=hmap[i].first;        
         }
-
         // calculating worst case
         forn(i, n){
-            forn(j, a[i]){
-                if(hmap[a[i]] > 0){
-                    hmap[a[i]]--;     
-                }
-                worstcase+=hmap[j];    
+            if(hmap[a[i]].first > 0){  
+                hmap[a[i]].first--;     
+            }
+            forn(j, a[i]){ 
+                cout << hmap[a[j]].first << '\n';
+                if(hmap[j].second == 0){   
+                    worstcase+=hmap[j].first;
+                    hmap[j].second = 1;   
+                }        
             }
         }
 
-        worstcase == 0 ? worstcase = 1 : worstcase = worstcase;             
+        worstcase == 0 ? worstcase = 1 : worstcase = worstcase;                   
 
         cout << bestcase << " " << worstcase << '\n';        
 
