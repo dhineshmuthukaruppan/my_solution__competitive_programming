@@ -92,11 +92,67 @@ int solve(){
 }  /* end of solve() */
 
 
+bool willMeet(int bigger, int smaller, int j, int i){
+
+    bool answer=false;    
+
+    
+
+
+    return answer;     
+
+}  /* end of willMeet */
+
 
 int main(){
 
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);  
+
+
+    int t, n;   
+    cin >> t;   
+    while(t--){
+
+        cin >> n;    
+        vi a(n+1);   
+        for(int i=1; i<=n; i++){
+            cin >> a[i];   
+        }
+
+        int bestcase = INT32_MAX; int worstcase = INT32_MIN;   
+
+        for(int i=1; i<=n; i++){
+
+            int currentTotal = 1;   
+            
+            for(int j=1; j<i; j++){
+                if(a[j] > a[i]){
+                    bool meetsCondition = willMeet(a[j], a[i], j, i);    
+                    if(meetsCondition){
+                        currentTotal++;    
+                    }    
+                }
+            }
+
+            for(int j=i+1; j<=n; j++){
+                if(a[i] > a[j]){
+                    bool meetsCondition = willMeet(a[i], a[j], i, j);    
+                    if(meetsCondition){
+                        currentTotal++;   
+                    }    
+                }
+            }
+
+            bestcase = min(bestcase, currentTotal);   
+            worstcase = max(worstcase, currentTotal);     
+
+        }  /* end of for i loop */
+
+        cout << bestcase << " " << worstcase;   
+        
+    }  /* end of while loop */
+
 
     // int t, n;   
     // cin >> t;  
