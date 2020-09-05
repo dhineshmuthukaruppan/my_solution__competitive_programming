@@ -94,10 +94,21 @@ int solve(){
 
 bool willMeet(int bigger, int smaller, int j, int i){
 
+    // cout << bigger << " " << smaller << " " << j << " " << i << '\n';      
     bool answer=false;    
 
-    
+    forn(x, 20){    
+        j+=bigger;    
+        i+=smaller;   
 
+        if(i == j){
+            answer = true;   
+            break;     
+        }else if(j > i){    
+            break;    
+        }    
+
+    }  /* end of forn */
 
     return answer;     
 
@@ -136,7 +147,7 @@ int main(){
             }
 
             for(int j=i+1; j<=n; j++){
-                if(a[i] > a[j]){
+                if(a[i] > a[j]){ 
                     bool meetsCondition = willMeet(a[i], a[j], i, j);    
                     if(meetsCondition){
                         currentTotal++;   
@@ -144,12 +155,14 @@ int main(){
                 }
             }
 
+            // cout << currentTotal << '\n';        
+
             bestcase = min(bestcase, currentTotal);   
             worstcase = max(worstcase, currentTotal);     
 
         }  /* end of for i loop */
 
-        cout << bestcase << " " << worstcase;   
+        cout << bestcase << " " << worstcase << '\n';      
         
     }  /* end of while loop */
 
