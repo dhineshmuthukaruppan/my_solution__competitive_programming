@@ -98,52 +98,88 @@ int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);  
 
-    int t, n;   
-    cin >> t;  
-    while(t--){
-        unordered_map<int, int> hmapFront, hmapBack;        
-        int bestcase=INT32_MAX; int worstcase = INT32_MIN;       
+    // int t, n;   
+    // cin >> t;  
+    // while(t--){
+    //     unordered_map<int, int> hmapFront, hmapBack;        
+    //     int bestcase=INT32_MAX; int worstcase = INT32_MIN;       
     
-        cin >> n;         
-        vi a(n); 
+    //     cin >> n;         
+    //     vi a(n); 
 
-        forn(i, n){
-            cin >> a[i];    
-            hmapFront[a[i]]++;  
-        } 
+    //     int velocityMax = INT32_MIN;    
+    //     forn(i, n){
+    //         cin >> a[i];    
+    //         hmapFront[a[i]]++;  
+    //         velocityMax = max(velocityMax, a[i]);     
+    //     } 
         
-        // calculating worst case and best case
-        forn(i, n){    
-            hmapBack[a[i]]++;    
-            if(hmapFront[a[i]] > 0){  
-                hmapFront[a[i]]--;
-            }
-            int currentTotal = 1;       
+    //     // calculating worst case and best case
+    //     forn(i, n){    
+    //         hmapBack[a[i]]++;    
+    //         if(hmapFront[a[i]] > 0){  
+    //             hmapFront[a[i]]--;
+    //         }
+    //         int currentTotal = 1;       
             
-            if(a[i] < 5){
-                for(int j=a[i]+1; j<=5; j++){
-                    currentTotal += hmapBack[j];    
-                }
-            }
+    //         if(a[i] < velocityMax){    
+    //             for(int j=a[i]+1; j<=velocityMax; j++){
+    //                 currentTotal += hmapBack[j];       
+    //             }
+    //         }
             
-            forn(j, a[i]){
-                currentTotal+= hmapFront[j];
-            }
+    //         forn(j, a[i]){
+    //             currentTotal+= hmapFront[j];
+    //         }
 
-            // cout << currentTotal << '\n';   
+    //         // cout << currentTotal << '\n';      
 
-            bestcase = min(bestcase, currentTotal);   
-            worstcase = max(worstcase, currentTotal);     
-        }
+    //         bestcase = min(bestcase, currentTotal);   
+    //         worstcase = max(worstcase, currentTotal);     
+    //     }
 
-        cout << bestcase << " " << worstcase << '\n';        
+    //     cout << bestcase << " " << worstcase << '\n';        
 
-    }  /* end of while loop */
+    // }  /* end of while loop */
 
     return 0;   
 
 }  /* end of main() */
 
+
+/* test cases
+4
+3
+1 2 3
+3
+3 2 1
+3
+0 0 0
+3
+1 3 2
+
+
+
+1
+5 
+2 2 2 2 2  
+Expected and obtained = 1 1
+
+
+1
+5
+0 0 3 1 2
+Expected and obtained = 1 3
+
+1
+5
+1 4 3 5 2
+Expected and obtained = 1 4
+
+
+
+
+ */
 
 
 template <class A, class B>
