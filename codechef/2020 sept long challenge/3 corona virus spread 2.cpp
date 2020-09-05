@@ -98,6 +98,42 @@ int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);  
 
+    int t, n;   
+    cin >> t;  
+    while(t--){
+        unordered_map<int, int> hmap;       
+        int bestcase=1; int worstcase = 0;    
+        cin >> n;   
+        vi a(n); 
+
+        forn(i, n){
+            cin >> a[i];    
+            hmap[a[i]]++;    
+        } 
+
+        // calculating the best case  
+        int firstrunnerVelocity=a[0], counter=0;    
+        for(int i=0; i<firstrunnerVelocity; i++){ 
+            bestcase+=hmap[i];     
+        }
+
+        // calculating worst case
+        forn(i, n){
+            forn(j, a[i]){
+                if(hmap[a[i]] > 0){
+                    hmap[a[i]]--;     
+                }
+                worstcase+=hmap[j];    
+            }
+        }
+
+        worstcase == 0 ? worstcase = 1 : worstcase = worstcase;             
+
+        cout << bestcase << " " << worstcase << '\n';        
+
+    }  /* end of while loop */
+
+
 
     return 0;   
 
