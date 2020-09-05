@@ -97,8 +97,8 @@ bool willMeet(int bigger, int smaller, int j, int i){
     // cout << bigger << " " << smaller << " " << j << " " << i << '\n';      
     bool answer=false;    
 
-    forn(x, 20){    
-        j+=bigger;    
+    forn(x, INT32_MAX){             
+        j+=bigger;       
         i+=smaller;   
 
         if(i == j){
@@ -110,7 +110,8 @@ bool willMeet(int bigger, int smaller, int j, int i){
 
     }  /* end of forn */
 
-    return answer;     
+    // cout << " " << answer << '\n';    
+    return answer;        
 
 }  /* end of willMeet */
 
@@ -226,24 +227,6 @@ int main(){
 0 0 0
 3
 1 3 2
-
-
-
-1
-5 
-2 2 2 2 2  
-Expected and obtained = 1 1
-
-
-1
-5
-0 0 3 1 2
-Expected and obtained = 1 3
-
-1
-5
-1 4 3 5 2
-Expected and obtained = 1 4
 
 
 
