@@ -98,53 +98,89 @@ int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);  
 
+    // int t, n;   
+    // cin >> t;  
+    // while(t--){
+    //     unordered_map<int, pi> hmap;       
+    //     int bestcase=1; int worstcase = 1;    
+    //     cin >> n;   
+    //     vi a(n); 
+
+    //     forn(i, n){
+    //         cin >> a[i];    
+    //         hmap[a[i]].first++;
+    //         hmap[a[i]].second = 0;   // isAffected  
+    //     } 
+
+    //     // calculating the best case  
+    //     int firstrunnerVelocity=a[0], counter=0;    
+    //     for(int i=0; i<firstrunnerVelocity; i++){ 
+    //         bestcase+=hmap[i].first;        
+    //     }
+    //     // calculating worst case
+    //     forn(i, n){
+    //         if(hmap[a[i]].first > 0){  
+    //             hmap[a[i]].first--;     
+    //         }
+    //         forn(j, a[i]){ 
+    //             // cout << hmap[a[j]].first << '\n';
+    //             if(hmap[j].second == 0){   
+    //                 worstcase+=hmap[j].first;
+    //                 hmap[j].second = 1;   
+    //             }        
+    //         }
+    //     }
+
+    //     worstcase == 0 ? worstcase = 1 : worstcase = worstcase;                   
+
+    //     cout << bestcase << " " << worstcase << '\n';        
+
+    // }  /* end of while loop */
+
+
     int t, n;   
     cin >> t;  
     while(t--){
-        unordered_map<int, pi> hmap;       
-        int bestcase=1; int worstcase = 1;    
-        cin >> n;   
+        unordered_map<int, int> hmapFront, hmapBack;        
+        int bestcase=INT32_MAX; int worstcase = INT32_MIN;       
+    
+        cin >> n;         
         vi a(n); 
 
         forn(i, n){
             cin >> a[i];    
-            hmap[a[i]].first++;
-            hmap[a[i]].second = 0;   // isAffected  
+            hmapFront[a[i]]++;  
         } 
-
-        // calculating the best case  
-        int firstrunnerVelocity=a[0], counter=0;    
-        for(int i=0; i<firstrunnerVelocity; i++){ 
-            bestcase+=hmap[i].first;        
-        }
-        // calculating worst case
-        forn(i, n){
-            if(hmap[a[i]].first > 0){  
-                hmap[a[i]].first--;     
+        
+        // calculating worst case and best case
+        forn(i, n){    
+            hmapBack[a[i]]++;    
+            if(hmapFront[a[i]] > 0){  
+                hmapFront[a[i]]--;
             }
-            forn(j, a[i]){ 
-                cout << hmap[a[j]].first << '\n';
-                if(hmap[j].second == 0){   
-                    worstcase+=hmap[j].first;
-                    hmap[j].second = 1;   
-                }        
+            int currentTotal = 1;       
+            
+            if(a[i] < 5){
+                for(int j=a[i]+1; j<=5; j++){
+                    currentTotal += hmapBack[j];    
+                }
             }
-        }
+            
+            forn(j, a[i]){
+                currentTotal+= hmapFront[j];
+            }
 
-        worstcase == 0 ? worstcase = 1 : worstcase = worstcase;                   
+            bestcase = min(bestcase, currentTotal);   
+            worstcase = max(worstcase, currentTotal);     
+        }
 
         cout << bestcase << " " << worstcase << '\n';        
 
     }  /* end of while loop */
 
-
-
     return 0;   
 
 }  /* end of main() */
-
-
-
 
 
 
