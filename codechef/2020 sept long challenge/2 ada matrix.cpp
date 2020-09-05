@@ -135,15 +135,15 @@ int main(){
         int ans = 0;     
         for(int j=0; j<n; j++){
             if(transposed == false){
-                if(a[0][n-j-1] > a[n-j-1][0]){
+                if(a[n-j-1] > b[n-j-1]){
                     ans++;     
                     transposed = true;    
                 }
             }else{
-                if(a[n-j-1][0] > a[0][n-j-1] ){
-                    ans++;    
+                if(b[n-j-1] > a[n-j-1] ){
+                    ans++;          
                     transposed = false;    
-                }
+                }    
             }
         }   
 
