@@ -124,6 +124,10 @@ int main(){
         }else if(zeroes > ones && zeroes - ones != marks){
             cout << "NO\n";    
         }else{
+
+            int zeroesRequired, onesRequired;    
+            
+
             bool condition = true;      
             for(int i=k; i<n; i++){
                 if(str[i] == '0'){

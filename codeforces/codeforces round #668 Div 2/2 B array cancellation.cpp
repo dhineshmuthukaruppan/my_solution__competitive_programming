@@ -151,6 +151,16 @@ int main(){
 
 
 
+/* simple solution
+	int t;cin>>t;while(t--)
+	{
+		ll n,ans=0,maxi=INT_MAX;cin>>n;
+		for(ll i=1,x;i<=n;i++){cin>>x;ans+=x;maxi=min(maxi,ans);}
+		cout<<abs(maxi)<<endl;
+	}
+
+ */
+
 
 
 
