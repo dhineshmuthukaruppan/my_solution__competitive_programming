@@ -84,11 +84,81 @@ int gcdByLoop(int A, int B);
 int gcdEuclidean(int A, int B);  
 
 
+vpi getAdjacentPairs(vvi &a, vvi &visited, int i, int j){
+
+    vpi adjacentPairs;    
+
+    if(i > 0 && !visited[i-1][j]){
+        adjacentPairs.pb(make_pair(i-1, j));        
+    }
+
+    if(j > 0 && !visited[i][j-1]){
+        adjacentPairs.pb(make_pair(i, j-1)); 
+    }
+
+    if(i < a.size()-1 && !visited[i+1][j]){
+        adjacentPairs.pb(make_pair(i+1, j));    
+    }
+
+    if(j < a[0].size()-1 && !visited[i][j+1]){
+        adjacentPairs.pb(make_pair(i, j+1)); 
+    }    
+
+    return adjacentPairs;    
+
+}  /* end of getAdjacentPairs() */
+
+
+
+void breadthFirstTraversal(vvi &a, vvi &visited, int i, int j, vi &result){
+    int currentRiverSize = 0;    
+    queue<pi> vec;     
+    vec.push(make_pair(i, j));   
+    
+    while(!vec.empty()){
+        pi currentNode = vec.front();     
+        vec.pop();   
+        
+        int i = currentNode.first;    
+        int j = currentNode.second;    
+
+        if(visited[i][j]){continue; }
+        visited[i][j] = 1;    
+        if(a[i][j] == 0){continue; }
+
+        currentRiverSize++;    
+
+        vpi adjacentPairs = getAdjacentPairs(a, visited, i, j);    
+        for(auto i : adjacentPairs){
+            vec.push(i);     
+        }
+
+    }  /* end of while()* */
+
+    if(currentRiverSize > 0){result.pb(currentRiverSize); }
+
+} /* end of breadthFirstTraversal() */
+
+
 vi solve(vvi &a){
 
     vi result;   
 
+    int m = a.size();  int n = a[0].size();   
 
+    vvi visited(m, vi(n));   
+
+
+    for(int i=0; i<m; i++){
+        for(int j=0; j<n; j++){
+            if(visited[i][j]){
+                continue;    
+            }
+            breadthFirstTraversal(a, visited, i, j, result);         
+        }  
+    }    
+    
+    sortall(result);         
 
     return result;   
 
