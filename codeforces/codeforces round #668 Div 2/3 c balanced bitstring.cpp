@@ -98,49 +98,69 @@ int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);  
 
-    ll t, n;      
+    ll t, n, k;    
+    string str;    
     cin >> t;   
     while(t--){
-        cin >> n;   
-        vector<long long> a(n);   
-        forn(i, n){   
-            cin >> a[i];    
-        } 
+        cin >> n >> k;  
+        cin >> str;    
 
-        ll currentPositive=-1;    
-        for(ll i=0; i<n; i++){
-            if(currentPositive == -1 && a[i] <= 0){
-                continue;    
-            }else if(currentPositive == -1 && a[i] > 0){
-                currentPositive = i; 
-            }else if(currentPositive != -1 && a[i] < 0){
-                if(a[currentPositive] >= abs(a[i])){
-                    a[currentPositive]+=a[i];   
-                    a[i] = 0;
-                    if(a[currentPositive] == 0){
-                        i = currentPositive; 
-                        currentPositive = -1;    
-                    }    
+        int ones = 0; int zeroes = 0; int marks = 0;    
+
+        for(int i=0; i<k; i++){
+            if(str[i] == '0'){
+                zeroes++;
+            }else if(str[i] == '1'){
+                ones++;   
+            }else{
+                marks++;   
+            }
+        }
+
+        if(zeroes == ones && marks % 2 == 1){
+            cout << "NO\n";   
+        }else if(zeroes < ones && ones - zeroes != marks){
+            cout << "NO\n";
+        }else if(zeroes > ones && zeroes - ones != marks){
+            cout << "NO\n";    
+        }else{
+            bool condition = true;      
+            for(int i=k; i<n; i++){
+                if(str[i] == '0'){
+                    zeroes++;   
+                }else if(str[i] == '1'){
+                    ones++;   
                 }else{
-                    a[currentPositive] = 0;   
-                    a[i] = a[currentPositive] + a[i];    
-                    if(a[currentPositive] == 0){
-                        i = currentPositive;    
-                        currentPositive = -1;    
-                    }
+                    marks++;   
                 }
-            }
-        }
 
-        ll sum = 0;
-        for(ll i=0; i<n; i++){   
-            if(a[i] > 0){
-                sum += a[i];
-            }
-        }
+                if(str[i-k] == '0'){
+                    zeroes--;   
+                }else if(str[i-k] == '1'){
+                    ones--;   
+                }else{
+                    marks--;       
+                }
 
-        cout << sum << '\n';       
+                if(zeroes == ones && marks % 2 == 1){
+                    cout << "NO\n"; 
+                    condition = false; 
+                    break;  
+                }else if(zeroes < ones && ones - zeroes != marks){
+                    cout << "NO\n";
+                    condition = false; 
+                    break; 
+                }else if(zeroes > ones && zeroes - ones != marks){
+                    cout << "NO\n";
+                    condition = false;   
+                    break;        
+                }
 
+            }  /* end of for i loop */
+
+            if(condition){cout << "YES\n";}    
+        
+        }  /* end of final else block */
 
     }  /* end of while */
 
