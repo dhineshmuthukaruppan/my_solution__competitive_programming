@@ -92,28 +92,12 @@ int solve(){
 }  /* end of solve() */
 
 
-bool willMeet(int bigger, int smaller, int j, int i){
+bool checkNiceSwap(){
 
-    // cout << bigger << " " << smaller << " " << j << " " << i << '\n';      
-    bool answer=false;    
 
-    forn(x, INT32_MAX){             
-        j+=bigger;       
-        i+=smaller;   
 
-        if(i == j){
-            answer = true;   
-            break;     
-        }else if(j > i){    
-            break;    
-        }    
 
-    }  /* end of forn */
-
-    // cout << " " << answer << '\n';    
-    return answer;        
-
-}  /* end of willMeet */
+}  /* end of checkNiceSwap() */
 
 
 int main(){
@@ -122,116 +106,51 @@ int main(){
     cin.tie(NULL);  
 
 
-    // int t, n;   
-    // cin >> t;   
-    // while(t--){
+    int t, n;    
+    cin >> t;    
+    for(int i=0; i<t; i++){
+        cin >> n;    
 
-    //     cin >> n;    
-    //     vi a(n+1);   
-    //     for(int i=1; i<=n; i++){
-    //         cin >> a[i];   
-    //     }
+        if(n == 1 || n == 2){
+            cout << "0\n";
+        }else{
+            int leftHalfIndex, rightHalfIndex, leftHalfSum, rightHalfSum;    
+            if(n%2 == 0){
+                leftHalfIndex = n/2;   
+                rightHalfIndex = n - leftHalfIndex;    
+            }else{
+                leftHalfIndex = n/2 +1;    
+                rightHalfIndex = n - leftHalfIndex;    
+            }   
 
-    //     int bestcase = INT32_MAX; int worstcase = INT32_MIN;   
+            // cout << leftHalfIndex << " " << rightHalfIndex << '\n';   
 
-    //     for(int i=1; i<=n; i++){
+            leftHalfSum = (leftHalfIndex * (leftHalfIndex + 1))/ 2;   
+            rightHalfSum = ((n*(n+1))/2) - leftHalfSum;    
 
-    //         int currentTotal = 1;   
-            
-    //         for(int j=1; j<i; j++){
-    //             if(a[j] > a[i]){
-    //                 bool meetsCondition = willMeet(a[j], a[i], j, i);    
-    //                 if(meetsCondition){
-    //                     currentTotal++;    
-    //                 }    
-    //             }
-    //         }
+            // cout << leftHalfSum << " " << rightHalfSum << '\n';  
+            int counter = 0;   
+            for(int j=1; j<leftHalfIndex; j++){
+                bool niceSwapCondition = checkNiceSwap();    
+                if(niceSwapCondition){counter++; }
+            }
 
-    //         for(int j=i+1; j<=n; j++){
-    //             if(a[i] > a[j]){ 
-    //                 bool meetsCondition = willMeet(a[i], a[j], i, j);    
-    //                 if(meetsCondition){
-    //                     currentTotal++;   
-    //                 }    
-    //             }
-    //         }
+            cout << counter << '\n';    
 
-    //         // cout << currentTotal << '\n';        
-
-    //         bestcase = min(bestcase, currentTotal);   
-    //         worstcase = max(worstcase, currentTotal);     
-
-    //     }  /* end of for i loop */
-
-    //     cout << bestcase << " " << worstcase << '\n';      
-        
-    // }  /* end of while loop */
-
-
-    int t, n;   
-    cin >> t;  
-    while(t--){
-        unordered_map<int, int> hmapFront, hmapBack;        
-        int bestcase=INT32_MAX; int worstcase = INT32_MIN;       
-    
-        cin >> n;         
-        vi a(n); 
-
-        int velocityMax = INT32_MIN;    
-        forn(i, n){
-            cin >> a[i];    
-            hmapFront[a[i]]++;  
-            velocityMax = max(velocityMax, a[i]);     
         } 
-        
-        // calculating worst case and best case
-        forn(i, n){    
-            hmapBack[a[i]]++;    
-            if(hmapFront[a[i]] > 0){  
-                hmapFront[a[i]]--;
-            }
-            int currentTotal = 1;       
-            
-            if(a[i] < velocityMax){    
-                for(int j=a[i]+1; j<=velocityMax; j++){
-                    currentTotal += hmapBack[j];       
-                }
-            }
-            
-            forn(j, a[i]){
-                currentTotal+= hmapFront[j];
-            }
 
-            // cout << currentTotal << '\n';      
+    }
 
-            bestcase = min(bestcase, currentTotal);   
-            worstcase = max(worstcase, currentTotal);     
-        }
 
-        cout << bestcase << " " << worstcase << '\n';        
 
-    }  /* end of while loop */
 
     return 0;   
 
 }  /* end of main() */
 
 
-/* test cases
-4
-3
-1 2 3
-3
-3 2 1
-3
-0 0 0
-3
-1 3 2
 
 
-
-
- */
 
 
 template <class A, class B>
