@@ -93,6 +93,17 @@ int solve(){
 
 
 
+int findNextCurrentPositive(const vector<long long> &a, int currentPositive){
+    // cout << "current positive " << currentPositive << '\n';                
+    while(a[currentPositive] <= 0 && currentPositive < a.size()){
+        currentPositive++;                
+    }  
+    return currentPositive;           
+
+}  /* end of findNextCurrentPositive() */
+
+
+
 int main(){
 
     ios_base::sync_with_stdio(false);
@@ -107,26 +118,57 @@ int main(){
             cin >> a[i];    
         } 
 
+        // ll currentPositive=-1;    
+        // for(ll i=0; i<n; i++){
+
+        //     if(currentPositive == -1 && a[i] <= 0){
+        //         continue;    
+        //     }else if(currentPositive == -1 && a[i] > 0){
+        //         currentPositive = i; 
+        //     }else if(currentPositive != -1 && a[i] < 0){
+        //         if(a[currentPositive] >= abs(a[i])){
+        //             a[currentPositive]+=a[i];   
+        //             a[i] = 0;
+        //             if(a[currentPositive] == 0){
+        //                 i = currentPositive; 
+        //                 currentPositive = -1;    
+        //             }    
+        //         }else{
+        //             a[i] = a[currentPositive] + a[i];
+        //             a[currentPositive] = 0;      
+        //             if(a[currentPositive] == 0){
+        //                 i = currentPositive;    
+        //                 currentPositive = -1;    
+        //             }
+        //         }
+        //     }
+        // }
+
         ll currentPositive=-1;    
         for(ll i=0; i<n; i++){
+            // cout << i << " - " << a << '\n';    
+            // cout << currentPositive << '\n';   
+            // cout << a[currentPositive] << '\n';     
+
             if(currentPositive == -1 && a[i] <= 0){
                 continue;    
             }else if(currentPositive == -1 && a[i] > 0){
                 currentPositive = i; 
             }else if(currentPositive != -1 && a[i] < 0){
-                if(a[currentPositive] >= abs(a[i])){
-                    a[currentPositive]+=a[i];   
-                    a[i] = 0;
-                    if(a[currentPositive] == 0){
-                        i = currentPositive; 
-                        currentPositive = -1;    
-                    }    
-                }else{
-                    a[currentPositive] = 0;   
-                    a[i] = a[currentPositive] + a[i];    
-                    if(a[currentPositive] == 0){
-                        i = currentPositive;    
-                        currentPositive = -1;    
+                if(currentPositive < i){
+                    if(a[currentPositive] >= abs(a[i])){
+                        a[currentPositive]+=a[i];   
+                        a[i] = 0;
+                        if(a[currentPositive] == 0){
+
+                            currentPositive = findNextCurrentPositive(a, currentPositive); 
+                        }       
+                    }else{ 
+                        a[i] = a[currentPositive] + a[i];
+                        a[currentPositive] = 0;      
+                        if(a[currentPositive] == 0){
+                            currentPositive = findNextCurrentPositive(a, currentPositive); 
+                        }
                     }
                 }
             }
@@ -160,9 +202,6 @@ int main(){
 	}
 
  */
-
-
-
 
 template <class A, class B>
 ostream& operator << (ostream &out, const pair<A, B> &a){
