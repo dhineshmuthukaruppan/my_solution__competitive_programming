@@ -65,6 +65,7 @@ typedef vector<pl>	    vpl;
 typedef vector<vi>	    vvi;
 typedef vector<vl>	    vvl;
 
+
 template <class A, class B>
 ostream& operator << (ostream &out, const pair<A, B> &a);
 
@@ -84,10 +85,27 @@ int gcdByLoop(int A, int B);
 int gcdEuclidean(int A, int B);  
 
 
-int solve(){
+void solve(vi &a, int target){
+    cout << "hi";   
 
+    int i = 0;  int j = a.size() -1;   
 
-    return 0;   
+    while(i < j){
+
+        while(j == target){
+            j--;   
+        }   
+        while(i != target){
+            i++;   
+        }
+
+        if(i < j){
+            swap(a[i], a[j]);  
+            i++; 
+            j--;      
+        }
+        cout << a << '\n';   
+    }    
 
 }  /* end of solve() */
 
@@ -98,15 +116,10 @@ int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);  
 
-    ll t, n, k;    
-    string str;    
-    cin >> t;   
-    while(t--){
-        cin >> n >> k;  
-        cin >> str;    
 
-
-    }  /* end of while */
+    vi a {2, 1, 2, 2, 2, 3, 4, 2};    
+    solve(a, 2);   
+    cout << a << '\n';        
 
 
     return 0;   
