@@ -160,7 +160,6 @@ int main(){
                         a[currentPositive]+=a[i];   
                         a[i] = 0;
                         if(a[currentPositive] == 0){
-
                             currentPositive = findNextCurrentPositive(a, currentPositive); 
                         }       
                     }else{ 
@@ -168,6 +167,7 @@ int main(){
                         a[currentPositive] = 0;      
                         if(a[currentPositive] == 0){
                             currentPositive = findNextCurrentPositive(a, currentPositive); 
+                            i = i-1;    
                         }
                     }
                 }
