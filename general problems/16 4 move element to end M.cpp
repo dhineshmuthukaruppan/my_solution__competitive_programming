@@ -86,17 +86,16 @@ int gcdEuclidean(int A, int B);
 
 
 void solve(vi &a, int target){
-    cout << "hi";   
 
     int i = 0;  int j = a.size() -1;   
 
     while(i < j){
 
-        while(j == target){
-            j--;   
+        while(a[j] == target && j >=0){
+            j--;      
         }   
-        while(i != target){
-            i++;   
+        while(a[i] != target && i < a.size()){   
+            i++;          
         }
 
         if(i < j){
@@ -104,7 +103,7 @@ void solve(vi &a, int target){
             i++; 
             j--;      
         }
-        cout << a << '\n';   
+
     }    
 
 }  /* end of solve() */
