@@ -118,37 +118,8 @@ int main(){
             cin >> a[i];    
         } 
 
-        // ll currentPositive=-1;    
-        // for(ll i=0; i<n; i++){
-
-        //     if(currentPositive == -1 && a[i] <= 0){
-        //         continue;    
-        //     }else if(currentPositive == -1 && a[i] > 0){
-        //         currentPositive = i; 
-        //     }else if(currentPositive != -1 && a[i] < 0){
-        //         if(a[currentPositive] >= abs(a[i])){
-        //             a[currentPositive]+=a[i];   
-        //             a[i] = 0;
-        //             if(a[currentPositive] == 0){
-        //                 i = currentPositive; 
-        //                 currentPositive = -1;    
-        //             }    
-        //         }else{
-        //             a[i] = a[currentPositive] + a[i];
-        //             a[currentPositive] = 0;      
-        //             if(a[currentPositive] == 0){
-        //                 i = currentPositive;    
-        //                 currentPositive = -1;    
-        //             }
-        //         }
-        //     }
-        // }
-
         ll currentPositive=-1;    
-        for(ll i=0; i<n; i++){
-            // cout << i << " - " << a << '\n';    
-            // cout << currentPositive << '\n';   
-            // cout << a[currentPositive] << '\n';     
+        for(ll i=0; i<n; i++){ 
 
             if(currentPositive == -1 && a[i] <= 0){
                 continue;    
