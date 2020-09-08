@@ -98,8 +98,8 @@ class BST{
         Treenode *root;   
         BST();
         ~BST();   
-        void insert();    
-        Treenode* search();    
+        void insert(int key);       
+        Treenode* search(int key);    
         Treenode* Delete();     
         void createFromPreOrderTraversal(vi &a);     
         void preOrderTraversal(Treenode *p);      
@@ -118,15 +118,64 @@ BST::~BST(){
 }  /* END OF destructor */
 
 
-void BST::insert(){
+void BST::insert(int key){
 
+    Treenode *p, *t;   
+
+    if(root == nullptr){
+        t = new Treenode();   
+        t->data = key; 
+        t->lchild = t->rchild = nullptr;    
+
+        root = t;    
+        return;  
+    }
+
+    t = root;   
+
+    while(t != nullptr){
+        p = t;    
+
+        if(key < p->data){
+            t = t->lchild;   
+        }else if(key >= p->data){
+            t = t->rchild;   
+        }
+
+    }
+
+    t = new Treenode();   
+    t->data = key;    
+    t->lchild = t->rchild = nullptr;    
+
+    if(key < p->data){  
+        p->lchild = t;    
+
+    }else if(key >= p->data){
+        p->rchild = t;    
+    }   
 
 }  /* end of insert() */
 
-Treenode* BST::search(){
-    Treenode *result;    
+Treenode* BST::search(int key){   
 
-    return result;    
+    if(root == nullptr){
+        return nullptr;    
+    }
+
+    Treenode *t = root;    
+
+    while(t != nullptr){
+        if(key < t->data){
+            t = t->lchild;    
+        }else if(key > t->data){
+            t = t->rchild;    
+        }else if(key == t->data){
+            return t; 
+        }
+    }
+
+    return nullptr;    
 
 }  /* end of search() */
 
@@ -135,7 +184,7 @@ Treenode* Delete(){
 
 
     return p;    
-    
+
 }  /* end of Delete() */
 
 
@@ -192,10 +241,25 @@ void BST::preOrderTraversal(Treenode *p){
 }  /* end of preOrderTraversal() */
 
 
+bool validateBSTHelper(Treenode *t, int minValue, int maxValue){
 
-int solve(){
+    if(t == nullptr){         
+        return true;    
+    }else if(t->lchild == nullptr && t->rchild == nullptr){
+        return true;    
+    }else if(t->data < minValue || t->data >= maxValue ){
+        return false;          
+    }else{
+        return validateBSTHelper(t->lchild, minValue, t->data) && validateBSTHelper(t->rchild, t->data, maxValue);       
+    }
 
-    return 0;   
+}  /* end of validateBSTHelper() */  
+
+
+
+bool validateBST(Treenode* t){
+
+    return validateBSTHelper(t, INT32_MIN, INT32_MAX);         
 
 }  /* end of solve() */
 
@@ -209,15 +273,18 @@ int main(){
 
     BST t;   
 
-    vi a{10, 5, 2, 1, 5, 15, 13, 14, 22};    
+    // vi a{10, 5, 2, 1, 5, 15, 13, 14, 22};  
+    vi a{10, 10, 10, 10};       
     t.createFromPreOrderTraversal(a);          
-
+    t.insert(25);   
 
     t.preOrderTraversal(t.root);    
 
+    bool result = validateBST(t.root);       
+    cout << "\nisBSTvalid " << result << '\n';     
 
 
-    return 0;   
+    return 0;      
 
 }  /* end of main() */
 
