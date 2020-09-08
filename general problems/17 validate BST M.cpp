@@ -255,13 +255,28 @@ bool validateBSTHelper(Treenode *t, int minValue, int maxValue){
 
 }  /* end of validateBSTHelper() */  
 
-
-
 bool validateBST(Treenode* t){
 
     return validateBSTHelper(t, INT32_MIN, INT32_MAX);         
 
 }  /* end of solve() */
+
+
+void invertBinaryTree(Treenode *t){
+
+    if(t == nullptr){
+        return;   
+    }
+
+    // swap left and right child
+    Treenode *temp = t->lchild;         
+    t->lchild = t->rchild;   
+    t->rchild = temp;     
+
+    invertBinaryTree(t->lchild);         
+    invertBinaryTree(t->rchild);     
+
+}  /* end of invertBinaryTree() */
 
 
 
@@ -273,16 +288,18 @@ int main(){
 
     BST t;   
 
-    // vi a{10, 5, 2, 1, 5, 15, 13, 14, 22};  
-    vi a{10, 10, 10, 10};       
-    t.createFromPreOrderTraversal(a);          
-    t.insert(25);   
+    vi a{10, 5, 2, 1, 5, 15, 13, 14, 22};             
+    // vi a{10, 10, 10, 10};               
+    t.createFromPreOrderTraversal(a);                  
+    // t.insert(25);   
 
-    t.preOrderTraversal(t.root);    
+    t.preOrderTraversal(t.root);        
 
-    bool result = validateBST(t.root);       
-    cout << "\nisBSTvalid " << result << '\n';     
+    bool result = validateBST(t.root);             
+    cout << "\nisBSTvalid " << result << '\n';            
 
+    invertBinaryTree(t.root);    
+    t.preOrderTraversal(t.root);        
 
     return 0;      
 
