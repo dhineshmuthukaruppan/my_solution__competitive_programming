@@ -84,24 +84,25 @@ int gcdByPrimeFactors(int A, int B); // TODO
 int gcdByLoop(int A, int B);   
 int gcdEuclidean(int A, int B);  
 
-/* Dynamic programming O(n) time and O(1) space complexity */
-int solve(vi &a){    
 
-    if(a.size() == 0){
-        return 0;   
-    }else if(a.size() == 1){
-        return a[0];
-    }else{
-        int first = a[0];   
-        int second = max(a[0], a[1]);    
+int solve(int amount,const vi &denoms){
 
-        for(int i=2; i<a.size(); i++){
-            int current = max(second, first + a[i]);       
-            first = second; 
-            second = current;   
+    vi ways(amount+1);    
+    ways[0] = 1;    
+
+    for(int i=0; i<denoms.size(); i++){
+        for(int j=1; j<=amount; j++){
+
+            if(denoms[i] <= j){    
+                ways[j] += ways[j-denoms[i]]; 
+            }
+
         }
-        return second;    
-    }
+        cout << ways << '\n';     
+    }  /* end of for i loop */
+
+
+    return ways[amount];       
 
 }  /* end of solve() */
 
@@ -112,10 +113,9 @@ int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);  
 
-    vi a{7, 10, 12, 7, 9, 14};    
-    int result = solve(a);   
-    cout << result << '\n';   
-
+    // int result = solve(10, {1, 5, 10, 25});   
+    int result = solve(12, {1, 5, 10});          
+    cout << result << '\n';        
 
     return 0;   
 
