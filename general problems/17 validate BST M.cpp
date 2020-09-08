@@ -85,8 +85,115 @@ int gcdByLoop(int A, int B);
 int gcdEuclidean(int A, int B);  
 
 
-int solve(){
+class Treenode{
+    public:
+        int data; 
+        Treenode *lchild;    
+        Treenode *rchild;    
+};   
 
+
+class BST{
+    public:
+        Treenode *root;   
+        BST();
+        ~BST();   
+        void insert();    
+        Treenode* search();    
+        Treenode* Delete();     
+        void createFromPreOrderTraversal(vi &a);     
+        void preOrderTraversal(Treenode *p);      
+
+};   
+
+BST::BST(){
+    root = nullptr;     
+
+}  /* end of BST::BST() */
+
+
+BST::~BST(){
+
+
+}  /* END OF destructor */
+
+
+void BST::insert(){
+
+
+}  /* end of insert() */
+
+Treenode* BST::search(){
+    Treenode *result;    
+
+    return result;    
+
+}  /* end of search() */
+
+Treenode* Delete(){
+    Treenode *p;    
+
+
+    return p;    
+    
+}  /* end of Delete() */
+
+
+void BST::createFromPreOrderTraversal(vi &a){
+
+    stack<Treenode*> stk;    
+
+    Treenode *p, *t;    
+    int i=0;   
+
+    root = new Treenode();   
+    root->data = a[i++];   
+    root->lchild = root->rchild = nullptr;    
+
+    p = root;   
+
+    while(i < a.size()){
+
+        if(a[i] < p->data){
+            t = new Treenode();   
+            t->data = a[i++];   
+            t->lchild = t->rchild = nullptr;    
+
+            p->lchild = t;    
+            stk.push(p);   
+            p = p->lchild;   
+
+        }else if(a[i] >= p->data && a[i] < (stk.empty() ? 32768 : (stk.top())->data)){
+            t = new Treenode();    
+            t->data = a[i++];   
+            t->lchild = t->rchild = nullptr;    
+
+            p->rchild = t;   
+            p = p->rchild;    
+
+        }else{
+            p = stk.top();   
+            stk.pop();    
+        }
+
+    }  /* end of while loop */
+
+}  /* createFromPreOrderTraversal() */
+
+
+void BST::preOrderTraversal(Treenode *p){
+    
+    if(p != NULL){
+        cout << p->data << " ";  
+        preOrderTraversal(p->lchild);  
+        preOrderTraversal(p->rchild);     
+    }
+
+}  /* end of preOrderTraversal() */
+
+
+
+int solve(){
 
     return 0;   
 
@@ -98,6 +205,16 @@ int main(){
 
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);  
+
+
+    BST t;   
+
+    vi a{10, 5, 2, 1, 5, 15, 13, 14, 22};    
+    t.createFromPreOrderTraversal(a);          
+
+
+    t.preOrderTraversal(t.root);    
+
 
 
     return 0;   
