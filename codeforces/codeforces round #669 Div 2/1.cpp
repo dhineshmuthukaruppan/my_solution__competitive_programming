@@ -85,24 +85,10 @@ int gcdByLoop(int A, int B);
 int gcdEuclidean(int A, int B);  
 
 
-int solve(int amount,const vi &denoms){
-
-    vi ways(amount+1);    
-    ways[0] = 1;    
-
-    for(int i=0; i<denoms.size(); i++){
-        for(int j=1; j<=amount; j++){
-
-            if(denoms[i] <= j){    
-                ways[j] += ways[j-denoms[i]]; 
-            }
-
-        }
-        cout << ways << '\n';     
-    }  /* end of for i loop */
+int solve(){
 
 
-    return ways[amount];       
+    return 0;   
 
 }  /* end of solve() */
 
@@ -113,9 +99,6 @@ int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);  
 
-    // int result = solve(10, {1, 5, 10, 25});   
-    int result = solve(10, {2, 1});             
-    cout << result << '\n';        
 
     return 0;   
 
