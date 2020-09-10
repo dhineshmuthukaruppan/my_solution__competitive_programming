@@ -85,10 +85,33 @@ int gcdByLoop(int A, int B);
 int gcdEuclidean(int A, int B);  
 
 
-int solve(){
+int solve(string &str1, string &str2){    
 
+    vvi a(str1.size() + 1, vi(str2.size()+1));     
 
-    return 0;   
+    for(int i=0; i<str1.size() + 1; i++){
+        a[i][0] = i;     
+    }
+
+    for(int i=0; i<str2.size() +1; i++){
+        a[0][i] = i;    
+    }
+
+    for(int i=1; i<str1.size() + 1; i++){
+        for(int j=1; j<str2.size() +1; j++){
+
+            if(str1[i-1] == str2[j-1]){
+                a[i][j] = a[i-1][j-1];     
+            }else{
+                a[i][j] = min(min(a[i-1][j]+1, a[i][j-1]+1), a[i-1][j-1] + 1);
+            }
+
+        }
+    }
+
+    cout << a << '\n';     
+
+    return a[str1.size()][str2.size()];         
 
 }  /* end of solve() */
 
@@ -98,6 +121,14 @@ int main(){
 
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);  
+
+    string str1 = "abc";    
+    string str2 = "yabd";    
+    int result = solve(str1, str2);    
+    cout << result << '\n';    
+    
+
+
 
 
     return 0;   
