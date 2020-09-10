@@ -85,12 +85,33 @@ int gcdByLoop(int A, int B);
 int gcdEuclidean(int A, int B);  
 
 
-int solve(){
+bool solve(vi &a){
 
+    int noOfElementsVisited = 0;   
+    int currentIdx = 0;   
+    int n = a.size();     
 
-    return 0;   
+    while(noOfElementsVisited < a.size()){ 
 
-}  /* end of solve() */
+        cout << currentIdx << " " << a[currentIdx] << '\n';   
+
+        if(noOfElementsVisited > 0 && currentIdx == 0){
+            return false;    
+        }
+
+        noOfElementsVisited+=1;    
+        currentIdx = (currentIdx + a[currentIdx]) % n;                       
+        if(currentIdx < 0){               
+            currentIdx += n;         
+        }             
+
+    }  /* end of while loop() */
+
+    cout << currentIdx << '\n';       
+
+    return currentIdx == 0;        
+
+}  /* end of solve() */     
 
 
 
@@ -98,6 +119,10 @@ int main(){
 
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);  
+
+    vi a{2, 3, 1, -4, -4, 2};    
+    bool hasSinglecycle = solve(a);   
+    cout << hasSinglecycle << '\n';   
 
 
     return 0;   
