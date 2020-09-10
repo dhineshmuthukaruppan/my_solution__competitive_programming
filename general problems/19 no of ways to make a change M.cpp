@@ -113,8 +113,8 @@ int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);  
 
-    // int result = solve(10, {1, 5, 10, 25});   
-    int result = solve(10, {2, 1});             
+    int result = solve(10, {1, 5, 10, 25});   
+    // int result = solve(10, {1, 2});                 
     cout << result << '\n';        
 
     return 0;   

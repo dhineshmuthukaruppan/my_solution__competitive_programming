@@ -85,12 +85,27 @@ int gcdByLoop(int A, int B);
 int gcdEuclidean(int A, int B);  
 
 
-int solve(){
+int solve(vi denoms, int target){   
 
+    vi a(target+1, 1e9);    
+    a[0] = 0;    
+    cout << a << '\n';   
+    for(int i=0; i<denoms.size(); i++){
 
-    return 0;   
+        for(int j=0; j<a.size(); j++){
 
-}  /* end of solve() */
+            if(denoms[i] <= j){
+                a[j] = min(a[j], a[j - denoms[i]]+1);        
+            }
+
+        }
+
+        cout << a << '\n';
+    }
+
+    return a[target] != 1e9 ? a[target] : -1;                    
+
+}  /* end of solve() */         
 
 
 
@@ -100,80 +115,10 @@ int main(){
     cin.tie(NULL);  
 
 
-    int t, n;    
-    cin >> t;   
-    while(t--){
-
-        cin >> n;    
-        vi a(n);
-        int evensum=0, oddsum=0;         
-        forn(i, n){
-            cin >> a[i];
-
-            if(i%2 == 0){
-                evensum +=a[i];
-            }else{
-                oddsum += a[i];    
-            }   
-
-        }
-
-        int diff = evensum - oddsum;    
-
-        if(diff == 0){
-            // answer found and don't have to remove anything
-            cout << a.size() << '\n';   
-            forn(i, n){
-                cout << a[i] << ' ';    
-            }    
-            cout << '\n';    
-        }else if(diff > 0){
-            // remove diff ones in even element
-            vi newVector;   
-            forn(i, n){    
-                if(i%2 == 0){
-                    if(diff > 0 && a[i] == 1){   
-                        diff--; 
-                    }else{  
-                        newVector.push_back(a[i]);     
-                    }
-                }else{
-                    newVector.push_back(a[i]); 
-                }
-            }
-
-            cout << newVector.size() << '\n';   
-            forn(i, newVector.size()){
-                cout << newVector[i] << ' ';    
-            }    
-            cout << '\n';  
-
-        }else{
-            // remove diff ones odd elements
-            diff = abs(diff);   
-
-            vi newVector;   
-            forn(i, n){    
-                if(i%2 == 1){
-                    if(diff > 0 && a[i] == 1){   
-                        diff--; 
-                    }else{
-                        newVector.push_back(a[i]);     
-                    }
-                }else{
-                    newVector.push_back(a[i]);       
-                }
-            }
-
-            cout << newVector.size() << '\n';   
-            forn(i, newVector.size()){
-                cout << newVector[i] << ' ';       
-            }    
-            cout << '\n';       
-
-        }
-
-    }  /* end of while */
+    vi a{1, 2, 4};    
+    // int result = solve(a, 6);    
+    int result = solve({2, 4}, 7);       
+    cout << result << '\n';    
 
 
     return 0;   
@@ -181,52 +126,6 @@ int main(){
 }  /* end of main() */
 
 
-
-
-/* 
-    simple solution 1
-    =================
-
-	while(t--) {
-		int n; cin >> n;
-		vector<int> A;
-		for(int i = 0; i < n; i += 2) {
-			int x, y; cin >> x >> y;
-			if(x == y) {
-				A.push_back(x);
-				A.push_back(y);
-			} else A.push_back(0);
-		}
-		cout << A.size() << "\n";
-		for(int i : A) cout << i << " ";
-		cout << "\n";
-	}
-
-
-    simple solution 2
-    =================
-    cin>>t;
-	while(t--)
-	{
-		cin>>n;
-		m=0;
-		for(int i=0;i<n;i++)cin>>a[i],m+=a[i];
-		if(m*2>n)
-		{
-			m-=(m%2);
-			cout<<m<<endl;
-			for(int i=0;i<m;i++)cout<<1<<" ";
-			cout<<endl;
-		}
-		else
-		{
-			cout<<n-m<<endl;
-			for(int i=0;i<n-m;i++)cout<<0<<" ";
-			cout<<endl;
-		}
-	}
-
- */
 
 
 
@@ -376,6 +275,9 @@ int gcdEuclidean(int A, int B){
         return A;   
     return gcdEuclidean(B, A % B);       
 }  /* end of gcdEuclidean() */  
+
+
+
 
 
 
