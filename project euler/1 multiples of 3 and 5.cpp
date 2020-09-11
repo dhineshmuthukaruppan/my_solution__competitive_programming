@@ -85,19 +85,7 @@ int gcdByLoop(int A, int B);
 int gcdEuclidean(int A, int B);  
 
 
-int solve(){
-
-
-    return 0;   
-
-}  /* end of solve() */
-
-
-
-int main(){
-
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);  
+int bruteForce(){
 
     int sum = 0;   
     for(int i=3; i<1000; i++){
@@ -106,7 +94,37 @@ int main(){
         }
     }
 
-    cout << sum << '\n';  
+    return sum;   // 233168
+
+}  /* end of bruteForce() */
+
+
+int sumDivisibleByN(int n, int target){
+
+    int N = target/n;    
+
+    int result = n * (N * (N + 1))/2;     
+
+    return result; 
+
+}  /* end of sumDivisibleByN() */
+
+int geometricApproach(){
+    int result = sumDivisibleByN(3, 999) + sumDivisibleByN(5, 999) - sumDivisibleByN(15, 999);    
+    return result;  
+}
+
+
+
+
+int main(){
+
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);  
+
+    int result = geometricApproach();  
+    cout << result << '\n';               
+
 
     return 0;   
 

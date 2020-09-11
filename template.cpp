@@ -83,6 +83,7 @@ vi allPrimeFactors(int A);   // TODO
 int gcdByPrimeFactors(int A, int B); // TODO
 int gcdByLoop(int A, int B);   
 int gcdEuclidean(int A, int B);  
+int lcm(int A, int B);      
 
 
 int solve(){
@@ -256,6 +257,9 @@ int gcdEuclidean(int A, int B){
 }  /* end of gcdEuclidean() */  
 
 
+int lcm(int A, int B){
+    return (A*B) / gcdEuclidean(A, B);     
+}  /* end of lcm */
 
 
 
