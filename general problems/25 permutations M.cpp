@@ -105,6 +105,37 @@ void permutation(string &str, int i, vector<string> &result){
 
 
 
+vector<char> removeIFromVec(vector<char> a, int i){
+
+    auto it = a.begin() + i;    
+    a.erase(it);   
+
+    return a;   
+
+}  /* end of removeIFromVec */
+
+
+
+void permutation1(vector<char> a, string &perm, vector<string> &result){
+
+    if(a.empty()){ 
+        result.pb(perm); 
+    }else{
+
+        for(int i=0; i<a.size(); i++){
+            char currentChar = a[i];  
+            string newperm = perm + currentChar;  
+            permutation1(removeIFromVec(a, i), newperm, result);    
+        }   
+
+    }
+
+}  /* end of permutation1() */
+
+
+
+
+
 int main(){
 
     ios_base::sync_with_stdio(false);
@@ -115,6 +146,14 @@ int main(){
     vector<string> result;   
     permutation(str, 0, result);              
     cout << result << '\n'; 
+
+
+    vector<char> a {'a', 'b', 'c'}; 
+    vector<string> result1;    
+    string perm = "";  
+    permutation1(a, perm, result1);       
+    cout << result1 << '\n';        
+
 
 
     return 0;   
