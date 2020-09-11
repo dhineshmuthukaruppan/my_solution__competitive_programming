@@ -113,6 +113,7 @@ void powerset1(vector<char> &vec, int i, string cur, vector<string> &result){
     powerset1(vec, i+1, cur + vec[i], result);   
     powerset1(vec, i+1, cur, result);     
 
+
 }  /* end of powerset1() */
 
 

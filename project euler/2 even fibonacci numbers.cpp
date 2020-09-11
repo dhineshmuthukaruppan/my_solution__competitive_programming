@@ -86,19 +86,61 @@ int gcdEuclidean(int A, int B);
 int lcm(int A, int B);      
 
 
-int solve(){
+ll fibonacci(){
+
+    ll fi0 = 0;   
+    ll fi1 = 1;    
+
+    ll result = 0;   
+    ll summed = 0;   
+
+    while(result < 4e6){
+        if((result & 1) == 0){
+            summed += result;    
+        }
+
+        result = fi0 + fi1;   
+        fi0 = fi1;    
+        fi1 = result;   
+
+    }    
+
+    return summed;   
+
+}  /* end of fibonacci() */
 
 
-    return 0;   
+ll fibonacci1(){
 
-}  /* end of solve() */
+    ll fi3 = 2;   
+    ll fi6 = 0;   
+    ll result = 2;    
+    ll summed = 0;   
 
+    while(result < 4e6){
+        summed += result;   
+        result = 4 * fi3 + fi6;   
+        fi6 = fi3;     
+        fi3 = result;   
+        
+    }
+
+    return summed; 
+
+}
 
 
 int main(){
 
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);  
+
+
+    ll result = fibonacci();
+    cout << result << '\n';    
+
+    ll result1 = fibonacci1();   
+    cout << result1 << '\n';    
 
 
     return 0;   
