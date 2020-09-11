@@ -141,13 +141,49 @@ void LL::insert(int value){
 
 int LL::removeNFromEnd(int position){
 
-    return 0;    
-}
+    Node *first, *second, *prev;    
+
+    first = second = root;   
+    prev = nullptr;    
+
+    int counter = 1; 
+
+    while(counter <= position && second != nullptr){   
+        counter +=1;   
+        second = second->next;   
+    }
+
+    // this means we have to remove head node
+    if(second == nullptr){  
+        Node *temp = root;   
+        root = root->next;      
+        delete temp;        
+    }      
+
+    while(second != nullptr){
+        second = second->next;  
+        prev = first;    
+        first = first->next;    
+    }
+
+    prev->next = first->next;   
+    int deletedData = first->data; 
+    delete first;  
+
+    return deletedData;        
+
+}   
 
 
 void LL::print(){
 
+    Node *temp = root;   
 
+    while(temp != nullptr){
+        cout << temp->data << " -> "; 
+        temp = temp->next;     
+    }
+    cout << '\n';   
 }
 
 
@@ -171,7 +207,6 @@ int main(){
     l.removeNFromEnd(4);    
 
     l.print();   
-    
 
     return 0;   
 
