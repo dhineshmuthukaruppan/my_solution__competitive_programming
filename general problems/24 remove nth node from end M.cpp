@@ -154,11 +154,13 @@ int LL::removeNFromEnd(int position){
     }
 
     // this means we have to remove head node
-    if(second == nullptr){  
+    if(second == nullptr){    
         Node *temp = root;   
         root = root->next;      
-        delete temp;        
-    }      
+        int deletedData = temp->data;  
+        // free(temp);        
+        return deletedData;           
+    }           
 
     while(second != nullptr){
         second = second->next;  
@@ -203,9 +205,8 @@ int main(){
     l.insert(7);
     l.insert(8);
     l.insert(9);   
-
-    l.removeNFromEnd(4);    
-
+    
+    l.removeNFromEnd(10);            
     l.print();   
 
     return 0;   
