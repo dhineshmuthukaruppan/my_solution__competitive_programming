@@ -103,6 +103,19 @@ void powerset(vector<char> vec, vector<string> &result){
 }  /* end of power */
 
 
+void powerset1(vector<char> &vec, int i, string cur, vector<string> &result){
+    int n = vec.size();     
+    if(i == n){
+        result.pb(cur); 
+        return;   
+    }   
+
+    powerset1(vec, i+1, cur + vec[i], result);   
+    powerset1(vec, i+1, cur, result);     
+
+}  /* end of powerset1() */
+
+
 
 
 int main(){
@@ -115,6 +128,12 @@ int main(){
     powerset(vec, result);    
     cout << result << '\n';    
     
+
+    vector<char> vec1 {'a', 'b', 'c'};    
+    vector<string> result1;    
+    string cur = "";
+    powerset1(vec1, 0, cur, result1);    
+    cout << result1 << '\n';       
 
 
     return 0;   
