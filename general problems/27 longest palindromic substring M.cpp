@@ -117,7 +117,7 @@ string solve(string &str){
             int length = 2;    
 
             prev--; 
-            next++;    
+            next;      
             while(prev >=0 && next<str.size() && str[prev] == str[next]){
                 length+=2;    
                 prev--;   
