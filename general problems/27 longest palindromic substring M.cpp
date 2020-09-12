@@ -94,14 +94,40 @@ string solve(string &str){
         string current = "";  
         current += str[i];    
 
-
         int prev = i - 1;
         int next = i + 1;       
         if(prev >=0 && next < str.size() && str[prev] == str[next]){
+            int length = 3; 
 
+            prev--;
+            next++;   
+            while(prev >=0 && next<str.size() && str[prev] == str[next]){
+                length+=2;    
+                prev--;   
+                next++;    
+            }
+
+            prev+=1;   
+            if(length > result.size()){
+                result = str.substr(prev, length);    
+            }
 
         }else if(prev>=0 && str[i] == str[prev]){
 
+            int length = 2;    
+
+            prev--; 
+            next++;    
+            while(prev >=0 && next<str.size() && str[prev] == str[next]){
+                length+=2;    
+                prev--;   
+                next++;   
+            }
+
+            prev+=1;   
+            if(length > result.size()){
+                result = str.substr(prev, length);      
+            }     
 
         }else{
             if(current.size() > result.size()){
@@ -123,8 +149,7 @@ int main(){
     cin.tie(NULL);  
 
 
-    // string str = "abaxyzzyxf";    
-    string str = "a";     
+    string str = "abaxyzzyxf";      
     string result = solve(str);    
     cout <<  result << '\n';    
 
