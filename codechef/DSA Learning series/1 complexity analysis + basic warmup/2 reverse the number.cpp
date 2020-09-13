@@ -89,17 +89,27 @@ int lcm(int A, int B);
 
 int reverseTheNumber(int n){
 
-    string str = ""; 
-    char c; 
-    while(n > 0){
-        str += (n%10 + '0');           
-        n /= 10;             
-    }  
-    stringstream sstr (str);   
-    int result;    
-    sstr >> result;    
-    return result;       
+    // string str = ""; 
+    // char c; 
+    // while(n > 0){
+    //     str += (n%10 + '0');           
+    //     n /= 10;             
+    // }  
+    // stringstream sstr (str);   
+    // int result;    
+    // sstr >> result;    
+    // return result;       
 
+    int s = 0;  
+
+    while(n > 0){
+        int r = n % 10;   
+        n /= 10;  
+        s = s * 10 + r;    
+    }
+
+    return s;    
+    
 }  /* end of reverseTheNumber() */
 
 
