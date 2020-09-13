@@ -87,10 +87,53 @@ int gcdEuclidean(int A, int B);
 int lcm(int A, int B);      
 
 
-int solve(){
+vi getSmaller(vi a){
+    vi result;  
+    for(int i=1; i<a.size(); i++){
+        if(a[i] < a[0]){
+            result.pb(a[i]); 
+        }
+    }
+    return result; 
+
+}  /* end of getSmaller() */
+
+vi getBigger(vi a){
+    
+    vi result;  
+    for(int i=1; i<a.size(); i++){
+        if(a[i] >= a[0]){
+            result.pb(a[i]); 
+        }
+    }
+    return result; 
+
+}  /* end of getBigger() */
 
 
-    return 0;   
+
+bool solve(vi a, vi b){
+
+    if(a.size() != b.size()){
+        return false;    
+    }
+
+    if(a.size() == 0 && b.size() == 0){
+        return true;   
+    }
+
+    if(a[0] != b[0]){
+        return false;    
+    }
+
+    vi leftA, leftB, rightA, rightB;    
+
+    leftA = getSmaller(a);   
+    leftB = getSmaller(b);   
+    rightA = getBigger(a); 
+    rightB = getBigger(b);    
+
+    return solve(leftA, leftB) && solve(rightA, rightB);          
 
 }  /* end of solve() */
 
@@ -101,6 +144,10 @@ int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);  
 
+    vi a {10, 15, 8, 12, 94, 81, 5, 2, 11};
+    vi b {10, 8, 5, 15, 2, 12, 11, 94, 81};   
+    bool result = solve(a, b); 
+    cout << boolalpha << result << newl;    
 
     return 0;   
 
