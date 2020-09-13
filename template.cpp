@@ -52,6 +52,7 @@ using namespace std;
 #define sortall(x) sort(all(x))
 #define itr(it, a) for(auto it = a.begin(); it != a.end(); it++)
 #define PI 3.1415926535897932384626
+#define newl '\n'
 
 typedef long long ll; 
 typedef long double ld;    

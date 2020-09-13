@@ -52,6 +52,7 @@ using namespace std;
 #define sortall(x) sort(all(x))
 #define itr(it, a) for(auto it = a.begin(); it != a.end(); it++)
 #define PI 3.1415926535897932384626
+#define newl '\n'
 
 typedef long long ll; 
 typedef long double ld;    
@@ -89,12 +90,59 @@ int lcm(int A, int B);
 
 
 
-int solve(){
+vi solve(vi &a){
+
+    vi result;  
+
+    if(a.size() == 1){
+        cout << 1 << newl;
+        
+    }else if(a.size() > 1){
+        bool increasing = true; 
+        if(a[0] > a[1]){increasing = false; }
+        
+        int counter = 0;   
+        for(int i=0; i<a.size(); i++){
+            counter++; 
+            if(i == a.size() -1){
+
+                if(increasing){
+                    for(int j=2; j<=counter; j++){   
+                        result.pb(j);     
+                    }  
+                }else{
+                    for(int j=counter; j>0; j--){
+                        result.push_back(j);      
+                    }
+                }
+
+
+            }else if(increasing && a[i] > a[i+1]){
+
+                for(int j=2; j<=counter; j++){
+                    result.pb(j);     
+                }   
+                counter = 0;  
+                increasing = false;         
+
+            }else if(!increasing && a[i] < a[i+1] ){
+
+                for(int j=counter; j>0; j--){
+                    result.push_back(j);      
+                }
+                counter = 1;    
+                increasing = true; 
+
+            }
+
+        }
+
+    }
 
 
 
 
-    return 0;   
+    return result;   
 
 }  /* end of solve() */
 
@@ -105,6 +153,9 @@ int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);  
 
+    vi a {8, 4, 2, 1, 3, 6, 7, 9, 5}; 
+    vi result = solve(a); 
+    cout << result << '\n';     
 
 
     return 0;   
