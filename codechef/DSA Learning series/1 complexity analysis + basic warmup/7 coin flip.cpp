@@ -87,10 +87,24 @@ int gcdEuclidean(int A, int B);
 int lcm(int A, int B);      
 
 
-int solve(){
+void solve(){
 
+    int t, g, n, i, q;   
+    cin >> t; 
+    while(t--){
+        cin >> g;    
+        while(g--){
+            cin >> i >> n >> q;   
+            bool isNEven = ((n & 1) == 0);      
+            if((i == 1 && q == 2 && !isNEven) || (i == 2 && q == 1 && !isNEven)){
+                cout << n/2 + 1 << newl; 
+            }else{
+                cout << n/2 << newl;     
+            }
 
-    return 0;   
+        }
+
+    }
 
 }  /* end of solve() */
 
@@ -101,6 +115,7 @@ int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);  
 
+    solve();     
 
     return 0;   
 

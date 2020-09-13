@@ -87,10 +87,9 @@ int gcdEuclidean(int A, int B);
 int lcm(int A, int B);      
 
 
-int solve(){
+void solve(){
 
 
-    return 0;   
 
 }  /* end of solve() */
 
@@ -101,6 +100,7 @@ int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);  
 
+    solve();      
 
     return 0;   
 
