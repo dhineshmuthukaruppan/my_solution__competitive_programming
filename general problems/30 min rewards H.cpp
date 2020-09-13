@@ -139,9 +139,6 @@ vi solve(vi &a){
 
     }
 
-
-
-
     return result;   
 
 }  /* end of solve() */
@@ -154,6 +151,8 @@ int main(){
     cin.tie(NULL);  
 
     vi a {8, 4, 2, 1, 3, 6, 7, 9, 5}; 
+    // vi a {8, 4, 5, 2};   
+    // vi a {8, 4, 5, 6, 7, 8, 9};
     vi result = solve(a); 
     cout << result << '\n';     
 
