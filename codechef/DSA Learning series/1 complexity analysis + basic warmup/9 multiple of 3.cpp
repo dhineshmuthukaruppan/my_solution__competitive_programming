@@ -89,7 +89,40 @@ int lcm(int A, int B);
 
 void solve(){
 
+    int t, d0, d1;
+    ll k;    
+    ll total;        
+    cin >> t;   
+    while(t--){
+        cin >> k >> d0 >> d1; 
+        total = 0;    
+        int s = d0 + d1;   
 
+        if(k == 2){
+            total = s; 
+        }else{
+
+            int d2 = s % 10;     
+            ll noOfCycles = (k-3)/4;    
+            int c = ((2*s)%10 + (4*s)%10 + (8*s)%10 + (6*s)%10); 
+
+            total = s + s%10 + (c * 1LL * noOfCycles);    
+            int remainingDigits = (k-3)%4;   
+            int n = 2;   
+            for(int i=1; i<=remainingDigits; i++){
+                total += ((n*s)%10);
+                n = (n*2) % 10;       
+            }
+
+        }  /* end of else */
+
+        if(total % 3 == 0){
+            cout << "YES" << '\n'; 
+        }else{
+            cout << "NO" << '\n';
+        }
+
+    }  /* end of while */
 
 }  /* end of solve() */
 
