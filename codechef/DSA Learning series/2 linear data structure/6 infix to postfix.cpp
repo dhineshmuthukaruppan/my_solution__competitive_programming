@@ -120,8 +120,8 @@ void solve(){
                 stk.push(infix[i]); 
             }else if(infix[i] == '*' || infix[i] == '/' || infix[i] == '+' || infix[i] == '-' || infix[i] == '^'){
 
-                while(!stk.empty() && (precedence(infix[i]) < precedence(stk.top()))){
-                    postfix += stk.top(); 
+                while(!stk.empty() && (precedence(infix[i]) <= precedence(stk.top()))){
+                    postfix += stk.top();      
                     stk.pop(); 
                 }
                 stk.push(infix[i]);    
