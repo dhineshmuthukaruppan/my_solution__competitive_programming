@@ -96,13 +96,14 @@ void solve(){
         cin >> n;   
 
         int maxProfit = 0;   
+        int currentProfit = 0;   
 
         for(int i=0; i<n; i++){
 
-            cin >> s >> v >> p;    
+            cin >> s >> p >> v;    
 
             int noOfExpectedPeople = floor(p/(s+1));   
-            int currentProfit = noOfExpectedPeople * v; 
+            currentProfit = noOfExpectedPeople * v; 
             maxProfit = max(maxProfit, currentProfit);
 
         }
