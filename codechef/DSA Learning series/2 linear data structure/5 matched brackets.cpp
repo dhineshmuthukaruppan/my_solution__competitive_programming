@@ -110,7 +110,7 @@ void solve(){
                 
                 if(tmp_mxel > mxel){
                     mxel = tmp_mxel;   
-                    mxelp = i - mxel + 1; 
+                    mxelp = i - mxel + 2;    
                 }
                 tmp_mxel = 0;    
                 
