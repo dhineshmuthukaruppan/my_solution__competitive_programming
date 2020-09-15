@@ -89,7 +89,7 @@ int lcm(int A, int B);
 
 void solve(){
 
-    int t, n, p1, p2;   
+    int t, n, p1, p2, ra, rb;   
     string str;   
     cin >> t; 
     while(t--){
@@ -97,15 +97,23 @@ void solve(){
         bool properlyExited = true; 
         p1 = 0;   
         p2 = 0;    
+        ra = rb = n;    
         for(int i=0; i<2*n; i++){
             if(i % 2 == 0){
                 p1 += (str[i] - '0'); 
+                ra--;   
+                if(p1 - p2 > rb || p2 - p1 > ra){
+                    cout << i+1 << '\n';
+                    properlyExited = false; 
+                    break; 
+                }
             }else{
                 p2 += (str[i] - '0'); 
-                if(abs(p1-p2) == n-1){
+                rb--;        
+                if(p2-p1 > ra || p1 - p2 > rb){
                     cout << i+1 << '\n';
                     properlyExited = false;  
-                    break; 
+                    break;      
                 }
             }
         }
