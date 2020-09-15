@@ -89,41 +89,37 @@ int lcm(int A, int B);
 
 void solve(){
 
-    stack<char> stk;    
-
     int t;   
     string s;  
     cin >> t;  
     while(t--){
-        cin >> s;  
-        bool Breakcondition = true;      
+        cin >> s;      
+        stack<char> stk;    
+        int x = -1;  
         for(int i=0; i<s.size(); i++){
             if(s[i] == '<'){
                 stk.push(s[i]); 
             }else if(s[i] == '>'){
-                if(stk.empty()){
-                    cout << i << '\n'; 
-                    Breakcondition = false; 
+                if(stk.empty()){    
                     break; 
                 }
                 
                 if(stk.top() != '<'){
-                    cout << i << '\n';
-                    Breakcondition = false; 
                     break; 
                 }   
 
                 stk.pop(); 
+                if(stk.empty()){
+                    x = i;    
+                }
 
             }
 
         }
 
-        if(Breakcondition){
-            cout << s.size() << newl; 
-        }    
+        cout << x+1 << '\n'; 
 
-    }
+    }     
 
 }  /* end of solve() */
 
