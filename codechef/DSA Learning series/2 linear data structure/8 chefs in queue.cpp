@@ -89,6 +89,20 @@ int lcm(int A, int B);
 
 void solve(){
 
+    int n, k; 
+    ll pf;   
+    cin >> n >> k;   
+    vi a(n); 
+    forn(i, n){
+        cin >> a[i];   
+    }
+
+    
+
+
+
+
+
 
 
 }  /* end of solve() */
