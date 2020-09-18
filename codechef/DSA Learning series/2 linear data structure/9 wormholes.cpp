@@ -87,73 +87,50 @@ int gcdEuclidean(int A, int B);
 int lcm(int A, int B);      
 
 
-vpi populateSmallestElementOnTheRight(vi &a){
-
-    stack<pi> stk;    
-    vpi result (a.size());     
-
-    for(int i=0; i<a.size(); i++){
-
-        if(stk.empty()){
-            stk.push(mp(a[i], i)); 
-            continue;    
-        }
-        
-        if(a[i] >= (stk.top()).first){     
-            stk.push(mp(a[i], i)); 
-        }else{
-
-            while(!stk.empty() && a[i] < (stk.top()).first){
-
-                pi temp = stk.top();   
-                stk.pop();    
-
-                result[temp.second] = mp(a[i], i);     
-            }
-
-            stk.push(mp(a[i], i)); 
-
-        }
-
-    }  /* end of for i loop */
-
-    while(!stk.empty()){
-
-        pi temp = stk.top();   
-        stk.pop();   
-
-        result[temp.second] = mp(-1, -1);     
-
-    }
-
-    return result; 
-
-
-}  /* end of fn() */
-
-
 void solve(){
 
-    int n, k;
-    int MOD = 1e9 + 7;     
-    ll pf=1 % MOD;      
-    cin >> n >> k;   
-    vi a(n); 
+
+    int n, x, y, s, e;   
+    cin >> n >> x >> y;    
+    vpi a(n);   
+    vi v(x); vi w(y);  
     forn(i, n){
-        cin >> a[i];   
+        cin >> s >> e;   
+        a[i] = mp(s, e);    
     }
 
-    vpi smArray = populateSmallestElementOnTheRight(a);      
-
-    // cout << smArray << newl; 
-
-    for(int i=0; i<smArray.size(); i++){
-        if(smArray[i].second != -1){
-            pf = (pf * (smArray[i].second - i + 1))%MOD;    
-        }   
+    forn(i, x){
+        cin >> v[i];    
     }
 
-    cout << pf << newl;  
+    forn(i, y){
+        cin >> w[i];
+    }
+
+    sortall(v); sortall(w);     
+
+    int duration = INT32_MAX; vi::iterator journeyStartTime, journeyEndTime;    
+    for(auto t : a){
+
+        journeyStartTime = lower_bound(v.begin(), v.end(), t.first);   
+        
+        while(journeyStartTime != v.begin() && *journeyStartTime > t.first){
+            journeyStartTime--;   
+        }
+        if(journeyStartTime == v.begin() && *journeyStartTime > t.first){
+            continue;    
+        }
+
+        journeyEndTime = lower_bound(w.begin(), w.end(), t.second);     
+        if(journeyEndTime == w.end()){
+            continue;    
+        }
+
+        duration = min(duration, (*journeyEndTime - *journeyStartTime + 1));          
+
+    }
+
+    cout << duration << newl;    
 
 }  /* end of solve() */
 
@@ -166,15 +143,56 @@ int main(){
 
     solve();      
 
-    // (8*10*11*12)%9
-    // ((8%9) * (10%9) * (11%9) * (12%9)) % 9
-    // (((((8*10)%9)*11)%9)*12)%9
-
-
     return 0;   
 
 }  /* end of main() */
 
+
+
+
+/* // https://www.codechef.com/LRNDSA02/problems/ZCO12002
+#define MAX 1000002
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    int n, x, y, t1, t2, duration=INT_MAX;
+    cin>>n>>x>>y;
+    int in[MAX], out[MAX];
+    vector<pair<int, int>> contest;
+    memset(in, -1, sizeof(int)*MAX);
+    memset(out, -1, sizeof(int)*MAX);
+    for(int i=0; i<n; i++) {
+        cin>>t1>>t2;
+        contest.push_back(make_pair(t1, t2));
+    }
+    for(int i=0; i<x; i++) {
+        cin>>t1;
+        in[t1]=t1;
+    }
+    for(int i=0; i<y; i++) {
+        cin>>t1;
+        out[t1]=t1;
+    }
+    t1=-1;
+    for(int i=1; i<MAX; i++) {
+        if(in[i]!=-1) t1=in[i];
+        else in[i]=t1;
+    }
+    t1=-1;
+    for(int i=MAX-1; i>0; i--) {
+        if(out[i]!=-1) t1=out[i];
+        else out[i]=t1;
+    }
+    for(auto i=contest.begin(); i!=contest.end(); i++) {
+        if(in[i->first]!=-1 && out[i->second]!=-1 && ( out[i->second] - in[i->first]+1 < duration)) duration=out[i->second] - in[i->first]+1;
+    }
+    cout<<duration<<"\n";
+    return 0;
+} */
 
 
 
