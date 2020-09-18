@@ -87,6 +87,51 @@ int gcdEuclidean(int A, int B);
 int lcm(int A, int B);      
 
 
+vpi populateSmallestElementOnTheRight(vi &a){
+
+    stack<pi> stk;    
+    vpi result (a.size());     
+
+    for(int i=0; i<a.size(); i++){
+
+        if(stk.empty()){
+            stk.push(mp(a[i], i)); 
+            continue;    
+        }
+        
+        if(a[i] >= (stk.top()).first){     
+            stk.push(mp(a[i], i)); 
+        }else{
+
+            while(!stk.empty() && a[i] < (stk.top()).first){
+
+                pi temp = stk.top();   
+                stk.pop();    
+
+                result[temp.second] = mp(a[i], i);     
+            }
+
+            stk.push(mp(a[i], i)); 
+
+        }
+
+    }  /* end of for i loop */
+
+    while(!stk.empty()){
+
+        pi temp = stk.top();   
+        stk.pop();   
+
+        result[temp.second] = mp(-1, -1);     
+
+    }
+
+    return result; 
+
+
+}  /* end of fn() */
+
+
 void solve(){
 
     int n, k; 
@@ -97,10 +142,9 @@ void solve(){
         cin >> a[i];   
     }
 
-    
+    vpi smArray = populateSmallestElementOnTheRight(a);      
 
-
-
+    cout << smArray << newl; 
 
 
 
