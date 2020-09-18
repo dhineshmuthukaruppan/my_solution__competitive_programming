@@ -134,8 +134,9 @@ vpi populateSmallestElementOnTheRight(vi &a){
 
 void solve(){
 
-    int n, k; 
-    ll pf;   
+    int n, k;
+    int MOD = 1e9 + 7;     
+    ll pf=1 % MOD;      
     cin >> n >> k;   
     vi a(n); 
     forn(i, n){
@@ -144,10 +145,15 @@ void solve(){
 
     vpi smArray = populateSmallestElementOnTheRight(a);      
 
-    cout << smArray << newl; 
+    // cout << smArray << newl; 
 
+    for(int i=0; i<smArray.size(); i++){
+        if(smArray[i].second != -1){
+            pf = (pf * (smArray[i].second - i + 1))%MOD;    
+        }   
+    }
 
-
+    cout << pf << newl;  
 
 }  /* end of solve() */
 
@@ -158,7 +164,9 @@ int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);  
 
-    solve();      
+    // solve();      
+
+    
 
     return 0;   
 
