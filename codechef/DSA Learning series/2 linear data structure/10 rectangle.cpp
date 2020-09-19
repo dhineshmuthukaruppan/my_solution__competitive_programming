@@ -89,7 +89,58 @@ int lcm(int A, int B);
 
 void solve(){
 
+    int n, x, y;    
+    cin >> n;    
+    vi a(1e5+1, 500);      
+    a[0] = a[1e5] = 0;   
 
+    forn(i, n){
+        cin >> x >> y;    
+        a[x] = min(a[x], y);         
+    }
+
+    vi lb(1e5+1, 0); vi rb(1e5+1, 1e5);    
+
+    stack<int> stk;    
+
+    for(int i=1; i<1e5+1; i++){
+        while(!stk.empty() && a[i] <= a[stk.top()]){
+            stk.pop();   
+        }
+        
+        if(!stk.empty()){
+            lb[i] = stk.top();   
+        }
+        
+        stk.push(i);    
+
+    }
+
+    while(!stk.empty()){
+        stk.pop();   
+    }
+    
+    for(int i=1e5; i>=1; i--){    
+        while(!stk.empty() && a[i] <= a[stk.top()]){
+            stk.pop();   
+        }
+        
+        if(!stk.empty()){
+            rb[i] = stk.top();   
+        }
+        
+        stk.push(i);    
+
+    }
+
+    ll ans = 0;   
+
+    for(int i = 1; i<1e5+1; i++){
+        ll curr = a[i] * (rb[i] - lb[i]);   
+        ans = max(ans, curr);  
+    }
+
+    cout << ans << newl;   
 
 }  /* end of solve() */
 
