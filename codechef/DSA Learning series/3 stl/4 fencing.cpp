@@ -89,6 +89,50 @@ int lcm(int A, int B);
 
 void solve(){
 
+    int t, n, m, k, p1, p2, curr;
+
+    cin >> t;   
+    while(t--){
+
+        cin >> n >> m >> k;    
+
+        set<pi> st1;           
+        
+        forn(i, k){
+            cin >> p1 >> p2;   
+            st1.insert(mp(p1, p2));     
+        }
+
+        int count = 0;   
+
+        for(auto s : st1){
+            curr = 4;   
+
+            if(st1.find({s.first, s.second + 1}) != st1.end()){
+                curr--;   
+            }
+
+            if(st1.find({s.first, s.second - 1}) != st1.end()){
+                curr--;   
+            }
+
+            if(st1.find({s.first + 1, s.second}) != st1.end()){
+                curr--;   
+            }
+
+            if(st1.find({s.first - 1, s.second}) != st1.end()){
+                curr--;   
+            }
+
+            count+=curr;    
+
+        }
+
+        cout << count << newl;   
+
+    }  /* end of while() */
+
+
 
 
 }  /* end of solve() */
