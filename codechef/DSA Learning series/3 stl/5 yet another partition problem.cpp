@@ -115,12 +115,22 @@ void solve(){
         cin >> a[i];   
     } 
 
+    st.insert(1);   
+    for(int i=2; i<=n; i++){
+        if(a[i] % a[i-1] == 0){
+            continue; 
+        }
+        st.insert(i);       
+    }
+    
+
+
     forn(k, q){
 
         cin >> type >> i;    
 
         if(type == 1){
-            cin >> i >> a[i];      
+            cin >> a[i];      
             
 
             if(i > 1){
@@ -151,7 +161,7 @@ void solve(){
 
 
         }else if(type == 2){
-            cin >> i; 
+
             cout << findAns(i) << newl; 
 
         }
