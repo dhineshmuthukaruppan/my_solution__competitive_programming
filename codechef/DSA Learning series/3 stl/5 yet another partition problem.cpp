@@ -87,7 +87,76 @@ int gcdEuclidean(int A, int B);
 int lcm(int A, int B);      
 
 
+set<int> st; 
+
+int findAns(int i){
+
+    auto it = st.upper_bound(i); 
+    it--;   
+    return (*it);       
+
+}  /* end of findAns */
+
+
+void remove(int index){
+
+    st.erase(index);    
+
+}
+
+
 void solve(){
+
+    int n, q, type, index, x, i;   
+    cin >> n >> q;   
+
+    vi a(n+1);       
+    for(int i=1; i<=n; i++){
+        cin >> a[i];   
+    } 
+
+    forn(k, q){
+
+        cin >> type >> i;    
+
+        if(type == 1){
+            cin >> i >> a[i];      
+            
+
+            if(i > 1){
+                if(findAns(i) > i-1 && (a[i]%a[i-1] == 0)){
+                    // i and prev are in different but divides now
+                    remove(i);   
+                    
+                }else if(findAns(i) <= i-1 && (a[i]%a[i-1]!=0)){
+                    // both i and prev are in same but not divides now
+                    st.insert(i);     
+                
+                }
+            }
+
+            if(i < n){    
+                
+                if(findAns(i+1) > i && (a[i+1]%a[i]==0)){
+                    // both next and i are in different subarray
+                    remove(i+1);   
+                    
+                }else if(findAns(i+1) <= i && (a[i+1]%a[i])!=0){
+                    // both next and i are in same subarray 
+                    st.insert(i+1); 
+                }
+
+            }
+
+
+
+        }else if(type == 2){
+            cin >> i; 
+            cout << findAns(i) << newl; 
+
+        }
+
+    }
 
 
 
