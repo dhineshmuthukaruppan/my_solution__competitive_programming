@@ -1,0 +1,4 @@
+:w filename - saves file
+:wq 
+:q  - quit
+ 
