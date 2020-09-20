@@ -1,0 +1,99 @@
+completed in _ days
+day 2 21/09
+====
+divide and conquer + binary search
+
+2) yet again subarray [ ]
+4) euron problem [ ]
+5) bear and house queries [ ]
+6) lowest sum [ ]
+7) saving a giftof love [ ]
+8) count substring [ ]
+9) magical length [ ]
+10) inequality reduction [ ]
+
++ mathematics -> precalculus -> probability and combinatorics -> 
+-> permutation [  ]
+-> combination [  ]
+-> probability using combinatorics [  ]
+
+
+day 3 22/09
+====
+mathematics in competitive programming - DSA codechef
+1) zack and the handkerchief [  ]
+2) appy and contest [  ]
+3) chef and semi primes [  ]
+4) chef and squares [  ]
+5) chef and adventures [  ]
+6) easy fibonacci [  ]
+7) count k primes [  ]
+8) binary xor [  ]
+
++ mathematics -> precalculus -> probability and combinatorics -> 
+-> basic probability [  ]
+-> compound probability of independent event using diagrams [  ]
+-> compound probability of independent event using multiplication [  ]
+-> dependent events [  ]
+
+
+
+day 4 23/09
+=========
+mathematics in competitive programming - DSA codechef
+1) churu and balls [  ]
+2) chef and segments [  ]
+3) yet another problem about sequence [  ]
+
++ mathematics -> precalculus -> series-> 
+-> arithmetic sequence [  ]
+-> geometric sequence [  ]
+
+
+day 5 24/09
+=======
+Basic optimization techniques
+
+1) moony and icpc team [  ]
+2) little chef and sums [  ]
+3) chef and weird queries [  ]
+4) k concatenation [  ]
+5) help patra bhaiya [  ]
+6) birthday gift again [  ]
+7) choose the capital [  ]
+8) chef and strange operation [  ]
+
++ mathematics -> precalculus -> series-> 
+-> geometric series [  ]
+-> geometric series with summation notation [  ]
+-> arithmetic series [  ]
+
+day 6 25/09
+==========
+Basic math / combinatorics problems practice and watch videos
+
++ mathematics -> algebra -> introduction to algebra
+-> Overview and history of algebra: Introduction to algebra [  ]
+-> Introduction to variables: Introduction to algebra [  ] 
+-> Substitution and evaluating expressions: Introduction to algebra [  ]
+-> Evaluating expressions word problems [  ]
+
+
+day 7 26/09
+==========
+1) count subarrays [  ]
+2) billiards [  ]
+3) count k primes [  ]
+4) chef and frogs [  ]
+5) chef and good subsequence [  ]
+6) subtraction game 2 [  ]
+7) washing windows
+8) super hashing
+
++ mathematics -> algebra -> introduction to algebra 
+-> Writing algebraic expressions introduction: Introduction to algebra [  ]
+-> Introduction to equivalent algebraic expressions: Introduction to alga[  ]
+-> Dependent & independent variables [  ]
+
+
+
