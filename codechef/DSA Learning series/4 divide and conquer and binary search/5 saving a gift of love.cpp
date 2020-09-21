@@ -85,7 +85,7 @@ int gcdEuclidean(int A, int B);
 int lcm(int A, int B);      
 
 
-vector<pair<int, pair<ll, ll>> > v;    
+vector<pair<ll, pair<ll, ll>> > v;        
 
 ll f(ll x){
 
@@ -126,7 +126,7 @@ ll lb(ll target, ll l, ll h){
         } 
 
     }
-
+    
     return answer;   
 
 
@@ -136,7 +136,7 @@ ll lb(ll target, ll l, ll h){
 void solve(){
 
 
-    int t, x, b, c, xi, yi, pi, qi, ri;    
+    ll t, x, b, c, xi, yi, pi, qi, ri;    
     cin >> t;   
     while(t--){
         v.clear();    
@@ -158,7 +158,7 @@ void solve(){
 
         sortall(v);  
 
-        cout << lb(1, 1, 1e18) << newl;        
+        cout << lb(1, 1, 2e18) << newl;                    
 
     }  /* end of while loop */
 
