@@ -85,7 +85,84 @@ int gcdEuclidean(int A, int B);
 int lcm(int A, int B);      
 
 
+vector<pair<int, pair<ll, ll>> > v;    
+
+ll f(ll x){
+
+    int curr = 0;   
+    while(v[curr].second.first != (-100)){
+        if(v[curr].second.first == -50){
+            x -= v[curr].second.second;   
+
+        }else{
+            if(v[curr].second.first <= x){
+                x += v[curr].second.second;   
+            }
+        }
+        curr++;   
+    }
+
+    return x;   
+
+}  /* end of f() */
+
+
+
+ll lb(ll target, ll l, ll h){
+
+    ll mid, fmid;   
+    ll answer = INT64_MAX;        
+    while(l <= h){    
+
+        mid = (l + h)/2;   
+
+        fmid = f(mid);    
+
+        if(fmid >= target){
+            h = mid - 1;    
+            answer = min(answer, mid);    
+        }else{
+            l = mid +1; 
+        } 
+
+    }
+
+    return answer;   
+
+
+
+}  /* end of lb */
+
 void solve(){
+
+
+    int t, x, b, c, xi, yi, pi, qi, ri;    
+    cin >> t;   
+    while(t--){
+        v.clear();    
+        cin >> x;  // distance from chef to byteland
+
+        cin >> b; // no of tasty dishes
+        forn(i, b){
+            cin >> xi >> yi;    
+            v.push_back({xi, {-50, yi}}); 
+        }
+
+        cin >> c; // no of chef clans
+        forn(i, c){
+            cin >> pi >> qi >> ri; // pi - location of clan, qi - requirement, ri - no of clan people
+            v.push_back({pi, {qi, ri}});      
+        }
+
+        v.push_back({x, {-100, -100}});    
+
+        sortall(v);  
+
+        cout << lb(1, 1, 1e18) << newl;        
+
+    }  /* end of while loop */
+
+
 
 
 
