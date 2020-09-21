@@ -93,67 +93,8 @@ ll f(ll x){
 
 
 
-
-
-
 void solve(){
 
-    int t, k, q, qi;    
-    cin >> t;   
-    vector<ll> a, b, result;    
-    ll temp;    
-
-    
-    while(t--){
-        a.clear();   
-        b.clear();   
-        result.clear();    
-        priority_queue<ll> pq;   
-
-        cin >> k >> q;   
-
-        forn(i, k){
-            cin >> temp;    
-            a.pb(temp); 
-        }
-
-        forn(i, k){
-            cin >> temp;    
-            b.pb(temp);     
-        }
-
-        sortall(a);
-        sortall(b);      
-
-        for(int i=0; i<k; i++){
-            for(int j=0; j<k; j++){
-                if(pq.size() <= 10000){
-                    pq.push(a[i] + b[j]); 
-                }else if(a[i] + b[j] < pq.top()){
-                    pq.pop();   
-                    pq.push(a[i] + b[j]); 
-                }else{
-                    break;    
-                }
-                
-            }
-        }
-
-        while(!pq.empty()){
-            result.push_back(pq.top());  
-            pq.pop();    
-        }
-
-        reverse(result.begin(), result.end());     
-
-        forn(i, q){
-            cin >> qi;   
-
-            cout << result[qi-1] << newl;
-
-        }
-
-    }  /* end of while() */
 
 
 }  /* end of solve() */
