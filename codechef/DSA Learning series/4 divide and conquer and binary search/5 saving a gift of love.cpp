@@ -143,9 +143,11 @@ void solve(){
         cin >> x;  // distance from chef to byteland
 
         cin >> b; // no of tasty dishes
+        ll req = 1;   
         forn(i, b){
             cin >> xi >> yi;    
             v.push_back({xi, {-50, yi}}); 
+            req += yi;    
         }
 
         cin >> c; // no of chef clans
@@ -158,7 +160,7 @@ void solve(){
 
         sortall(v);  
 
-        cout << lb(1, 1, 2e18) << newl;                    
+        cout << lb(1, 1, req) << newl;                       
 
     }  /* end of while loop */
 
