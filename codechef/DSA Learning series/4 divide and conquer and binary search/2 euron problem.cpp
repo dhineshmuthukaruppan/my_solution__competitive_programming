@@ -93,13 +93,49 @@ ll f(ll x){
 
 
 
-ll merge(ll l, ll mid, ll r){
+ll merge(vi &a, ll l, ll mid, ll r){
+
+    int pt1 = l;    
+    int pt2 = mid + 1;   
+
+    vi auxArr(r-l+1);    
+    ll arrpt=0;    
+
+    ll answer = 0;   
+    while(pt1<=mid && pt2 <=r){
+
+        if(a[pt1] <= a[pt2]){
+            auxArr[arrpt++] = a[pt1];    
+            pt1++;    
+        }else{  
+
+            answer += (mid - pt1 + 1);     
+            auxArr[arrpt++] = a[pt2];   
+            pt2++;    
+
+        }
+
+    }  /* end of while */
 
 
+    while(pt1 <= mid){
+        auxArr[arrpt++] = a[pt1];  
+        pt1++;    
+    }
+
+    while(pt2 <= r){
+        auxArr[arrpt++] = a[pt2];   
+        pt2++;    
+    } 
 
 
+    arrpt = 0;    
 
+    for(int i=l; i<=r; i++){
+        a[i] = auxArr[arrpt++];    
+    }
 
+    return answer;    
 
 }  /* end of merge() */
 
@@ -112,7 +148,7 @@ ll mergeSort(vi &a, ll l, ll r ){
 
         count += mergeSort(a, l, mid); 
         count += mergeSort(a, mid+1, r);   
-        count += merge(l, mid, r);      
+        count += merge(a, l, mid, r);          
     }
 
     return count;  
