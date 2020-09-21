@@ -83,6 +83,14 @@ int reverseDigits(int A);
 vi allPrimeFactors(int A);   // TODO   
 int gcdEuclidean(int A, int B);  
 int lcm(int A, int B);      
+ll lb(ll target, ll l, ll h);
+ll ub(ll target, ll l, ll h);       
+ll f(ll x){
+    ll answer;    
+
+    return answer;   
+}
+
 
 
 void solve(){
@@ -239,6 +247,52 @@ int lcm(int A, int B){
 }  /* end of lcm */
 
 
+ll lb(ll target, ll l, ll h){
+
+    ll mid, fmid;   
+    ll answer = INT64_MAX;        
+    while(l <= h){    
+
+        mid = (l + h)/2;   
+
+        fmid = f(mid);    
+
+        if(fmid >= target){
+            h = mid - 1;    
+            answer = min(answer, mid);    
+        }else{
+            l = mid +1; 
+        } 
+
+    }
+    
+    return answer;  
+
+}  /* end of lb */
+
+
+ll ub(ll target, ll l, ll h){
+
+    ll mid, fmid;   
+    ll answer = INT64_MAX;        
+    while(l <= h){    
+
+        mid = (l + h)/2;   
+
+        fmid = f(mid);    
+
+        if(fmid > target){    
+            h = mid - 1;    
+            answer = min(answer, mid);    
+        }else{
+            l = mid +1; 
+        } 
+
+    }
+    
+    return answer;  
+
+}  /* end of ub */
 
 
 
