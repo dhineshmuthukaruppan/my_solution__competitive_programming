@@ -81,8 +81,8 @@ int totalNumberOfDigits(int A);
 int extractIthDigit(int A, int i);  /* Extract ith digit - (A / 10 ^ i) % 10 */
 int reverseDigits(int A);
 vi allPrimeFactors(int A);   // TODO   
-int gcdEuclidean(int A, int B);  
-int lcm(int A, int B);      
+ll gcdEuclidean(ll A, ll B);  
+ll lcm(ll A, ll B);      
 ll lb(ll target, ll l, ll h);
 ll ub(ll target, ll l, ll h);       
 ll f(ll x){
@@ -96,7 +96,7 @@ ll f(ll x){
 void solve(){
 
 
-    int t, a, b;
+    ll t, a, b;
     ll n, k, sum;        
     cin >> t;    
     while(t--){
@@ -107,7 +107,7 @@ void solve(){
         sum += n/b;   
         sum -= ((n/lcm(a, b))*2);   
 
-        if(sum >= k){
+        if(sum >= k){    
             cout << "Win" << newl;   
         }else{
             cout << "Lose" << newl;    
@@ -256,15 +256,15 @@ int reverseDigits(int A){
 
 
 
-int gcdEuclidean(int A, int B){
+ll gcdEuclidean(ll A, ll B){
     if(B == 0)
         return A;   
     return gcdEuclidean(B, A % B);       
 }  /* end of gcdEuclidean() */  
 
 
-int lcm(int A, int B){
-    return (A*B) / gcdEuclidean(A, B);     
+ll lcm(ll A, ll B){
+    return (A*B) / gcdEuclidean(A, B);        
 }  /* end of lcm */
 
 
