@@ -103,8 +103,8 @@ void solve(){
 
         bool condition = false;    
 
-        if(((n-1) %x == 0 && (m-1) %y == 0) || (((n-2)%x == 0 && (m-2)%y == 0) && n-1 > 0 && m-1>0)){   
-            condition = true;        
+        if(((n-1) %x == 0 && (m-1) %y == 0) || (((n-2)%x == 0 && (m-2)%y == 0) && n-2 >= 0 && m-2>=0)){   
+            condition = true;           
         }  
 
         if(condition){
