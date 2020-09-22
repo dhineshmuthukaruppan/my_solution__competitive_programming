@@ -93,7 +93,48 @@ ll f(ll x){
 
 
 
+// if i is a factor of n then n/i is also factor of n
+// considering a+b = n/i and a-b = i   
+
+
 void solve(){
+
+
+    int t, n, a, b;   
+    bool isFound;   
+    cin >> t;    
+    while(t--){
+
+        cin >> n;    
+        isFound = false;  
+        ll ans = -1;    
+        for(int i=1; i<=sqrt(n); i++){
+            
+            if(n%i == 0 && i != n/i){
+
+                a = (n/i+i)/2;  
+                b = (n/i-i)/2;   
+
+                if(n + b*b == a*a){ 
+                    isFound = true;   
+                    if(ans == -1){
+                        ans = b;   
+                    }else{
+                        ans = min(ans, 1ll * b);    
+                    }
+                }
+            
+            }
+
+        }
+
+        if(isFound){
+            ans = ans * ans;   
+        }
+
+        cout << ans << newl;  
+
+    }  /* end of while */
 
 
 
