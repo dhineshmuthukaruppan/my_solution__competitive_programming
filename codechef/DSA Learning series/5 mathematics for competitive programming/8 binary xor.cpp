@@ -66,7 +66,6 @@ typedef vector<pl>	    vpl;
 typedef vector<vi>	    vvi;
 typedef vector<vl>	    vvl;
 
-
 template <class A, class B>
 ostream& operator << (ostream &out, const pair<A, B> &a);
 
