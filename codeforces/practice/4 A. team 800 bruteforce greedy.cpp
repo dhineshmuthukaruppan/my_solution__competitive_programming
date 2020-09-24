@@ -95,7 +95,26 @@ ll f(ll x){
 
 void solve(){
 
+    int t;   
+    cin >> t;    
+    int a, b, c, runningSum;
+    int finalsum = 0;      
+    while(t--){    
+        runningSum = 0;    
+    
+        cin >> a >> b >> c;    
 
+        if(a){runningSum++; }  
+        if(b){runningSum++; }
+        if(c){runningSum++; }
+
+        if(runningSum >=2){
+            finalsum++;   
+        }
+
+    }
+
+    cout << finalsum << newl;    
 
 }  /* end of solve() */
 
