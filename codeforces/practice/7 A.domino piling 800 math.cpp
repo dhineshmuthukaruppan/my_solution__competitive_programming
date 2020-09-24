@@ -116,18 +116,10 @@ void solve(){
 
     }else{
         // both are odd
-        if(m > n){
-
             int temp = m/ 2;   
             temp *= n; 
             temp += (n/2);
             cout << temp << newl;  
-        }else{
-            int temp = n/ 2;   
-            temp *= m; 
-            temp += (m/2);
-            cout << temp << newl;  
-        }   
 
     }
 
