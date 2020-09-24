@@ -95,6 +95,28 @@ ll f(ll x){
 
 void solve(){
 
+    string str;   
+    cin >> str;    
+
+    for(int i=0; i<str.size(); i++){
+        // if vowels then continue
+        if(str[i] == 'a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || str[i] == 'u' || str[i] == 'A' || str[i] == 'E' || str[i] == 'I' || str[i] == 'O' || str[i] == 'U' || str[i] == 'y' || str[i] == 'Y'){
+            continue;    
+        }else{   
+            // if capital letter, then convert it to small and print it with dot.
+            if(str[i] < 'A' + 26){
+                int num = str[i] - 'A';
+                char c = 'a' + num;    
+                cout << "." << c;         
+            }else{
+                // print it with dot
+                cout << "." << str[i];        
+            }
+
+        }
+    }
+
+    cout << newl;    
 
 
 }  /* end of solve() */
