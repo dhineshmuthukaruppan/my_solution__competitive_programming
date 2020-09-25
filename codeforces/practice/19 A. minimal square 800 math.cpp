@@ -93,6 +93,16 @@ ll f(ll x){
 
 
 
+/* Obviously that both rectangles should completely touch by one of the sides. Otherwise, you can 
+move them closer to each other so that the total height or total width decreases, and the other 
+dimension does not change. Thus, there are only two options:
+
+The rectangles touch by width, we get the side of the square equal to max(2b,a),
+The rectangles touch by height, we get the side of the square equal to max(2a,b).
+Thus, the minimum side of the square is equal to the minimum of these two options. 
+Then the answer is (min(max(2b,a),max(2a,b)))2. */
+
+
 void solve(){
 
     int t, a, b;   
