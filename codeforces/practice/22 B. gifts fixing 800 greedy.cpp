@@ -95,7 +95,58 @@ ll f(ll x){
 
 void solve(){
 
+    int t, n, smallestA = INT32_MAX, smallestB = INT32_MAX;
+    ll sum;                   
+    cin >> t;   
+    while(t--){
 
+        cin >> n;    
+        vi a(n), b(n);   
+
+        smallestA = smallestB = INT32_MAX; 
+        sum  = 0;   
+
+        forn(i, n){
+            cin >> a[i];   
+            smallestA = min(a[i], smallestA);        
+        }
+
+        forn(i, n){
+            cin >> b[i];   
+            smallestB = min(b[i], smallestB); 
+        } 
+
+        forn(i, n){
+            if(a[i] > smallestA && b[i] > smallestB){ 
+                if(a[i] - smallestA > b[i] - smallestB){
+                    sum += (b[i] - smallestB);  
+                    a[i] -= (b[i] - smallestB);   
+                    b[i] -= (b[i] - smallestB);    
+                        
+                }else{
+                    sum += (a[i] - smallestA); 
+                    b[i] -= (a[i] - smallestA);   
+                    a[i] -= (a[i] - smallestA);        
+                    
+                }
+            }
+
+            if(a[i] > smallestA){
+                sum += (a[i] - smallestA);     
+                a[i] -= (a[i] - smallestA);     
+            }       
+
+            if(b[i] > smallestB){
+                sum += (b[i] - smallestB);     
+                b[i] -= (b[i] - smallestB);       
+            }
+
+        }
+        
+
+        cout << sum << newl;     
+
+    }    
 
 }  /* end of solve() */
 
