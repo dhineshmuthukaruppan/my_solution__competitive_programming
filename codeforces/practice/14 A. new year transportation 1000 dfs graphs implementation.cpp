@@ -95,7 +95,31 @@ ll f(ll x){
 
 void solve(){
 
+    int t, n;    
+    cin >> n >> t;    
 
+    vi a(n+1);   
+    for(int i=1; i<n; i++){
+        cin >> a[i];      
+    } 
+
+    int i=1;
+    bool condition = false;       
+    while(i<=n){        
+        if(i == t){      
+            condition = true; 
+            break;    
+        }
+
+        if(i > t){
+            break;    
+        }
+
+        i += a[i];    
+
+    }
+
+    if(condition){cout << "YES" << newl; }else{cout << "NO" << newl; }    
 
 }  /* end of solve() */
 
