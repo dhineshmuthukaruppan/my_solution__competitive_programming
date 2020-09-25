@@ -95,24 +95,26 @@ ll f(ll x){
 
 void solve(){
 
-    int t, a, b, temp, answer;   
-    cin >> t;   
-    while(t--){
+    int n;   
+    cin >> n;   
 
-        cin >> a >> b;   
-
-        temp = abs(a - b);   
-
-        answer = temp / 10;   
-
-        if(temp%10!= 0){
-            answer+=1;   
+    if(n >= 0){
+        cout << n << newl;    
+    }else{
+        if(abs(n) > 9){
+            int lastdigit = extractIthDigit(-n, 0);  
+            int lastbefore = extractIthDigit(-n, 1);   
+            int final = abs(n) / 100;   
+            if(lastdigit > lastbefore){
+                if(lastbefore || final){cout << "-"; if(final){cout << final;} cout << lastbefore << newl;  }else{cout << 0 << newl; }  
+            }else{
+                if(lastdigit || final){cout << "-"; if(final){cout << final;} cout << lastdigit << newl;  }else{cout << 0 << newl; }    
+            }                     
+        }else{
+            cout << 0 << newl;   
         }
 
-        cout << answer << newl;    
-
     }
-
 
 }  /* end of solve() */
 
