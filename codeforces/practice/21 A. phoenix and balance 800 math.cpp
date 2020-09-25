@@ -109,6 +109,7 @@ void solve(){
         leftsum += pow(2, n);   
 
         forn(i, (n/2)-1){   
+            
             leftsum += pow(2, i+1);    
         }    
 
