@@ -92,6 +92,22 @@ ll f(ll x){
 }
 
 
+bool isLucky(int n){
+    bool condition = true;    
+    int temp;   
+    while(n > 0){
+        temp = n%10;    
+        n/=10;    
+        if(temp!=4 && temp!=7){
+            condition = false;   
+            break;   
+        }
+    }
+
+    return condition;   
+
+}  /* end of isLucky */
+
 
 void solve(){
 
@@ -101,22 +117,19 @@ void solve(){
     if(n%4 == 0 || n%7 == 0){
         cout << "YES" << newl;    
     }else{
-        bool condition = true;    
-        int temp;   
-        while(n > 0){
-            temp = n%10;    
-            n/=10;    
-            if(temp!=4 && temp!=7){
-                condition = false;   
-                break;   
+        bool condition = false;    
+        for(int i=1; i<=n; i++){
+            if(isLucky(i) && n%i == 0){
+                condition = true; 
+                break; 
             }
         }
 
         if(condition){
-            cout << "YES" << newl; 
+            cout << "YES" << newl;   
         }else{
-            cout << "NO" << newl; 
-        }
+            cout << "NO" << newl;    
+        }    
 
     }
 
