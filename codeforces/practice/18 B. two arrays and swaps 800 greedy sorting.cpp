@@ -95,7 +95,41 @@ ll f(ll x){
 
 void solve(){
 
+    int t, n, k, temp, sum; 
+    vi a, b;   
+    cin >> t;    
+    while(t--){
+        a.clear();   
+        b.clear();   
+        cin >> n >> k;    
 
+        forn(i, n){
+            cin >> temp;   
+            a.pb(temp); 
+        }
+
+        forn(i, n){
+            cin >> temp;   
+            b.pb(temp);       
+        }
+
+        sortall(a);   
+        sort(b.begin(), b.end(), greater<int>());       
+
+        for(int i=0; i<k; i++){  
+            if(a[i] >= b[i]){
+                break;    
+            }else{
+                swap(a[i], b[i]);   
+            }
+        }
+        
+        sum = 0;   
+        sum = accumulate(a.begin(), a.end(), 0);        
+
+        cout << sum << newl;       
+        
+    }
 
 }  /* end of solve() */
 
