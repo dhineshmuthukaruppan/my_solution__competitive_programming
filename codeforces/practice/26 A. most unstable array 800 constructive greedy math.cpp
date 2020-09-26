@@ -95,17 +95,15 @@ ll f(ll x){
 
 void solve(){
 
-    int t, n, x, y, temp;             
-    cin >> t;            
-    // t = 1;        
-    while(t--){    
+    int t, n, m;       
+    cin >> t;    
+    while(t--){
 
+        cin >> n >> m;   
 
+        cout << min(2, n-1) * m << newl;    
 
-
-
-    }  /* end of while() */
-
+    }  
 
 }  /* end of solve() */
 
