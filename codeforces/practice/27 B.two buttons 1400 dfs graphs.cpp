@@ -95,14 +95,44 @@ ll f(ll x){
 
 void solve(){
 
-    int t, n, m, x, y, temp, answer;                 
-    cin >> t;               
-    // t = 1;        
-    while(t--){    
+    int t, n, m, x, y, temp, answer;             
+    // cin >> t;                
+    t = 1;        
+    while(t--){     
+        cin >> n >> m;
 
+        if(n >= m){
+            cout << n - m << newl;   
+        }else{
+            answer = 0;   
+            x = m/2;   
+            if(n > x){
+                answer += (n-x);     
+                answer += 1;     
+            }else if(n == x){
+                while(n<m){   
+                    n*=2;   
+                    answer+=1;    
+                }
+                if(n == m){
+                    // do nothing
+                }else{
+                    // n > m
+                    answer += (n-m);     
+                }    
 
+            }else{ 
+                while(n<x){     
+                    n*=2;       
+                    answer+=1;    
+                }
+                answer += (n-x);   
+                answer +=1;     
+            }
 
+            cout << answer << newl;     
 
+        }
 
     }  /* end of while() */
 
