@@ -126,8 +126,7 @@ void solve(){
 
         }
 
-        cout << str;            
-        // sort(str.begin(), str.end(), greater<char>());    
+        cout << str;             
         int maxSum = 0;   
         forn(i, str.size()){
             maxSum += (str[i] - '0');     
