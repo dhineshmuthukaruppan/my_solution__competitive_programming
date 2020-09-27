@@ -96,15 +96,21 @@ ll f(ll x){
 void solve(){
 
     int t, n, m, x, y, k, temp, answer;  
-    bool condition;
-    string str, str1;                       
+    bool condition;      
+    string str, str1;                      
     cin >> t;               
     // t = 1;        
     while(t--){    
 
+        cin >> n;   
+        cin >> str; 
 
-
-
+        str1= "";   
+        for(int i=0; i<str.size(); i+=2){
+            str1 += str[i];    
+        }
+        
+        cout << str1 << newl;   
 
     }  /* end of while() */
 
