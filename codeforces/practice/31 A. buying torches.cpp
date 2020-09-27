@@ -95,14 +95,28 @@ ll f(ll x){
 
 void solve(){
 
-    int t, n, m, x, y, k, temp, answer;  
+    ll t, n, m, x, y, k, temp, answer;  
     bool condition;                   
     cin >> t;               
     // t = 1;        
     while(t--){    
 
+        cin >> x >> y >> k;    
 
+        // x - no of sticks you can buy with 1 sticks, y - no of sticks required to buy 1 coal
+        // k - no of torches you need; 
+        // one torches can be made using one stick and one coal
+        // find - minimum no of trades to craft atleast k torches
+        // initially the player has one stick
 
+        ll totalSticksReqd = (y * k)+ k;   
+        ll noOfOperations = (totalSticksReqd - 1) / (x-1); 
+
+        if((totalSticksReqd - 1) % (x-1) == 0){   
+            cout << noOfOperations + k << newl;    
+        }else{
+            cout << noOfOperations + 1 + k << newl;   
+        }
 
 
     }  /* end of while() */
