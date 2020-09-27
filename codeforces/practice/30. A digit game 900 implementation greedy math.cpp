@@ -95,15 +95,57 @@ ll f(ll x){
 
 void solve(){
 
-    int t, n, m, x, y, temp, answer;  
+    int t, n, m, x, y, temp, answer;   
     bool condition;                   
     cin >> t;               
+    string str;    
     // t = 1;        
     while(t--){    
 
+        cin >> n;   
+        cin >> str;   
+        condition = false;     
 
+        if((n & 1) == 0){
+            // last chance will be give to breeze if n is even
+            // if breeze has atleast one even number he wins else raze wins
+            forn(i, str.size()){
+                if(i % 2 == 1){
+                    // this is even
+                    if((str[i] - '0') % 2 == 0){
+                        condition = true;    
+                        break;     
+                    }
+                }
+            }
 
+            if(condition){
+                cout << 2 << newl;    
+            }else{
+                cout << 1 << newl;    
+            }
 
+        }else{
+            // if n is odd last chance will be given to raze
+            // if raze has atleast one odd number in odd postion then raze wins else
+            // breeze wins
+            forn(i, str.size()){
+                if(i % 2 == 0){
+                    // this is odd
+                    if((str[i] - '0') % 2 == 1){
+                        condition = true;     
+                        break;     
+                    }
+                }
+            }
+
+            if(condition){
+                cout << 1 << newl;    
+            }else{
+                cout << 2 << newl;    
+            }
+
+        }
 
     }  /* end of while() */
 
