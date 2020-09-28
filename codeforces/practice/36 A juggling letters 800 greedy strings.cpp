@@ -102,9 +102,28 @@ void solve(){
     // t = 1;        
     while(t--){    
 
+        cin >> n;  
+        vi a(26);   
+        
+        forn(i, n){
+            cin >> str;    
+            forn(i, str.size()){
+                a[str[i] - 'a']++;
+            }    
+        }
+        condition = true;   
+        forn(i, 26){
+            if(a[i] != 0 && a[i] % n != 0){
+                condition = false;    
+                break;   
+            }
+        }
 
-
-
+        if(condition){
+            cout << "YES" << newl;  
+        }else{
+            cout << "NO" << newl;    
+        }
 
     }  /* end of while() */
 
