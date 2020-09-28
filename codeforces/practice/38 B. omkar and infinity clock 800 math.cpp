@@ -92,19 +92,53 @@ ll f(ll x){
 }
 
 
-
+// There's only two possible states the array can end up as. Which state it becomes after  turns 
+// is determined solely by the parity of .
+// After the first move, the array will consists of all non-negative numbers ( d-ai will never 
+// be negative because ai never exceeds d). After one turn, let's define x as max(ai) over all i. For any 
+// number ai, it will turn into x-ai. Because a zero will always exist after any one operation, x will be the 
+// maximum of the array in the next turn as well. Then the value at index i will turn into x-(x-ai). This is just equal to !
+// Now that it's obvious that our array will enter a cycle with a period of 2, we simply do the 
+// following: If k is odd, perform 1 operation. Otherwise perform 2 operations.
 void solve(){
 
-    int t, n, m, x, y, k, temp, answer;  
+    int t, n, m, x, y, temp, answer;  
+    int maxi, tmp_maxi;
+    ll k;        
     bool condition;
     string str, str1;                       
     cin >> t;               
     // t = 1;        
     while(t--){    
 
+        cin >> n >> k;    
+        vi a(n);   
+        maxi = INT32_MIN;         
+        forn(i, n){
+            cin >> a[i];
+            maxi = max(maxi, a[i]);   
+        }  
 
+        if(k % 2 == 0){
+            forn(i, 2){
+                tmp_maxi = INT32_MIN;         
+                forn(i, n){     
+                    a[i] = maxi - a[i];     
+                    tmp_maxi = max(tmp_maxi, a[i]); 
+                } 
+                maxi = tmp_maxi;         
+            }
+        }else{
+            forn(i, n){
+                a[i] = maxi - a[i];     
+            } 
 
+        }
 
+        for(int i=0; i<a.size(); i++){
+            cout << a[i] << " ";
+        }
+        cout << newl;    
 
     }  /* end of while() */
 
