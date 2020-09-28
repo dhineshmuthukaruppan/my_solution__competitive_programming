@@ -102,9 +102,26 @@ void solve(){
     // t = 1;        
     while(t--){    
 
+        cin >> n >> k; 
+        vi a(n);       
+        int mini = INT32_MAX;    
+        bool miniSkipped = false;         
+        forn(i, n){
+            cin >> a[i];
+            mini = min(mini, a[i]);
+        }   
+        answer = 0;   
+        forn(i, n){
+            if(a[i] == mini && miniSkipped == false){
+                miniSkipped = true;   
+                continue;    
+            }else{
 
+                answer += ((k-a[i])/mini);         
+            }
+        }
 
-
+        cout << answer << newl;     
 
     }  /* end of while() */
 
