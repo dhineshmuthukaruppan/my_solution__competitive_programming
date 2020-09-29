@@ -95,7 +95,7 @@ ll f(ll x){
 
 void solve(){
 
-    int t, n, m, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex;  
+    int t, n, m, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter;  
     bool condition;
     string str, str1;                       
     cin >> t;               
