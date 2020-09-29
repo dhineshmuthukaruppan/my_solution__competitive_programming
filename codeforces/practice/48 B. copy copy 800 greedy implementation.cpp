@@ -95,16 +95,22 @@ ll f(ll x){
 
 void solve(){
 
-    int t, n, m, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex;  
+    int t, n, m, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex;     
     bool condition;
     string str, str1;                       
     cin >> t;               
     // t = 1;        
     while(t--){    
 
+        cin >>  n;    
+        set<int> s;    
+        forn(i, n){
+            cin >> x;
+            s.insert(x);           
 
-
-
+        }
+        // distinct elements is the answer for this problem
+        cout << s.size() << newl;    
 
     }  /* end of while() */
 
