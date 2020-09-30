@@ -97,14 +97,26 @@ void solve(){
 
     int t, n, m, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter;  
     bool condition, parity;    
+    int fl, sl; 
     string str, str1;                       
     cin >> t;               
     // t = 1;        
     while(t--){    
 
-        
+        cin >> n >> x >> y;    
+        fl = sl = INT32_MIN;     
+        forn(i, x){
+            cin >> k;       
+            fl = max(fl, k);     
+        }
 
+        forn(i, y){
+            cin >> k ;    
+            sl = max(sl, k);     
+        }
 
+        if(fl > sl){cout << "YES" << newl; }else{cout << "NO" << newl; }
+    
 
     }  /* end of while() */
 
