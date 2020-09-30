@@ -102,6 +102,18 @@ void solve(){
     // t = 1;        
     while(t--){    
 
+        cin >>  n;   
+        if(n <= 30){
+            cout << "NO" << newl;    
+        }else{
+            cout << "YES" << newl;     
+            if(n == 36 || n == 40  || n == 44){
+                cout << 6 << " " << 10 << " " << 15 << " " << n - 31 << newl;  
+            }else{     
+                cout << 6 << " " << 10 << " " << 14 << " " << n - 30 << newl;      
+            }
+            
+        }
 
 
 
