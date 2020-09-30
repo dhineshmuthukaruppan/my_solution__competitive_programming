@@ -96,15 +96,26 @@ ll f(ll x){
 void solve(){
 
     int t, n, m, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter;  
-    bool condition, parity;    
+    bool condition, parity;
     string str, str1;                       
     cin >> t;               
     // t = 1;        
     while(t--){    
 
+        cin >> n;    
+        condition = true;       
+        forn(i, n){ 
+            cin >> x;
+            if(i == 0){
+                parity = ((x % 2) == 0);    
+            }else{
+                if(parity != ((x%2) == 0)){
+                    condition = false;   
+                }
+            }
+        }
 
-
-
+        if(condition){cout << "YES" << newl; }else{cout << "NO" << newl; }      
 
     }  /* end of while() */
 
