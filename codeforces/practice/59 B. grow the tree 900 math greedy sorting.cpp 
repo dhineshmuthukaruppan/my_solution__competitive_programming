@@ -96,56 +96,18 @@ ll f(ll x){
 void solve(){
 
     int t, n, m, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter;  
-    int a, b, c, r, totalTravel;    
     bool condition, parity;    
     string str, str1;                       
     cin >> t;               
     // t = 1;        
     while(t--){    
 
-        cin >> a >> b >> c >> r;   
-        if(a > b){
-            swap(a, b);     
-        }
 
-        totalTravel = b-a;            
-        if(c>=a && c<=b){
-            // station inside 
-            // totalTravel is also going to denote unavailable duration
-            if((c-r) <= a){
-                totalTravel -= (c-a); 
-            }else{
-                totalTravel -= ((c-a) - (c-a-r));    
-            }
 
-            if(c+r >= b){
-                totalTravel -= (b-c);     
-            }else{
-                totalTravel -= ((b-c) - (b-c-r));       
-            }
-        
-        }else if(c < a){
-            if(c+r >= b){
-                totalTravel -= (b-a); 
-            }else if(c+r > a){
-                totalTravel -= (((c+r)-c) - (a-c));     
-            }else{   
-                // do nothing
-            }
 
-        }else if(c > b){
-            if(c-r <= a){
-                totalTravel -= (b-a); 
-            }else if(c-r < b){   
-                totalTravel -= ((c-(c-r)) - (c-b));         
-            }else{
-                // do nothing
-            }
-        }
-
-        cout << totalTravel << newl;     
 
     }  /* end of while() */
+
 
 }  /* end of solve() */
 
