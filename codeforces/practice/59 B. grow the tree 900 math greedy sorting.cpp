@@ -95,16 +95,31 @@ ll f(ll x){
 
 void solve(){
 
-    int t, n, m, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter;  
+    int t, n, m, w, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter;  
+    ll x, y;     
     bool condition, parity;    
     string str, str1;                       
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;        
     while(t--){    
 
+        cin >> n;    
+        vi a(n); 
+        x = y = 0;    
+        forn(i, n){
+            cin >> a[i];     
+        }
 
+        sortall(a);   
+        forn(i, n){
+            if(i >= n/2){
+                x += a[i];
+            }else{
+                y += a[i];
+            }
+        }  
 
-
+        cout << x*x+y*y << newl;    
 
     }  /* end of while() */
 
