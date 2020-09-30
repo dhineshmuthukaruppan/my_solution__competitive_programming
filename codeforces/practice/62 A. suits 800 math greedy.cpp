@@ -96,15 +96,35 @@ ll f(ll x){
 void solve(){
 
     int t, n, m, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter;  
-    bool condition, parity;    
+    bool condition, parity;  
+    int a, b, c, d, e, f;      
     string str, str1;                       
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;        
     while(t--){    
 
+        cin >> a >> b >> c >> d >> e >> f;    
 
+        // suit 1 - a and d
+        // suit 2 - b, c, and d
+        answer = 0;     
+        if(e > f){
+            answer += min(a, d) * e;    
+            d -= min(a, d);     
+            if(d > 0){
+                answer += min(min(b, c), d) * f;   
+            }
 
+        }else{
+            answer += min(min(b, c), d) * f;   
+            d -= min(min(b, c), d);    
+            if(d > 0){
+                answer += min(a, d) * e;    
+            }
 
+        }
+        
+        cout << answer << newl ;   
 
     }  /* end of while() */
 
