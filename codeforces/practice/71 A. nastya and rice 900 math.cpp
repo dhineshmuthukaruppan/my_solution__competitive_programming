@@ -92,24 +92,32 @@ ll f(ll x){
 }
 
 
+
 void solve(){
 
     int t, n, m, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter;  
     bool condition, parity;    
+    int a, b, c, d;    
     string str, str1;                       
     cin >> t;               
     // t = 1;        
     while(t--){    
 
+        cin >> n >> a >> b >> c >> d;   
 
+        condition = true;     
+        x = n*(a-b);   
+        y = n*(a+b);   
+        if(x > c+d || y< c-d){
+            condition=false;  
+        }
 
-
+        if(condition){cout << "Yes" << newl; }else{cout << "No" << newl; }   
 
     }  /* end of while() */
 
 
 }  /* end of solve() */
-
 
 
 int main(){
@@ -122,9 +130,6 @@ int main(){
     return 0;   
 
 }  /* end of main() */
-
-
-
 
 
 
