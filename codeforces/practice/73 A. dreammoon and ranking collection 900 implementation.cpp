@@ -101,7 +101,27 @@ void solve(){
     // t = 1;        
     while(t--){    
 
+        cin >> n >> x;   
+        vi a(201);             
+        forn(i, n){
+            cin >>  y;   
+            a[y] = 1;    
+        }
+        answer = 0;   
+        for(int i=1; i<=201; i++){          
+            if(a[i] == 0 && x > 0){
+                a[i] = 1;   
+                answer++;   
+                x--;      
+            }else if(a[i]==0 && x == 0){
+                break;       
+            }else{
+                answer++;   
+            }
 
+        }
+
+        cout << answer << newl;    
 
 
 
