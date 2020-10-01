@@ -102,9 +102,16 @@ void solve(){
     // t = 1;        
     while(t--){    
 
-
-
-
+        cin >> n;   
+        // (2^k - 1) * x = n
+        forn(k, 31){  
+            int y = pow(2, k) - 1;    
+            if((n % y) == 0){  
+                x = n/y;    
+                cout << x << newl;    
+                break;  
+            }
+        }
 
     }  /* end of while() */
 
