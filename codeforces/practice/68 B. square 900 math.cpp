@@ -110,8 +110,6 @@ void solve(){
             cout << "No" << newl;   
         }
 
-
-
     }  /* end of while() */
 
 
