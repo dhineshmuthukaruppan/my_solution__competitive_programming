@@ -104,7 +104,7 @@ void solve(){
 
         cin >> n;   
         // (2^k - 1) * x = n
-        forn(k, 31){  
+        for(int k=2; k<=30; k++){      
             int y = pow(2, k) - 1;    
             if((n % y) == 0){  
                 x = n/y;    
