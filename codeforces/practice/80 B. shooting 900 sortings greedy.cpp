@@ -87,19 +87,44 @@ ll f(ll x){
     return answer;   
 }
 
+bool comparatorCustom(const pi &a, const pi &b){
+    return b.first < a.first;   
+}
 
 void solve(){
 
     int t, n, m, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter;  
     bool condition, parity;    
+    vpi p;     
     string str, str1;                       
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;        
     while(t--){    
 
+        p.clear();    
 
+        cin >> n;
+        for(int i=0; i<n; i++){
+            cin >> x;    
+            p.push_back(mp(x, i)); 
+        }
 
+        sort(p.begin(), p.end(), greater<pi>());                
 
+        vi a(p.size());    
+        answer = 0; 
+        x = 0;           
+        for(auto cp : p){
+            answer+=((cp.first * x) + 1);      
+            x++;   
+            // a[cp.second] = ++x;    
+        }
+
+        cout << answer << newl;     
+        forn(i, n){
+            cout << (p[i].second)+1 << " ";    
+        } 
+        cout << newl;    
 
     }  /* end of while() */
 
