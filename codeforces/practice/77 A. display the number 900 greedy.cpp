@@ -97,9 +97,24 @@ void solve(){
     // t = 1;        
     while(t--){    
 
+        cin >> n;    
+        if((n & 1) == 0){
+            while(n > 0){
+                cout << 1; 
+                n-=2;    
+            }
+            cout << newl;   
 
+        }else{
+            cout << 7;   
+            n-=3;    
+            while(n > 0){
+                cout << 1;  
+                n-=2;  
+            }
+            cout << newl;    
 
-
+        }
 
     }  /* end of while() */
 
