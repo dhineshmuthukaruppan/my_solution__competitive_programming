@@ -90,16 +90,73 @@ ll f(ll x){
 
 void solve(){
 
-    int t, n, m, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter;  
+    ll t, n, m, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter;  
     bool condition, parity;    
-    string str, str1;                       
-    cin >> t;               
-    // t = 1;        
+    string str, str1;                          
+    // cin >> t;               
+    t = 1;        
     while(t--){    
 
+        // cin >> n;    
+        // vi a(n); 
+        // answer = 0;   
+        // forn(i, n){
+        //     cin >> a[i];
+        // }
+
+        // x = 0; // denotes no of negative one's
+        // forn(i, n-1){
+        //     answer += (abs(abs(a[i]) - 1));
+        //     if(x == 1){ 
+        //         if(a[i] <= 0){
+        //             x = ((x+1)%2);             
+        //         }      
+        //     }else{
+        //         if(a[i] < 0){x = ((x+1)%2);}    
+        //     }
+            
+        // }  /* end of for loop */    
+    
+        // if(x == 1){
+        //     // convert the current number to negative one
+        //     answer += (abs(abs(a[n-1]) - 1)); 
+        //     if(a[n-1] > 0){answer+= 2; }   
+        // }else{
+        //     // convert the current number to 1
+        //     answer += (abs(abs(a[n-1]) - 1));   
+        //     if(a[n-1] < 0){answer += 2; }         
+        // }
+
+        // cout << answer << newl;     
 
 
-
+        cin >> n;
+        answer = 0;
+        int cnts[3] = {};
+        forn(i, n) {   
+            int a;
+            cin >> a;
+            if (a < 0) {
+                cnts[0]++;
+                answer += -a - 1;
+            }
+            else {
+                if (a == 0) cnts[1]++;
+                else {
+                    answer += a - 1;
+                    cnts[2]++;
+                }
+            }
+        }
+        if (cnts[1] != 0) {
+            answer += cnts[1];
+        }
+        else {
+            if (cnts[0] % 2 == 1) {
+                answer += 2;
+            }
+        }
+        cout << answer << endl;
 
     }  /* end of while() */
 
@@ -108,7 +165,7 @@ void solve(){
 
 
 
-int main(){
+int main(){   
 
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);  
