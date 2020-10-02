@@ -96,14 +96,52 @@ void solve(){
 
     int t, n, m, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter;  
     bool condition, parity;    
+    int rc, bc, rnb;     
     string str, str1;                       
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;        
     while(t--){    
 
+        cin >> n;   
+        vi r(n), b(n);
+        rc = bc = rnb = 0;     
+        forn(i, n){
+            cin >> r[i];
+            if(r[i] == 1){
+                rc++;    
+            }
+        }
+        forn(i, n){
+            cin >> b[i];
+            if(b[i] == 1){
+                bc++;   
+            }
+        }
 
+        if(rc>bc){
+            cout << 1 << newl;    
+        }else if (rc <= bc){
+            
+            forn(i, n){    
+                if(r[i] == 1 && b[i] == 0){
+                    rnb++;   
+                }
+            }
 
+            if(rnb == 0){
+                // There is no place where r is present and b is absent. so in that case it 
+                // is not possible to make r win against b
+                cout << -1 << newl;    
+            }else{
+                // x = required
+                x = bc - rc + rnb;   
+                x++;  
+                y = ceil(static_cast<float>(x) / rnb); 
+                cout << y << newl;           
 
+            }
+
+        }
 
     }  /* end of while() */
 
