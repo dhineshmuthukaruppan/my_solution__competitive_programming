@@ -93,13 +93,31 @@ void solve(){
     int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter;  
     bool condition, parity;    
     string str, str1;                       
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;        
     while(t--){    
 
+        cin >> n >> str;    
+        map<string, int> hmap;   
+        forn(i, str.size()-1){
+            str1="";   
+            str1+=str[i];  
+            str1+=str[i+1];   
+            hmap[str1]++;     
+        }       
 
+        maxi = INT32_MIN;   
+        map<string, int>::iterator it = hmap.begin();        
+        while(it != hmap.end()){
+            if((it->second) > maxi){
+                // cout << it->first << " " << it->second << newl;    
+                maxi = it->second;      
+                str1 = it->first;        
+            }
+            it++;   
+        }
 
-
+        cout << str1 << newl;    
 
     }  /* end of while() */
 
