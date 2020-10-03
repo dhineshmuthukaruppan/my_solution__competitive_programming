@@ -90,16 +90,47 @@ ll f(ll x){
 
 void solve(){
 
-    int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter;  
+    ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter;  
     bool condition, parity;    
     string str, str1;                       
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;        
     while(t--){    
 
+        cin >> n >> l >> r;    
+        mini = maxi = 0;    
+        vl min_a, max_a;     
 
+        l = min(l, n);   
+        r = min(r, n);  
+        
+        x = 2;   
+        for(int i=0; i<l-1; i++){  
+            min_a.pb(x);   
+            mini += x;   
+            x *= 2;        
+            
+        }
+        for(int i=l-1; i<n; i++){
+            min_a.pb(1); 
+            mini++;       
+        }
 
+        x = 2;   
+        max_a.pb(1);    
+        maxi++;      
+        for(int i=0; i<r-1; i++){  
+            max_a.pb(x);      
+            maxi += x;   
+            x *= 2;        
+        }
+        x/=2;   
+        for(int i=max_a.size(); i<n; i++){
+            max_a.pb(x);       
+            maxi+=x;           
+        }   
 
+        cout << mini << " " << maxi << newl;     
 
     }  /* end of while() */
 
