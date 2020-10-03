@@ -97,9 +97,21 @@ void solve(){
     // t = 1;        
     while(t--){    
 
+        cin >> n;   
+        str = "";  
+        forn(i, n){
+            str+='9';     
+        }
 
+        x = ((n-1)/4)+1;
+        int y = str.size() - 1;    
+        while(x){   
+            str[y] = '8'; 
+            y--;          
+            x--;   
+        }    
 
-
+        cout << str << newl;    
 
     }  /* end of while() */
 
