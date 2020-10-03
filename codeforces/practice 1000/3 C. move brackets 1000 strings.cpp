@@ -97,10 +97,23 @@ void solve(){
     // t = 1;        
     while(t--){    
 
+        cin >> n >> str;   
+        stack<char> stk;
+        answer = 0;      
+        forn(i, str.size()){
+            if(str[i] == '('){
+                stk.push('(');    
+            }else{
+                if(str[i] == ')' && stk.empty()){
+                    answer++;    
+                }else{
+                    stk.pop();    
+                }
+            }
+        }
 
-
-
-
+        cout << answer << newl;    
+        
     }  /* end of while() */
 
 
