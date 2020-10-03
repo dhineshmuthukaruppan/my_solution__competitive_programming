@@ -93,13 +93,23 @@ void solve(){
     int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter;  
     bool condition, parity;    
     string str, str1;                       
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;       
+    
     while(t--){    
-
-
-
-
+        x = 20;        
+        while(pow(2, x) <= 1e8){
+            x++;   
+        }
+        x--;          
+        
+        cin >> n >> m;    
+        if(n > x){
+            cout << m << newl;    
+        }else{
+            y = pow(2, n); 
+            cout << (m%y) << newl;  
+        }   
 
     }  /* end of while() */
 
