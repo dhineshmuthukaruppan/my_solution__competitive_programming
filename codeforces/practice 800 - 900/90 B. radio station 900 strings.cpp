@@ -93,13 +93,21 @@ void solve(){
     int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter;  
     bool condition, parity;    
     string str, str1;                       
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;        
     while(t--){    
+    
+        cin >> n >> m ;    
+        map<string, string> hmap;    
+        forn(i, n){  
+            cin >> str >> str1;    
+            hmap[str1+";"] = str;    
+        }   
 
-
-
-
+        forn(i, m){
+            cin >> str >> str1;    
+            cout << str << " " << str1 << " " << "#" << hmap[str1] << newl; 
+        }    
 
     }  /* end of while() */
 
