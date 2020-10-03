@@ -97,9 +97,19 @@ void solve(){
     t = 1;        
     while(t--){    
 
-        
+        cin >> n;
+        vi a(7);          
+        forn(i, n){
+            cin >> str;   
+            forn(j, str.size()){
+                if(str[j] == '1'){
+                    a[j]++;    
+                }
+            }
+        }
 
-
+        auto it = max_element(a.begin(), a.end());   
+        cout << *it << newl;       
 
     }  /* end of while() */
 
