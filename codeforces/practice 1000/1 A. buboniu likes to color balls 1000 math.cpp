@@ -90,18 +90,51 @@ ll f(ll x){
 
 void solve(){
 
-    int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter;  
+    ll t, n, m, l, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter;  
+    ll r, g, b, w, sum;    
     bool condition, parity;    
     string str, str1;                       
     cin >> t;               
     // t = 1;        
     while(t--){    
 
+        cin >> r >> g >> b >>w;   
+        sum = r+g+b+w;    
 
+        condition = false;  
+        if((sum % 2) == 0){
+            // if even everything should be multiple of 2
+            
+            if((r%2 == 0) && (g%2 == 0) && (b%2 == 0) && (w%2 == 0)){
+                condition = true;   
+            }
 
+            if(r && g && b){
+                r--; g--; b--;   
+                w+=3;    
+                if((r%2 == 0) && (g%2 == 0) && (b%2 == 0) && (w%2 == 0)){
+                    condition = true;   
+                }
+            }
 
+        }else{
+            // if odd everything should be multiple of 2 except 1
+            if(((r%2 == 1) && (g%2 == 0) && (b%2 == 0) && (w%2 == 0)) || ((r%2 == 0) && (g%2 == 1) && (b%2 == 0) && (w%2 == 0)) || ((r%2 == 0) && (g%2 == 0) && (b%2 == 1) && (w%2 == 0)) || ((r%2 == 0) && (g%2 == 0) && (b%2 == 0) && (w%2 == 1))){
+                condition = true;   
+            }
+            if(r && g && b){
+                r--; g--; b--;   
+                w+=3;    
+                if(((r%2 == 1) && (g%2 == 0) && (b%2 == 0) && (w%2 == 0)) || ((r%2 == 0) && (g%2 == 1) && (b%2 == 0) && (w%2 == 0)) || ((r%2 == 0) && (g%2 == 0) && (b%2 == 1) && (w%2 == 0)) || ((r%2 == 0) && (g%2 == 0) && (b%2 == 0) && (w%2 == 1))){
+                    condition = true;   
+                }
+            }
 
-    }  /* end of while() */
+        }
+
+        if(condition){cout << "YES"<< newl; }else{cout << "NO" << newl; }
+
+    }  /* end of while() */    
 
 
 }  /* end of solve() */
