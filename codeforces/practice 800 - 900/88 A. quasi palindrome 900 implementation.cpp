@@ -93,10 +93,59 @@ void solve(){
     int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter;  
     bool condition, parity;    
     string str, str1;                       
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;        
     while(t--){    
 
+        cin >> str;    
+        // check whether palindrome or not
+        condition = true;   // it is palindrome 
+        n = str.size();   
+        for(int i=0; i<n/2; i++){
+            if(str[i] != str[n-i-1]){
+                condition = false;  
+                break;   
+            }
+        }
+
+        if(condition){
+            cout << "YES" << newl;    
+        }else{
+            // check whether zeroes are found in the last
+            x = 0; // no of zeroes in the last    
+            n = str.size();   
+            int i = n-1;  
+            while(str[i] == '0'){
+                x++;      
+                i--;   
+            }
+
+            if(x == 0){
+                cout << "NO" << newl;   
+            }else{
+                str1 = "";  
+                forn(i, x){
+                    str1 += '0';
+                }   
+                str = str1 + str;    
+
+                condition = true;   // it is palindrome 
+                n = str.size();   
+                for(int i=0; i<n/2; i++){
+                    if(str[i] != str[n-i-1]){
+                        condition = false;  
+                        break;   
+                    }
+                }
+
+                if(condition){
+                    cout << "YES" << newl;   
+                }else{
+                    cout << "NO" << newl;  
+                }
+            }
+            
+        }
 
 
 
