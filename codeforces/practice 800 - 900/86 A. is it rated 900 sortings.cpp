@@ -93,13 +93,47 @@ void solve(){
     int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter;  
     bool condition, parity;    
     string str, str1;                       
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;        
     while(t--){    
 
+        // if changed rated
+        // if decreasing - may be
+        // else unrated
+
+        cin >> n;
+        k = 0;  
+        z = -1;   
+        condition = false;  // true - unrated and not properly decreasing   
+        forn(i, n){
+            cin >> x >> y;   
+            
+            if(x != y){
+                k=1;    
+            }else if(k == 0 && x == y){
+                if(z == -1){
+                    z = x;    
+                }else{
+                    if(z >= x){
+                        z = x;   
+                    }else{
+                        condition = true; 
+                    }
+                }
+            }
+
+        } /* end of for loop */
 
 
-
+        if(k == 1){
+            cout << "rated" << newl;    
+        }else{
+            if(condition){
+                cout << "unrated" << newl;  
+            }else{
+                cout << "maybe" << newl;    
+            }
+        }
 
     }  /* end of while() */
 
