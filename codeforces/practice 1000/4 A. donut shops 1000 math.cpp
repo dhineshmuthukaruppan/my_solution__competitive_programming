@@ -90,15 +90,27 @@ ll f(ll x){
 
 void solve(){
 
-    int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    ll a, b, c;    
     bool condition, parity;    
     string str, str1;                       
     cin >> t;               
     // t = 1;        
     while(t--){    
 
+        cin >> a >> b >> c;   
 
+        if(a < c){
+            cout << 1 << " ";  
+        }else{
+            cout << -1 << " ";   
+        }
 
+        if((c <= a) || (a*b > c)){    
+            cout << b << newl;       
+        }else{
+            cout << -1 << newl;        
+        }
 
 
     }  /* end of while() */
