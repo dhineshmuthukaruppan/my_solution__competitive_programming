@@ -90,16 +90,33 @@ ll f(ll x){
 
 void solve(){
 
-    int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    ll a, b;    
     bool condition, parity;    
     string str, str1;                       
     cin >> t;               
     // t = 1;        
     while(t--){    
 
+        // pay a - change any one
+        // pay b - change both
 
+        cin >> x >> y;   
+        cin >> a >> b;   
 
+        answer = 0;   
+        if(2*a <= b){
+            // we can apply only one operation till it becomes zero    
+            answer += (x*a + y*a); 
+        }else{
+            answer += (min(x, y) * b);   
+            mini = min(x, y);   
+            x-=mini;        
+            y-=mini;      
+            answer += (x*a + y*a);
+        }
 
+        cout << answer << newl;        
 
     }  /* end of while() */
 
