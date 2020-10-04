@@ -97,9 +97,22 @@ void solve(){
     // t = 1;        
     while(t--){    
 
+        cin >> n >> m >> k;   
+
+        int noOfCardsPerPlayer = n/k;    
+
+        if(noOfCardsPerPlayer > m){
+            cout << m << newl;    
+        }else{
+            z = (m-noOfCardsPerPlayer)/(k-1);         
+            if((m-noOfCardsPerPlayer)%(k-1) != 0){     
+                z+=1;             
+            }  
+
+            cout << (noOfCardsPerPlayer - z) << newl;  
 
 
-
+        }
 
     }  /* end of while() */
 
