@@ -90,16 +90,40 @@ ll f(ll x){
 
 void solve(){
 
-    int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool condition, parity;    
     string str, str1;                       
     cin >> t;               
     // t = 1;        
     while(t--){    
 
+        cin >> n >> m >> x >> y;    
 
+        l = r = 0; // l - single r - double
 
+        forn(i, n){
+            cin >> str;   
 
+            forn(j, str.size()){
+                if(j < str.size()-1 && str[j] == '.' && str[j+1] == '.'){
+                    r++;   
+                    j++;    
+                }else if(str[j] == '.'){
+                    l++;    
+                }
+            }
+        }
+        answer = 0;   
+        if(2*x < y){
+            // go with single block all the time
+            answer += ((r*2 + l) * x);        
+        }else{
+            // mis the block
+            answer += (r*y);   
+            answer += (l*x);       
+        }    
+
+        cout  << answer << newl;    
 
     }  /* end of while() */
 
