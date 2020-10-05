@@ -90,14 +90,33 @@ ll f(ll x){
 
 void solve(){
 
-    int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool condition, parity;    
     string str, str1;                       
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;        
     while(t--){    
 
+        cin >> n;   
+        forn(i, n){
 
+            cin >> m;  
+
+            x = m/14;    
+            if(x >= 1){
+                x = m%14;   
+                if(x>=1 && x<=6){
+                    cout << "YES" << newl; 
+                }else{
+                    cout << "NO" << newl;    
+                }
+
+            }else{
+                cout << "NO" << newl; 
+            }
+
+        }
+        
 
 
 
