@@ -97,7 +97,18 @@ void solve(){
     // t = 1;        
     while(t--){    
 
+        cin >> n;   
 
+        if(n == 1){
+            cout << -1 << newl; 
+        }else{
+
+            forn(i, n){
+                if(i==0){cout << 2; }else{cout << 3; }
+            }
+            cout << newl;    
+
+        }
 
 
 
