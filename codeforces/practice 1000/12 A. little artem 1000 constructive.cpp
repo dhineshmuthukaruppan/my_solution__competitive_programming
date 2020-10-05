@@ -97,9 +97,25 @@ void solve(){
     // t = 1;        
     while(t--){    
 
+        cin >> n >> m;    
 
-
-
+        forn(i, n){
+            if(i == 0){
+                forn(j, m){
+                    if(j == 0){
+                        cout << 'W';    
+                    }else{
+                        cout << 'B';    
+                    }
+                }
+                cout << newl;     
+            }else{
+                forn(j, m){
+                    cout << 'B';    
+                }
+                cout << newl;    
+            }
+        }
 
     }  /* end of while() */
 
