@@ -90,16 +90,29 @@ ll f(ll x){
 
 void solve(){
 
-    int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool condition, parity;    
     string str, str1;                       
     cin >> t;               
     // t = 1;        
     while(t--){    
 
+        cin >> n;   
+        if(n<10){
+            cout << n << newl;   
+        }else{
+            answer = 9;   
+            x = 100;  
+            y = 11;     
+            while(x < n){
+                answer += 9;   
+                x *= 10;   
+                y = y * 10 + 1;   
+            }   
 
-
-
+            answer += n/y;    
+            cout << answer << newl;    
+        }
 
     }  /* end of while() */
 
