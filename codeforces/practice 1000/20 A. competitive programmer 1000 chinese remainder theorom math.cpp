@@ -97,12 +97,30 @@ void solve(){
     // t = 1;        
     while(t--){    
 
+        cin >> str;   
+        x = y = z = 0; 
+        k = 0;       
+        forn(i, str.size()){    
+            // divisible by 2 and 10
+            if((str[i] - '0') == 0){
+                y = 1;   
+                x = 1;   
+            }else{
+                k += ((str[i] - '0'));  
+            }           
+        }
 
+        if(k % 3 == 0){
+            z = 1;    
+        }
 
-
+        if(x & y & z){
+            cout << "red" << newl;   
+        }else{
+            cout << "cyan" << newl;    
+        }
 
     }  /* end of while() */
-
 
 }  /* end of solve() */
 
