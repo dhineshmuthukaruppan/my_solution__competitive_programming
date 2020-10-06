@@ -97,9 +97,12 @@ void solve(){
     // t = 1;        
     while(t--){    
 
-
-
-
+        cin >> n >> m;   
+        if(gcdEuclidean(n, m) != 1){
+            cout << "Infinite" << newl;  
+        }else{
+            cout << "Finite" << newl;  
+        }
 
     }  /* end of while() */
 
