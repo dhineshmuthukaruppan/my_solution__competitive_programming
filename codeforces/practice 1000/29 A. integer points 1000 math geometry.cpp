@@ -90,8 +90,8 @@ ll f(ll x){
 
 void solve(){
 
-    int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
-    bool condition, parity;    
+    ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    bool condition, parity;        
     string str, str1;                       
     cin >> t;               
     // t = 1;        
@@ -99,26 +99,35 @@ void solve(){
 
         cin >> n;
         vi a(n);  
-        forn(i, n){
-            cin >> a[i];
-        }
+        x = y = z = k = 0; 
+        forn(i, n){  
+            cin >> a[i];   
+            if((a[i] & 1) == 0){
+                x++;   
+            }else{
+                y++;     
+            }
+        }   
         cin >> m;   
         vi b(m); 
         forn(i, m){
             cin >> b[i];
+            if((b[i] & 1) == 0){
+                z++;    
+            }else{
+                k++;   
+            }
         }
-
-        answer = 0;    
-        forn(i, n){
-            forn(j, m){
-                if((a[i]+b[j])/static_cast<float>(2) == (a[i]+b[j])/(2)){
-                    answer++;   
-                } 
-            }          
-        }
-
+        answer = x*z + y*k;        
+        // forn(i, n){
+        //     forn(j, m){
+        //         if((a[i]+b[j])/static_cast<ld>(2) == (a[i]+b[j])/(2)){
+        //             answer++;              
+        //         } 
+        //     }          
+        // }
         cout << answer << newl;    
-        
+
     }  /* end of while() */
 
 
