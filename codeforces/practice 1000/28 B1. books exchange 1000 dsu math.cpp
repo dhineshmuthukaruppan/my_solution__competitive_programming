@@ -97,9 +97,39 @@ void solve(){
     // t = 1;        
     while(t--){    
 
+        cin >> n;       
+        vi a(n);  
+        forn(i, n){ 
+            cin >> a[i];
+            --a[i];  
+        }    
+
+        vi used(n), ans(n); 
+
+        forn(i, n){
+            if(!used[i]){
+
+                vi cur;   
+                while(!used[i]){
+                    cur.pb(i); 
+                    used[i] = 1;      
+                    i = a[i];        
+                }    
+
+                for(auto el:cur){
+                    ans[el] = cur.size();     
+                }
+
+            }
+        }
 
 
 
+
+        forn(i, n){
+            cout << ans[i] << " ";
+        }
+        cout << newl;    
 
     }  /* end of while() */
 
