@@ -187,6 +187,7 @@ bool isPrime(int number){
     return condition;    
 }
 
+
 vi returnAllFactors(int n){
     vi result;      
     for(int i=1; i<=sqrt(n); i++){ // this will be efficient than n or n/2

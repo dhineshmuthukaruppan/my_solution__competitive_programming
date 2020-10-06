@@ -97,16 +97,34 @@ void solve(){
     // t = 1;        
     while(t--){    
 
+        cin >> str; 
+        n = str.size();      
+        vi a(26, 0); // -1 - noInvolvement, 0 - not working, 1 - working  
+        forn(i, str.size()){
+            if(i == str.size() -1){
+                // add last character
+                a[str[n-1] - 'a'] = 1;        
+            }else{
+                if(str[i] == str[i+1]){
+                    i++;    
+                }else{
+                    a[str[i] - 'a'] = 1;      
+                }
+            }
+        }      
 
-
+        forn(i, 26){   
+            if(a[i] == 1){
+                cout << static_cast<char>('a' + i);             
+            }     
+        }     
+        cout << newl;    
 
 
     }  /* end of while() */
 
 
 }  /* end of solve() */
-
-
 
 int main(){
 
