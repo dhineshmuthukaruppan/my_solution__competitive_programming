@@ -96,17 +96,21 @@ void solve(){
     cin >> t;               
     // t = 1;        
     while(t--){    
-
+        // number is divisible by 60 if it is divisible by 20 and 3
+        // 2, 4, 6, 8, 0 and one more 0 should be present for divisible by 20
         cin >> str;   
         x = y = z = 0; 
         k = 0;       
         forn(i, str.size()){    
             // divisible by 2 and 10
             if((str[i] - '0') == 0){
-                y = 1;   
                 x = 1;   
+                y++;   
             }else{
                 k += ((str[i] - '0'));  
+                if((str[i] - '0') % 2 == 0){
+                    y++;    
+                }
             }           
         }
 
@@ -114,7 +118,7 @@ void solve(){
             z = 1;    
         }
 
-        if(x & y & z){
+        if(x && y>1 && z){    
             cout << "red" << newl;   
         }else{
             cout << "cyan" << newl;    
