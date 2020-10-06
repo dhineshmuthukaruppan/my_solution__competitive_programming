@@ -97,10 +97,28 @@ void solve(){
     // t = 1;        
     while(t--){    
 
+        cin >> n;
+        vi a(n);  
+        forn(i, n){
+            cin >> a[i];
+        }
+        cin >> m;   
+        vi b(m); 
+        forn(i, m){
+            cin >> b[i];
+        }
 
+        answer = 0;    
+        forn(i, n){
+            forn(j, m){
+                if((a[i]+b[j])/static_cast<float>(2) == (a[i]+b[j])/(2)){
+                    answer++;   
+                } 
+            }          
+        }
 
-
-
+        cout << answer << newl;    
+        
     }  /* end of while() */
 
 
