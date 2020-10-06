@@ -97,9 +97,38 @@ void solve(){
     // t = 1;        
     while(t--){    
 
+        cin >> n;    
+        vi a(n), b(n); 
+        forn(i, n){
+            cin >> a[i];
+        }
+        forn(i, n){
+            cin >> b[i];
+        }
 
+        x = 0;  
+        y; // difference   
+        condition = true;   
+        forn(i, n){
+            if(x==0 && a[i]-b[i] != 0 && a[i] - b[i] < 0){
+                x=1;       
+                y = a[i] - b[i];
+            }else if(x==1 && a[i]-b[i] == 0){
+                x=2;        
+            }else if(x==2 && a[i] - b[i] !=0){
+                x=3;   
+                condition = false;    
+                break; 
+            }else if(x==1 && a[i] - b[i] != y){
+                condition = false;  
+                break;    
+            }else if(x==0 && a[i]-b[i]>0){
+                condition = false;          
+                break;         
+            }
+        }
 
-
+        if(condition){cout << "YES" << newl; }else{cout << "NO" << newl;  }
 
     }  /* end of while() */
 
