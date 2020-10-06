@@ -96,14 +96,21 @@ void solve(){
     cin >> t;               
     // t = 1;        
     while(t--){    
-
-
-
-
-
+        cin >> n >> m;   
+        if(m<=n){
+            cout << m << newl; 
+        }else{
+            answer = 0; 
+            for(int i=0; i<n; i++){
+                if(i < (m%n)){
+                    answer+=(pow(m/n+1, 2));     
+                }else{
+                    answer+=(pow(m/n, 2));         
+                }
+            }
+            cout << answer << newl;    
+        }
     }  /* end of while() */
-
-
 }  /* end of solve() */
 
 
