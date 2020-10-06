@@ -97,7 +97,17 @@ void solve(){
     // t = 1;        
     while(t--){    
 
+        cin >> n >> m;   
 
+        if(n > 3){
+            cout << "YES" << newl;  
+        }else{
+            if((n==1 && m==1) || n>=m || (n==2 && m==3)){
+                cout << "YES" << newl;     
+            }else{
+                cout << "NO" << newl;    
+            }    
+        }
 
 
 
