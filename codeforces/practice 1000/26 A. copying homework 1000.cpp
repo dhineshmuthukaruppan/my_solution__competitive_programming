@@ -93,13 +93,21 @@ void solve(){
     int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool condition, parity;    
     string str, str1;                       
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;        
     while(t--){    
 
+        cin >> n;   
+        vi b(n);     
+        forn(i, n){
+            cin >> x;   
+            b[i] = n-x+1;    
+        }
 
-
-
+        forn(i, n){
+            cout << b[i] << " "; 
+        }
+        cout << newl;    
 
     }  /* end of while() */
 
