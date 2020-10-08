@@ -93,16 +93,29 @@ void solve(){
     int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool condition, parity;    
     string str, str1;                       
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;        
     while(t--){    
 
+        cin >> n;    
 
-
-
+        forn(i, n){
+            cin >> x;
+            condition = false;    
+            if((x & 1) == 0){
+                cout << x/2 << newl;    
+            }else{
+                if(condition){
+                    condition = false;  
+                    cout << floor(x/2) << newl;  
+                }else{
+                    condition = true;   
+                    cout << ceil(x/static_cast<double>(2)) << newl;                
+                }
+            }
+        }
 
     }  /* end of while() */
-
 
 }  /* end of solve() */
 
