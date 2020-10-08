@@ -90,36 +90,49 @@ ll f(ll x){
 
 void solve(){
 
-    ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool condition, parity;    
     string str, str1;                       
     cin >> t;               
     // t = 1;        
     while(t--){    
 
-        cin >> n >> str;    
-
-        l = r = -1;   
-        forn(i, str.size()){
-            if(str[i] == '1' && l == -1){
-                l = i+1;     
-            }else if(str[i] == '1' && (r == -1 || (l!=-1 && r!=-1))){
-                r = i+1;                   
-            }         
-        }      
-
-        if(l == -1 && r == -1){
-            cout << n << newl;   
-        }else if(l!=-1 && r == -1){
-            x = max((0+l), (n-l+1));       
-            cout << 2*x << newl;     
-
-        }else if(l!=-1 && r!=-1){
-            x = max((n-l+1), (0+r));    
-            cout << 2 * x << newl;     
+        cin >> n;    
+        cin >> str >> str1;    
+        char x1, x2;    
+        condition = true;   
+        x = 0;    
+        forn(i, n){
+            if(str[i] != str1[i]){   
+                if(x >= 2){
+                    x++;    
+                    condition = false;    
+                    break;     
+                }else if(x == 0){
+                    x1 = str[i];   
+                    x2 = str1[i];  
+                    x++;         
+                }else if(x == 1){
+                    if(str[i] != x1 || str1[i] != x2){
+                        x++;   
+                        condition = false;            
+                        break;    
+                    }else{   
+                        x++;       
+                    }   
+                }
+            }
         }
 
+
+        if(condition && x == 2){
+            cout << "Yes" << newl;  
+        }else{
+            cout << "No" << newl;     
+        }    
+
     }  /* end of while() */
+
 
 }  /* end of solve() */
 
