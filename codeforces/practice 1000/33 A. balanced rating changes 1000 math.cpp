@@ -99,19 +99,22 @@ void solve(){
 
         cin >> n;    
 
+        // condition = false;    
+        k = 1;      
         forn(i, n){
             cin >> x;
-            condition = false;    
-            if((x & 1) == 0){
+            if(x%2 == 0){      
                 cout << x/2 << newl;    
-            }else{
-                if(condition){
-                    condition = false;  
-                    cout << floor(x/2) << newl;  
-                }else{
-                    condition = true;   
-                    cout << ceil(x/static_cast<double>(2)) << newl;                
-                }
+            }else{     
+                // if(condition){
+                //     condition = false;  
+                //     cout << floor(x/static_cast<double>(2)) << newl;        
+                // }else{    
+                //     condition = true;   
+                //     cout << ceil(x/static_cast<double>(2)) << newl;                
+                // }
+                cout << (x+k)/2 << newl; 
+                k*=-1;    
             }
         }
 
