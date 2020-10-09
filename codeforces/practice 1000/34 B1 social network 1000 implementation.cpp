@@ -93,13 +93,42 @@ void solve(){
     int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool condition, parity;    
     string str, str1;                       
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;        
     while(t--){    
 
+        cin >> n >> k;   
 
+        deque<int> dq;    
+        forn(i, n){    
+            cin >> x;   
+            if(dq.size() < k){
+                deque<int>::iterator it = find(dq.begin(), dq.end(), x);    
+                if(it == dq.end()){
+                    // if element not found
+                    dq.push_front(x);    
+                }else{
+                    continue;    
+                }   
+                
+            }else{
+                deque<int>::iterator it = find(dq.begin(), dq.end(), x);   
+                if(it == dq.end()){
+                    // element not found
+                    dq.pop_back();   
+                    dq.push_front(x);      
+                }else{
+                    continue;    
+                }  
+                
+            }
+        }
 
-
+        cout << dq.size() << newl;  
+        for(auto elem: dq){
+            cout << elem << " ";   
+        }
+        cout << newl;  
 
     }  /* end of while() */
 
