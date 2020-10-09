@@ -97,9 +97,20 @@ void solve(){
     // t = 1;        
     while(t--){    
 
+        cin >> str >> str1;    
+        vi a(26);   
+        forn(i, str.size()){
+            a[(str[i]-'a')]++;    
+        } 
+        condition = false;    
+        forn(i, str1.size()){
+            if(a[(str1[i]-'a')] > 0){
+                condition = true;  
+                break; 
+            }
+        }
 
-
-
+        if(condition){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
     }  /* end of while() */
 

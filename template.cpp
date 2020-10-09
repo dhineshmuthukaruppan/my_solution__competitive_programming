@@ -101,6 +101,8 @@ void solve(){
 
 
 
+        // if(condition){cout << "YES" << newl; }else{cout << "NO" << newl; }  
+
     }  /* end of while() */
 
 
