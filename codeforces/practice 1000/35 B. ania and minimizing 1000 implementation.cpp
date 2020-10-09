@@ -93,13 +93,42 @@ void solve(){
     int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool condition, parity;    
     string str, str1;                       
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;        
     while(t--){    
 
+        cin >> n >> k >> str;   
+        x = 0;    
+
+        if(n==1 && k>=1){
+            str[0] = '0';
+        }else{
+            forn(i, n){
+                if(x == k){
+                    break;     
+                }
+
+                if(i == 0){
+                    // first element
+                    if(str[i] > '1'){
+                        str[i] = '1';    
+                        x++;        
+                    }
+
+                }else{
+                    if(str[i] == '0'){
+                        continue;   
+                    }else{
+                        str[i] = '0';   
+                        x++;   
+                    }
+                }
+            }    
+        }
 
 
 
+        cout << str << newl;  
 
     }  /* end of while() */
 
