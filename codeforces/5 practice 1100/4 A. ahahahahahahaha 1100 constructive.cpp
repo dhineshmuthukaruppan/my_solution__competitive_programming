@@ -97,6 +97,43 @@ void solve(){
     // t = 1;        
     while(t--){    
 
+        cin >>  n;
+        l = r = 0;    
+    
+        forn(i, n){
+            cin >> x;   
+            if((x&1) == 0){
+                l++;   
+            }else{
+                r++; // no of 1's
+            }
+        }
+
+        if(r<=n/2){
+            cout << n/2 << newl; 
+            forn(i, n/2){
+                cout << 0 << " "; 
+            }
+            cout << newl; 
+        }else{
+            // l<n/2 && r>n/2
+
+            if((n/2)%2 == 0){
+                cout << n/2 << newl; 
+                forn(i, n/2){
+                    cout << 1 << " ";    
+                }     
+                cout << newl;     
+            }else{
+                cout << (n/2+1) << newl;        
+                forn(i, n/2+1){
+                    cout << 1 << " "; 
+                }
+                cout << newl;   
+
+            }
+
+        }
 
 
 
