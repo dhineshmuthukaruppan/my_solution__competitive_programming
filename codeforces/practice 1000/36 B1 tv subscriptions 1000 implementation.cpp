@@ -90,16 +90,54 @@ ll f(ll x){
 
 void solve(){
 
-    int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    int t, n, m, d, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool condition, parity;    
     string str, str1;                       
     cin >> t;               
     // t = 1;        
     while(t--){    
 
+        cin >> n >> k >> d; 
+        vi a(n);    
+        forn(i, n){
+            cin >> a[i];
+        }
+        mini = INT32_MAX;        
+        map<int, int> hmap;   
+        
+        x = 0;   
+        forn(i, d){
+            if(hmap[a[i]] > 0){
+                hmap[a[i]]++;   
+            }else{
+                x++;   
+                hmap[a[i]]++;    
+            }
+        }
+        mini = min(mini, x);    
 
+        for(int i=d; i<n; i++){
+            // add the new element
+            if(hmap[a[i]] > 0){
+                hmap[a[i]]++;   
+            }else{
+                x++;   
+                hmap[a[i]]++;    
+            }
 
+            // remove the old element
+            if(hmap[a[i-d]] == 1){
+                hmap[a[i-d]]--;  
+                x--;   
+            }else{
+                hmap[a[i-d]]--;
+            }
+            
+            mini = min(mini, x);       
 
+        }
+
+        cout << mini << newl;   
 
     }  /* end of while() */
 
