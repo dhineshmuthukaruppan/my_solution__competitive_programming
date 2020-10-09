@@ -97,9 +97,21 @@ void solve(){
     // t = 1;        
     while(t--){    
 
+        cin >> n;   
 
+        sum =0 ;  
+        forn(i, n){
+            cin >> x;    
+            if(x<=2048){
+                sum += x;   
+            }
+        }
 
-
+        if(sum >= 2048){
+            cout << "YES" << newl;  
+        }else{
+            cout << "NO" << newl;  
+        }
 
         // if(condition){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
