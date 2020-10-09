@@ -97,7 +97,21 @@ void solve(){
     // t = 1;        
     while(t--){    
 
+        cin >> n >> m;   
+        y = 0;     
+        forn(i, n){
+            cin >> x;    
+            if(m%2==0 && x==m/2){
+                cout << (y%2) << " ";
+                y++;      
+            }else if(2*x < m){     
+                cout << 0 << " ";    
+            }else if(2*x > m){
+                cout << 1 << " ";    
+            }
+        }
 
+        cout << newl;     
 
 
 
