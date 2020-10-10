@@ -81,11 +81,10 @@ int gcdEuclidean(int A, int B);
 int lcm(int A, int B);      
 ll lb(ll target, ll l, ll h);
 ll ub(ll target, ll l, ll h);       
-ll f(ll x){
-    ll answer;    
-
-    return answer;   
+ll f(ll h){
+    return ((3*h*h + h)/2);      
 }
+
 
 
 void solve(){
@@ -96,6 +95,27 @@ void solve(){
     cin >> t;               
     // t = 1;        
     while(t--){          
+
+        cin >> n;   
+
+        answer = 0;   
+        while(true){
+            if(n <= 0){
+                break; 
+            }
+            x = ub(n, 0, n);  
+            x--; 
+            n -= (f(x));  
+            if(x > 0){
+                answer++;   
+            }else{
+                break; 
+            }
+
+        }
+
+
+        cout << answer << newl;   
 
 
 
