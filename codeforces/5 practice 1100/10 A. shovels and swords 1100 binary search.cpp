@@ -97,9 +97,9 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> x >> y;   
 
-
-
+        cout << min(min(x, y), (x+y)/3) << newl;     
 
         // if(condition){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
