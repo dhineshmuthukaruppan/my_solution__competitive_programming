@@ -111,15 +111,9 @@ void solve(){
             }else{
                 break; 
             }
-
         }
 
-
         cout << answer << newl;   
-
-
-
-
 
         // if(condition){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
