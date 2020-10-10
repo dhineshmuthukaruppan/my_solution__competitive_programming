@@ -93,12 +93,49 @@ void solve(){
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool condition, parity;    
     string str, str1;                             
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;        
     while(t--){          
 
+        cin >> n >> m >> x >> y;   
+        cout << x << " " << y << newl;   
 
+        for(int i=1; i<=m; i++){
+            if(i == y){
+                continue;    
+            }else{
+                cout << x << " " << i << newl;   
+            }
+        }
 
+        condition=true;    
+        for(int i=x-1; i>=1; i--){
+            if(condition){
+                condition = false;  
+                for(int j=m; j>=1; j--){
+                    cout << i << " " << j << newl; 
+                }
+            }else{
+                condition = true; 
+                for(int j=1; j<=m; j++){
+                    cout << i << " " << j << newl; 
+                }
+            }
+        }
+
+        for(int i=x+1; i<=n; i++){
+            if(condition){
+                condition = false;  
+                for(int j=m; j>=1; j--){
+                    cout << i << " " << j << newl; 
+                }
+            }else{
+                condition = true; 
+                for(int j=1; j<=m; j++){
+                    cout << i << " " << j << newl; 
+                }
+            }
+        }
 
 
         // if(condition){cout << "YES" << newl; }else{cout << "NO" << newl; }  
