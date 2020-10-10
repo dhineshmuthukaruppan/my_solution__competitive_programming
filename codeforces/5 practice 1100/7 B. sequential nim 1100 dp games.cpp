@@ -97,9 +97,35 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n;    
 
+        condition = false;    
+        k = -1;     
+        forn(i, n){
+            cin >> x;    
 
+            if(condition == false){
+                if(x > 1){
+                    k = i;      
+                    condition = true;
+                }
+            }
+        }
 
+        if(k==-1){
+            // everything is one
+            if(n%2 == 0){
+                cout << "Second" << newl;    
+            }else{
+                cout << "First" << newl;     
+            }
+        }else{
+            if(k%2 == 0){
+                cout << "First" << newl; 
+            }else{
+                cout << "Second" << newl ; 
+            }
+        }
 
         // if(condition){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
