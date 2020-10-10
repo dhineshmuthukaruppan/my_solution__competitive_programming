@@ -91,14 +91,54 @@ ll f(ll x){
 void solve(){
 
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    ll x1, y1, z1, x2, y2, z2;     
     bool condition, parity;    
-    string str, str1;                             
+    string str, str1;
+
     cin >> t;               
     // t = 1;        
-    while(t--){          
+    while(t--){    
+
+        int m, sum = 0, x0, x1, x2, y0, y1, y2;
+
+        cin >> x0 >> x1 >> x2 >> y0 >> y1 >> y2;
+
+        // forming(2, 1) pair
+        m = min(x2, y1);
+        x2 -= m;    
+        y1 -= m;   
+        sum += 2 * m;
 
 
+        // forming (0, 2) pair
+        m = min(x0, y2);
+        x0 -= m;    
+        y2 -= m;
 
+        // forming (1, 0) pair
+        m = min(x1, y0);
+        x1 -= m;
+        y0 -= m;
+
+
+        // forming (1, 1) pair
+        m = min(x1, y1);    
+        x1-=m;   
+        y1-=m;     
+
+        // forming (2,2) pair
+        m = min(x2, y2);    
+        x2-=m;   
+        y2-=m;     
+
+        // forming (0, 1) is not needed hereafter
+        
+
+        // sum -= 2 * min(x1, y2);
+
+        sum += ((min(x1, y2)) * -2);     
+
+        cout << sum << endl;
 
 
         // if(condition){cout << "YES" << newl; }else{cout << "NO" << newl; }  
