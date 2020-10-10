@@ -97,9 +97,85 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >>  n;
+        vi a(2*n);
+        vi auxE, auxO;        
+        l = r = 0;                          
+        forn(i, 2*n){      
+            cin >> a[i];    
+            if(a[i]%2 == 0){
+                l++; 
+            }else{
+                r++;   
+            } 
+        }   
+        
+        // if no of odd and even number count is even 
+        if(l%2 == 0 && r%2 == 0){
+            // then remove 2 numbers from same polarity
+            x = 0;     
+            if(l > 2){
+                // remove 2 even number from array
+                forn(i, 2*n){
+                    if(x<2 && a[i]%2 == 0){
+                        x++;  
+                        continue;   
+                    }
+                    if(a[i]%2 == 0){
+                        auxE.pb(i+1);       
+                    }else{
+                        auxO.pb(i+1); 
+                    }
+                        
+                }
+            }else{
+                // remove 2 odd numbers from array
+                x=0;     
+                forn(i, 2*n){
+                    if(x<2 && a[i]%2 == 1){    
+                        x++;      
+                        continue;   
+                    }
+                    
+                    if(a[i]%2 == 0){
+                        auxE.pb(i+1);   
+                    }else{
+                        auxO.pb(i+1); 
+                    }     
+                }
+            }
 
+        }else{ // both odd and even number count is odd
+            // remove one odd and one even number
+            x = 0; y = 0;                
+            forn(i, 2*n){
 
+                if(x==0 && a[i]%2 == 0){
+                    x=1;    
+                    continue;    
+                }
 
+                if(y == 0 && a[i]%2 == 1){
+                    y = 1;   
+                    continue;    
+                }   
+
+                if(a[i]%2 == 0){
+                    auxE.pb(i+1);   
+                }else{
+                    auxO.pb(i+1); 
+                }      
+
+            }
+
+        }
+
+        for(int i=0; i<auxE.size(); i+=2){
+            cout << auxE[i] << " " << auxE[i+1] << newl ;     
+        }
+        for(int i=0; i<auxO.size(); i+=2){
+            cout << auxO[i] << " " << auxO[i+1] << newl ;          
+        }
 
         // if(condition){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
