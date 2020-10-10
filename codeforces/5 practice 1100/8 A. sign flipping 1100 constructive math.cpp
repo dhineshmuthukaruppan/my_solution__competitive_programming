@@ -97,7 +97,27 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n;   
+        forn(i, n){
+            cin >> x;    
+            if(i%2==0){
+                // negative numbers
+                if(x>0){
+                    cout << -1 * x << " "; 
+                }else{
+                    cout << x << " ";   
+                }
+            }else{
+                // positive numbers
+                if(x < 0){
+                    cout << -1 * x << " "; 
+                }else{
+                    cout << x << " ";     
+                }
+            }     
+        }
 
+        cout << newl; 
 
 
 
