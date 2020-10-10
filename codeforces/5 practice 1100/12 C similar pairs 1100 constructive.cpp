@@ -88,23 +88,6 @@ ll f(ll x){
 }
 
 
-/* vivek and ashish can never claim cells in rows and columns which already have atleast one cell claimed.
-so we need to look at the parity of minimum number of rows and columns which have no cells claimed 
-initially
-
-solution:
-let a be the number of rows which do not have any cell claimed in them initially and similarly b 
-be the number of columns which do not have any cell claimed initially. Each time a player makes a move
-both a and b decrease by 1. since they only claim cells in rows and columns with no claimed cells.
-If either one of a or b becomes 0, the player whose turn comes next loses the game. since both a and b
-decreses by 1 after each move, min(a, b) becomes 0 first. so if min(a, b) is odd ashish wins the game
-otherwise vivek wins the match
-
-time complexity  - O(n*m)
-
- */
-
-
 void solve(){
 
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
@@ -114,38 +97,8 @@ void solve(){
     // t = 1;        
     while(t--){          
 
-        cin >> n >> m;    
-        vi row(n), col(m); 
 
-        forn(i, n){
-            forn(j, m){
-                cin >> x;    
-                if(x){
-                    row[i] = 1;
-                    col[j] = 1;        
-                }
-            }
-        }
 
-        answer = 0;  
-        
-        forn(i, n){
-            forn(j, m){
-
-                if(row[i]==0 && col[j] == 0){
-                    answer++;   
-                    row[i] = 1; 
-                    col[j] = 1;    
-                }
-
-            }
-        }
-
-        if(answer%2 == 0){
-            cout << "Vivek" << newl; 
-        }else{
-            cout << "Ashish" << newl; 
-        }
 
 
         // if(condition){cout << "YES" << newl; }else{cout << "NO" << newl; }  
