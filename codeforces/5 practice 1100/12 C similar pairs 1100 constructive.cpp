@@ -97,11 +97,47 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n;    
+        vi a(n);   
+        l = r = 0;     
+        forn(i, n){
+            cin >> a[i]; 
+            if(a[i]%2 == 0){
+                l++;
+            }else{
+                r++;    
+            }
+        }
 
+        if(l%2 == 0 && r%2 == 0){
+            cout << "YES" << newl;     
+        }else if(l==n || r==n){
+            cout << "YES" << newl;     
+        }else{    
+            sortall(a);     
+            condition = false; 
+            forn(i, n){
+                if(a[i]%2== 0){
+                    if(i<n-1){
+                        if(a[i+1]%2==1 && a[i+1] - a[i] == 1){
+                            condition = true;  
+                            break; 
+                        }
+                    }
+                }else{
+                    if(i<n-1){
+                        if(a[i+1]%2==0 && a[i+1] - a[i] == 1){
+                            condition = true;  
+                            break; 
+                        }
+                    }
+                }
 
+            }  /* END OF FORN */
 
+            if(condition){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
-        // if(condition){cout << "YES" << newl; }else{cout << "NO" << newl; }  
+        }  /* end of else */
 
     }  /* end of while() */
 
