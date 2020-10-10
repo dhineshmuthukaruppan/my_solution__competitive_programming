@@ -97,8 +97,38 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n >> m;    
+        vi row(n), col(m); 
 
+        forn(i, n){
+            forn(j, m){
+                cin >> x;    
+                if(x){
+                    row[i] = 1;
+                    col[j] = 1;        
+                }
+            }
+        }
 
+        answer = 0;  
+        
+        forn(i, n){
+            forn(j, m){
+
+                if(row[i]==0 && col[j] == 0){
+                    answer++;   
+                    row[i] = 1; 
+                    col[j] = 1;    
+                }
+
+            }
+        }
+
+        if(answer%2 == 0){
+            cout << "Vivek" << newl; 
+        }else{
+            cout << "Ashish" << newl; 
+        }
 
 
         // if(condition){cout << "YES" << newl; }else{cout << "NO" << newl; }  
