@@ -97,7 +97,39 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> str;   
+        l = r = 0;    
+        forn(i, str.size()){
+            if(str[i] == '0'){
+                l++;
+            }else{
+                r++;   
+            }
+        }
 
+        if(l == 0 || r == 0 ){
+            cout << str << newl; 
+        }else{
+
+            for(int i=0; i<str.size(); i++){
+                if(str[i] == '1'){
+                    if(i < str.size()-1){   
+                        if(str[i+1] == '0'){
+                            cout << str[i] << str[i+1];   
+                            i++;   
+                        }else{
+                            cout << str[i] << 0;    
+                        }
+                    }else{
+                        cout << str[i] << 0;    
+                    }     
+
+                }else{
+                    cout << 1 << str[i];     
+                }
+            }
+            cout << newl;     
+        }
 
 
 

@@ -91,7 +91,7 @@ ll f(ll x){
 void solve(){
 
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
-    bool condition, parity;    
+    bool cond, parity;    
     string str, str1;                             
     cin >> t;               
     // t = 1;        
@@ -101,7 +101,7 @@ void solve(){
 
 
 
-        // if(condition){cout << "YES" << newl; }else{cout << "NO" << newl; }  
+        // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
     }  /* end of while() */
 
@@ -171,22 +171,22 @@ vi sieveOfEratosthenes(int n){
 
 // O(sqrt(n));  
 bool isPrime(int number){
-    bool condition = true;   
+    bool cond = true;   
     if(number <= 1){
-        condition = false; 
+        cond = false; 
     }else if(number == 2 || number == 3){
-        condition = true; 
+        cond = true; 
     }else{
         for(int i=2; i<= sqrt(number); i++){
             if(number % i == 0){
-                condition = false; 
+                cond = false; 
                 break; 
             }else{
                 continue; 
             }
         }
     }
-    return condition;    
+    return cond;    
 }
 
 
