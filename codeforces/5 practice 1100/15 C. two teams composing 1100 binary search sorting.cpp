@@ -90,16 +90,45 @@ ll f(ll x){
 
 void solve(){
 
-    ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
     cin >> t;               
     // t = 1;        
     while(t--){          
 
+        cin >>  n;   
+        map<int, int> hmap;    
+        forn(i, n){
+            cin >> x; 
+            hmap[x]++;      
+        }
 
+        map<int, int>::iterator it = hmap.begin();   
+        maxi = INT32_MIN;   
+        x = 0;   // count of other distinct element
+        while(it!=hmap.end() ){
+            x++;   
+            if(it->second > maxi){
+                maxi = it->second;    
+            }
+            it++;    
+        }
 
+        x--;    
+        // cout << maxi << " " << x << newl;    
 
+        if(maxi <= x){
+            cout << maxi << newl;    
+        }else if(maxi > x){
+
+            if(maxi - x > 1){
+                cout << x+1 << newl; 
+            }else{
+                cout << x << newl; 
+            }
+
+        }
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
