@@ -97,9 +97,23 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        // result is the maximum distance between 2R's+1
 
+        cin >> str; 
 
+        str = "R" + str + "R";
+        maxi = 0;   
+        x = 0;    
+        forn(i, str.size()){
+            if(str[i] == 'R'){
+                maxi = max(maxi, x);     
+                x = 0;       
+            }else{
+                x++;       
+            }
+        }
 
+        cout << maxi+1 << newl;     
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
