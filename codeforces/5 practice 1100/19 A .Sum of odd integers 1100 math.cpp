@@ -97,7 +97,34 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n >> k;   
 
+        if(n%2 == 0){
+            if(k%2 == 0){
+
+                if(k*k > n){
+                    cout << "NO" << newl;     
+                }else{
+                    cout << "YES" << newl;
+                }           
+            }else{
+                // even numbers cannot be formed by odd parity of odd numbers
+                cout << "NO" << newl;     
+            }
+        }else{
+            if(k%2 == 0){
+                // odd no's cannot be formed by even parity of odd numbers
+                cout << "NO" << newl;    
+            }else{  
+                if(k*k > n){
+                    cout << "NO" << newl;    
+                }else{
+                    cout << "YES" << newl;
+                }
+                
+            }
+
+        }
 
 
 
