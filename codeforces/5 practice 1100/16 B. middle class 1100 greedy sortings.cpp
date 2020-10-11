@@ -90,16 +90,30 @@ ll f(ll x){
 
 void solve(){
 
-    ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    ld t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
     cin >> t;               
     // t = 1;        
     while(t--){          
 
+        cin >> n >> k;       
+        vi a(n);  
+        forn(i ,n){
+            cin >> a[i];   
+        }
+        sort(a.begin(), a.end(), greater<int>());    
+        maxi = 0;
+        sum = 0;                   
+        for(int i=0; i<n; i++){
+            if((sum + a[i])/(static_cast<ld>(i+1)) >= k){
+                maxi = i+1;
+                sum += a[i];       
+            }
 
+        }
 
-
+        cout << maxi << newl; 
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
