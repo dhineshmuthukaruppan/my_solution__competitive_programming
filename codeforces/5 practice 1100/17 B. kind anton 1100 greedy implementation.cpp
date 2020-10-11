@@ -97,11 +97,57 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >>  n;     
+        vi a(n), b(n); 
+        x = y = z = 0;   // x = -1, y = 0, z = 1  
+        forn(i, n){    
+            cin >> a[i];    
+            if(a[i] == -1){
+                x++; 
+            }else if(a[i] == 0){
+                y++;   
+            }else{
+                z++;    
+            }
+        } 
 
+        forn(i, n){
+            cin >> b[i];
+        }
 
+        cond = true; 
+        for(int i=n-1; i>=0; i--){
+            if(a[i] == -1){
+                x--; 
+            }else if(a[i] == 0){
+                y--;   
+            }else{
+                z--;    
+            }    
 
+            if(a[i] == b[i]){
+                continue;   
+            }else if(a[i] < b[i]){
+                // we need 1's on the behind
+                if(z > 0){
+                    continue; 
+                }else{
+                    cond = false; 
+                    break; 
+                }
+            }else if(a[i] > b[i]){
+                // we need -1 on the behind
+                if(x > 0){
+                    continue; 
+                }else{
+                    cond = false; 
+                    break;    
+                }
+            }
 
-        // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
+        }
+
+        if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
     }  /* end of while() */
 
