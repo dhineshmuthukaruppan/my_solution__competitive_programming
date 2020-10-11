@@ -91,15 +91,68 @@ ll f(ll x){
 void solve(){
 
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    ll s;   
     bool cond, parity;    
     string str, str1;                             
     cin >> t;               
     // t = 1;        
     while(t--){          
 
+        cin >> n >> s >> k;   
+        set<int> st;  
+        forn(i, k){
+            cin >> x;      
+            st.insert(x);    
+        }
 
+        auto it = lower_bound(st.begin(), st.end(), s);    
+        if(*it == s){
+            // his floor's restaurant is closed
+            // going up
+            answer = INT32_MAX;     
+            forn(i, 1){        
+                cond = false;         
+                x = 1;    
+                y = s+1;                  
+                while(y <= n){   
+                    auto it = lower_bound(st.begin(), st.end(), y);                      
+                    if(*it == y){
+                        x++;   
+                    }else{
+                        cond = true; 
+                        break;   
+                    }
+                    y++;   
+                }
+                if(cond){
+                    answer = min(answer, x);     
+                }
+            }
 
+            forn(i, 1){        
+                cond = false;         
+                x = 1;    
+                y = s-1;                  
+                while(y > 0){        
+                    auto it = lower_bound(st.begin(), st.end(), y);                      
+                    if(*it == y){     
+                        x++;   
+                    }else{
+                        cond = true; 
+                        break;   
+                    }
+                    y--;           
+                }     
+                if(cond){
+                    answer = min(answer, x);     
+                }
+            }
 
+            cout << answer << newl;   
+
+        }else{
+            cout << 0 << newl;   
+        }   
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
