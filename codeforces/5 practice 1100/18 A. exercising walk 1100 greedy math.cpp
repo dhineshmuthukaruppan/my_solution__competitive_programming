@@ -92,16 +92,28 @@ void solve(){
 
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
+    ll a, b, c, d, x1, y1, x2, y2;     
     string str, str1;                             
     cin >> t;               
     // t = 1;        
     while(t--){          
 
+        cin >> a >> b >> c >> d;    
+        cin >> x >> y >> x1 >> y1 >> x2 >> y2;     
+
+        x -= a; 
+        x += b;    
+        y-=c;   
+        y+=d;    
+
+        cond = false; 
+        if((x >= x1 && x <= x2 && (x1 < x2 || a+b == 0)) && (y >= y1 && y <= y2 && (y1 < y2 || c+d == 0))){
+            cond = true;     
+        }   
 
 
 
-
-        // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
+        if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
     }  /* end of while() */
 
