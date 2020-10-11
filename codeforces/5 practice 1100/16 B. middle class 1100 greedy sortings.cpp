@@ -88,60 +88,18 @@ ll f(ll x){
 }
 
 
-/* solution
-
-Let the number of students with the skill i is cnt_i and the number of different skills is diff. 
-Then the size of the first team can not exceed diff and the size of the second team can not exceed 
-maxcnt = max(cnt_1, cnt_2, \dots, cnt_n). So the answer is not greater than the minimum of these 
-two values. Moreover, let's take a look at the skill with a maximum value of cnt. Then there 
-are two cases: all students with this skill go to the second team then the sizes of teams are at most 
-diff-1 and maxcnt correspondingly. Otherwise, at least one student with this skill goes to the first 
-team and the sizes are at most diff and maxcnt - 1 correspondingly. So the answer is 
-max(min(diff - 1, maxcnt), min(diff, maxcnt - 1)).
-
-Time complexity: O(n). */
-
 void solve(){
 
-    int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
     cin >> t;               
     // t = 1;        
     while(t--){          
 
-        cin >>  n;   
-        map<int, int> hmap;    
-        forn(i, n){
-            cin >> x; 
-            hmap[x]++;      
-        }
 
-        map<int, int>::iterator it = hmap.begin();   
-        maxi = INT32_MIN;   
-        x = 0;   // count of other distinct element
-        while(it!=hmap.end() ){
-            x++;   
-            if(it->second > maxi){
-                maxi = it->second;    
-            }
-            it++;    
-        }
 
-        x--;    
-        // cout << maxi << " " << x << newl;    
 
-        if(maxi <= x){
-            cout << maxi << newl;    
-        }else if(maxi > x){
-
-            if(maxi - x > 1){
-                cout << x+1 << newl; 
-            }else{
-                cout << x << newl; 
-            }
-
-        }
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
