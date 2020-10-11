@@ -80,7 +80,8 @@ vi allPrimeFactors(int A);   // TODO
 int gcdEuclidean(int A, int B);  
 int lcm(int A, int B);      
 ll lb(ll target, ll l, ll h);
-ll ub(ll target, ll l, ll h);       
+ll ub(ll target, ll l, ll h);  
+bool isPalindrome(string str);          
 ll f(ll x){
     ll answer;    
 
@@ -93,9 +94,69 @@ void solve(){
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;        
     while(t--){          
+
+        map<string, pair<bool, int>> hmap;  // string, pair -> ispalindrome, count
+
+        cin >> n >> m;             
+        
+        forn(i, n){
+            cin >> str;    
+            hmap[str].first = isPalindrome(str);    
+            hmap[str].second++;    
+        }
+
+        str = "";   
+        auto it = hmap.begin();   
+        while(it!= hmap.end()){
+
+            if((it->second).first == true && (it->second).second >= 2){
+                x = ((it->second).second)/2;    
+                forn(i, x){
+                    str = it->first + str + it->first;      
+                }
+                (it->second).second -= (2*x);      
+            }else if((it->second).first == false && (it->second).second >= 1){
+                str1 = string((it->first).rbegin(), (it->first).rend());  
+                auto it1 = hmap.find(str1);            
+                
+                if(it1 != hmap.end() && (it1->second).second >= 1){
+
+                    x = min((it->second).second, (it1->second).second);
+                    forn(i, x){
+                        str = it->first + str + it1->first;  
+                    }
+                    (it->second).second -= x;    
+                    (it1->second).second -= x;     
+                }
+            }
+
+            it++;   
+        }   
+
+        it = hmap.begin(); 
+        while(it != hmap.end()){
+
+            if((it->second).first == true && (it->second).second == 1){
+                n = str.size();    
+                if(n == 0){
+                    str = it->first;    
+                }else{
+                    str = str.substr(0, n/2) + it->first + str.substr(n/2, n/2);     
+                }
+                break;     
+            }
+
+            it++;   
+        }
+
+
+        cout << str.size() << newl;   
+        cout << str << newl;        
+
+
 
 
 
@@ -305,6 +366,19 @@ ll ub(ll target, ll l, ll h){
 }  /* end of ub */
 
 
+bool isPalindrome(string str){
+    bool cond = true; 
+    int n = str.size();   
+    for(int i=0; i<n/2; i++){
+        if(str[i] != str[n-i-1]){    
+            cond = false;  
+            break; 
+        }
+    }
+
+    return cond;     
+
+}  /* end of isPalindrome() */
 
 
 
