@@ -87,13 +87,6 @@ ll f(ll x){
     return answer;   
 }
 
-/* solution
-    sum of the k odd integers is k^2. if k^2 > n then the answer is obviously no. And if 
-    n%2 != k%2 then the answer is NO. otherwise the answer is always yes and it seems like this
-    [1, 3, 5, ..., 2(k-1) - 1, rem], where rem = n - summationFrom1toK-1(2i-1). It is obviously greater than
-    2(k-1)-1 because k^2 <= n and it is obviously odd because the parity of n and k is the same.
-    
- */
 
 void solve(){
 
@@ -104,34 +97,7 @@ void solve(){
     // t = 1;        
     while(t--){          
 
-        cin >> n >> k;   
 
-        if(n%2 == 0){
-            if(k%2 == 0){
-
-                if(k*k > n){
-                    cout << "NO" << newl;     
-                }else{
-                    cout << "YES" << newl;
-                }           
-            }else{
-                // even numbers cannot be formed by odd parity of odd numbers
-                cout << "NO" << newl;     
-            }
-        }else{
-            if(k%2 == 0){
-                // odd no's cannot be formed by even parity of odd numbers
-                cout << "NO" << newl;    
-            }else{  
-                if(k*k > n){
-                    cout << "NO" << newl;    
-                }else{
-                    cout << "YES" << newl;
-                }
-                
-            }
-
-        }
 
 
 
