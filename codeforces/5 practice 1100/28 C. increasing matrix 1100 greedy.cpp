@@ -93,13 +93,64 @@ void solve(){
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;        
     while(t--){          
 
+        cin >> n >> m;    
+        vvi a;   
 
+        forn(i, n){
+            vi vtemp;    
+            forn(j, m){
+                cin >> x;    
+                vtemp.pb(x);      
+            }
+            a.pb(vtemp);     
+        }
 
+        for(int i=n-1; i>=0; i--){
+            for(int j=m-1; j>=0; j--){
+                if(a[i][j] == 0){
+                    temp = min(a[i][j+1], a[i+1][j]);    
+                    temp--;   
+                    a[i][j] = temp;    
+                }   
+            }
+        }
 
+        answer = 0;    
+        cond = true;     
+        forn(i, n){
+            forn(j, m){
+                answer += a[i][j];   
+
+                if(i > 0){
+                    if(a[i-1][j] >= a[i][j]){
+                        cond = false;   
+                        break;
+                    }
+                }
+
+                if(j > 0){
+                    if(a[i][j-1] >= a[i][j]){
+                        cond = false; 
+                        break; 
+                    }
+                }
+
+            }
+
+            if(!cond){
+                break;    
+            }
+        }
+
+        if(cond){
+            cout << answer << newl;   
+        }else{
+            cout << -1 << newl;     
+        }
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
