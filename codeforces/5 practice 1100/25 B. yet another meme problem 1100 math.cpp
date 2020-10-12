@@ -91,16 +91,29 @@ ll f(ll x){
 void solve(){
 
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    ll a, b;   
     bool cond, parity;    
     string str, str1;                             
     cin >> t;               
     // t = 1;        
     while(t--){          
 
+        cin >> a >> b;   
 
+        answer = 0;   
 
+        x=0;   
+        k = 0;      
+        while(k<= b){
+            k = k*10 + 9;   
+            if(k<=b){
+                x++;    
+            }
+        }
 
-
+        answer = a*x;   
+        cout << answer << newl;    
+        
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
     }  /* end of while() */
