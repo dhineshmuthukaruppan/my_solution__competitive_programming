@@ -88,20 +88,55 @@ ll f(ll x){
 }
 
 
+ll f(ll x, ll d){   
+    ll answer;    
+    answer = x + ceil(d/(static_cast<ld>(x+1)));   
+    return answer;   
+}
+
+
+bool bsearch(ll target, ll d){ // target is n
+
+    bool cond = false;    
+    ll mid, fmid;       
+    ll l = 0, h = target;     
+    while(l <= h){     
+        mid = (l+h)/2;        
+        fmid = f(mid, d);       
+        
+        if(fmid <= target){
+            cond = true;  
+            break;    
+        }else{
+            l = mid+1;    
+        }
+
+    }
+
+    return cond;    
+
+}  /* end of bsearch() */
+
+
 void solve(){
 
-    ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    ll t, n, m, d, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
     cin >> t;               
     // t = 1;        
     while(t--){          
 
+        cin >> n >> d;    
+        // n = the number of days before the deadline
+        // d = the number of days the program runs
+        if(d <= n){
+            cout << "YES" << newl;     
+        }else{
+            cond = bsearch(n, d);     
+            if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
-
-
-
-        // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
+        }
 
     }  /* end of while() */
 
