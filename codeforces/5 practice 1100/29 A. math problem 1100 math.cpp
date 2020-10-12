@@ -97,9 +97,19 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n;   
+        mini = INT32_MAX;   
+        maxi = INT32_MIN;   
 
+        forn(i, n){
+            cin >> x >> y;    
+            mini = min(mini, y);   
+            maxi = max(maxi, x);     
+        }
 
-
+        x = maxi - mini;   
+        answer = max(static_cast<ll>(0), x);           
+        cout << answer << newl;       
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
