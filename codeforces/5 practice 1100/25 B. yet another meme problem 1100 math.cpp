@@ -94,7 +94,6 @@ https://codeforces.com/blog/entry/73105
 */
 
 void solve(){
-
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     ll a, b;   
     bool cond, parity;    
@@ -102,11 +101,8 @@ void solve(){
     cin >> t;               
     // t = 1;        
     while(t--){          
-
         cin >> a >> b;   
-
         answer = 0;   
-
         x=0;   
         k = 0;      
         while(k<= b){
@@ -115,15 +111,10 @@ void solve(){
                 x++;    
             }
         }
-
         answer = a*x;   
         cout << answer << newl;    
-
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
-
     }  /* end of while() */
-
-
 }  /* end of solve() */
 
 

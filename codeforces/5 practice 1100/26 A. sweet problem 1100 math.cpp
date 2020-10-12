@@ -97,8 +97,66 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> x >> y >> z;    
+        answer = 0;   
+        if((x == y && y == z)){
+            answer = ((2*(x/2)) + (x - ((x/2))));   
+        }else if(x==y || y==z || z==x){
+            if(x==y){
+                if(x+y <=z){
+                    answer = x+y;    
+                }else{
+                    answer = ((2*(z/2)) + (x - ((z/2))));   
+                }
 
+            }else if(y==z){
+                if(y+z <= x){
+                    answer = y+z;        
+                }else{
+                    answer = ((2*(x/2)) + (y - ((x/2))));   
+                }
+            }else if(z==x){
+                if(z+x <= y){
+                    answer = z+x;    
+                }else{
+                    answer = ((2*(y/2)) + (x - ((y/2))));   
+                }
 
+            }
+        }else{
+
+            ll bigger = max(max(x, y), z);    
+            ll smaller = min(min(x, y), z);    
+            
+            ll other;   
+            if(x!= bigger && x!= smaller){
+                other = x; 
+            }else if(y!=bigger && y!= smaller){
+                other = y;   
+            }else{
+                other = z;    
+            }
+
+            if(bigger - other >= smaller){
+                answer += smaller;  
+                answer += other;    
+            }else{
+                answer += (bigger-other);  
+                
+                smaller -= (bigger - other);     
+                bigger -= (bigger-other);     
+
+                if(bigger+other <= smaller){
+                    answer += bigger+other;    
+                }else{
+                    answer += ((2*(smaller/2)) + (bigger - ((smaller/2))));   
+                }
+            
+            }
+
+        }
+
+        cout << answer << newl;     
 
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
