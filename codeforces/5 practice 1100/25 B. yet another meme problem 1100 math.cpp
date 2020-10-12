@@ -88,6 +88,11 @@ ll f(ll x){
 }
 
 
+/* soln 
+https://codeforces.com/blog/entry/73105
+
+*/
+
 void solve(){
 
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
@@ -113,7 +118,7 @@ void solve(){
 
         answer = a*x;   
         cout << answer << newl;    
-        
+
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
     }  /* end of while() */
