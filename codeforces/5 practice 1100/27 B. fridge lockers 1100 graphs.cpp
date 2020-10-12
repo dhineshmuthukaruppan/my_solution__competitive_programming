@@ -97,7 +97,25 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n >> m;   
+        sum =0 ; 
+        forn(i, n){
+            cin >> x;     
+            sum += x;     
+        } 
 
+        if(m < n || n == 2){    
+            cout << -1 << newl;     
+        }else{
+            cout << 2*sum << newl;    
+            for(int i=1; i<=n; i++){
+                if(i == n){
+                    cout << 1 << " " << n << newl;     
+                }else{         
+                    cout << i << " "<< i+1 << newl;     
+                }
+            }
+        }
 
 
 
