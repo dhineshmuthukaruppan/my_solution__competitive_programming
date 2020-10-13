@@ -97,7 +97,23 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n; 
+        vector<ll> a(n);     
+        forn(i, n){
+            cin >> a[i];
+        }
 
+        // no problem for <= and increment 1 for >
+        answer = 0;  
+        ll minPrice = INT64_MAX;    
+        for(int i=n-1; i>=0; i--){
+            if(a[i] > minPrice){
+                answer++;    
+            }
+            minPrice = min(a[i], minPrice);     
+        }
+
+        cout << answer << newl;     
 
 
 
