@@ -93,10 +93,28 @@ void solve(){
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;        
     while(t--){          
 
+        cin >> n;   
+        vi a(n); 
+        forn(i, n){
+            cin >> a[i];
+        }
+
+        sortall(a);  
+
+        if(a[n-1] >= a[n-2] + a[n-3]){
+            cout << "NO" << newl;    
+        }else{
+            cout << "YES" << newl; 
+            cout << a[n-2] << " " << a[n-1] << " " << a[n-3] << " ";  
+            for(int i=n-4; i>=0; i--){     
+                cout << a[i] << " "; 
+            }
+            cout << newl;   
+        }
 
 
 
