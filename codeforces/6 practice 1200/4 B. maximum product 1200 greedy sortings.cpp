@@ -97,7 +97,72 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n;   
+        vl a; vi b;   
+        forn(i, n){
+            cin >> x;    
+            if(x < 0){
+                b.pb(x);   
+            }else{
+                a.pb(x);     
+            }
+        }
+        sortall(a);  
+        sortall(b);        
+    
+        if(a.size() == 0){ 
+            answer = 1;    
+            // multiply the 5 biggest negative numbers
+            for(int i=n-1; i>=n-5; i--){
+                answer *= b[i];
+            }
+        }else if(n==5){
+            answer = 1;  
+            forn(i, a.size()){
+                answer *= a[i];
+            }
+            forn(i, b.size()){
+                answer *= b[i];    
+            } 
+            
+        }else{
 
+            answer = INT32_MIN;   
+
+            if(b.size() >= 4){
+                temp = a[a.size()-1];  // bigger a
+                // multiplied by bigger b
+                forn(i, 4){
+                    temp*=b[i]; 
+                }
+                answer = max(temp, answer);      
+            }
+
+
+            if(a.size() >= 5){
+                temp = 1;  
+                m = a.size()-1;    
+                for(int i=m; i>=m-4; i--){
+                    temp *= a[i];      
+                }
+                answer = max(answer, temp);   
+            }
+
+            if(a.size() >= 3 && b.size() >= 2){
+                temp = 1;  
+                m = a.size()-1;    
+                for(int i=m; i>=m-2; i--){
+                    temp *= a[i];    
+                }
+                forn(i, 2){
+                    temp *= b[i];
+                }
+                answer = max(answer, temp);   
+            }
+
+        }
+
+        cout << answer << newl;    
 
 
 
