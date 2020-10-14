@@ -97,8 +97,35 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n;   
+        map<int, int> hmap;   
+        forn(i, n){
+            cin >> x;   
+            hmap[x]++;   
+        }   
 
+        temp = 0 ;   
+        answer = INT32_MIN;     
 
+        // loop for all value of s and choose the s with maximum candidates
+        for(int s=2; s<=2*n; s++){
+
+            temp = 0;   
+            auto it = hmap.begin();  
+            while(it != hmap.end()){
+
+                int other = s-(it->first);  
+                auto it1 = hmap.find(other);   
+                if(it1 != hmap.end()){
+                    temp += min(it->second, it1->second);     
+                }   
+                it++;    
+            }   
+            // cout << temp << newl;   
+            answer = max(answer, temp);  
+        }
+
+        cout << answer/2 << newl;    
 
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
