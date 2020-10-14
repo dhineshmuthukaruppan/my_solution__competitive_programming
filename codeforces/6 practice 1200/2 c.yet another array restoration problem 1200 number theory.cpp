@@ -88,18 +88,68 @@ ll f(ll x){
 }
 
 
+/* O(n * sqrt(y)) */
 void solve(){
 
-    ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
     cin >> t;               
     // t = 1;        
     while(t--){          
 
+        cin >> n >> x >> y;   
+        int diff = y-x;   
+        vi a = returnAllFactors(diff);   
 
+        // cout << a << newl;       
 
+        vi outputV;    
+        int d;   
+        forn(i, a.size()){
+            if(diff/a[i] >= n){
+                continue;   
+            }else{
+                d = a[i];   
+                break;    
+            }
+        }
 
+        // cout << d << newl;    
+
+        
+        temp = n;  
+        outputV.pb(x);   
+        outputV.pb(y);   
+        temp-=2;       
+
+        int current = x+d;       
+        while(temp && current < y){
+            outputV.pb(current);    
+            current += d;   
+            temp--;   
+        }
+
+        current = x-d;   
+        while(temp && current > 0){
+            outputV.pb(current);   
+            current-=d;  
+            temp--;    
+        }
+
+        current = y+d;   
+        while(temp){
+            outputV.pb(current);
+            current+=d;       
+            temp--;    
+        }    
+
+        sortall(outputV);  
+
+        for(auto el : outputV){
+            cout << el << " ";  
+        }
+        cout << newl;    
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
