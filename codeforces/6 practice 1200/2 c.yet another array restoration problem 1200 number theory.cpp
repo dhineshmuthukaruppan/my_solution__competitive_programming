@@ -88,44 +88,19 @@ ll f(ll x){
 }
 
 
-ll noOfCells(ll x){
-
-    ll answer;  
-    answer = ((x*(x+1))/2);    
-    return answer;     
-}  /* end of noOfCells */
-
 void solve(){
 
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
-    // cin >> t;               
-    t = 1;        
+    cin >> t;               
+    // t = 1;        
     while(t--){          
-        cin >> n;   
 
-        forn(i, n){
-            cin >> x;    
-            
-            k = 1;   
-            sum = k;    
-            answer = 0;   
-            while(true){
-                if(noOfCells(sum) <= x){
-                    answer++;   
-                }else{
-                    break;    
-                }
-                x-=noOfCells(sum);     
-                k*=2;  
-                sum+=k;   
-            }
 
-            cout << answer << newl;     
 
-        }  /* end of forn() */
-        
+
+
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
     }  /* end of while() */
