@@ -97,6 +97,24 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n; 
+        vl a(n);         
+        forn(i, n){
+            cin >> a[i];
+        }
+
+        answer = 0;   
+        for(int i=0; i<32; i++){
+            ll cnt = 0;  
+            forn(j, n){
+                if(a[j]>=(1<<i) && a[j] < (1<<i+1)){
+                    cnt++;    
+                }     
+            } 
+            answer += ((cnt*(cnt-1))/2); 
+        }
+
+        cout << answer << newl;     
 
 
 
