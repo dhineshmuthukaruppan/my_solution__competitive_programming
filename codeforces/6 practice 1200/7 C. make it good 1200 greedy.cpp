@@ -97,8 +97,46 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n;   
+        vl a(n);   
+        forn(i, n){
+            cin >> a[i];
+        }
 
+        k = n-1;
+        m = 0; // no of elements moved/ qualified
+        x = 0; // status of movement
+        while(k>=0){
 
+            if(k == 0){
+                m++;
+                k--;        
+            }else{
+                if(x == 0){// increasing stage
+                    if(a[k] <= a[k-1]){
+                        m++;    
+                        k--;    
+                    }else if(a[k] > a[k-1]){
+                        x = 1;   
+                        m++;  
+                        k--;     
+                    }
+                }else if(x == 1){ // decreasing stage
+                    if(a[k] >= a[k-1]){
+                        m++;   
+                        k--;   
+                    }else if(a[k] < a[k-1]){
+                        x = 2;  
+                        m++;   
+                        break;    
+                    }
+
+                }
+                
+            }
+        }
+
+        cout << n-m << newl;   
 
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
