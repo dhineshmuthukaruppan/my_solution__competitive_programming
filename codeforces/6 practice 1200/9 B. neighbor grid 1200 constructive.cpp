@@ -90,22 +90,56 @@ ll f(ll x){
 
 void solve(){
 
-    ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
     cin >> t;               
     // t = 1;        
     while(t--){          
 
-        cin >> n;    
+        cin >> n >> m;    
+        vvi a(n, vector<int>(m));    
+        
+        cond = true;    
+        forn(i, n){
+            forn(j, m){
 
-        string s(52, 'a');    
-        cout << s << newl;   
-        for(int i=1; i<=n; i++){
-            cin >> x;   
-            s[x] = s[x] == 'a' ? 'b' : 'a'; 
-            cout << s << newl;     
-        }    
+                cin >> a[i][j];    
+                if((i==0 && j==0) || (i==0 && j==m-1) || (i==n-1 && j==0) || (i==n-1 && j==m-1)){
+                    if(a[i][j] > 2){
+                        cond = false; 
+                    }else{
+                        a[i][j] = 2;    
+                    }
+                }else if(i==0 || j==0 || i==n-1 || j==m-1){
+                    if(a[i][j] > 3){
+                        cond = false; 
+                    }else{
+                        a[i][j] = 3;     
+                    }
+                }else{
+                    if(a[i][j] > 4){
+                        cond = false; 
+                    }else{
+                        a[i][j] = 4;    
+                    }
+                }
+            }
+        }
+
+        if(cond){
+            cout << "YES" << newl;     
+            forn(i, n){
+                forn(j, m){
+                    cout << a[i][j] << " "; 
+                }
+                cout << newl; 
+            }
+        }else{
+            cout << "NO" << newl;     
+        }
+
+
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
