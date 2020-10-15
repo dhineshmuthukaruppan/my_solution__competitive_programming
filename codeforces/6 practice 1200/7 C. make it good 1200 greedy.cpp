@@ -97,21 +97,7 @@ void solve(){
     // t = 1;        
     while(t--){          
 
-        cin >> n;   
-        vl a(n);   
-        forn(i, n){
-            cin >> a[i];    
-        } 
 
-        answer = 0;   
-        for(int i=1; i<n; i++){
-            if(a[i] < a[i-1]){
-                answer += (a[i-1] - a[i]); 
-            }
-            // answer += max(0, a[i] - a[i+1])
-        }     
-        
-        cout << answer << newl;    
 
 
 
