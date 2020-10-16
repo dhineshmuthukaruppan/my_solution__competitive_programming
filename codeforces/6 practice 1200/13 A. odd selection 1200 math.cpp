@@ -116,8 +116,9 @@ void solve(){
                 y--;   
             }
 
-
-            if(x+y >= k){
+            if(k%2 == 0 && x==0){   
+                cout << "No" << newl;    
+            }else if(x+y >= k){
                 cout << "Yes" << newl;   
             }else{
                 cout << "No" << newl;    
