@@ -97,6 +97,33 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n;     
+        vl a(n);    
+        forn(i, n){
+            cin >> a[i];    
+        }
+        sortall(a);    
+    
+        cond = false;  
+        for(int k=1; k<=1024; k++){
+            
+            vl b(n);
+            forn(i, n){
+                b[i] = a[i]^k; 
+            }
+            sortall(b); 
+            if(a == b){
+                cond = true; 
+                answer = k;    
+                break; 
+            }
+        }
+
+        if(cond){
+            cout << answer << newl;    
+        }else{
+            cout << -1 << newl;     
+        }
 
 
 
