@@ -97,9 +97,33 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n >> x;   
+        vl a(n); 
+        cond = true; // all no are divisible by x
+        l = r = -1;
+        sum = 0;            
+        forn(i, n){
+            cin >> a[i];
+            if(a[i] % x != 0){
+                cond = false;     
+                if(l == -1){
+                    l = i+1;     
+                }
+                r = i+1;   
+                sum += a[i];     
+            }    
+        }
 
-
-
+        if(cond){
+            cout <<  -1 << newl;     
+        }else{
+            if(sum % x != 0 ){   
+                cout << n << newl;
+            }else{
+                cout << (max((n- (n-r+1)), (n - (l-1+1)))) << newl;  
+            }
+            
+        }
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
