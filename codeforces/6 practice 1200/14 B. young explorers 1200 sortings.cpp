@@ -97,9 +97,23 @@ void solve(){
     // t = 1;        
     while(t--){          
 
-        
+        cin >> n;    
+        vl a(n); 
+        forn(i, n){
+            cin >> a[i];
+        }
+        sortall(a);    
 
+        answer = 0;   
+        counter = 0 ;   
+        forn(i, n){
+            if(++counter == a[i]){
+                answer++;   
+                counter=0;    
+            }
+        }
 
+        cout << answer << newl;     
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
