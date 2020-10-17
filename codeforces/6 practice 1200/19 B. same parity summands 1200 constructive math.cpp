@@ -97,6 +97,54 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n >> k;    
+
+        if(n%2 == 0){
+
+            if(k%2 == 0){
+                ll n2 = n-(k-1);    
+
+                if(n2 > 0){
+                    cout << "YES" << newl;     
+                    forn(i, k-1){
+                        cout << 1 << " ";    
+                    }
+                    cout << n2 << newl;    
+                }else{    
+                    cout << "NO" << newl;    
+                }    
+
+            }else{
+
+                ll n2 = n-2*(k-1);    
+                if(n2 > 0){
+                    cout << "YES" << newl ;   
+                    forn(i, k-1){
+                        cout << 2 << " ";   
+                    }    
+                    cout << n2 << newl;     
+                }else{
+                    cout << "NO" << newl ;    
+                }
+            }
+        }else{
+
+            if(k%2==0){ 
+                // odd numbers can only be formed by odd no of odd numbers
+                cout << "NO" << newl ;   
+            }else{
+                ll n2 = n-(k-1); 
+                if(n2 > 0){
+                    cout << "YES" << newl ;   
+                    forn(i, k-1){ 
+                        cout << 1 << " ";    
+                    }
+                    cout << n-(k-1) << newl;   
+                }else{
+                    cout << "NO" << newl;    
+                }    
+            }
+        }
 
 
 
