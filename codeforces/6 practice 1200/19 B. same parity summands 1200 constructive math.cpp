@@ -97,18 +97,8 @@ void solve(){
     // t = 1;        
     while(t--){          
 
-        // or the answer is k+(k-1/n-1)
 
 
-        cin >> n >> k;   
-
-        ll sets = k/ (n-1);    
-        ll rem = k%(n-1);    
-        ll answer = sets*n -1;     
-        if(rem > 0){
-            answer += rem + 1;    
-        } 
-        cout << answer << newl;   
 
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
