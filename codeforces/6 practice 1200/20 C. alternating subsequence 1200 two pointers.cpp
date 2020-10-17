@@ -97,9 +97,41 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n;    
+        vl a(n);
+        sum = 0;
+        temp;       
+        cond = false;                
+        forn(i, n){     
+            cin >> a[i];
 
+            if(i == 0){
+                temp = a[i];
+            }else{
+                if(temp > 0 && a[i] > 0){
+                    temp = max(temp, a[i]);      
+                }else if(temp < 0 && a[i] < 0){
+                    temp = max(temp, a[i]); 
+                }else{
+                    if(i == n-1){
+                        cond = true;  
+                        sum += a[i];      
+                    }     
+                    sum += temp;   
+                    temp = a[i];    
+                }
+            }
+        }
 
+        if(!cond){
+            sum += temp;    
+        }
 
+        if(n == 1){
+            cout << a[0] << newl;    
+        }else{
+            cout << sum << newl;  
+        }
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
