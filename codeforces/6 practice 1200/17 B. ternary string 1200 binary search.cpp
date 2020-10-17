@@ -97,33 +97,9 @@ void solve(){
     // t = 1;        
     while(t--){          
 
-        cin >> x >> k;   
-        
-        sum = x; 
-        if(k==1){
-            cout << sum << newl;    
-        }    
-        for(int i=2; i<=k; i++){
-            mini = INT64_MAX;  
-            maxi = INT64_MIN;
-            ll temp1 = sum;     
-            while(temp1 > 0){
-                temp = temp1%10;   
-                mini = min(temp, mini);   
-                maxi = max(temp, maxi);    
-                temp1/=10;        
-            }
 
-            if(mini == 0){
-                cout << sum << newl;    
-                break;     
-            }
 
-            sum = sum + mini*maxi;    
-            if(i == k){
-                cout << sum << newl;     
-            }
-        }
+
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
