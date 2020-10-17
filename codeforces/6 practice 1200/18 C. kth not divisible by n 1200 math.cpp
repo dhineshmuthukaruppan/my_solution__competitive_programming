@@ -97,33 +97,9 @@ void solve(){
     // t = 1;        
     while(t--){          
 
-        cin >> str;    
-        vector<pair<char, ll>> vec;    
-        n = str.size();   
-        forn(i, n){
-            if(i==0){
-                vec.push_back(mp(str[i], 1));     
-            }else{
-                if(str[i] == str[i-1]){
-                    vec.back().second += 1;    
-                }else{
-                    vec.push_back(mp(str[i], 1));       
-                }
-            }
-        }
 
-        m = vec.size();
-        answer = INT32_MAX;      
-        for(int i=1; i<m-1; i++){
-            if(vec[i-1].first != vec[i+1].first){
-                answer = min(answer, (2+(vec[i].second)));         
-            }
-        }
-        if(answer == INT32_MAX){
-            cout << 0 << newl;   
-        }else{
-            cout << answer << newl;  
-        }  
+
+
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
