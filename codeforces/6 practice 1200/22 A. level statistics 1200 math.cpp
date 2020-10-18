@@ -91,17 +91,43 @@ ll f(ll x){
 void solve(){
 
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    
+    ll level, clear, prevlevel, prevclear; 
     bool cond, parity;    
     string str, str1;                             
     cin >> t;               
     // t = 1;        
     while(t--){          
 
+        cin >> n;   
+        cond = true;    
+        forn(i, n){
+            cin >> level >> clear;     
+            if(clear > level){cond = false; }    
+            if(i == 0){
+                prevlevel = level; 
+                prevclear = clear;  
 
+            }else{
 
+                if(level < prevlevel || clear < prevclear){
+                    cond = false;  
+                }else{
 
+                    if((level-prevlevel) < (clear-prevclear)){
+                        cond = false;    
+                    }
 
-        // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
+                }
+
+                
+
+                prevlevel = level; 
+                prevclear = clear;  
+            }
+        }
+
+        if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
     }  /* end of while() */
 
