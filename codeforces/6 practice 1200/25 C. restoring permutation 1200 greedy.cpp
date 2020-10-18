@@ -97,9 +97,47 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n;    
+        vl b(n);
+        vl used((2*n)+1);         
+        forn(i, n){
+            cin >> b[i];        
+            used[b[i]] = 1;     
+        } 
+        
+        vl result;   
+        bool overall = true;    
+        forn(i, n){   
+            result.pb(b[i]);    
 
+            ll nextelem;  
+            cond = false;  
+            for(int j=b[i]; j<=2*n; j++){
+                if(used[j] == 0){
+                    used[j] = 1;   
+                    nextelem = j;    
+                    cond = true;      
+                    break;     
+                }
+            }
 
+            if(!cond){
+                overall = false;   
+                break; 
+            }else{
+                result.pb(nextelem);   
+            }
 
+        }
+
+        if(!overall){
+            cout << -1 << newl ;   
+        }else{
+            forn(i, 2*n){
+                cout << result[i] << " "; 
+            }
+            cout << newl;   
+        }
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
