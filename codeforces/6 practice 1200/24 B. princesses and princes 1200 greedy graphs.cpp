@@ -97,6 +97,43 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n;    
+        vi taken(n+1, 0);        
+        counter = 0;  // married counter
+        forn(i, n){   
+            cin >> m;
+            bool married = false;     
+            forn(i, m){   
+                cin >> x;   
+                if(!married && x!=0){    
+                    if(!taken[x]){
+                        taken[x] = 1;   
+                        married = true;     
+                        counter++;    
+                    }
+                }
+            }
+        
+            if(married == false){
+                k = i+1;     
+            }
+        
+        } /* end of forn i loop */
+
+        if(counter == n){
+            cout << "OPTIMAL" << newl;    
+        }else{
+            ll unused;   
+            for(int i=1; i<=n; i++){
+                if(taken[i] == 0){
+                    unused = i;   
+                    break;    
+                }
+            }
+            cout << "IMPROVE" << newl ;    
+            cout << k << " " << unused << newl;  
+
+        }
 
 
 
