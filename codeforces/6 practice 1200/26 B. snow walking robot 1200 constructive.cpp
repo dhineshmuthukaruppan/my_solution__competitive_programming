@@ -97,9 +97,45 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> str;
+        ll u, d;   
+        l = r = u = d = 0;       
+        n = str.size(); 
+        forn(i, n){
+            if(str[i] == 'L'){l++; }
+            else if(str[i] == 'R'){r++; }
+            else if(str[i] == 'U'){u++; }
+            else{d++; }
+        }  
 
+        if(l==0 || r==0 || u==0 || d==0){
+            if((l>0 && r>0) && (u==0 || d == 0)){
+                cout << 2 << newl; 
+                cout << "LR" << newl; 
+            }else if((u>0 && d>0) && (l==0 || r==0)){
+                cout << 2 << newl; 
+                cout << "UD" << newl;  
+            }else{
+                cout << 0 << newl; 
+                cout << "" << newl; 
+            }
+        }else{
 
+            // everything > 0
 
+            ll horizontal = min(l, r); 
+            ll vertical = min(u, d);   
+
+            str1 = ""; 
+            str1 += string(horizontal, 'L');   
+            str1 += string(vertical, 'U');
+            str1 += string(horizontal, 'R');
+            str1 += string(vertical, 'D');     
+
+            cout << str1.size() << newl;   
+            cout << str1 << newl;          
+
+        }
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
