@@ -97,8 +97,25 @@ void solve(){
     // t = 1;        
     while(t--){          
 
-        
+        cin >> n;    
+        vl a(n); 
+        forn(i, n){
+            cin >> a[i];
+        }
 
+        cond = false;   
+        for(int i=0; i<n-1; i++){
+            if(abs(a[i] - a[i+1]) > 1){
+                cout << "YES" << newl;  
+                cout << i+1 << " " << i+2 << newl; 
+                cond = true; 
+                break; 
+            }
+        }
+
+        if(!cond){
+            cout << "NO" << newl; 
+        }
 
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
