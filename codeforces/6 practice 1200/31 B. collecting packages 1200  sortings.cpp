@@ -90,18 +90,41 @@ ll f(ll x){
 
 void solve(){
 
-    ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
     cin >> t;               
     // t = 1;        
     while(t--){          
 
+        cin >> n;    
+        vpi a;     
+        forn(i, n){
+            cin >> x >> y;    
+            a.pb(mp(x, y));   
+        }
 
+        sortall(a);   
 
+        str = ""; 
+        pi cur = mp(0, 0);     
+        cond = true;  
+        forn(i, n){
+            l = a[i].first - cur.first;  
+            r = a[i].second - cur.second; 
 
+            if(l<0 || r<0){
+                cond = false;  
+                break; 
+            }
 
-        // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
+            str += string(l, 'R');    
+            str += string(r, 'U');      
+
+            cur = a[i];
+        }
+
+        if(cond){cout << "YES" << newl; cout << str << newl; }else{cout << "NO" << newl; }  
 
     }  /* end of while() */
 
