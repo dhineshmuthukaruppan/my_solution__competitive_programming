@@ -91,15 +91,84 @@ ll f(ll x){
 void solve(){
 
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    ll rock, paper, scissor;  
     bool cond, parity;    
     string str, str1;                             
     cin >> t;               
     // t = 1;        
     while(t--){          
 
+        cin >> n;   
+        cin >> rock >> paper >> scissor;   // rock paper and scissor
+        cin >> str; 
+        x = y = z = 0; 
+        forn(i, n){
+            if(str[i] == 'R'){
+                x++;  
+            }else if(str[i] == 'P'){
+                y++; 
+            }else{
+                z++;     
+            }
+        }
 
+        ll bound = ceil(n/static_cast<float>(2));   
 
+        answer = 0;   
+        answer += min(x, paper);   
+        answer += min(y, scissor);       
+        answer += min(z, rock);   
 
+        if(answer >= bound){
+            cout << "YES" <<newl;   
+
+            string t;
+            for (int i = 0; i != n; ++i)
+            {
+                if (str[i] == 'S' && rock)
+                {
+                    t += 'R';
+                    rock--;
+                }
+                else if (str[i] == 'R' && paper)
+                {
+                    t += 'P';
+                    paper--;
+                }
+                else if (str[i] == 'P' && scissor)
+                {
+                    t += 'S';
+                    scissor--;
+                }
+                else
+                    t += '_';
+            }
+            for (int i = 0; i != n; ++i)
+            {
+                if (t[i] != '_')
+                    continue;
+                
+                if (rock)
+                {
+                    t[i] = 'R';
+                    rock--;
+                }
+                else if (paper)
+                {
+                    t[i] = 'P';
+                    paper--;
+                }
+                else
+                {
+                    t[i] = 'S';
+                    scissor--;
+                }    
+            }    
+            cout << t << '\n';
+
+        }else{
+            cout << "NO" << newl; 
+        }
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
