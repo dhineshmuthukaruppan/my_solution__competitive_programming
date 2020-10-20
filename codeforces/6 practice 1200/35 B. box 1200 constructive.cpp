@@ -97,11 +97,33 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n;   
+        vl a(n); 
+        
+
+        vl answer(n+1);   
+        for(int i=1; i<=n; i++){
+            answer[i] = i;
+        } 
+
+        cond = true; 
+        for(int i=1; i<=n; i++){
+            cin >> x;      
+            if(x < answer[i]){
+                cond = false; 
+            }else{
+                swap(answer[i], answer[x]); 
+            }
+        }
 
 
+        if(cond){
+            for(int i=1; i<=n; i++){
+                cout << answer[i] << " "; 
+            }
+            cout << newl;    
 
-
-        // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
+        }else{cout << -1 << newl; }  
 
     }  /* end of while() */
 
