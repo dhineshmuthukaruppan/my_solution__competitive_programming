@@ -97,6 +97,26 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n;
+        vl a(n); 
+        forn(i, n){
+            cin >> a[i];
+        }
+
+        answer = n+5;   
+        vl hmp(n+1, -1);
+        forn(i, n){
+            if(hmp[a[i]] != -1){
+                answer = min(answer, i-hmp[a[i]]+1); 
+            }
+            hmp[a[i]] = i; 
+        } 
+        if(answer > n){
+            cout << -1 << newl; 
+        }else{
+            cout << answer << newl; 
+        }
+
 
 
 
