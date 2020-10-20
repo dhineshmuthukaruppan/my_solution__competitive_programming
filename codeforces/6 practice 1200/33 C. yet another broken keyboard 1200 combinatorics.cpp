@@ -97,8 +97,26 @@ void solve(){
     t = 1;        
     while(t--){          
 
+        cin >> n >> m;     
+        cin  >> str;   
+        set<char> st;   
+        forn(i, m){
+            char ch; 
+            cin >> ch;    
+            st.insert(ch);    
+        }
+        answer = 0;   
+        forn(i, n){
+            int j=i;  
+            while(j<n && st.count(str[j])){
+                j++;        
+            }
+            ll len = j - i;  
+            answer += ((len*(len+1))/2);    
+            i = j;     
+        }
 
-
+        cout << answer << newl; 
 
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
