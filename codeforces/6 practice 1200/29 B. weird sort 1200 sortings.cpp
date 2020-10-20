@@ -97,16 +97,91 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n >> m;  
+        vl a(n), p(n);
+        forn(i, n){
+            cin >> a[i];
+        } 
+        forn(i, m){
+            cin >> x; 
+            p[x-1] = 1;   
+        }
+        
+        forn(i, n){
+            if(p[i] == 0){
+                continue;   
+            }
+            int j = i;   
+            while(j<n && p[j]){  
+                ++j; 
+            }
+            sort(a.begin()+i, a.begin()+j+1);   
+            i = j; 
+        }
+        cond = true;   
+        forn(i, n-1){
+            cond &= (a[i] <= a[i+1]);    
+        }
 
-
-
-
-        // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
+        if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
     }  /* end of while() */
 
 
 }  /* end of solve() */
+
+
+/* alternative solution
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+#ifdef _DEBUG
+	freopen("input.txt", "r", stdin);
+//	freopen("output.txt", "w", stdout);
+#endif
+	
+	int t;
+	cin >> t;
+	while (t--) {
+		int n, m;
+		cin >> n >> m;
+		vector<int> a(n);
+		for (int i = 0; i < n; ++i) {
+			cin >> a[i];
+		}
+		vector<int> p(n);
+		for (int i = 0; i < m; ++i) {
+			int pos;
+			cin >> pos;
+			p[pos - 1] = 1;
+		}
+		while (true) {
+			bool ok = false;
+			for (int i = 0; i < n; ++i) {
+				if (p[i] && a[i] > a[i + 1]) {
+					ok = true;
+					swap(a[i], a[i + 1]);
+				}
+			}
+			if (!ok) break;
+		}
+		bool ok = true;
+		for (int i = 0; i < n - 1; ++i) {
+			ok &= a[i] <= a[i + 1];
+		}
+		if (ok) cout << "YES" << endl;
+		else cout << "NO" << endl;
+	}
+	
+	return 0;
+}
+
+
+ */
+
 
 
 
