@@ -97,7 +97,25 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n;   
+        set<int> st;  
+        forn(i, n){
+            cin >> x;   
+            st.insert(x); 
+        }
+        answer = 0; 
+        while(!st.empty()){
+            m = *st.rbegin();    
+            st.erase(m);   
+            
+            if(m%2 == 0){
+                answer++;   
+                st.insert(m/2); 
+            }
 
+        }
+
+        cout << answer << newl; 
 
 
 
