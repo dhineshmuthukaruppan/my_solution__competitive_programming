@@ -89,20 +89,16 @@ ll f(ll x){
 
 
 void solve(){
-
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
     // cin >> t;               
     t = 1;        
     while(t--){          
-
         cin >> n;    
-
         if(n%2 == 0){
             cout << "NO" << newl;    
         }else{
-
             vi result(2*n);    
             int i = 0; int j = n;      
             cond = true; // fill in ascending 
@@ -124,14 +120,8 @@ void solve(){
             }
             cout << newl;     
         }
-
-
-
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
-
     }  /* end of while() */
-
-
 }  /* end of solve() */
 
 
