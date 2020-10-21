@@ -93,15 +93,44 @@ void solve(){
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;        
     while(t--){          
 
+        cin >> n;   
+        cin >> str;   
 
+        stack<char> stk;
+        ll mismatch = 0;      
+        cond = true; 
+        forn(i, n){
+            if(str[i] == '('){
+                stk.push('(');     
+            }else if(str[i] == ')'){
 
+                if(!stk.empty()){
+                    stk.pop();    
+                }else{
+                    mismatch++;  
+                    if(mismatch > 1){
+                        cond = false; 
+                        break; 
+                    }
+                }
+            }
+        }
+        
+        ll finalstackCount = 0;   
+        while(!stk.empty()){
+            finalstackCount++;  
+            stk.pop();    
+        }
 
+        if(finalstackCount > 1 || (finalstackCount == 1 && mismatch == 0)){
+            cond = false;    
+        }
 
-        // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
+        if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
     }  /* end of while() */
 
