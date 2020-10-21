@@ -126,8 +126,8 @@ void solve(){
             stk.pop();    
         }
 
-        if(finalstackCount > 1 || (finalstackCount == 1 && mismatch == 0)){
-            cond = false;    
+        if(finalstackCount > 1 || (finalstackCount == 1 && mismatch == 0) || (mismatch == 1 && finalstackCount == 0) ){
+            cond = false;        
         }
 
         if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
