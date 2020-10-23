@@ -97,9 +97,52 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n; 
+        vl a(n);  
+        maxi = INT64_MIN;   
+        forn(i, n){
+            cin >> a[i];
+            
+            if(a[i] > maxi){
+                maxi = a[i];   
+                maxiIndex = i;     
+            }      
+        }
 
+        vl b(n);   
+        b[0] = maxi;   
 
+        vi selected(n);     
+        selected[maxiIndex] = 1;     
 
+        ll currentGcd = maxi;     
+        
+        for(int i=1; i<n; i++){
+            
+            ll maxGCD = INT64_MIN;        
+            ll tempGCD, maxGCDIndex;
+            
+            for(int j=0; j<n; j++){
+                if(selected[j] == 0){
+
+                    tempGCD = gcdEuclidean(currentGcd, a[j]);   
+                    if(tempGCD > maxGCD){
+                        maxGCD = tempGCD;    
+                        maxGCDIndex = j;        
+                    }                     
+                }
+            }
+
+            // set b[i]
+            b[i] = a[maxGCDIndex];        
+            currentGcd = maxGCD;    
+            selected[maxGCDIndex] = 1;        
+        }
+        
+        for(auto el: b){
+            cout << el << " ";    
+        }
+        cout << newl;    
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
