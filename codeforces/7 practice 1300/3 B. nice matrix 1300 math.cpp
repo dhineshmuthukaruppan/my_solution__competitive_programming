@@ -97,9 +97,26 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n >> m;    
+        vvi a(n, vi(m));   
+        forn(i, n){
+            forn(j, m){
+                cin >> a[i][j];    
+            }
+        }   
 
+        sum = 0;    
+        forn(i, n){
+            forn(j, m){
+                ll avg = (a[i][j] + a[n-i-1][j] + a[i][m-j-1] + a[n-i-1][m-j-1])/4; 
+                // if(i==1 && j == 1){
+                //     cout << a[i][j] << " " <<  a[n-i-1][j] << " "  << " " << a[i][m-j-1] << " " << a[n-i-1][m-j-1] << newl ;
+                // }
+                sum += (abs(avg - a[i][j]));           
+            }
+        }
 
-
+        cout << sum << newl; 
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
