@@ -139,16 +139,8 @@ void solve(){
                 sortall(temp);   
 
                 for(auto it : temp){
-                    sum += abs(temp[temp.size()/2] - it);           
-                }   
-
-                // ll avg = (a[i][j] + a[n-i-1][j] + a[i][m-j-1] + a[n-i-1][m-j-1])/4; 
-                // // if(i==1 && j == 1){
-                // //     cout << a[i][j] << " " <<  a[n-i-1][j] << " "  << " " << a[i][m-j-1] << " " << a[n-i-1][m-j-1] << newl ;
-                // // }
-                // forn(k, temp.size()){
-                //     sum += (abs(avg - temp[k]));       
-                // }
+                    sum += abs(temp[temp.size()/2] - it);            
+                }       
                 
             }
         }
