@@ -98,21 +98,58 @@ void solve(){
     while(t--){          
 
         cin >> n >> m;    
-        vvi a(n, vi(m));   
+        vvl a(n, vl(m));      
         forn(i, n){
             forn(j, m){
                 cin >> a[i][j];    
             }
         }   
 
-        sum = 0;    
-        forn(i, n){
-            forn(j, m){
-                ll avg = (a[i][j] + a[n-i-1][j] + a[i][m-j-1] + a[n-i-1][m-j-1])/4; 
-                // if(i==1 && j == 1){
-                //     cout << a[i][j] << " " <<  a[n-i-1][j] << " "  << " " << a[i][m-j-1] << " " << a[n-i-1][m-j-1] << newl ;
+        sum = 0;   
+        ll row, col;  
+        if(n%2 == 1){
+            row = n/2+1; 
+        }else{
+            row = n/2; 
+        }   
+
+        if(m%2 == 1){
+            col = m/2+1;    
+        }else{
+            col = m/2;    
+        }
+
+
+
+        forn(i, row){
+            forn(j, col){            
+                vl temp;    
+                
+                temp.pb(a[i][j]);  
+                if(i!= n-i-1){
+                    temp.pb(a[n-i-1][j]);  
+                }
+                if(j!=m-j-1){
+                    temp.pb(a[i][m-j-1]);  
+                }
+                if(i!=n-i-1 && j!= m-j-1){    
+                    temp.pb(a[n-i-1][m-j-1]);    
+                }
+                
+                sortall(temp);   
+
+                for(auto it : temp){
+                    sum += abs(temp[temp.size()/2] - it);           
+                }   
+
+                // ll avg = (a[i][j] + a[n-i-1][j] + a[i][m-j-1] + a[n-i-1][m-j-1])/4; 
+                // // if(i==1 && j == 1){
+                // //     cout << a[i][j] << " " <<  a[n-i-1][j] << " "  << " " << a[i][m-j-1] << " " << a[n-i-1][m-j-1] << newl ;
+                // // }
+                // forn(k, temp.size()){
+                //     sum += (abs(avg - temp[k]));       
                 // }
-                sum += (abs(avg - a[i][j]));           
+                
             }
         }
 
