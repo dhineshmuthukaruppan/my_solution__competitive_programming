@@ -139,7 +139,8 @@ void solve(){
                 sortall(temp);   
 
                 for(auto it : temp){
-                    sum += abs(temp[temp.size()/2] - it);            
+                    cout << sum << newl ;
+                    sum += abs(temp[(temp.size()/2)] - it);                        
                 }       
                 
             }
