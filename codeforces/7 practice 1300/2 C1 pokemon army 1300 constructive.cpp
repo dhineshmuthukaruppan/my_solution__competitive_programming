@@ -91,15 +91,46 @@ ll f(ll x){
 void solve(){
 
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    ll q;    
     bool cond, parity;    
     string str, str1;                             
     cin >> t;               
     // t = 1;        
     while(t--){          
 
+        cin >> n >> q;   
+        vl a(n+1);    
+        forn(i, n){
+            cin >> a[i];   
+        }
+        a[n] = 0;    
 
+        cond = true;  // uphill
+        sum = 0;   
+        forn(i, n){
+            if(cond){
+                // uphill
+                if(a[i+1] > a[i]){
+                    continue;   
+                }else{
+                    sum += a[i];   
+                    cond = false; 
+                }
 
+            }else{
+                // downhill
+                if(a[i+1] < a[i]){
+                    continue;    
+                }else{
+                    sum -= a[i];
+                    cond = true; 
+                }
 
+            }
+
+        }
+
+        cout << sum << newl;    
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
