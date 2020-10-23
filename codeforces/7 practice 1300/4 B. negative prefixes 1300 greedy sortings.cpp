@@ -97,9 +97,35 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n;    
+        vl locker(n), a(n); 
+        forn(i, n){
+            cin >> a[i];
+        }
+        forn(i, n){
+            cin >> locker[i];
+        }
 
+        vl temp;    
+        forn(i, n){
+            if(locker[i] == 0){
+                temp.pb(a[i]);   
+                a[i] = INT64_MAX;     
+            }
+        }
 
+        sort(temp.begin(), temp.end(), greater<int>());       
+        counter = 0;      
+        forn(i, n){
+            if(a[i] == INT64_MAX){
+                a[i] = temp[counter++];    
+            }
+        }
 
+        forn(i, n){
+            cout << a[i] << " ";   
+        }
+        cout << newl;     
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
