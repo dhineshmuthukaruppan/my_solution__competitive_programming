@@ -97,11 +97,37 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n;    
+        vl a(n);   
+        mini = INT32_MAX;   
+        forn(i, n){
+            cin >> a[i];
+            mini = min(mini, a[i]); 
+        }
 
 
+        vl temp;   
+        forn(i, n){
+            if(a[i]%mini == 0){
+                temp.pb(a[i]);    
+                a[i] = INT32_MAX;     
+            }
+        }
 
+        sortall(temp);    
+        counter = 0; 
+        forn(i, n){
+            if(a[i] == INT32_MAX){
+                a[i] = temp[counter++];   
+            }
+        } 
 
-        // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
+        cond = true;   
+        forn(i, n-1){
+            cond &= a[i]<=a[i+1]; 
+        }
+
+        if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
     }  /* end of while() */
 
