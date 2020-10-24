@@ -97,9 +97,15 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n >> str >> str1;   
 
+        forn(i, n){
+            if(str[i] != str1[i]){
+                cout << i+1 << " " << 1 << " " << i+1 << " ";        
+            }
+        }    
 
-
+        cout << newl;     
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
