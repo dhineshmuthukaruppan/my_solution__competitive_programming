@@ -98,13 +98,17 @@ void solve(){
     while(t--){          
 
         cin >> n >> str >> str1;   
-
+        
+        vi a;    
         forn(i, n){
             if(str[i] != str1[i]){
-                cout << i+1 << " " << 1 << " " << i+1 << " ";        
+                a.pb(i+1); a.pb(1); a.pb(i+1);       
             }
-        }    
-
+        }   
+        cout << a.size() << " ";     
+        for(auto el : a){   
+            cout << el << " ";      
+        }
         cout << newl;     
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  

@@ -97,7 +97,9 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> str;    
 
+        
 
 
 
