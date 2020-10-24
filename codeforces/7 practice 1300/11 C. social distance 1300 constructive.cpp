@@ -97,8 +97,54 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n >> k;    
+        cin >> str;    
 
+        answer = 0;  
+        sum = 0;    
+        if(str[0] == '0'){  
+            for(int i=0; i<=min(n-1, k);  i++){
+                sum+=(str[i] - '0');
+            }
+            
+            if(sum == 0){
+                str[0] = '1';   
+                answer++;    
+            }
+        }
 
+        sum = 0;     
+        if(str[n-1] == '0'){
+            for(int i=n-1; i>=max(n-1-k, static_cast<ll>(0)); i--){
+                sum += (str[i] - '0'); 
+            }
+            if(sum == 0){
+                str[n-1] = '1';
+                answer++;      
+            }
+        }
+
+        ll windowSize = 2*k +1;    
+        sum = 0;   
+        for(int i=0; i<n; i++){
+            sum += (str[i] - '0');   
+            
+            if(i >= windowSize){    
+                if(str[i-windowSize] == '1'){
+                    sum--;   
+                }
+
+                if(sum == 0){
+                    answer++;   
+                    sum++;                    
+                    str[i-k] = '1';    
+                }
+
+            }
+
+        }
+
+        cout << answer << newl;    
 
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
