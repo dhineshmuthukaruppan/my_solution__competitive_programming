@@ -97,15 +97,9 @@ void solve(){
     // t = 1;        
     while(t--){          
 
-        cin >> n >> str >> str1;   
 
-        forn(i, n){
-            if(str[i] != str1[i]){
-                cout << i+1 << " " << 1 << " " << i+1 << " ";        
-            }
-        }    
 
-        cout << newl;     
+
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
@@ -113,66 +107,6 @@ void solve(){
 
 
 }  /* end of solve() */
-
-
-/* 
-
-Solution 1: n time with 3n operations
-The idea is to fix the bits one-by-one. That is, make s1 = t1, then make s2 = t2, etc. To fix the bit i (when si!=ti ), 
-we can flip the prefix of length i, then flip the prefix of length 1, and again flip the prefix of length i. 
-These three operations do not change any other bits in s, so it's simple to implement in O(n). Since we use 3 
-operations per bit, we use at most 3n operations overall.
-
-solution 2 : O(n^2) time with 2n operations
-
-In this solution, we take a similar approach to solution 1, in that we fix the bits one-by-one. 
-This time, we will fix the bits in reverse order. To fix the bit i, we can either flip the prefix of 
-length i, or flip the first bit and then flip the prefix of length i. Since we do this in reverse order, 
-the previously fixed bits do not get messed up by this procedure. And we use at most  
-operations per bit, so 2n operations overall.
-
-However, we do have to simulate the operations in order to check if we should flip the first bit. 
-Simulating an operation can easily be done in O(n) time per operation, or n^2 time to simulate all operations.
-
-#include <bits/stdc++.h>
-
-using namespace std;
-// Solution 2 from editorial
-// Fix the bits one-by-one in reverse order.
-// Simulate the operations manually, achieving O(n^2) time complexity
-
-int t, n;
-string a, b;
-
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(0);
-    cin >> t;
-    while(t--) {
-        cin >> n >> a >> b;
-        vector<int> ops;
-        for(int i = n - 1; i >= 0; i--) {
-            if(a[i] != b[i]) {
-                if(a[0] == b[i]) {
-                    ops.push_back(1);
-                    a[0] = '0' + !(a[0] - '0');
-                }
-                reverse(a.begin(), a.begin() + i + 1);
-                for(int j = 0; j <= i; j++) {
-                    a[j] = '0' + !(a[j] - '0');
-                }
-                ops.push_back(i + 1);
-            }
-        }
-        cout << ops.size() << ' ';
-        for(int x : ops) {
-            cout << x << ' ';
-        }
-        cout << '\n';
-    }
-}
-
- */
 
 
 
