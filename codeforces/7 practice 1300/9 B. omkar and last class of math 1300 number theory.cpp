@@ -87,6 +87,24 @@ ll f(ll x){
     return answer;   
 }
 
+void aux_solve(ll n){
+
+    if(n%2 == 0){
+        cout << n/2 << " " << n/2 << newl;    
+    }else{
+
+        for(int i=2; i*i <= n; i++){
+            if(n%i == 0){
+                cout << n/i << " " << n-(n/i) << newl; 
+                return;   
+            }
+            cout << 1 << " " << n-1 << newl; 
+
+        }
+
+    }
+}
+
 
 void solve(){
 
@@ -97,9 +115,8 @@ void solve(){
     // t = 1;        
     while(t--){          
 
-
-
-
+        cin >> n;   
+        aux_solve(n);      
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
