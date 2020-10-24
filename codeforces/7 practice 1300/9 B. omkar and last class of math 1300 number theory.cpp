@@ -98,9 +98,8 @@ void aux_solve(ll n){
                 cout << n/i << " " << n-(n/i) << newl; 
                 return;   
             }
-            cout << 1 << " " << n-1 << newl; 
-
         }
+        cout << 1 << " " << n-1 << newl; 
 
     }
 }
