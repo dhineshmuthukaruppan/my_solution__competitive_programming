@@ -91,35 +91,15 @@ ll f(ll x){
 void solve(){
 
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
-    ll result;    
     bool cond, parity;    
     string str, str1;                             
     cin >> t;               
     // t = 1;        
     while(t--){          
 
-        cin >> str;    
 
-        result = 0;   
-        sum = 0;    
-        n = str.size();  
-        forn(i, n){
 
-            if(str[i] == '-'){
-                result--;   
-            }else{
-                result++;   
-            }
 
-            if(result < 0){
-                sum += (i+1);
-                result = 0;     
-            }
-
-        }
-        sum += n;    
-
-        cout << sum << newl;    
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
@@ -128,19 +108,6 @@ void solve(){
 
 }  /* end of solve() */
 
-
-/* 
-for _ in range(int(input())):
-    s = input()
-    cur, mn, res = 0, 0, len(s)
-    for i in range(len(s)):
-        cur += 1 if s[i] == '+' else -1
-        if cur < mn:
-            mn = cur
-            res += i + 1
-        
-    print(res)
- */
 
 
 int main(){
