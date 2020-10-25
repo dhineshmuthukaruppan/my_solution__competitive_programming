@@ -97,6 +97,53 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n;    
+        vl a(n);   
+        forn(i, n){
+            cin >> a[i];
+        }
+
+        vl b;    
+        if(n == 2){
+            b.pb(a[0]); b.pb(a[1]);     
+        }else{
+            b.pb(a[0]);   
+            if(a[0] > a[1]){
+                cond = false;  // downhill
+            }else{
+                cond = true; 
+            }
+
+            for(int i=1; i<n; i++){
+
+                if(cond){
+                    if(i!=n-1 && a[i] < a[i+1]){
+                        continue;       
+                    }else if(i!=n-1 && a[i] > a[i+1]){
+                        b.pb(a[i]);   
+                        cond = false;   
+                    }
+                    
+                }else{
+                    if(i!=n-1 && a[i] > a[i+1]){
+                        continue;    
+                    }else if(i!=n-1 && a[i] < a[i+1]){
+                        b.pb(a[i]);   
+                        cond = true;   
+                    }
+
+                }
+            }
+
+            b.pb(a[n-1]);    
+        }
+
+        cout << b.size() << newl;    
+        for(auto el: b){
+            cout << el << " "; 
+        }
+        cout << newl; 
+
 
 
 
