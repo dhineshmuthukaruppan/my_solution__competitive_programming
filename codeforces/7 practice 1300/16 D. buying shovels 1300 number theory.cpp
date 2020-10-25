@@ -97,8 +97,30 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n >> k;   
 
+        cond = true; 
+        if(k >= n){
+            cout << 1 << newl;    
+        }else{
 
+            for(int i=2; i*i<=n; i++){
+                if(i > k){
+                    break; 
+                }
+                if(n%i == 0){
+                    cout << i << newl; 
+                    cond = false; 
+                    break;
+                }
+
+            }
+
+            if(cond){
+                cout << n << newl; 
+            }   
+
+        }
 
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
