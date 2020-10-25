@@ -99,8 +99,8 @@ void solve(){
     while(t--){          
 
         cin >> n >> x >> m;   
-        vl a(n+1);  
-        a[x] = 1;   
+        // vl a(n+1);  
+        // a[x] = 1;   
         l = x; 
         r = x; 
 
@@ -114,7 +114,7 @@ void solve(){
         
         forn(i, m){
             cin >> L >> R;    
-            if(L <= l && r>=l ){
+            if(L <= l && R>=l ){
                 l = L;    
             }
 
