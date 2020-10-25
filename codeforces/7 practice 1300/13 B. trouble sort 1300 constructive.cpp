@@ -97,9 +97,32 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n;   
+        vl a(n), b(n);   
+        bool nonDecreasing = true;    
 
+        forn(i, n){
+            cin >> a[i];
 
+            if(i!=0){
+                nonDecreasing &= (a[i] >= a[i-1]);     
+            }    
+        } 
+        x = y = 0;    
+        forn(i, n){
+            cin >> b[i];
+            if(b[i] == 0){
+                x++;   
+            }else{
+                y++;    
+            }
+        }
 
+        if((x > 0 && y>0) || nonDecreasing){
+            cout << "Yes" << newl; 
+        }else{
+            cout << "No" << newl;    
+        }
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
