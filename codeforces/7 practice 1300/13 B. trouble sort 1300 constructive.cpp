@@ -87,45 +87,17 @@ ll f(ll x){
     return answer;   
 }
 
-/* https://codeforces.com/blog/entry/78735 */
+
 void solve(){
 
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
-    ll L, R;   
     string str, str1;                             
     cin >> t;               
     // t = 1;        
     while(t--){          
 
-        cin >> n >> x >> m;   
-        vl a(n+1);  
-        a[x] = 1;   
-        l = x; 
-        r = x; 
 
-        // forn(i, m){
-        //     cin >> L >> R;    
-        //     if(max(l, L) <= min(r, R)){
-        //         l = min(l, L);   
-        //         r = max(r, R);     
-        //     }
-        // }
-        
-        forn(i, m){
-            cin >> L >> R;    
-            if(L <= l && r>=l ){
-                l = L;    
-            }
-
-            if(R >= r && L<=r){
-                r = R;    
-            }
-
-        }
-
-
-        cout << r-l+1 << newl; 
 
 
 
