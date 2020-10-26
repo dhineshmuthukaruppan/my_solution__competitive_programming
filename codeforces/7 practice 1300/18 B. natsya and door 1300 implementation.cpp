@@ -90,16 +90,51 @@ ll f(ll x){
 
 void solve(){
 
-    ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
     cin >> t;               
     // t = 1;        
     while(t--){          
 
+        cin >> n >> k ;   
+        vi a(n);   
+        forn(i, n){
+            cin >> a[i];   
+        }   
+        
+        vi selectedPeaks(n);     
+        int maxPeaks = 0, currentPeaks = 0, peaksIndex = 0;    
+        forn(i, k){       
+            if(i!=0 && i!=k-1){
+                if(a[i] > a[i-1] && a[i] > a[i+1]){
+                    currentPeaks++;
+                    selectedPeaks[i] = 1;         
+                }
+            }
+        }
 
+        maxPeaks = max(maxPeaks, currentPeaks);       
 
+        for(int i=1; i<n-k+1; i++){
 
+            if(selectedPeaks[i] == 1){
+                selectedPeaks[i] = 0;   
+                currentPeaks--;       
+            }
+
+            if(a[i+k-2] > a[i+k-3] && a[i+k-2] > a[i+k-1]){
+                currentPeaks++;              
+                selectedPeaks[i+k-2] = 1;    
+            }     
+
+            if(currentPeaks > maxPeaks){
+                maxPeaks = currentPeaks;   
+                peaksIndex = i;      
+            }
+        }
+
+        cout << maxPeaks+1 << " " << peaksIndex+1 << newl;     
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
