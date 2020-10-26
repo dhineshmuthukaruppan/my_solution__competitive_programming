@@ -83,28 +83,38 @@ ll lb(ll target, ll l, ll h);
 ll ub(ll target, ll l, ll h);       
 ll f(ll x){
     ll answer;    
-
+    answer = x*(x+1)/ 2;      
     return answer;   
 }
 
 
 void solve(){
 
-    int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
     cin >> t;               
     // t = 1;        
     while(t--){          
 
+        cin >> n >> k;    
 
+        // index is for finding the nvalue
+        ll index = lb(k, 1, 1e5);               
+        // cout << index << newl;    
+        
+        str = string(n, 'a');    
+        str[n-index-1] = 'b';   
 
+        index--;   
+        x = (k - (index*(index+1)/2) - 1);                 
+        str[n-x-1] = 'b';                       
 
+        cout << str << newl;     
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
     }  /* end of while() */
-
 
 }  /* end of solve() */
 
