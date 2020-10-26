@@ -111,10 +111,7 @@ void solve(){
         }
         
         // vi selectedColumns(9);   
-
-
         
-
         // char tempCh = a[0][0];   
         // a[0][0] = a[1][3];    
         // a[1][3] = a[2][6];   
