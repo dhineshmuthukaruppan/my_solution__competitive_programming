@@ -93,16 +93,46 @@ void solve(){
     int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
-    // cin >> t;               
-    t = 1;        
+    cin >> t;               
+    // t = 1;        
     while(t--){          
 
+        vector<string> a(9);    
 
-        vvi a(10, vi(10)); 
+        for(int i=0; i<9; i++){
+            cin >> a[i]; 
+
+            forn(j, a[i].size()){
+                if(a[i][j] == '2'){
+                    a[i][j] = '1'; 
+                }    
+            }
+
+        }
+        
+        // vi selectedColumns(9);   
+
 
         
 
+        // char tempCh = a[0][0];   
+        // a[0][0] = a[1][3];    
+        // a[1][3] = a[2][6];   
+        // a[2][6] = tempCh;   
 
+        // tempCh = a[3][1];   
+        // a[3][1] = a[4][4];    
+        // a[4][4] = a[5][7];   
+        // a[5][7] = tempCh;    
+
+        // tempCh = a[6][2];   
+        // a[6][2] = a[7][5];   
+        // a[7][5] = a[8][8];    
+        // a[8][8] = tempCh;     
+
+        for(auto str : a){
+            cout << str << newl; 
+        } 
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
@@ -112,6 +142,47 @@ void solve(){
 }  /* end of solve() */
 
 
+
+/* 
+input 
+
+476358192
+539421867
+821976345
+368214759
+792835416
+145769238
+683547921
+954182673
+217693584
+
+
+// output - 1 st row contains distinct element - wrong answer
+476358192
+539321867
+821976445
+338214759
+792835416
+145769268
+682547921
+954184673
+217693583
+
+
+answer 
+476358191
+539411867
+811976345
+368114759
+791835416
+145769138
+683547911
+954181673
+117693584
+
+
+
+ */
 
 int main(){
 
