@@ -97,8 +97,53 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n;   
+        vl a(n);   
+        forn(i, n){
+            cin >> a[i];
+        } 
 
+        ll aliceTotal = 0, bobTotal = 0;    
+        ll alicePrev = 0, bobPrev = 0;   
+        ll moves = 0;   
+        cond = true;  // alice chance
+        l = -1, r = n;        
+        while(l < r){       
+            if(r-l == 1){break; }
+            moves++;   
+            if(cond){
+                // alice turn
+                ll aliceCurrent = 0; 
+                l++;   
+                while(aliceCurrent <= bobPrev && l<r){
+                    aliceCurrent += a[l];   
+                    l++;      
+                }  
+                l--;   
 
+                aliceTotal += aliceCurrent;    
+                alicePrev = aliceCurrent;     
+                cond = false;    
+
+            }else{
+                
+                ll bobCurrent = 0;
+                r--;      
+                while(bobCurrent <= alicePrev && r>l){         
+                    bobCurrent += a[r];  
+                    r--;    
+                } 
+                r++;   
+
+                bobTotal += bobCurrent;    
+                bobPrev = bobCurrent;   
+                cond = true; 
+
+            }
+
+        }
+
+        cout << moves << " " << aliceTotal << " " << bobTotal << newl; 
 
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
