@@ -87,7 +87,6 @@ ll f(ll x){
     return answer;   
 }
 
-
 void solve(){
 
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
@@ -100,7 +99,7 @@ void solve(){
         cin >> n >> k;    
 
         // index is for finding the nvalue
-        ll index = lb(k, 1, 1e5);               
+        ll index = lb(k, 1, 1e5);  // lower bound function             
         // cout << index << newl;    
         
         str = string(n, 'a');    
