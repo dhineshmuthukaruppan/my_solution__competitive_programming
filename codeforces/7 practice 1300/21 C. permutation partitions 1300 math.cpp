@@ -92,14 +92,34 @@ void solve(){
 
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
-    string str, str1;                             
-    cin >> t;               
-    // t = 1;        
+    string str, str1;       
+    ll mod = 998244353;                   
+    // cin >> t;               
+    t = 1;        
     while(t--){          
 
+        cin >> n >> k;    
+        vl a(n);   
+        forn(i, n){
+            cin >> a[i];
+        }  
 
+        answer = 0;
+        ll ways = 1;
+        vl idv;       
+        forn(i, n){    
+            if(a[i] >= n-k+1){
+                answer += a[i];    
+                idv.pb(i+1);          
+            }
+        }
 
+        forn(i, idv.size()-1){    
+            ways *= idv[i+1] - idv[i];   
+            ways %= mod;    
+        }
 
+        cout << answer << " " << ways << newl;    
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
