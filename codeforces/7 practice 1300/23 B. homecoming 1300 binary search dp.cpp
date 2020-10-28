@@ -88,25 +88,45 @@ ll f(ll x){
 }
 
 
+void auxSolve(){
+    int a, b, p;
+    cin >> a >> b >> p;
+    string s;
+    cin >> s;
+    if(s.back() == s[s.size()-2])
+    if (s.back() == 'B') p -= b;
+    else p -= a;
+    if (p < 0) {
+        cout << s.length() << endl;
+        return;
+    }
+    for (int q = s.length() - 2; q >= 0; --q) {
+        if (s[q] != s[q + 1]) {
+            if (s[q] == 'A') p -= a;
+            else p -= b;
+            if (p < 0) {
+                cout << q + 2 << endl;
+                return;
+            }
+        }
+    }
+    cout << 1 << endl;
+    return;
+}
+
+
 void solve(){
 
-    ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
-    ll a, b, p;   
-    bool cond, parity;    
-    string str, str1;                             
+    // ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    // ll a, b, p;   
+    // bool cond, parity;    
+    // string str, str1;  
+    ll t;                            
     cin >> t;               
     // t = 1;        
     while(t--){          
 
-        cin >> a >> b >> p;    
-        cin >> str;    
-
-        
-
-
-
-
-
+        auxSolve();    
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
