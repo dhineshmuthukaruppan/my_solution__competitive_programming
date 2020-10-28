@@ -97,8 +97,25 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n >> x;
+        cond = false;
+        y = INT64_MIN;           
+        forn(i, n){
+            cin >> temp;    
+            if(temp == x){    
+                cond = true;    
+            }
+
+            y = max(y, temp);     
+        }
 
 
+        if(cond ){
+            cout << 1 << newl;    
+        }else{
+            k = ceil(x/static_cast<float>(y));      
+            cout << max(2LL, k) << newl;      
+        }
 
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
