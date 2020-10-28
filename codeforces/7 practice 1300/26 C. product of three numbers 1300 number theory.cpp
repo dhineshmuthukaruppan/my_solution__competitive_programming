@@ -90,30 +90,141 @@ ll f(ll x){
 
 void solve(){
 
-    ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
     cin >> t;               
     // t = 1;        
-    while(t--){          
-
-        cin >> n;    
-
-        for(int i=2; i*i<=n; i++){
-            
-
-        }
+    while(t--){       
 
 
+        int n;
+		cin >> n;
+		set<int> used;
+		for (int i = 2; i * i <= n; ++i) {
+			if (n % i == 0 && !used.count(i)) {
+				used.insert(i);
+				n /= i;
+				break;
+			}
+		}
+		for (int i = 2; i * i <= n; ++i) {
+			if (n % i == 0 && !used.count(i)) {
+				used.insert(i);
+				n /= i;
+				break;
+			}
+		}
+		if (int(used.size()) < 2 || used.count(n) || n == 1) {
+			cout << "NO" << endl;
+		} else {
+			cout << "YES" << endl;
+			used.insert(n);
+			for (auto it : used) cout << it << " ";
+			cout << endl;
+		}   
 
-        // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
+        // cin >> n;    
+        // int a=1, b=1, c=1;        
+
+        // cond = false;        
+
+        // vi v;   
+        
+        // int divisor = 2;         
+        // while(n>0 && divisor<=n){   
+        //     if(n%divisor == 0){          
+        //         n/=divisor;         
+        //         v.pb(divisor);   
+        //     }else{
+        //         divisor++;    
+        //     }
+        // } 
+
+        // // cout << v;    
+
+        // if(v.size()<3){
+        //     cond = false; 
+        // }else{
+        //     a = v[0];
+        //     b = 1;    
+        //     c = 1;    
+        //     int continuationpoint;         
+        //     for(int i=1; i<v.size(); i++){
+                
+        //         b*=v[i];    
+        //         if(b!=a){
+        //             continuationpoint = i+1;     
+        //             break;     
+        //         }
+
+        //     }
+
+        //     for(int i=continuationpoint; i<v.size(); i++){
+        //         c*=v[i];
+        //     }
+
+        // }
+
+        // if(a!=1 && b!=1 && c!=1 && a!=b && a!=c && b!=c){
+        //     cond = true; 
+        // }else{
+        //     cond = false;     
+        // }
+
+
+        // if(cond){
+        //     cout << "YES" << newl; 
+        //     cout << a << " " << b << " " << c << newl;    
+        // }else{cout << "NO" << newl; }  
 
     }  /* end of while() */
 
 
 }  /* end of solve() */
 
+/* #include <bits/stdc++.h>
 
+using namespace std;
+
+int main() {
+#ifdef _DEBUG
+	freopen("input.txt", "r", stdin);
+//	freopen("output.txt", "w", stdout);
+#endif
+	
+	int q;
+	cin >> q;
+	for (int i = 0; i < q; ++i) {
+		int n;
+		cin >> n;
+		set<int> used;
+		for (int i = 2; i * i <= n; ++i) {
+			if (n % i == 0 && !used.count(i)) {
+				used.insert(i);
+				n /= i;
+				break;
+			}
+		}
+		for (int i = 2; i * i <= n; ++i) {
+			if (n % i == 0 && !used.count(i)) {
+				used.insert(i);
+				n /= i;
+				break;
+			}
+		}
+		if (int(used.size()) < 2 || used.count(n) || n == 1) {
+			cout << "NO" << endl;
+		} else {
+			cout << "YES" << endl;
+			used.insert(n);
+			for (auto it : used) cout << it << " ";
+			cout << endl;
+		}
+	}
+	
+	return 0;
+} */
 
 int main(){
 
