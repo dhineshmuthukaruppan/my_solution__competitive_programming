@@ -97,9 +97,30 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n >> m;    
+        cin >> str;    
+        vi suffixA(n);  
+        forn(i, m){
+            cin >> x;   
+            suffixA[x - 1]++;              
+        }
 
 
+        for(int i=n-1; i>0; i--){
+            suffixA[i-1] += suffixA[i];    
+        }   
 
+        vi a(26);   
+        forn(i, n){
+            a[str[i] - 'a'] += suffixA[i];    
+            a[str[i] - 'a']++;     
+        } 
+
+
+        forn(i, 26){
+            cout << a[i] << " ";  
+        }
+        cout << newl;     
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
