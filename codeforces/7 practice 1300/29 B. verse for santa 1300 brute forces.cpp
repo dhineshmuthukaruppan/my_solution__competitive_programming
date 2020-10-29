@@ -104,10 +104,23 @@ void solve(){
             cin  >> a[i];
         } 
 
-        
+        ll idx = 0;    
+        forn(i, n){
+            if(a[i] > a[idx]){
+                idx = i;      
+            }
 
+            s -= a[i];   
+            if(s < 0){
+                break;    
+            }
+        }
 
+        if(s >= 0){
+            idx = -1;   
+        }
 
+        cout << idx+1 << newl;       
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
