@@ -97,11 +97,33 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n;    
+        vi a(n);   
+        forn(i, n){
+            cin >> a[i];
+        } 
+        sum = 0;
+        cond = true;        
+        forn(i, n){
+            sum += a[i];   
+            if(sum <= 0){
+                cond = false;    
+                break;     
+            }
+        }
 
+        if(cond){
+            sum = 0;    
+            for(int i=n-1; i>=0; i--){
+                sum+= a[i];   
+                if(sum <= 0){
+                    cond = false;  
+                    break;     
+                }
+            }
+        }
 
-
-
-        // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
+        if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
     }  /* end of while() */
 
