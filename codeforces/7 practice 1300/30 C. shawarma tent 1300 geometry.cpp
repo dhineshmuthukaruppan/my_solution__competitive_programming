@@ -91,15 +91,58 @@ ll f(ll x){
 void solve(){
 
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    ll sx, sy, left, right, top, bottom;     
     bool cond, parity;    
     string str, str1;                             
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;        
     while(t--){          
 
+        cin >> n >> sx >> sy;   
+
+        top = left = bottom = right = 0;     
+        forn(i, n){    
+            cin >> x >> y;   
+
+            // top
+            if(y > sy){
+                top++;    
+            }
+
+            // bottom
+            if(y < sy){
+                bottom++;    
+            }
+            // right
+            if(x > sx){
+                right++;  
+            }
+
+            // left
+            if(x < sx){
+                left++;    
+            }
+
+        }
 
 
+        if(top >= bottom && top >= right && top >= left){
+            cout << top << newl;    
+            cout << sx << " " << sy+1 << newl; 
+        }else if(bottom >= top && bottom >= right && bottom >= left){
+            cout << bottom << newl;  
+            cout << sx << " " << sy-1 << newl;  
 
+        }else if(left >= top && left >= right && left >= bottom){
+            cout << left << newl;  
+            cout << sx-1 << " " << sy << newl; 
+
+        }else{
+            // right
+            cout << right << newl;   
+            cout << sx+1 << " " << sy << newl; 
+
+        }
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
