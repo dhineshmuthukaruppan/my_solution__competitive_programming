@@ -98,8 +98,32 @@ void solve(){
     while(t--){          
 
 
+        cin >> n;   
+        vi a(n);    
+        forn(i, n){
+            cin >> a[i];     
+        }
 
+        int prefixEnd = -1, suffixEnd=n;        
+        for(int i=0; i<n; i++){
+            if(a[i] < i){
+                break; 
+            }
+            prefixEnd = i;        
+        }
 
+        for(int i=n-1; i>=0; i--){
+            if(a[i] < ((n-1) - i)){    
+                break;     
+            }
+            suffixEnd = i;    
+        }
+
+        if(suffixEnd <= prefixEnd){
+            cout << "Yes" << newl;    
+        }else{
+            cout << "No" << newl;     
+        }
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
