@@ -93,13 +93,48 @@ void solve(){
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;        
     while(t--){          
 
+        vi vec(205);    
+        cin >> n >> str;   
+        
+        ll b;   
+        b = w = 0;   
+        forn(i, str.size()){
+            if(str[i] == 'B'){
+                vec[i] = 0;   
+                b++;    
+            }else{
+                vec[i] = 1;   
+                w++;    
+            }
+        }
+
+        vi tempvec;     
+        if(b&1 && w&1){
+            cout << -1 << newl;   
+        }else{
+
+            b = b%2 ? 0 : 1; // if black is odd, then choose black, else choose white
+
+            for(int i=0; i<n-1; i++){
+                if(vec[i]^b){ // if both are different colors
+                    vec[i] ^= 1;   
+                    vec[i+1] ^= 1;   
+                    tempvec.pb(i+1);    
+                }
+            }
+
+            cout << tempvec.size() << newl;  
+            for(auto el : tempvec){
+                cout << el << " "; 
+            }
+            cout << newl;  
 
 
-
+        }
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
