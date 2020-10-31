@@ -90,16 +90,42 @@ ll f(ll x){
 
 void solve(){
 
-    ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
     cin >> t;               
     // t = 1;        
     while(t--){          
 
+        cin >> n;   
+        vi a(n+1);    
+        for(int i=1; i<=n; i++){
+            cin >> a[i];
+        }
+        
+        vi used(n+1), result(n+1);         
+        for(int i=1; i<=n; i++){
+            vi currentA;   
+            ll pointer = i;                
+            if(!used[i]){
 
+                while(a[pointer]!=i){     
+                    currentA.pb(a[pointer]);            
+                    pointer = a[pointer];    
+                }
+                currentA.pb(i);        
 
+                for(auto el : currentA){
+                    used[el] = 1;  
+                    result[el] = currentA.size();        
+                }
+            }
+        }
 
+        for(int i=1; i<=n; i++){    
+            cout << result[i] << " ";
+        }
+        cout << newl;     
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
