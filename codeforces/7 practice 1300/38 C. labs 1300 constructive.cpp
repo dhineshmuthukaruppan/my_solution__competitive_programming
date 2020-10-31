@@ -93,11 +93,47 @@ void solve(){
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;        
     while(t--){          
 
+        cin >> n; 
+        vvi a(n+1, vi(n));                                    
 
+        cond = true; // forward direction
+        ll pos = 0;          
+        ll iteration = 0;    
+        for(int i=1; i<=n*n; i++){
+            
+            if(cond){   
+                pos++;
+                a[pos][iteration] = i;  
+                // cout << pos << newl;   
+                if(pos % n == 0){
+                    cond = false;
+                    iteration++;    
+                }
+
+            }else{
+                
+                a[pos][iteration] = i;       
+                // cout << pos << newl;     
+                pos--;  
+                if(pos == 0){    
+                    cond = true;   
+                    iteration++;       
+                } 
+            }
+            
+        }
+
+
+        for(int i=1; i<=n; i++){    
+            for(int j=0; j<n; j++){
+                cout << a[i][j] << " "; 
+            }
+            cout << newl;    
+        }
 
 
 
