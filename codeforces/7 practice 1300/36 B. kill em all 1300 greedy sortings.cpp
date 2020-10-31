@@ -90,16 +90,42 @@ ll f(ll x){
 
 void solve(){
 
-    ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
     cin >> t;               
     // t = 1;        
     while(t--){          
 
+        cin >> n >> r;   
+        vi a(n); 
+        forn(i, n){
+            cin >> a[i];
+        } 
 
+        sortall(a);   
 
+        answer= 0;  
+        for(int i=n-1; i>=0; i--){
+            if(i != 0){
+                
+                if(a[i] == a[i-1]){ 
+                    continue;     
+                }else{
 
+                    answer += ((a[i] - answer * r) > 0);     
+
+                }
+
+            }else if(i == 0){
+
+                answer += ((a[i] - answer * r) > 0); 
+
+            }
+
+        }
+
+        cout << answer << newl; 
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
