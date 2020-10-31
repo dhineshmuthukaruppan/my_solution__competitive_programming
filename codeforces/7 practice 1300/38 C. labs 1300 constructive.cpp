@@ -90,39 +90,21 @@ ll f(ll x){
 
 void solve(){
 
-    int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
-    // cin >> t;               
-    t = 1;        
+    cin >> t;               
+    // t = 1;        
     while(t--){          
 
-        cin >> n;   
-        answer = 0;   
-        vi a(n+1); vi pos(n+1); 
-        for(int i=1; i<=n; i++){
-            cin >> a[i];
-        }       
 
-        for(int i=1; i<=n; i++){
-            cin >> x;    
-            pos[x] = i;     
-        }
 
-        int maxPos = pos[a[1]];          
-        for(int i=2; i<=n; i++){
-            if(pos[a[i]] < maxPos){   
-                answer++;   
-            }else{
-                maxPos = pos[a[i]];     
-            }   
-        }
 
-        cout << answer << newl;    
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
     }  /* end of while() */
+
 
 }  /* end of solve() */
 
