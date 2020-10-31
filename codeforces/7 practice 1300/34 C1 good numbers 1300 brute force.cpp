@@ -96,22 +96,23 @@ void solve(){
     cin >> t;               
     // t = 1;        
     while(t--){          
-
-        cin >> x >> y;   
-
-        if(x > y){
-            swap(x, y); 
+        cin >> n;    
+        while(true){
+            bool ok = true;     
+            ll cur = n;    
+            while(cur > 0){ 
+                if(ok && cur%3 == 2){    
+                    ok = false;     
+                    break;       
+                }   
+                cur/=3;    
+            }
+            if(ok){
+                break;   
+            }
+            n++;   
         }
-
-        if((x+y)%3 == 0 && 2*x>=y){
-            cout << "Yes" << newl;
-        }else{
-            cout << "No" << newl;     
-        }
-
-
-
-
+        cout << n << newl;     
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
     }  /* end of while() */
