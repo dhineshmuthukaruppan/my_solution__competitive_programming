@@ -90,16 +90,37 @@ ll f(ll x){
 
 void solve(){
 
-    ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;        
     while(t--){          
 
+        cin >> n >> k;     
+        deque<int> dq;  
+        set<int> st;
 
+        forn(i, n){
+            cin >> x;   
+            if(dq.size() < k && st.find(x) == st.end()){
+                // size less than k and not found in the set, insert in the beginning
+                dq.push_front(x);    
+                st.insert(x);       
+            }else if(dq.size() == k && st.find(x) == st.end()){
+                temp = dq.back();   
+                dq.pop_back();    
+                dq.push_front(x);
+                st.erase(temp);    
+                st.insert(x);          
+            }
+        }
 
-
+        cout << dq.size() << newl;  
+        for(auto el :dq){
+            cout << el << " "; 
+        }
+        cout << newl;  
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
