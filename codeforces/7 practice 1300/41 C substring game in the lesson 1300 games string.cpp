@@ -97,9 +97,18 @@ void solve(){
     t = 1;        
     while(t--){          
 
-        
+        cin >> str;    
 
-
+        char ch = str[0];    
+        forn(i, str.size()){
+            if(str[i] <= ch){
+                // mike wins 
+                ch = str[i];    
+                cout << "Mike" << newl;  
+            }else{
+                cout << "Ann" << newl;     
+            }
+        }
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
