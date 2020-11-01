@@ -93,10 +93,32 @@ void solve(){
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;        
     while(t--){          
 
+        cin >> n;    
+        vvl a(n, vl(n));            
+
+        forn(i, n){
+            forn(j, n){
+                cin >> a[i][j];   
+            }
+        }
+
+        vi res(n);    
+
+        res[0] = sqrt((a[0][1]*a[0][2])/a[1][2]);   
+        
+        forn(i, n-1){
+            res[i+1] = a[i][i+1]/res[i];    
+        }
+
+
+        for(auto el : res){
+            cout << el << " ";   
+        } 
+        cout << newl;      
 
 
 
