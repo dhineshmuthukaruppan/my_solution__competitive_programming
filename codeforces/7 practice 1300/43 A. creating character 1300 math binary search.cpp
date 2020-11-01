@@ -88,6 +88,32 @@ ll f(ll x){
 }
 
 
+ll lowerbound(ll x, ll y, ll z){
+
+    ll l, r, mid, otherMid, answer = INT32_MAX;       
+
+    l=0; r = z;      
+    
+    while(l <= r){
+        mid = (l+r)/2;    
+        otherMid = z - mid;    
+
+        // cout << mid << newl; 
+
+        if((x+mid) > (y+otherMid)){  
+            r = mid - 1;    
+            answer = min(answer, mid); 
+        }else{
+            l = mid+1;   
+        }
+    }
+
+    return answer;   
+
+}  /* end of lowerbound */
+
+
+
 void solve(){
 
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
@@ -97,9 +123,22 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> x >> y >> z;    
 
+        if(z == 0 && x > y){
+            cout << 1 << newl; 
+        }else if(z == 0 && x<=y){
+            cout << 0 << newl; 
+        }else{
+            answer = lowerbound(x, y, z);       
 
-
+            if(answer > z){
+                cout << 0 << newl;    
+            }else{
+                cout << z - answer + 1 << newl;   
+            }  
+                
+        }
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
