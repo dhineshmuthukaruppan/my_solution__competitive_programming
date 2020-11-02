@@ -93,13 +93,31 @@ void solve(){
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;        
     while(t--){          
 
+        cin >> n;     
+        vl a(n);          
+        maxi = INT32_MIN;    
+        forn(i, n){
+            cin >> a[i];
+            maxi = max(maxi, a[i]); 
+        }  
 
+        answer = 0;    
+        
+        ll gcdValue;       
+        gcdValue = maxi - a[0];
+        sum  = maxi - a[0];         
+        for(int i=1; i<n; i++){
+            gcdValue = gcdEuclidean(gcdValue, maxi - a[i]);    
+            sum += (maxi - a[i]);       
+        }    
 
+        answer = sum / gcdValue;     
 
+        cout << answer << " " << gcdValue << newl;   
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
