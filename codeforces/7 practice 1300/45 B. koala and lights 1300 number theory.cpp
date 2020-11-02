@@ -89,18 +89,45 @@ ll f(ll x){
 
 
 void solve(){
-
-    ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;        
     while(t--){          
+        cin >> n >> str;
+        vi a(150);           
+        forn(i, n){
+            cin >> x >> y;    
+            
+            int j = y;
+            if(str[i] == '1'){    
+                a[0] += 1;        
+                cond = false;    
+            }else{
+                cond = true;    
+            }       
+            while(j < 150){
+                if(cond){
+                    a[j] += 1;   
 
+                    cond = false;    
+                }else{
+                    a[j] -= 1;    
+                    cond = true;    
+                }
+                j+= x;    
+            }
+        }
+        vi next(150);
+        next[0] = a[0];       
+        maxi = next[0];        
+        for(int i=1; i<130; i++){
+            next[i] = a[i] + next[i-1];           
+            maxi = max(maxi, next[i]);     
+        } 
 
-
-
-
+        cout << maxi << newl; 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
     }  /* end of while() */
