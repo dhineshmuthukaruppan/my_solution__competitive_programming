@@ -116,9 +116,6 @@ void solve(){
 
         answer = n+m;     
 
-        // cout << cntn; 
-        // cout << cntm; 
-
         forn(i, n){
             forn(j, m){
                 answer = min(answer, cntn[i]+cntm[j] - (vstr[i][j] == '.')); 
@@ -126,11 +123,6 @@ void solve(){
         }
 
         cout << answer << newl; 
-
-
-
-
-
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
