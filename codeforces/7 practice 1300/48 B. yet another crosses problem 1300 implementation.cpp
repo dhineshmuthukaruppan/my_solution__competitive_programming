@@ -90,12 +90,43 @@ ll f(ll x){
 
 void solve(){
 
-    ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
     cin >> t;               
     // t = 1;        
     while(t--){          
+
+        cin >> n >> m;     
+
+        vi cntn(n), cntm(m);
+        vector<string> vstr;     
+
+        forn(i, n){
+            cin >> str;     
+            vstr.pb(str);         
+
+            forn(j, str.size()){
+                if(str[j] == '.'){
+                    cntn[i]++;      
+                    cntm[j]++;    
+                }
+            }
+        }
+
+        answer = n+m;     
+
+        // cout << cntn; 
+        // cout << cntm; 
+
+        forn(i, n){
+            forn(j, m){
+                answer = min(answer, cntn[i]+cntm[j] - (vstr[i][j] == '.')); 
+            }
+        }
+
+        cout << answer << newl; 
+
 
 
 
