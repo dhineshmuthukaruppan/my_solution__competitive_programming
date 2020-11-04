@@ -72,12 +72,12 @@ ostream& operator <<(ostream &out, const vector<A> &v);
 void swap(int &a, int &b);
 vi sieveOfEratosthenes(int n);  // O(n log logn)      
 bool isPrime(int number);  // O(sqrt(n));  
-vi returnAllFactors(int n);
+vl returnAllFactors(ll n);
 int totalNumberOfDigits(int A);
 int extractIthDigit(int A, int i);  /* Extract ith digit - (A / 10 ^ i) % 10 */
 int reverseDigits(int A);
 vi allPrimeFactors(int A);   // TODO   
-int gcdEuclidean(int A, int B);  
+ll gcdEuclidean(ll A, ll B);  
 int lcm(int A, int B);      
 ll lb(ll target, ll l, ll h);
 ll ub(ll target, ll l, ll h);       
@@ -108,7 +108,7 @@ void solve(){
             }
         }
 
-        vi output = returnAllFactors(gcdValue);    
+        vl output = returnAllFactors(gcdValue);    
         cout << output.size() << newl;    
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
@@ -200,8 +200,8 @@ bool isPrime(int number){
 }
 
 
-vi returnAllFactors(int n){
-    vi result;      
+vl returnAllFactors(ll n){
+    vl result;      
     for(int i=1; i<=sqrt(n); i++){ // this will be efficient than n or n/2
         if(n%i == 0){
             result.pb(i);  
@@ -255,7 +255,7 @@ int reverseDigits(int A){
 
 
 
-int gcdEuclidean(int A, int B){
+ll gcdEuclidean(ll A, ll B){
     if(B == 0)
         return A;   
     return gcdEuclidean(B, A % B);       
