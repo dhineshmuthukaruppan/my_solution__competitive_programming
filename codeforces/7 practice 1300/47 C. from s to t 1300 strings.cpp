@@ -92,16 +92,51 @@ void solve(){
 
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
-    string str, str1;                             
+    string str, str1, s, ts, p;                             
     cin >> t;               
     // t = 1;        
     while(t--){          
 
+        cin >> s >> ts >> p;    
 
 
+        cond = true; 
+
+        vi cnt(26);       
+        
+        forn(i, p.size()){
+            cnt[p[i] - 'a']++;
+        }     
 
 
-        // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
+        int is = 0, it = 0;     
+
+        while(is < s.size()){
+            if(it == ts.size()){      
+                cond = false;  
+                break; 
+            }
+
+            if(s[is] == ts[it]){
+                is++; it++;      
+                continue;       
+            }
+
+            --cnt[ts[it] - 'a'];     
+            it++;         
+    
+        }
+
+        while(it < ts.size()){
+            --cnt[ts[it] - 'a'];   
+            it++;       
+        }
+
+        if(*(min_element(cnt.begin(), cnt.end())) < 0){
+            cond = false;            
+        }
+
+        if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
     }  /* end of while() */
 
