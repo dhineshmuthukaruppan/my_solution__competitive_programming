@@ -93,18 +93,75 @@ void solve(){
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;        
     while(t--){          
 
+        cin >> n >> m;     
+        vector<string> vstr;   
+
+        forn(i, n){
+            cin >> str;    
+            vstr.pb(str);     
+        }
+
+        vector<vector<bool>> vbl(n, vector<bool>(m, false));         
+        cond = false;                
+        forn(i, n){
+            forn(j, m){
+
+                if(i > 0 && j > 0 && i < n-1 && j < m-1 && 
+                vstr[i][j] == '*' && vstr[i-1][j] == '*' && vstr[i+1][j] == '*'
+                && vstr[i][j-1] == '*' && vstr[i][j+1] == '*'){
+                    
+
+                    vbl[i][j] = true; 
+
+                    int up = i,down = i; 
+                    int right = j, left = j;     
+
+                    while(up >= 0 && vstr[up][j] == '*'){
+                        vbl[up--][j] = true; 
+                    }
+                    while(down < n && vstr[down][j] == '*'){
+                        vbl[down++][j] = true;     
+                    }
+                    while(left >= 0 && vstr[i][left] == '*'){
+                        vbl[i][left--] = true;    
+                    }
+                    while(right < m && vstr[i][right] == '*'){
+                        vbl[i][right++] = true;     
+                    }
+                    
+                    bool tempCond = true;    
+                    // todo
+                    for(int i2=0; i2<n; i2++){
+                        for(int j2=0; j2<m; j2++){      
+                            if(vbl[i2][j2] != (vstr[i2][j2] == '*')){
+                                tempCond = false; 
+                                break;     
+                            }
+                        }
+                        if(!tempCond){
+                            break;
+                        }
+                    }
 
 
+                    if(tempCond){
+                        cond = true; 
+                    }
 
+                    if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
+                    return;    
+                }
+            }
+        }
 
-        // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
+        if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
+        return;        
 
     }  /* end of while() */
-
 
 }  /* end of solve() */
 
