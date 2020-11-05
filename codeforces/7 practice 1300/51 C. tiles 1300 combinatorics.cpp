@@ -93,13 +93,22 @@ void solve(){
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;    
+    ll mod = 998244353;                
+    t = 1;        
     while(t--){          
 
+        cin >> n >> m;    
 
+        answer = 4;    
+        for(int i=2; i<=n; i++){
+            answer = (answer*2)%mod;     
+        }
+        for(int i=2; i<=m; i++){
+            answer = (answer*2)%mod;    
+        }
 
-
+        cout << answer << newl;     
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
