@@ -90,16 +90,33 @@ ll f(ll x){
 
 void solve(){
 
-    ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;        
     while(t--){          
 
+        vi p{4, 8, 15, 16, 23, 42};    
 
+        cin >> n;     
+        vi a(n);   
+        vi ans(6);       
+        forn(i, n){
+            cin >> x;      
+            a[i] = lower_bound(p.begin(), p.end(), x) - p.begin();     
+        } 
 
+        forn(i, n){
+            if(a[i] == 0){
+                ans[a[i]]++;
+            }else if(ans[a[i] - 1] > 0){
+                ans[a[i] - 1]--;    
+                ans[a[i]]++;    
+            }
+        }
 
+        cout << n - 6* ans[5] << newl;     
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
