@@ -90,13 +90,31 @@ ll f(ll x){
 
 void solve(){
 
-    ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;        
     while(t--){          
 
+        cin >> n;     
+        vi a(n+1);         
+        x=1;      
+        for(int i=2; i<=n; i++){
+            if(!a[i]){
+                a[i] = x++;   
+                for(int j=i; j<=n; j+=i){   
+                    a[j] = a[i];
+                }
+            }
+        }
+
+
+
+        for(int i=2; i<=n; i++){   
+            cout << a[i] << " ";   
+        }                       
+        cout << newl; 
 
 
 
