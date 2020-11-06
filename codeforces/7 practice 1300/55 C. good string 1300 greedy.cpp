@@ -93,13 +93,26 @@ void solve(){
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;        
     while(t--){          
 
+        cin >> n >> str;    
+
+        string res;        
+        forn(i, n){
+            if(res.size()%2 == 0 || res.back() != str[i]){
+                res += str[i];           
+            }
+        }     
+
+        if(res.size()%2 == 1){
+            res.pop_back();         
+        }    
 
 
-
+        cout << n - res.size() << newl;    
+        cout << res << newl;      
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
