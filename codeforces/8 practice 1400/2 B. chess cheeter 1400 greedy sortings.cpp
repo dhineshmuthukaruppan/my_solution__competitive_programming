@@ -97,9 +97,76 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n >> k >> str;           
+        int winningStreaks = 0, wins = 0;   
+        int leftGC=0, rightGC=n-1, gapsFilled = 0;            
+        vi gapsA;       
+        
+        while(leftGC < n && str[leftGC] == 'L'){
+            leftGC++;   
+        }
+
+        while(rightGC>=0 && str[rightGC] == 'L'){    
+            rightGC--;               
+        }     
+
+        if(leftGC > rightGC){
+            // no w's present
+            
+            if(k==0){
+                cout << 0 << newl; 
+            }else{
+                cout << 2*k-1 << newl;
+            }       
+            continue;         
+        }
+
+        for(int i=leftGC; i<=rightGC; i++){     
+            if(str[i] == 'W'){
+                wins++;    
+                continue;    
+            }else if(str[i] == 'L'){
+
+                int currentGaps = 0;     
+                winningStreaks++;   
+                while(str[i] == 'L'){
+                    currentGaps++;   
+                    i++;    
+                }        
+                i--;      
+                if(currentGaps){
+                    gapsA.pb(currentGaps);     
+                }
+
+            }
+        
+        }    
+
+        winningStreaks++;    
 
 
+        if(k + wins >= n){
+            cout << 2*n-1 << newl;     
+        }else{
 
+
+            k = min(k, n-wins);  // n-wins refers to losses 
+
+            temp = k;    
+            sortall(gapsA);          
+            for(auto el : gapsA){
+                if(temp >= el){
+                    gapsFilled++;   
+                    temp-=el;      
+                }    
+            }
+
+            // cout <<leftGC << " " << rightGC << newl;      
+            // cout << wins << " " << k << " " << winningStreaks << " " << gapsFilled << newl; 
+            // cout << gapsA << newl;     
+
+            cout << 2*(k+wins) - winningStreaks + gapsFilled << newl;    
+        }
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
