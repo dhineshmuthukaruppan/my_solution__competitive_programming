@@ -88,6 +88,10 @@ ll f(ll x){
 }
 
 
+bool sortFn(pl a, pl b){
+    return (a.first < b.first);    
+}  /* end of sortFn */
+
 void solve(){
 
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
@@ -97,8 +101,39 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n;    
+        vpl a(n);    
 
+        forn(i, n){
+            cin >> x;   
+            a[i].first = x;     
+        }
 
+        forn(i, n){
+            cin >> x;    
+            a[i].second = x;     
+        }
+
+        sort(a.begin(), a.end(), sortFn);     
+
+        // cout << a << newl;    
+
+        sum = 0;
+        int i=n-1;       
+        for( ; i>=0; i--){
+            if(sum + a[i].second < a[i].first){
+                sum += a[i].second;    
+                continue;     
+            }else{
+                break; 
+            }
+        }        
+
+        if(i < 0){
+            cout << sum << newl; 
+        }else{
+            cout << max(a[i].first, sum) << newl;       
+        }
 
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
