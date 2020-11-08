@@ -93,10 +93,17 @@ void solve(){
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;        
     while(t--){          
 
+        cin >> str;   
+        n = str.size();  
+        cout << 3 << newl;   
+        cout << "R " << n-1 << newl; 
+        cout << "L " << n << newl; 
+        cout << "L 2" << newl;  
+        
 
 
 
