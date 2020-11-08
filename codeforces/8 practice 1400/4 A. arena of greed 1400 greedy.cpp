@@ -97,9 +97,45 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n;    
+        ll chanek = 0, other = 0; 
 
+        cond = true; // chanek's turn
 
+        while(n > 0){
 
+            if(cond){
+                if(n%4==0 && n!=4){
+                    chanek++; 
+                    n--;    
+                }else if(n%2 == 0){
+                    chanek +=  (n/2);    
+                    n/=2;    
+                }else{
+                    chanek++;   
+                    n--;    
+                }
+
+                cond = false;  
+            }else{
+
+                if(n%4==0 && n!=4){
+                    other++; 
+                    n--;    
+                }else if(n%2 == 0){
+                    other +=  (n/2);    
+                    n/=2;    
+                }else{
+                    other++;   
+                    n--;    
+                }
+
+                cond = true; 
+            }   
+
+        }
+
+        cout << chanek << newl;    
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
