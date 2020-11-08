@@ -90,24 +90,65 @@ ll f(ll x){
 
 void solve(){
 
-    ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
     // cin >> t;               
     t = 1;        
     while(t--){          
 
-        ll fourset = 0, twoset = 0;   
-        
+        int fourset = 0, twoset = 0;   
+        map<int, int> hmap;    
         cin >> n;    
         forn(i, n){
+            cin >> x;    
+            hmap[x]++;   
+            if(hmap[x]%2 == 0){
+                twoset++;   
+            }
 
+            if(hmap[x]%4 == 0){
+                twoset-=2; 
+                fourset++;   
+            }
 
         }
+        int query; char symbol;      
+        cin >> query;   
+        forn(i, query){   
+            cin >> symbol >> x;     
 
+            if(symbol == '+'){
+                hmap[x]++;   
+                if(hmap[x]%2 == 0){
+                    twoset++;   
+                }
 
+                if(hmap[x]%4 == 0){
+                    twoset-=2; 
+                    fourset++;   
+                }
 
-
+                if(fourset >=2 || (fourset == 1 && twoset >=2)){
+                    cout << "YES" << newl;    
+                }else{
+                    cout << "NO" << newl;     
+                }
+            }else{
+                if(hmap[x]%4 == 0){
+                    fourset--;  
+                    twoset++;   
+                }else if(hmap[x]%2 == 0){
+                    twoset--;  
+                }
+                hmap[x]--;   
+                if(fourset >=2 || (fourset == 1 && twoset >=2)){
+                    cout << "YES" << newl;    
+                }else{
+                    cout << "NO" << newl;     
+                }
+            }
+        }
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
