@@ -97,9 +97,43 @@ void solve(){
     // t = 1;        
     while(t--){          
 
-
-
-
+        cin >> n >> k;
+        counter = 0;       
+        forn(i, n){
+            cin >> x;   
+            if(i == 0){
+                counter++;    
+                temp = x;     
+            }else{  
+                if(x == temp){
+                    continue;    
+                }else{
+                    counter++;   
+                    temp = x;   
+                }
+            }
+        }
+        if(k == 1){
+            if(counter == 1){
+                cout << 1 << newl;     
+            }else{
+                cout << -1 << newl; 
+            }
+        }else{
+            if(k >= counter){
+                cout << 1 << newl;    
+            }else{
+                answer = 0;   
+                counter -= k;    
+                answer++;   
+                if(counter % (k-1) == 0){
+                    answer += (counter/(k-1)); 
+                }else{
+                    answer += ((counter/(k-1)) + 1); 
+                }
+                cout << answer << newl;    
+            }
+        }
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
