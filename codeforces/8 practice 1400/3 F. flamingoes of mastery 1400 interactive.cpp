@@ -88,16 +88,51 @@ ll f(ll x){
 }
 
 
+int ask(int l, int r){
+    cout << "?" << " " << l << " " << r << endl;       
+    int ret;    
+    cin >> ret; 
+    return ret;        
+}
+
+
+
 void solve(){
 
-    ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;        
     while(t--){          
 
-        
+        cin >> n;     
+
+        int oneto3 = ask(1, 3);    
+        int oneto2 = ask(1, 2);   
+        int twoto3 = ask(2, 3);      
+
+        vi ans(n+1);    
+        ans[1] = oneto3 - twoto3; 
+        ans[3] = oneto3 - oneto2; 
+        ans[2] = oneto3 - ans[1] - ans[3];     
+
+
+        int prev = oneto3;    
+        for(int i=4; i<=n; i++){
+            temp = ask(1, i);
+            ans[i] = temp - prev;    
+            prev = temp; 
+        }
+
+
+        cout << "! "; 
+        for(int i=1; i<=n; i++){
+            cout << ans[i] << " "; 
+        }    
+        cout << newl;     
+
+
 
 
 
