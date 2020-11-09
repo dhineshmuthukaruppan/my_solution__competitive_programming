@@ -96,30 +96,10 @@ void solve(){
     cin >> t;               
     // t = 1;        
     while(t--){          
-        string s;
-        cin >> s;
-        int n = s.length();
-        map<char, int> mp;
-        string ans = "";
-        for(auto x : s)
-            mp[x]++;
-        char ch = 'R';
-        int mx = 0;
-        for(auto x : mp)
-        {
-            if(x.second > mx)
-            {
-                mx = x.second;
-                ch = x.first;
-            }
-        }
-        map<char, char> b;
-        b['R'] = 'P';
-        b['P'] = 'S';
-        b['S'] = 'R';
-        for(int i = 0; i < n; i++)
-            cout << b[ch];
-        cout << '\n';
+
+
+
+
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
@@ -127,6 +107,8 @@ void solve(){
 
 
 }  /* end of solve() */
+
+
 
 int main(){
 
