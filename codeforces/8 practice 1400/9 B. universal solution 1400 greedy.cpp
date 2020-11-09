@@ -96,38 +96,31 @@ void solve(){
     cin >> t;               
     // t = 1;        
     while(t--){          
-
-        cin >> str;    
-        n = str.size();   
-        ll rc=0, pc=0, sc=0; 
-        forn(i, n){
-            if(str[i] == 'R'){
-                rc++;   
-            }else if(str[i] == 'P'){
-                pc++;   
-            }else{
-                sc++;   
+        string s;
+        cin >> s;
+        int n = s.length();
+        map<char, int> mp;
+        string ans = "";
+        for(auto x : s)
+            mp[x]++;
+        char ch = 'R';
+        int mx = 0;
+        for(auto x : mp)
+        {
+            if(x.second > mx)
+            {
+                mx = x.second;
+                ch = x.first;
             }
         }
-
-        if(rc>pc && rc>sc){
-            // rock is greater
-            str1 = string(n, 'P'); 
-        }else if(pc>rc&&pc>sc){
-            // paper is greater
-            str1 = string(n, 'S'); 
-
-        }else{  
-            // scissor is greater
-            str1 = string(n, 'R'); 
-        }
-
-        cout << str1 << newl;     
-
-
-
-
-
+        map<char, char> b;
+        b['R'] = 'P';
+        b['P'] = 'S';
+        b['S'] = 'R';
+        for(int i = 0; i < n; i++)
+            cout << b[ch];
+        cout << '\n';
+        
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
     }  /* end of while() */
