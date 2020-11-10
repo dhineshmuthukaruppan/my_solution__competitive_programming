@@ -102,7 +102,26 @@ void solve(){
         forn(i, n){
             cin >> a[i];
         }
-        
+        map<ll, ll> hmap;   
+        maxi = 0;      
+        forn(i, n){
+            if(a[i]%k==0){
+                continue;    
+            }
+            ++hmap[k-(a[i]%k)];
+            maxi = max(maxi, hmap[k-(a[i]%k)]);     
+        }
+
+        answer=0;    
+        for(auto el : hmap){
+            if(el.second == maxi){
+                answer = (k*((el.second) - 1))+el.first+1;     
+            }    
+        }
+
+        cout << answer << newl;    
+
+
 
 
 
