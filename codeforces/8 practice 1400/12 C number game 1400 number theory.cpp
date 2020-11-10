@@ -87,6 +87,15 @@ ll f(ll x){
     return answer;   
 }
 
+void player1(){
+    cout << "Ashishgup" << newl; 
+}
+
+void player2(){
+    cout << "FastestFinger" << newl;    
+}
+
+
 
 void solve(){
 
@@ -97,10 +106,23 @@ void solve(){
     // t = 1;        
     while(t--){          
 
-
-
-
-
+        cin >> n;   
+        if(n==1){
+            player2();   
+        }else if(n==2){
+            player1();    
+        }else if(n%2 == 1){
+            player1(); 
+        }else{
+            // its an even number
+            if((n&(n-1)) == 0){     
+                player2();      
+            }else if(isPrime(n/2)){
+                player2();    
+            }else{
+                player1();    
+            }       
+        }
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
     }  /* end of while() */
