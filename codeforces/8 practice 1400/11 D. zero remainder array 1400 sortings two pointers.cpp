@@ -97,20 +97,12 @@ void solve(){
     // t = 1;        
     while(t--){          
 
-        cin >> n;    
+        cin >> n >> k;    
+        vl a(n); 
         forn(i, n){
-            cin >> x;    
-            if(i==0){
-                y=x;    
-            }
-            if(i==n-1){
-                if(y<x){
-                    cout << "YES" << newl; 
-                }else{
-                    cout << "NO" << newl;    
-                }
-            }
+            cin >> a[i];
         }
+        
 
 
 
