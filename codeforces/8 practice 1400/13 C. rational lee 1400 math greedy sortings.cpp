@@ -97,9 +97,34 @@ void solve(){
     // t = 1;        
     while(t--){          
 
-
-
-
+        cin >> n >> k;    
+        vl a(n); vl w(k);     
+        forn(i, n){
+            cin >> a[i];
+        }
+        forn(i, k){
+            cin >> w[i];
+        }
+        sortall(a);   
+        sort(w.begin(), w.end(), greater<int>());    
+        answer = 0;   
+        x = n-1;    
+        for(int i=k-1; i>=0; i--){
+            if(w[i]==1){
+                answer += (a[x]*2);
+                x--;      
+            }else{
+                answer += a[x--];     
+            }
+        }
+        x=0;   
+        for(int i=0; i<k; i++){
+            if(w[i]!=1){
+                answer+= a[x];    
+                x += (w[i]-1);      
+            }
+        }
+        cout << answer << newl;     
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
