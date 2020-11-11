@@ -90,17 +90,39 @@ ll f(ll x){
 
 void solve(){
 
-    ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
     cin >> t;               
     // t = 1;        
     while(t--){          
 
+        cin >> str;    
+        n = str.size();   
+        int ones=0, zeroes=0;   
+        forn(i, n){
+            if(str[i] == '0'){
+                zeroes++;   
+            }else{
+                ones++;   
+            }
+        }
+        answer = min(zeroes, ones);     
+        int prefix0 = 0; int prefix1 = 0;   
+        forn(i, n){
+            if(str[i] == '0'){
+                prefix0++;   
+                zeroes--;   
+            }else{
+                prefix1++;  
+                ones--;      
+            }
 
+            answer = min(answer, prefix1+zeroes);
+            answer = min(answer, prefix0+ones);  
+        }
 
-
-
+        cout << answer << newl;    
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
     }  /* end of while() */
