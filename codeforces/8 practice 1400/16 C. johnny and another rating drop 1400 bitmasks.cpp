@@ -87,53 +87,20 @@ ll f(ll x){
     return answer;   
 }
 
-/* 
-00001111 
-0000 is the breaking case and it uses 
-answer = min(answer, prefix1+ suffix0); // 0 
-
-000 01111
-if we want to convert it to 00011111
-we have to do one operation
-answer = min(answer, prefix1+suffix0); // 1
-*/
-
 
 void solve(){
 
-    int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
     cin >> t;               
     // t = 1;        
     while(t--){          
 
-        cin >> str;    
-        n = str.size();   
-        int ones=0, zeroes=0;   
-        forn(i, n){
-            if(str[i] == '0'){
-                zeroes++;   
-            }else{
-                ones++;   
-            }
-        }
-        answer = min(zeroes, ones);     
-        int prefix0 = 0; int prefix1 = 0;   
-        forn(i, n){
-            if(str[i] == '0'){
-                prefix0++;   
-                zeroes--;   
-            }else{
-                prefix1++;  
-                ones--;      
-            }
 
-            answer = min(answer, prefix1+zeroes); // for converting it to 000011111111
-            answer = min(answer, prefix0+ones);  // for converting it to 11110000000
-        }
 
-        cout << answer << newl;    
+
+
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
     }  /* end of while() */
