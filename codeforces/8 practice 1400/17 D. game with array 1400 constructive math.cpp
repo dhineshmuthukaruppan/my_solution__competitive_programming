@@ -97,16 +97,7 @@ void solve(){
     // t = 1;        
     while(t--){          
 
-        answer = 0;  
-        cin >> n;   
-        for(int i=0; i<60; i++){
-            if(n & (1LL << i)){
-                answer += ((1LL << (i+1))-1); 
-            }
-        }
 
-        // cout << (1LL << 1) << newl;     // 2  
-        cout << answer << newl; 
 
 
 
@@ -117,28 +108,8 @@ void solve(){
 
 }  /* end of solve() */
 
-/* 	ll t;
-	cin >> t;
-	map<ll, ll> mp;
-	mp[1] = 1;
-	for (ll i = 2; i <= 1e18 + 10; i = i * 2) {
-		mp[i] = mp[i / 2] * 2 + 1;
-	}
-	while (t--) {
-		ll n;
-		cin >> n;
-		ll ans = 0;
-		ll i = 0;
-		while (n > 0) {
-			if (n % 2 == 1) {
-				ans += mp[pow(2, i)];
-			}
-			i++;
-			n = n / 2;
-		}
-		cout << ans << "\n";
-	}
- */
+
+
 int main(){
 
     ios_base::sync_with_stdio(false);
