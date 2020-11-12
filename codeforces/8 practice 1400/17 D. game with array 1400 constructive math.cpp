@@ -93,9 +93,22 @@ void solve(){
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;        
     while(t--){          
+
+        cin >> n >> k;    
+
+        if(k/n >= 2){
+            cout << "YES" << newl;  
+            for(int i=0; i<n-1; i++){   
+                cout << 2 << " "; 
+            } 
+            cout << (k - (2 * (n-1))) << newl; 
+            cout << 1 << newl;           
+        }else{
+            cout << "NO" << newl;   
+        }
 
 
 
