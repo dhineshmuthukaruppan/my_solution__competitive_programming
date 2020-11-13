@@ -17,6 +17,7 @@
 
 
 #include <iostream>   
+#include <iomanip>
 #include <vector>  
 #include <algorithm>
 #include <string>
@@ -90,16 +91,17 @@ ll f(ll x){
 
 void solve(){
 
-    ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    double t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
     cin >> t;               
     // t = 1;        
     while(t--){          
 
-
-
-
+        cin >> n;   
+        double theta = (3.1415926535897/ (2.0 *n));     
+        answer = (1.0 / tan(theta));     
+        cout << fixed << setprecision(6) << answer << newl;        
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
