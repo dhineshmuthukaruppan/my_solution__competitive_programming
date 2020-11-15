@@ -88,19 +88,49 @@ ll f(ll x){
     return answer;   
 }
 
+int func(int ind, vi &a, vi &dp){
+
+    if(ind > a.size()-1){
+        return 0;   
+    }
+
+    if(dp[ind] != -1){
+        return dp[ind];    
+    }
+
+    int count = 0;    
+
+    for(int i=ind; i<=a.size()-1; i+=ind){
+        if(a[i] > a[ind]){
+            count = max(count, 1+func(i, a, dp));     
+        }
+    }
+
+    return dp[ind] = count; 
+
+}  /* end of func */
+
 
 void solve(){
 
-    ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
     cin >> t;               
     // t = 1;        
     while(t--){          
 
-
-
-
+        cin >> n;  
+        vi a(n+1);   
+        vi dp(n+1, -1);      
+        for(int i=1; i<=n; i++){     
+            cin >> a[i];  
+        }     
+        int maxi = 1;   
+        for(int i=1; i<=n; i++){
+            maxi = max(maxi, 1+func(i, a, dp));              
+        }    
+        cout << maxi << newl;     
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
