@@ -91,16 +91,35 @@ ll f(ll x){
 
 void solve(){
 
-    ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
     cin >> t;               
     // t = 1;        
     while(t--){          
 
+        cin >> n >> k;     
+        set<int> hset;   
+        forn(i, n){
+            cin >> x;    
+            hset.insert(x);     
+        }
 
+        if(hset.size() > k){
+            cout << -1 << newl;     
+            continue;     
+        }
 
-
+        cout << n*k << newl;     
+        for(int i=0; i<n; i++){
+            for(auto el : hset){
+                cout << el << ' ';     
+            }
+            for(int j=hset.size(); j<k; j++){
+                cout << 1 << ' ';    
+            }
+        }
+        cout << newl;  
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
