@@ -72,14 +72,14 @@ ostream& operator <<(ostream &out, const vector<A> &v);
 
 void swap(int &a, int &b);
 vi sieveOfEratosthenes(int n);  // O(n log logn)      
-bool isPrime(ll number);  // O(sqrt(n));  
+bool isPrime(int number);  // O(sqrt(n));  
 vi returnAllFactors(int n);
 int totalNumberOfDigits(int A);
 int extractIthDigit(int A, int i);  /* Extract ith digit - (A / 10 ^ i) % 10 */
 int reverseDigits(int A);
 vi allPrimeFactors(int A);   // TODO   
-ll gcdEuclidean(ll A, ll B);  
-ll lcm(ll A, ll B);      
+int gcdEuclidean(int A, int B);  
+int lcm(int A, int B);      
 ll lb(ll target, ll l, ll h);
 ll ub(ll target, ll l, ll h);       
 ll f(ll x){
@@ -89,34 +89,15 @@ ll f(ll x){
 }
 
 
-/* for coprimes(gcd = 1) lcm = product of those two numbers */
 void solve(){
 
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
-    // cin >> t;               
-    t = 1;        
+    cin >> t;               
+    // t = 1;        
     while(t--){          
 
-        cin >> x;    
-
-        if(isPrime(x)){
-            cout << 1 << " " << x << newl;    
-        }else{
-
-            maxi = 0;   
-            for(ll i=1; i<=sqrt(x); i++){
-                if(x%i == 0){
-                    if(gcdEuclidean(i, x/i) == 1){
-                        maxi = i;     
-                    }
-                }
-            }
-
-            cout << min(x/maxi, maxi) << " " << max(x/maxi, maxi) << newl; 
-
-        }
 
 
 
@@ -127,30 +108,6 @@ void solve(){
 
 
 }  /* end of solve() */
-
-
-/* #include <bits/stdc++.h>
-using namespace std;
-#define finish(x) return cout << x << endl, 0
-#define ll long long
-
-ll x;
-
-ll lcm(ll a, ll b){
-    return a / __gcd(a, b) * b;
-}
-int main(){
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cin >> x;
-    ll ans;
-    for(ll i = 1 ; i * i <= x ; i++){
-        if(x % i == 0 && lcm(i, x / i) == x){
-            ans = i;
-        }
-    }
-    cout << ans << " " << x / ans << endl;
-} */
 
 
 
@@ -214,7 +171,7 @@ vi sieveOfEratosthenes(int n){
 }  /* end of sieveOfEratosthenes() */
 
 // O(sqrt(n));  
-bool isPrime(ll number){
+bool isPrime(int number){
     bool cond = true;   
     if(number <= 1){
         cond = false; 
@@ -289,14 +246,14 @@ int reverseDigits(int A){
 
 
 
-ll gcdEuclidean(ll A, ll B){
+int gcdEuclidean(int A, int B){
     if(B == 0)
         return A;   
     return gcdEuclidean(B, A % B);       
 }  /* end of gcdEuclidean() */  
 
 
-ll lcm(ll A, ll B){
+int lcm(int A, int B){
     return (A*B) / gcdEuclidean(A, B);     
 }  /* end of lcm */
 

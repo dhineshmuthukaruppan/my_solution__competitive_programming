@@ -9,3 +9,11 @@ int gcdByLoop(int A, int B){
     }
     return A;   
 }  /* end of gcdByLoop() */
+
+
+
+/* 
+- for coprimes lcm = product of those two numbers
+- lcm * gcd = a*b
+
+ */
