@@ -89,6 +89,25 @@ ll f(ll x){
 }
 
 
+string modification(int k, string str){
+    int n = str.size(); 
+    string result, firsthalf, secondhalf;  
+    firsthalf = str.substr(0, k-1);     
+    secondhalf = str.substr(k-1, n-(k-1));        
+    
+    if(secondhalf.size()%2 == 0){
+        result = secondhalf + firsthalf;    
+    }else{
+        reverse(firsthalf.begin(), firsthalf.end());  
+        result = secondhalf + firsthalf;           
+    }
+
+    return result;  
+
+}  /* end of modification() */
+
+
+
 void solve(){
 
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
@@ -97,10 +116,22 @@ void solve(){
     cin >> t;               
     // t = 1;        
     while(t--){          
-        
 
+        cin >> n;    
+        cin >> str;    
+        k = 1;   
+        int best_k = 1;     
+        string best_s = str;     
+        for(int i=2; i<=n; i++){
+            string current_s = modification(i, str);       
+            if(current_s < best_s){
+                best_s = current_s;    
+                best_k = i;     
+            }
+        }
 
-
+        cout << best_s << newl;    
+        cout << best_k << newl;     
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
