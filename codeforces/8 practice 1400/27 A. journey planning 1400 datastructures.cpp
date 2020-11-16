@@ -94,13 +94,24 @@ void solve(){
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;        
     while(t--){          
 
-
-
-
+        cin >> n;   
+        vl a(n+1); 
+        for(int i=1; i<=n; i++){
+            cin >> a[i];
+        }
+        map<ll, ll> hmap;   
+        for(int i=1; i<=n; i++){
+            hmap[i-a[i]]+=a[i];    
+        } 
+        maxi = 0;    
+        for(auto el : hmap){
+            maxi = max(maxi, el.second); 
+        }
+        cout << maxi << newl; 
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
