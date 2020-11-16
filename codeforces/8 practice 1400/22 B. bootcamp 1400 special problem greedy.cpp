@@ -91,13 +91,27 @@ ll f(ll x){
 
 void solve(){
 
-    ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    int k1, k2, t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
     cin >> t;               
     // t = 1;        
     while(t--){          
 
+        cin >> n >> k1 >> k2 >> str;    
+
+        answer = 0;   
+        int prev = 0;   
+        for(int i=0; i<n; i++){
+            if(str[i] == '1'){
+                prev = min(k1, k2-prev);    
+                answer += prev;    
+            }else{
+                prev = 0;   
+            }
+        }
+
+        cout << answer << newl;    
 
 
 
