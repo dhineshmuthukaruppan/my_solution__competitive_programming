@@ -85,50 +85,22 @@ ll ub(ll target, ll l, ll h);
 ll f(ll x){
     ll answer;    
 
-
-
-
     return answer;   
 }
 
 
 void solve(){
 
-    int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
     cin >> t;               
     // t = 1;        
-    vi primes = sieveOfEratosthenes(sqrt(1000));      
     while(t--){          
 
-        cin >> n;   
-        vi a(n);   
-        forn(i, n){
-            cin >> a[i];       
-        }
-        vi ans(n, -1);    
-        x = 1;            
-        for(int p : primes){
-            bool got = 0;   
-            for(int i=0; i<n; i++){
-                if(ans[i] != -1){
-                    continue;    
-                }
-                if(a[i]%p){
-                    continue;    
-                }
-                got = 1;   
-                ans[i] = x;   
-            }
-            if(got){x++;  }
-        }    
 
-        cout << (x-1) << newl; 
-        for(auto el : ans){
-            cout << el << ' '; 
-        }   
-        cout << newl;    
+
+
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
