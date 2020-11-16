@@ -94,13 +94,37 @@ void solve(){
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;        
     while(t--){          
 
+        cin >> n;    
+        vl a(n);   
+        vl b(n);
+        vl c(n); 
+        forn(i, n){
+            cin >> a[i];
+        }
+        forn(i, n){
+            cin >> b[i];
+        }
+        forn(i, n){
+            c[i] = a[i] - b[i];
+        }
+        sortall(c);      
+
+        answer = 0;    
+        forn(i, n){
+            if(c[i] <= 0){
+                auto it = lower_bound(c.begin(), c.end(), -c[i]+1);          
+                answer += (c.end() - it);                    
+            }else{    
+                answer += n - i - 1;    
+            }
+        }
 
 
-
+        cout << answer << newl;     
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
