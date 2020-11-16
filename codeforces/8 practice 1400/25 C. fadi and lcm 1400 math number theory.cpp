@@ -88,66 +88,19 @@ ll f(ll x){
     return answer;   
 }
 
-bool judge(vi &a, int x, int y){
-
-    map<int, int> firsthalf; 
-    for(int i=0; i<x; i++){
-        firsthalf[a[i]]++;    
-    }
-
-    for(int i=0; i<x; i++){
-        if(firsthalf[i+1] == 0){
-            return false; 
-        }
-    }
-
-
-    map<int, int> secondhalf;   
-    for(int i=x; i<a.size(); i++){
-        secondhalf[a[i]]++;    
-    }
-
-    for(int i=0; i<y; i++){
-        if(secondhalf[i+1] == 0){
-            return false; 
-        }
-    }
-
-    return true;     
-
-}  /* end of judge */
 
 void solve(){
 
-    int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
     cin >> t;               
     // t = 1;        
     while(t--){          
 
-        cin >> n;
-        vi a(n);     
-        maxi = 0;  
-        forn(i, n){
-            cin >> a[i]; 
-            maxi = max(maxi, a[i]); 
-        }
 
-        set<pair<int, int>> hset;    
 
-        if(judge(a, maxi, n-maxi)){
-            hset.insert(mp(maxi, n-maxi));         
-        }
 
-        if(judge(a, n-maxi, maxi)){    
-            hset.insert(mp(n-maxi, maxi));      
-        }
-
-        cout << hset.size() << newl;   
-        for(auto el : hset){
-            cout << el.first << " " << el.second << newl; 
-        }
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
@@ -155,6 +108,30 @@ void solve(){
 
 
 }  /* end of solve() */
+
+
+/* #include <bits/stdc++.h>
+using namespace std;
+#define finish(x) return cout << x << endl, 0
+#define ll long long
+
+ll x;
+
+ll lcm(ll a, ll b){
+    return a / __gcd(a, b) * b;
+}
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cin >> x;
+    ll ans;
+    for(ll i = 1 ; i * i <= x ; i++){
+        if(x % i == 0 && lcm(i, x / i) == x){
+            ans = i;
+        }
+    }
+    cout << ans << " " << x / ans << endl;
+} */
 
 
 
