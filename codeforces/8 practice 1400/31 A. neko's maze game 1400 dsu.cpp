@@ -91,16 +91,40 @@ ll f(ll x){
 
 void solve(){
 
-    ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    int q, t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;     
     bool cond, parity;    
     string str, str1;                             
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;        
+    vvi lava;     
     while(t--){          
 
+        cin >> n >> q;   
+        int blockedPair = 0;    
+        lava.resize(2, vi(n, 0));   
+        forn(i, q){
+            cin >> x >> y;   
+            x--; y--;   
 
+            int delta = (lava[x][y] == 0) ? +1 : -1;   
 
+            // toggle the lava
+            lava[x][y] = 1 - lava[x][y];    
 
+            for(int dy=-1; dy<=1; dy++){
+                if(y+dy<0 || y+dy>=n){
+                    continue;   
+                }
+
+                if(lava[1-x][y+dy] == 1){
+                    blockedPair += delta;    
+                }
+
+            }
+
+            cout << ((blockedPair == 0) ? "Yes\n" : "No\n");     
+        
+        }
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
