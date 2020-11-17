@@ -92,15 +92,24 @@ ll f(ll x){
 void solve(){
 
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    ll g, b; 
     bool cond, parity;    
     string str, str1;                             
     cin >> t;               
     // t = 1;        
     while(t--){          
 
+        cin >> n >> g >> b;    
 
+        ll needG = (n+1)/2;    
+        ll totalG = (needG/g)*(g+b);     
+        if(needG % g == 0){
+            totalG -= b;    
+        }else if(needG%g > 0){
+            totalG +=  (needG%g);     
+        }
 
-
+        cout << max(n, totalG) << newl; 
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
