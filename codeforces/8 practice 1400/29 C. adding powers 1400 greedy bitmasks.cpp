@@ -92,17 +92,48 @@ ll f(ll x){
 void solve(){
 
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    ll remainder;   
     bool cond, parity;    
     string str, str1;                             
     cin >> t;               
     // t = 1;        
     while(t--){          
 
+        cin >> n >> k;    
+        vl a(n);   
+        vi num(100, 0);      
+        forn(i, n){    
+            cin >> a[i];
+        } 
+        cond = true; 
 
+        forn(i, n){
 
+            temp = a[i];    
+            if(temp == 0){
+                continue; 
+            }
+            
+            x = 0;      
+            while(temp > 0){
+                remainder = temp%k;  
+                temp /= k;       
+                if(remainder > 1){
+                    cond = false;  
+                    break;     
+                }else if(remainder == 1){
+                    if(num[x] == 0){
+                        num[x]++; 
+                    }else{
+                        cond = false; 
+                        break;    
+                    }
+                }
+                x++;   
+            }
+        }
 
-
-        // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
+        if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
     }  /* end of while() */
 
