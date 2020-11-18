@@ -91,15 +91,38 @@ ll f(ll x){
 
 void solve(){
 
-    ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    ll t, n, m, l, r, w, x, y, z, k, p, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
     cin >> t;               
     // t = 1;        
     while(t--){          
 
-        
+        cin >> n >> p >> k;   
+        vl a(n+1);   
+        for(int i=1; i<=n; i++){
+            cin >> a[i];
+        } 
+        sortall(a);     
+        ll oddsum = 0; ll evensum = 0;    
+        answer = 0;     
+        for(ll i=1; i<=n; i++){    
 
+            if(i%2 == 0){
+                evensum += a[i];   
+                if(evensum <= p){
+                    answer = max(answer, i);      
+                }
+
+            }else{
+                oddsum += a[i];   
+                if(oddsum <= p){
+                    answer = max(answer, i);     
+                }
+            }
+        }
+
+        cout << answer << newl;      
 
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
