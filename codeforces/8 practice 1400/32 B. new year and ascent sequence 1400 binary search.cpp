@@ -89,18 +89,60 @@ ll f(ll x){
 }
 
 
+
+/* - non increasing sequence ai >= ai+1 does not contain ascent. 
+    - we need to calculate no of pairs of sequence whose concatenation is not a
+    non increasing sequence
+    - c - no of pairs whose concatenation is a non increasing sequence
+    answer: n^2 - c;    
+    - For a non increasing sequence s, t to be mergeable as a non increasing sequence, the 
+    last element of s must be greater than or equal to first element of t
+    li >= fi
+    - counting this can be done in numerous ways. One way is to sort the sequence f, and do 
+    a binary search for each li to find how many elements are at most li. 
+    The time complexity is O(nlogn)
+ */
+
 void solve(){
 
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    ll c;    
     bool cond, parity;    
     string str, str1;                             
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;        
     while(t--){          
 
+        cin >> n;   
+        answer = n*n;    
+        vpi pr;    
+        forn(i, n){
+            cin >> m;    
+            vi v(m);   
+            forn(j, m){
+                cin >> v[j];
+            } 
+            reverse(all(v));  // if the sequence is already non decreasing, then this reversal
+            // process will make it as increasing sequence. 
+            if(is_sorted(all(v))){
+                pr.emplace_back(v[0], v.back()); // li, fi     
+            }
 
+        }
 
+        sort(all(pr));     
+        // cout << pr << newl; 
 
+        // we need to count no of li >= fi and reduce it from answer. This will inturn form 
+        // non increasing sequence
+        c = 0;    
+        for(int i=0; i<pr.size(); i++){
+            c += pr.end() - lower_bound(all(pr), pi(pr[i].second, -1)); // li >= fi  (pr[i].second denotes fi)
+            // [(6, 6), (7, 9)]
+            // in this example 2 li's are >= 6 and 0 li's are >= 9
+        }
+
+        cout << answer-c << newl;     
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
