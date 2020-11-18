@@ -98,9 +98,28 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n;   
+        vi a(n);   
+        forn(i, n){
+            cin >> a[i];
+        }  
 
+        answer = 1; 
+        counter = 1;      
+        ll nxtcnt = 1;   
+        for(int i=2; i<n; i++){
+            if(a[i-1] > a[i]){
+                counter--;  
+                if(counter == 0){
+                    counter = nxtcnt;   
+                    nxtcnt = 0; 
+                    answer++;   
+                }
+            }
+            nxtcnt++;   
+        }
 
-
+        cout << answer << newl;      
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
@@ -108,6 +127,46 @@ void solve(){
 
 
 }  /* end of solve() */
+
+
+
+/* 
+
+int main() {
+    int t = 1; cin>>t;
+
+    while(t--) {
+        cin>>n;
+        readArray(arr, n);
+        d = 0, idx = 1;
+
+        q.push(1);
+        int cnt = 1, x;
+        while(!q.empty()) {
+            x = 0;
+
+            for(int i=0; i<cnt; i++) {
+                int temp = q.front();
+                q.pop();
+
+                int prev = -1;
+                while(idx < n) {
+                    if(arr[idx] < prev) break;
+
+                    prev = arr[idx];    q.push(arr[idx]);
+                    idx++;
+                    x++;
+                }
+            }
+
+            cnt = x;
+            if(q.size()) d++;
+        }
+
+        cout<<d<<endl;
+    }
+    return 0;
+} */
 
 
 
