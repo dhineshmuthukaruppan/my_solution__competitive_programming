@@ -98,9 +98,29 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n >> m;   
+        vl b(n);   
+        vl pos(n+1, -1);              
+        forn(i, n){
+            cin >> x;     
+            pos[x] = i+1;        
+        }      
+        answer = 0;   
+        ll curpos = -1;     
+        for(int i=1; i<=m; i++){
+            cin >> x;     
+            // let k denote no of items on the top
+            
+            if(pos[x] > curpos){
+                k = pos[x] - 1 - (i-1);       
+                answer += (2*k + 1);     
+                curpos = pos[x];    
+            }else{
+                answer += 1;   
+            }
+        }
 
-
-
+        cout << answer << newl;   
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
