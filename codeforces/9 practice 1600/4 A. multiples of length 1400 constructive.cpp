@@ -94,10 +94,42 @@ void solve(){
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;        
     while(t--){          
 
+        cin >> n;   
+        vl a(n);   
+        forn(i, n){
+            cin >> a[i];
+        } 
+
+        if(n == 1){
+            cout << 1 << " " << 1 << newl;    
+            cout << 0 << newl;             
+            cout << 1 << " " << 1 << newl;    
+            cout << 0 << newl;             
+            cout << 1 << " " << 1 << newl; 
+            cout << -a[0] << newl;                
+        }else{
+
+            cout << 1 << " " << n << newl;   
+            forn(i, n){
+                cout << -a[i]*n << " ";    
+                a[i] += (-a[i]*n);         
+            }    
+            cout << newl;    
+
+            cout << 1 << " " << 1 << newl;  
+            cout << -a[0] << newl; 
+
+            cout << 2 << " " << n << newl;  
+            for(int i=1; i<n; i++){
+                cout << -a[i] << " ";  
+            }
+            cout << newl;  
+
+        }
 
 
 
