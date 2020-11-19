@@ -98,8 +98,26 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n;   
+        cin >> str;   
+        vi a(n);   
+        forn(i, n){
+            a[i] = (str[i] - '0') - 1;     
+        }       
 
+        map<int, int> hmap;    
+        hmap[0] = 1;    
+        answer = 0;   
+        sum = 0;    
+        forn(i, n){
+            sum += a[i];   
+            if(hmap.find(sum) != hmap.end()){
+                answer += hmap[sum];   
+            }    
+            hmap[sum]++;    
+        }
 
+        cout << answer << newl;    
 
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
