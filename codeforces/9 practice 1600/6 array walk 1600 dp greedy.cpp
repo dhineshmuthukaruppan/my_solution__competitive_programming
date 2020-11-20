@@ -92,13 +92,40 @@ ll f(ll x){
 void solve(){
 
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    ll s, mx;   
     bool cond, parity;    
     string str, str1;                             
-    cin >> t;               
+    cin >> t; 
+    vl a;                 
     // t = 1;        
     while(t--){          
 
+        cin >> n >> k >> z;    
+        a.resize(n); 
+        forn(i, n){
+            cin >> a[i];
+        }
 
+        answer = 0;   
+        for(int i=0; i<=z; i++){
+            s = 0;        
+            mx = 0;    
+            ll pos = k - (2*i);    
+
+            for(int j=0; j<=pos; j++){
+                
+                if(j < n-1){
+                    mx = max(mx, a[j]+a[j+1]);     
+                }    
+                
+                s += a[j];    
+            }     
+            
+            answer = max(answer, s+mx*i);     
+
+        }
+
+        cout << answer << newl;  
 
 
 
