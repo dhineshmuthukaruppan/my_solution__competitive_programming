@@ -100,9 +100,9 @@ void solve(){
 
         cin >> n >> k;     
 
-        priority_queue<ll, vl, greater<ll>> oneone, onezero, zeroone;    
-        forn(i, n){
-            cin >> l >> x >> y;    
+        priority_queue<ll, vl, greater<ll>> oneone, onezero, zeroone;          
+        forn(i, n){       
+            cin >> l >> x >> y;          
 
             if(x == 1 && y == 1){
                 oneone.emplace(l);     
@@ -126,8 +126,8 @@ void solve(){
             
             while(k){
 
-                if(!oneone.empty() && !onezero.empty()){
-                    if(oneone.top() > (onezero.top() + zeroone.top())){
+                if(!oneone.empty() && !onezero.empty() && !zeroone.empty()){    
+                    if(oneone.top() > (onezero.top() + zeroone.top())){     
                         answer +=  (onezero.top());   
                         answer += (zeroone.top());     
                         onezero.pop();   
@@ -138,12 +138,12 @@ void solve(){
                         oneone.pop();    
 
                     }   
-                }else if(onezero.empty()){
+                }else if(onezero.empty() || zeroone.empty()){
                     answer += oneone.top(); 
                     oneone.pop();   
 
                 }else if(oneone.empty()){
-                    answer += onezero.top();   
+                    answer += onezero.top();       
                     answer += zeroone.top();   
                     onezero.pop(); 
                     zeroone.pop();   
@@ -152,8 +152,6 @@ void solve(){
 
                 k--;   
             }
-
-
 
             cout << answer << newl; 
         }
