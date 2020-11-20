@@ -94,13 +94,69 @@ void solve(){
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;        
     while(t--){          
 
+        cin >> n >> k;     
+
+        priority_queue<ll, vl, greater<ll>> oneone, onezero, zeroone;    
+        forn(i, n){
+            cin >> l >> x >> y;    
+
+            if(x == 1 && y == 1){
+                oneone.emplace(l);     
+
+            }else if(x == 1 && y == 0){
+                onezero.emplace(l); 
+
+            }else if(x == 0 && y == 1){
+                zeroone.emplace(l);  
+                
+            }
+
+        }
+
+        counter = k - oneone.size();    
+        if(onezero.size() < counter || zeroone.size() < counter){
+            cout << -1 << newl;     
+        }else{
+
+            answer = 0;  
+            
+            while(k){
+
+                if(!oneone.empty() && !onezero.empty()){
+                    if(oneone.top() > (onezero.top() + zeroone.top())){
+                        answer +=  (onezero.top());   
+                        answer += (zeroone.top());     
+                        onezero.pop();   
+                        zeroone.pop();    
+
+                    }else{
+                        answer += oneone.top(); 
+                        oneone.pop();    
+
+                    }   
+                }else if(onezero.empty()){
+                    answer += oneone.top(); 
+                    oneone.pop();   
+
+                }else if(oneone.empty()){
+                    answer += onezero.top();   
+                    answer += zeroone.top();   
+                    onezero.pop(); 
+                    zeroone.pop();   
+
+                }
+
+                k--;   
+            }
 
 
 
+            cout << answer << newl; 
+        }
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
