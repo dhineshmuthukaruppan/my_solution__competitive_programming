@@ -91,16 +91,37 @@ ll f(ll x){
 
 void solve(){
 
-    ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
     cin >> t;               
     // t = 1;        
     while(t--){          
 
+        cin >> n >> k;    
+        vvi a(n, vi(n));    
 
+        if(k % n == 0){
+            cout << 0 << newl;  
+        }else{
+            cout << 2 << newl;  
+        }
 
+        for(int i=0; i<n && k; i++){
+            for(int j=0; j<n && k; j++){
+                x = j; 
+                y = (i+j)%n;    
+                a[x][y] = 1;    
+                k--; 
+            }
+        }
 
+        forn(i, n){
+            forn(j, n){
+                cout << a[i][j];      
+            }
+            cout << newl; 
+        }
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
