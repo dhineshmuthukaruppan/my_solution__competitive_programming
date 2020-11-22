@@ -98,9 +98,25 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n >> x;   
+        counter = 0;   
+        
+        forn(i, n-1){    
+            cin >> l >> r;    
+            if(l == x || r == x){
+                counter++;    
+            }
+        }
 
-
-
+        if(counter == 1 || n==1){   
+            cout << "Ayush" << newl; 
+        }else{
+            if((n-1)%2 == 1){
+                cout << "Ayush" << newl; 
+            }else{
+                cout << "Ashish" << newl; 
+            }
+        }
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
