@@ -96,11 +96,57 @@ void solve(){
     string str, str1;                             
     cin >> t;               
     // t = 1;        
+    vl a;            
     while(t--){          
 
+        cin >> n;    
+        a.resize(n);   
+        ll evensum = 0;   
+        forn(i, n){
+            cin >> a[i];  
+            if(i %2 ==0){
+                evensum += a[i];
+            } 
+        } 
 
+        vi evenarray, oddarray;    
+        forn(i, n){
+            if(i%2 == 0){
+                if(i != n-1){
+                    evenarray.pb(a[i+1] - a[i]); 
+                }
 
+            }else{
+                if(i != n-1){
+                    oddarray.pb(a[i] - a[i+1]);     
+                }
+            }
+        }
 
+        maxi = 0;   
+        ll maxuptohere = 0;   
+        forn(i, evenarray.size()){
+            maxuptohere += evenarray[i];   
+            if(maxi < maxuptohere){
+                maxi= maxuptohere;   
+            }
+            if(maxuptohere < 0){
+                maxuptohere = 0;   
+            }
+        }
+
+        maxuptohere = 0;   
+        forn(i, oddarray.size()){
+            maxuptohere += oddarray[i];   
+            if(maxi < maxuptohere){ 
+                maxi= maxuptohere;   
+            }
+            if(maxuptohere < 0){
+                maxuptohere = 0;   
+            }
+        }
+
+        cout << evensum + maxi << newl;     
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
