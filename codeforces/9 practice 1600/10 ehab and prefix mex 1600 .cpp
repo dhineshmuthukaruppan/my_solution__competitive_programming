@@ -91,13 +91,46 @@ ll f(ll x){
 
 void solve(){
 
-    ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
+    int t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;        
     while(t--){          
 
+        cin >> n;   
+        set<int> hset;   
+        vi a(n); 
+        cond = true;    
+        forn(i, n+1){   
+            hset.insert(i);   
+        }
+
+        forn(i, n){
+            cin >> a[i];    
+            if(a[i] > (i+1)){
+                cond = false;  
+                continue;    
+            }
+        
+            hset.erase(a[i]);       
+        }
+
+
+        if(!cond){
+            cout << -1 << newl;    
+        }else{
+            vi ans;    
+            forn(i, n){
+                cout << *hset.begin() << " ";   
+                hset.erase(*hset.begin());    
+
+                if(i+1 < n && a[i] != a[i+1]){
+                    hset.insert(a[i]);     
+                }
+            }
+
+        }
 
 
 
