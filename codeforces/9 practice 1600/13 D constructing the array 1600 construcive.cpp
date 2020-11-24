@@ -89,6 +89,17 @@ ll f(ll x){
 }
 
 
+struct comparator{
+
+    bool operator()(const pi &a, const pi &b) const{
+        int lena = a.second - a.first + 1;  
+        int lenb = b.second - b.first + 1;   
+        if(lena == lenb){return a.first < b.first;  }
+        return lena > lenb; 
+    }
+
+}; 
+
 void solve(){
 
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
@@ -98,9 +109,28 @@ void solve(){
     // t = 1;        
     while(t--){          
 
+        cin >> n;   
 
-
-
+        set<pi, comparator> segs;    
+        vi a(n);   
+        segs.insert({0, n-1});    
+        for(int i=1; i<=n; i++){
+            pi cur = *segs.begin();   
+            segs.erase(segs.begin());     
+            int id = (cur.first + cur.second)/ 2; 
+            a[id] = i;    
+            if(cur.first < id){
+                segs.insert({cur.first, id-1});    
+            }
+            if(id < cur.second){
+                segs.insert({id+1, cur.second});
+            }
+        }
+        
+        for(auto it : a){
+            cout << it << " ";  
+        }
+        cout << newl;  
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
