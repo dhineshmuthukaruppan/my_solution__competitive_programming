@@ -78,8 +78,8 @@ int totalNumberOfDigits(int A);
 int extractIthDigit(int A, int i);  /* Extract ith digit - (A / 10 ^ i) % 10 */
 int reverseDigits(int A);
 vi allPrimeFactors(int A);   // TODO   
-int gcdEuclidean(int A, int B);  
-int lcm(int A, int B);      
+ll gcdEuclidean(ll A, ll B);  
+ll lcm(ll A, ll B);      
 ll lb(ll target, ll l, ll h);
 ll ub(ll target, ll l, ll h);       
 ll f(ll x){
@@ -89,18 +89,43 @@ ll f(ll x){
 }
 
 
+
+/* LCM of 2 numbers a and b has all the factors of a and b so 3 pairs of LCM which all have 
+a in common then , a will always be a factors in it's gcd and the rest b1,b2,b3 's gcd is 
+taken with the fact in mind that the common gcd with a is also counted earlier  */
+
 void solve(){
 
     ll t, n, m, l, r, w, x, y, z, k, temp, answer, mini, maxi, miniIndex, maxiIndex, counter, sum;  
     bool cond, parity;    
     string str, str1;                             
-    cin >> t;               
-    // t = 1;        
+    // cin >> t;               
+    t = 1;        
     while(t--){          
 
+        cin >> n;    
+        vl a(n);   
+        forn(i, n){
+            cin >>  a[i];
+        } 
 
+        vl suffix(n);   
+        suffix[n-1] = a[n-1];  
+        for(int i=n-2; i>=0; i--){
+            suffix[i] = gcdEuclidean(a[i], suffix[i+1]);     
+        }
 
+        answer = 0;   
 
+        for(int i=0; i<n-1; i++){
+            if(i == 0){
+                answer = (a[i] * suffix[i+1])/ gcdEuclidean(a[i], suffix[i+1]);     
+            }else{
+                answer = gcdEuclidean(answer, (a[i] * suffix[i+1])/ gcdEuclidean(a[i], suffix[i+1])); 
+            }
+        }
+
+        cout << answer << newl;  
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
@@ -246,14 +271,14 @@ int reverseDigits(int A){
 
 
 
-int gcdEuclidean(int A, int B){
+ll gcdEuclidean(ll A, ll B){
     if(B == 0)
         return A;   
     return gcdEuclidean(B, A % B);       
 }  /* end of gcdEuclidean() */  
 
 
-int lcm(int A, int B){
+ll lcm(ll A, ll B){
     return (A*B) / gcdEuclidean(A, B);     
 }  /* end of lcm */
 
