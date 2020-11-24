@@ -98,8 +98,9 @@ void solve(){
     // t = 1;        
     while(t--){          
 
-        cin >> x >> y >> z >> k;   
-        cout << (z-x) * (k-y) + 1 << newl; 
+
+
+
 
         // if(cond){cout << "YES" << newl; }else{cout << "NO" << newl; }  
 
