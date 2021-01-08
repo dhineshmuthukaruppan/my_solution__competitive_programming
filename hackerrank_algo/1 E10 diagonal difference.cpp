@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-
+#include <cmath> 
 using namespace std;
 
 string ltrim(const string &);
@@ -15,8 +15,20 @@ vector<string> split(const string &);
 
 int diagonalDifference(vector<vector<int>> arr) {
 
-    
+    int n = arr.size();    
 
+    int leftsum = 0;  
+    int rightsum = 0;   
+    int result;   
+
+    for(int i=0; i<n; i++){
+        leftsum += arr[i][i];   
+        rightsum += arr[i][n-i-1];       
+    }
+
+    result = abs(leftsum - rightsum);    
+
+    return result;        
 
 }
 
