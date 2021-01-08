@@ -7,9 +7,12 @@ vector<string> split_string(string);
 // Complete the miniMaxSum function below.
 void miniMaxSum(vector<int> arr) {
 
-    
+    int mini = *(min_element(arr.begin(), arr.end()));    
+    int maxi = *(max_element(arr.begin(), arr.end()));    
 
+    int total = accumulate(arr.begin(), arr.end(), 0);     
 
+    cout << total-maxi << " " << total-mini << endl;    
 
 }
 
