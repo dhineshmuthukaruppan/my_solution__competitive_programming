@@ -2,14 +2,73 @@
 
 using namespace std;
 
+#define forn(i, n) for(int i = 0; i < int(n); i++) 
+#define fore(i, l, r) for(int i = int(l); i < int(r); i++)
+
+#define pb push_back
+#define mp make_pair
+#define sqr(a) ((a) * (a))    
+#define sz(a) int(a.size())     
+#define all(x) (x).begin(), (x).end()
+#define sortall(x) sort(all(x))
+#define itr(it, a) for(auto it = a.begin(); it != a.end(); it++)
+#define PI 3.1415926535897932384626
+#define newl '\n'
+
+template <class A, class B>
+ostream& operator << (ostream &out, const pair<A, B> &a);
+
+template <class A>
+ostream& operator <<(ostream &out, const vector<A> &v);
+
+
+template <class A, class B>
+ostream& operator << (ostream &out, const pair<A, B> &a){
+    return out << "(" << a.first << ", " << a.second << ")";   
+}
+
+template <class A>
+ostream& operator <<(ostream &out, const vector<A> &v){
+    out << "["; 
+    forn(i, sz(v)){
+        if(i) out << ", "; 
+        out << v[i];   
+    }    
+    return out << "]";   
+}
+
+
 vector<string> split_string(string);
 
 // Complete the minimumDistances function below.
 int minimumDistances(vector<int> a) {
 
+    map<int, vector<int>> hmap;    
+
+    for(int i=0; i<a.size(); i++){
+
+        auto it = hmap.find(a[i]);   
+        if(it != hmap.end()){
+            (it->second).push_back(i); 
+        }else{
+            hmap[a[i]].push_back(i);   
+        }
+    }
     
+    int mini = INT32_MAX;    
+    for(auto it : hmap){
+        if((it.second).size() > 1){
+            for(int i=0; i<((it.second).size()-1); i++){
+                mini = min(mini, ((it.second)[i+1] - (it.second)[i]));     
+            }
+        }  
+    }
 
+    if(mini == INT32_MAX){
+        mini = -1;    
+    }
 
+    return mini;  
 
 }
 
